@@ -1,0 +1,53 @@
+/* contact */
+.contact {
+  padding-top: 80px;
+}
+.contact__content {
+  margin: 50px 0;
+}
+
+.contact__info li {
+  margin-bottom: 15px;
+}
+.contact__info i {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+.contact__content h2 {
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+.contact__info span {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.contact__info p {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+.contact__info a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.5s;
+}
+.contact__info a:hover {
+  color: var(--primary-color);
+}
+.contact__form .input__group {
+  margin-bottom: 20px;
+}
+.contact__form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: rgba(233, 14, 69, 0.25) 0px 0px 0px 0.25rem;
+}
+.input__group textarea {
+  width: 100%;
+  padding: 6px 12px;
+  resize: none;
+}
