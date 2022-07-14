@@ -33,11 +33,12 @@ ul {
 }
 
 .btn.btn-primary {
-  background-color: var(--primary-color);
+  background-color: black;
+  color: white;
 }
 
 .btn.btn-primary:hover {
-  background-color: #ff4757;
+  background-color: var(--primary-color);
 }
 
 .mt-45 {

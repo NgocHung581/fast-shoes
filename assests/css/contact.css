@@ -1,6 +1,6 @@
 /* contact */
 .contact {
-  padding-top: 80px;
+  padding-top: var(--height-header);
 }
 .contact__content {
   margin: 50px 0;
@@ -14,7 +14,7 @@
   height: 35px;
   line-height: 35px;
   border-radius: 50%;
-  border: 1px solid #ddd;
+  border: 1px solid var(--primary-color);
   text-align: center;
   margin-right: 10px;
   font-size: 0.8rem;
@@ -23,14 +23,7 @@
   margin-bottom: 30px;
   font-weight: 700;
 }
-.contact__info span {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-.contact__info p {
-  font-size: 0.8rem;
-  margin-bottom: 0;
-}
+
 .contact__info a {
   text-decoration: none;
   color: black;
@@ -40,14 +33,46 @@
   color: var(--primary-color);
 }
 .contact__form .input__group {
+  position: relative;
   margin-bottom: 20px;
 }
+
+.form-label,
+.form-text {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  background: #fff;
+  transform: translateY(-50%);
+  user-select: none;
+  pointer-events: none;
+  color: #999;
+  padding: 0 10px;
+}
+.form-text {
+  top: 25px;
+  font-size: 16px;
+}
+.contact__form .form-control,
+.contact__form textarea {
+  border: 1px solid var(--primary-color);
+}
 .contact__form .form-control:focus {
-  border-color: var(--primary-color);
-  box-shadow: rgba(233, 14, 69, 0.25) 0px 0px 0px 0.25rem;
+  box-shadow: none;
+}
+
+.contact__form .form-control:focus + .form-label {
+  top: 0;
+  transition: all 0.5s;
+  color: #000;
+}
+.contact__form .form-control:focus + .form-text {
+  top: 0;
+  transition: all 0.5s;
+  color: #000;
 }
 .input__group textarea {
   width: 100%;
-  padding: 6px 12px;
+  padding: 20px 12px;
   resize: none;
 }
