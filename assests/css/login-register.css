@@ -61,7 +61,7 @@
   position: absolute;
   top: 0px;
   left: 0;
-  height: 80%;
+  height: 100%;
   width: 1px;
   background-color: var(--primary-color);
 }
@@ -73,7 +73,7 @@
   position: absolute;
   top: 0px;
   right: 0;
-  height: 80%;
+  height: 100%;
   width: 1px;
   background-color: var(--primary-color);
 }
