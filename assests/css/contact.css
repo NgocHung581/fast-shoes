@@ -77,3 +77,6 @@
   padding: 20px 12px;
   resize: none;
 }
+.contact .form-group {
+  margin: 10px 0;
+}
