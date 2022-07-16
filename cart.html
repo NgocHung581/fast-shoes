@@ -21,8 +21,301 @@
     />
     <link rel="stylesheet" href="./assests/css/style.css" />
     <title>Fast Shoes</title>
+    <link rel="stylesheet" href="./assests/css/style.css" />
+    <link rel="stylesheet" href="./assests/css/cart.css" />
   </head>
   <body>
+    <div class="header">
+      <div class="container header__content">
+        <a href="#" class="header__logo">
+          <img
+            class="header__logo-img"
+            src="./assests/images/logo-removebg.png"
+            alt="Logo"
+          />
+        </a>
+        <ul class="header__navigation d-flex align-items-center">
+          <li class="header__navigation-item">
+            <a
+              href="#"
+              class="header__navigation-link header__navigation-link--active"
+              >Trang chủ</a
+            >
+          </li>
+          <li class="header__navigation-item">
+            <a href="#" class="header__navigation-link">Sản phẩm</a>
+          </li>
+          <li class="header__navigation-item">
+            <a href="./contact.html" class="header__navigation-link">Liên hệ</a>
+          </li>
+        </ul>
+        <div class="header__options d-flex align-items-center">
+          <div class="header__access">
+            <a href="login.html" class="header__access-link">Đăng nhập</a>
+          </div>
+          <div class="header__cart">
+            <a href="./cart.html" class="header__cart-link">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="header__cart-quantity">0</span>
+            </a>
+            <div class="header__cart-box">
+              <h3 class="header-cart-title">Sản phảm đã thêm vào giỏ</h3>
+              <ul class="header__cart-list">
+                <li class="header__cart-item d-flex align-items-center">
+                  <div class="cart__item-img">
+                    <img src="./assests/images/product/nike.webp" alt="" />
+                  </div>
+                  <div
+                    class="cart__item-detail d-flex align-items-center justify-content-between"
+                  >
+                    <div class="cart__item-description">
+                      <h3 class="cart__item-name">Nike</h3>
+                      <p class="cart__item-price">2.050.000 VNĐ</p>
+                    </div>
+                    <div class="cart__item-quantity">x 1</div>
+                  </div>
+                </li>
+              </ul>
+              <p class="header-cart-description">
+                Nhấn vào giỏ hàng để xem chi tiết
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="cart">
+      <div class="container">
+        <h2 class="mt-5 mb-4">Giỏ hàng của bạn</h2>
+        <div class="row">
+          <div class="col-7">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th colspan="3">Sản phẩm</th>
+                  <th>Size</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th>Tạm tính</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-2 remove">
+                        <i class="fa fa-times"></i>
+                      </div>
+                      <div class="col-4">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0">Nike</pc>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span>41</span>
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>
+                    <input class="quanlity" type="number" name="" id="" />
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-2 remove">
+                        <i class="fa fa-times"></i>
+                      </div>
+                      <div class="col-4">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0">Nike</pc>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span>41</span>
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>
+                    <input class="quanlity" type="number" name="" id="" />
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-2 remove">
+                        <i class="fa fa-times"></i>
+                      </div>
+                      <div class="col-4">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0">Nike</pc>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span>41</span>
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>
+                    <input class="quanlity" type="number" name="" id="" />
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-2 remove">
+                        <i class="fa fa-times"></i>
+                      </div>
+                      <div class="col-4">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0">Nike</pc>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span>41</span>
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>
+                    <input class="quanlity" type="number" name="" id="" />
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-2 remove">
+                        <i class="fa fa-times"></i>
+                      </div>
+                      <div class="col-4">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0">Nike</pc>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span>41</span>
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>
+                    <input class="quanlity" type="number" name="" id="" />
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-2 remove">
+                        <i class="fa fa-times"></i>
+                      </div>
+                      <div class="col-4">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0">Nike</pc>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span>41</span>
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>
+                    <input class="quanlity" type="number" name="" id="" />
+                  </td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                </tr>
+              </tbody>
+            </table>
+           <a href="./index.html">
+            <button class="btn btn-primary comeback">
+              <i class="fa fa-long-arrow-alt-left"></i>
+              Tiếp tục xem sản phẩm
+            </button>
+           </a>
+          </div>
+          <div class="col-5">
+            <table class="table">
+              <thead>
+                <tr>
+                  
+                  <th scope="col">Cộng giỏ hàng</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="order__total">
+                
+                  <td>Tổng</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+
+                </tr>
+               
+              </tbody>
+            </table>
+            <button class="btn btn-primary checkout">
+              Tiến hành thanh toán
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="footer">
+      <div class="container footer__content">
+        <div class="footer__social">
+          <a href="#" class="footer__social-link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="#" class="footer__social-link">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="footer__social-link">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+        <div class="footer__copyright">
+          2022 All rights reserved, Fast Shoes. Developed By -
+          <a href="#">HPD</a>
+        </div>
+      </div>
+    </div>
     <script src="./js/app.js"></script>
   </body>
 </html>

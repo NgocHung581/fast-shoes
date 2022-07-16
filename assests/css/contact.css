@@ -38,7 +38,6 @@
   margin-bottom: 20px;
 }
 
-.form-label,
 .form-text {
   position: absolute;
   left: 14px;
@@ -48,25 +47,24 @@
   user-select: none;
   pointer-events: none;
   color: #999;
+  transition: all 0.5s;
 }
 .form-text {
   top: 25px;
   font-size: 16px;
 }
-.contact__form .form-control,
+
 .contact__form textarea {
   border: 1px solid black;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.contact__form .form-control:focus,
+
 .contact__form textarea:focus {
   box-shadow: none;
   border: 1px solid var(--primary-color);
 }
-.contact__form .form-control:not(:placeholder-shown) + .form-label,
 .contact__form .form-control:not(:placeholder-shown) + .form-text,
-.contact__form .form-control:focus + .form-label,
 .contact__form .form-control:focus + .form-text {
   top: 0;
   transition: all 0.5s ease;
@@ -74,8 +72,7 @@
   padding: 0 10px;
   font-size: 14px;
 }
-
-.input__group textarea {
+.form-group textarea {
   width: 100%;
   padding: 20px 12px;
   resize: none;

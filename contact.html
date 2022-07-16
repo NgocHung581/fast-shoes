@@ -23,6 +23,7 @@
     <!-- MY CSS -->
     <link rel="stylesheet" href="./assests/css/contact.css" />
     <link rel="stylesheet" href="./assests/css/style.css" />
+    <link rel="stylesheet" href="./assests/css/login-register.css" />
     <title>Fast Shoes</title>
   </head>
   <body>
@@ -37,17 +38,17 @@
         </a>
         <ul class="header__navigation d-flex align-items-center">
           <li class="header__navigation-item">
-            <a
-              href="./index.html"
-              class="header__navigation-link header__navigation-link--active"
-              >Trang chủ</a
-            >
+            <a href="./index.html" class="header__navigation-link">Trang chủ</a>
           </li>
           <li class="header__navigation-item">
             <a href="#" class="header__navigation-link">Sản phẩm</a>
           </li>
           <li class="header__navigation-item">
-            <a href="./contact.html" class="header__navigation-link">Liên hệ</a>
+            <a
+              href="./contact.html"
+              class="header__navigation-link header__navigation-link--active"
+              >Liên hệ</a
+            >
           </li>
         </ul>
         <div class="header__options d-flex align-items-center">
@@ -55,7 +56,7 @@
             <a href="#" class="header__access-link">Đăng nhập</a>
           </div>
           <div class="header__cart">
-            <a href="#" class="header__cart-link">
+            <a href="./cart.html" class="header__cart-link">
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="header__cart-quantity">0</span>
             </a>
@@ -132,25 +133,43 @@
                 </p>
                 <div class="row">
                   <div class="col-12">
-                    <div class="input__group">
-                      <input placeholder=" " class="form-control" type="text" />
-                      <label class="form-label" for"name">Tên của bạn</label>
+                    <div class="form-group">
+                      <input
+                        required="required"
+                        type="text"
+                        name="username"
+                        id="form-username"
+                        class="form-username"
+                      />
+                      <span class="form-label">Tên của bạn</span>
                     </div>
                   </div>
                   <div class="col-6">
-                    <div class="input__group">
-                      <input placeholder=" " class="form-control" type="text" />
-                      <label class="form-label" for"email">Emal của bạn</label>
+                    <div class="form-group">
+                      <input
+                        required="required"
+                        type="email"
+                        name="email"
+                        id="form-email"
+                        class="form-email"
+                      />
+                      <span class="form-label">Email của bạn</span>
                     </div>
                   </div>
                   <div class="col-6">
-                    <div class="input__group">
-                      <input placeholder=" " class="form-control" type="text" />
-                      <label class="form-label" for"tel">Số điện thoại của bạn</label>
+                    <div class="form-group">
+                      <input
+                        required="required"
+                        type="tel"
+                        name="tel"
+                        id="form-tel"
+                        class="form-tel"
+                      />
+                      <span class="form-label">Số điện thoại của bạn</span>
                     </div>
                   </div>
                   <div class="col-12">
-                    <div class="input__group">
+                    <div class="form-group">
                       <textarea
                         name=""
                         id=""
@@ -159,8 +178,7 @@
                         class="form-control"
                         placeholder=" "
                       ></textarea>
-                      <label class="form-text" for"text">Nội dung</label>
-
+                      <label class="form-text">Nội dung</label>
                     </div>
                   </div>
                 </div>
