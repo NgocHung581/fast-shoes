@@ -5,26 +5,16 @@
 
 .slider__content,
 .slider__list,
-.slider__item {
+.slider__item,
+.owl-carousel .owl-stage-outer,
+.owl-carousel .owl-stage,
+.owl-carousel.owl-drag .owl-item {
   height: 100%;
 }
 
 .slider__content,
 .slider__list {
   position: relative;
-}
-
-.slider__item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  transition: all 0.5s ease-out;
-}
-
-.slider__item.slider__item--active {
-  opacity: 1;
 }
 
 .slider__item img {
@@ -48,25 +38,29 @@
   left: 30px;
 }
 
-.slider__dots {
+.owl-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  bottom: 10px;
-  left: 50%;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
 }
 
-.slider__dot {
+.owl-dot span {
   display: block;
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--primary-color) !important;
+  background-color: transparent !important;
   margin: 4px;
   transition: all 0.5s ease-out;
-  cursor: pointer;
 }
 
-.slider__dot.slider__dot--active {
-  background-color: var(--primary-color);
+.owl-dot.active span {
+  background-color: red !important;
 }
 
 /* About */
@@ -199,6 +193,8 @@
 .category__item {
   position: relative;
   display: block;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 .category__item-img {
@@ -207,15 +203,15 @@
 }
 
 .category__item-img img {
+  display: block;
   border-radius: 20px;
   transition: all 0.5s ease-out;
   width: 100%;
 }
 
 .category__item-img:hover img {
-  transform: scale(1.1) rotate(15deg);
+  transform: scale(1.1);
   filter: blur(1.5px);
-  border-radius: 50%;
 }
 
 .category__item-name {
@@ -227,4 +223,35 @@
   font-weight: bold;
   color: #1e90ff;
   pointer-events: none;
+  transition: all 0.5s ease-out;
+}
+
+.category__item span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 0.5s ease-out;
+}
+
+.category__item span:nth-child(3) {
+  transform: translate(-100%, -100%);
+}
+
+.category__item span:nth-child(4) {
+  transform: translate(100%, 100%);
+}
+
+.category__item:hover span:nth-child(3),
+.category__item:hover span:nth-child(4) {
+  transform: translate(0, 0);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.category__item:hover .category__item-name {
+  letter-spacing: 4px;
+  color: var(--primary-color);
 }

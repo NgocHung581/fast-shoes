@@ -11,10 +11,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-  min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 ul {
@@ -44,6 +41,30 @@ ul {
 
 .mt-45 {
   margin-top: 45px;
+}
+
+/* Go to top */
+.go-to-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(59 193 181);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease-out;
+}
+
+.go-to-top:hover {
+  color: black;
 }
 
 /* Header */
