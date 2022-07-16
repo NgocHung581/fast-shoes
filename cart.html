@@ -317,5 +317,17 @@
       </div>
     </div>
     <script src="./js/app.js"></script>
+    <script>
+      var removeItem = document.getElementsByClassName('remove')
+      console.log('removeItem: ', removeItem);
+      for(var i=0;i<removeItem.length;i++){
+        var button = removeItem[i]
+        button.addEventListener('click', function(e){
+          var buttonClicked = e.target
+          buttonClicked.parentElement.parentElement.parentElement.parentElement.remove() 
+        })
+      }
+      
+    </script>
   </body>
 </html>
