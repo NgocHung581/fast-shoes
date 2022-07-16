@@ -278,14 +278,23 @@ ul {
 .header-cart-description {
   text-align: center;
   margin-bottom: 0;
-  padding: 10px;
+  padding: 0 20px 10px;
+}
+
+.header-cart-description::before {
+  display: block;
+  content: "";
+  border-bottom: 1px solid var(--line-color);
+  margin-bottom: 10px;
 }
 
 /* Search */
 .search {
-  padding: 120px 0;
-  background-image: url(../images/background.jpg);
+  padding: 150px 0;
+  background-image: url(../images/background.jpg!s2);
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   margin-top: var(--height-header);
 }
@@ -302,6 +311,15 @@ ul {
 .search__box-input:focus {
   outline: 2px solid var(--primary-color);
   box-shadow: 0 0 10px var(--primary-color);
+}
+
+.search__title {
+  font-weight: bold;
+  color: white;
+}
+
+.search__title span {
+  color: var(--primary-color);
 }
 
 /* Footer */
