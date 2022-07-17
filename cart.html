@@ -95,7 +95,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th colspan="3">Sản phẩm</th>
+                  <th class="text-center" colspan="3">Sản phẩm</th>
                   <th>Size</th>
                   <th>Giá</th>
                   <th>Số lượng</th>
@@ -122,11 +122,18 @@
                     </div>
                   </td>
                   <td>
-                    <span>41</span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1">35</option>
+                      <option value="2">36</option>
+                      <option value="3">37</option>
+                      <option value="3">38</option>
+                      <option value="3">39</option>
+                      <option value="3">40</option>
+                    </select>
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                   <td>
-                    <input class="quanlity" type="number" name="" id="" />
+                    <input class="quanlity" type="number" min="1" value="1" name="" id="" />
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                 </tr>
@@ -149,11 +156,18 @@
                     </div>
                   </td>
                   <td>
-                    <span>41</span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1">35</option>
+                      <option value="2">36</option>
+                      <option value="3">37</option>
+                      <option value="3">38</option>
+                      <option value="3">39</option>
+                      <option value="3">40</option>
+                    </select>
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                   <td>
-                    <input class="quanlity" type="number" name="" id="" />
+                    <input class="quanlity" type="number" min="1" value="1" name="" id="" />
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                 </tr>
@@ -176,11 +190,18 @@
                     </div>
                   </td>
                   <td>
-                    <span>41</span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1">35</option>
+                      <option value="2">36</option>
+                      <option value="3">37</option>
+                      <option value="3">38</option>
+                      <option value="3">39</option>
+                      <option value="3">40</option>
+                    </select>
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                   <td>
-                    <input class="quanlity" type="number" name="" id="" />
+                    <input class="quanlity" type="number" min="1" value="1" name="" id="" />
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                 </tr>
@@ -203,11 +224,18 @@
                     </div>
                   </td>
                   <td>
-                    <span>41</span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1">35</option>
+                      <option value="2">36</option>
+                      <option value="3">37</option>
+                      <option value="3">38</option>
+                      <option value="3">39</option>
+                      <option value="3">40</option>
+                    </select>
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                   <td>
-                    <input class="quanlity" type="number" name="" id="" />
+                    <input class="quanlity" type="number" min="1" value="1" name="" id="" />
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                 </tr>
@@ -230,11 +258,18 @@
                     </div>
                   </td>
                   <td>
-                    <span>41</span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1">35</option>
+                      <option value="2">36</option>
+                      <option value="3">37</option>
+                      <option value="3">38</option>
+                      <option value="3">39</option>
+                      <option value="3">40</option>
+                    </select>
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                   <td>
-                    <input class="quanlity" type="number" name="" id="" />
+                    <input class="quanlity" type="number" min="1" value="1" name="" id="" />
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                 </tr>
@@ -257,17 +292,26 @@
                     </div>
                   </td>
                   <td>
-                    <span>41</span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1">35</option>
+                      <option value="2">36</option>
+                      <option value="3">37</option>
+                      <option value="3">38</option>
+                      <option value="3">39</option>
+                      <option value="3">40</option>
+                    </select>
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                   <td>
-                    <input class="quanlity" type="number" name="" id="" />
+                    <input class="quanlity" type="number" min="1" value="1" name="" id="" />
                   </td>
                   <td>1.200.000 <sup>₫</sup></td>
                 </tr>
+                
+              
               </tbody>
             </table>
-           <a href="./index.html">
+           <a href="./product.html">
             <button class="btn btn-primary comeback">
               <i class="fa fa-long-arrow-alt-left"></i>
               Tiếp tục xem sản phẩm
@@ -294,7 +338,7 @@
               </tbody>
             </table>
             <button class="btn btn-primary checkout">
-              Tiến hành thanh toán
+              Hoàn tất
             </button>
           </div>
         </div>
@@ -322,7 +366,6 @@
     <script src="./js/app.js"></script>
     <script>
       var removeItem = document.getElementsByClassName('remove')
-      console.log('removeItem: ', removeItem);
       for(var i=0;i<removeItem.length;i++){
         var button = removeItem[i]
         button.addEventListener('click', function(e){

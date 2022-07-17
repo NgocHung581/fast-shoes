@@ -34,7 +34,6 @@
 .form-group {
   position: relative;
 }
-.form-group textarea,
 .form-group input {
   width: 100%;
   padding: 10px 15px;
@@ -43,15 +42,21 @@
   border: 1px solid rgb(167, 164, 164);
   transition: all 0.5s ease-out;
 }
-.form-group textarea:focus,
 .form-group input:focus {
   border: 1px solid var(--primary-color);
 }
-.form-group textarea:valid ~ .form-label,
-.form-group textarea:focus ~ .form-label,
+
 .form-group input:valid ~ .form-label,
 .form-group input:focus ~ .form-label {
   transform: translate(5px, -165%);
+  background-color: white;
+  padding: 0 10px;
+  color: var(--primary-color);
+  letter-spacing: 0.5px;
+}
+.form-group textarea:valid ~ .form-label,
+.form-group textarea:focus ~ .form-label {
+  transform: translate(5px, -70px);
   background-color: white;
   padding: 0 10px;
   color: var(--primary-color);

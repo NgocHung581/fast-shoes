@@ -4,7 +4,7 @@
     define('PASSWORD', '');
     define('DBNAME', 'fast-shoes');
 
-    define('SITEURL', 'localhost/Shoes-Store/');
+    define('SITEURL', 'localhost/fast-shoes/');
 
     $conn = mysqli_connect(SERVER, USERNAME, PASSWORD, DBNAME);
 ?>
