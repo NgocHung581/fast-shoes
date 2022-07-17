@@ -119,3 +119,58 @@ ul {
 .footer__copyright a:hover {
   opacity: 0.8;
 }
+
+/* phat lam */
+.tbl-full{
+  width: 100%;
+}
+
+table tr th{
+  border-bottom: 1px solid grey;
+  padding: 1%;
+  text-align: left;
+}
+
+table tr td{
+  padding: 1%;
+}
+
+.btn-primary{
+  background-color: #1e90ff;
+  color: #fff;
+  padding: 1%;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-primary:hover{
+  background-color: #3742fa;
+}
+
+.btn-secondary{
+  background-color: #7bde9f;
+  color: #333;
+  padding: 1%;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-secondary:hover{
+  background-color: #2ed573;
+}
+
+.btn-danger{
+  background-color: #ff6b81;
+  color: #333;
+  padding: 1%;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-danger:hover{
+  background-color: #ff4757;
+}
+
+.error{
+  color: red;
+}

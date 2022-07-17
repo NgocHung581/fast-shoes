@@ -5,6 +5,8 @@ include('../partials/header.php');
 <div class="main-content">
     <div class="container">
 
+        <br><br><br><br>
+
         <h1>Thêm danh mục</h1>
 
         <br><br>
@@ -33,7 +35,7 @@ include('../partials/header.php');
 
         <form action="" method="POST" enctype="multipart/form-data">
 
-            <table class="tbl-category">
+            <table class="tbl-30">
 
                 <tr>
                     <td>Tên danh mục: </td>
@@ -67,7 +69,7 @@ include('../partials/header.php');
 
                 <tr>
                     <td>
-                        <input class="btn-add-category" type="submit" name="submit" value="Thêm">
+                        <input class="btn-secondary" type="submit" name="submit" value="Thêm">
                     </td>
                 </tr>
 
@@ -85,24 +87,32 @@ include('../partials/header.php');
 
                     $img_name = $_FILES["image"]["name"];
 
-                    $src_path = $_FILES["image"]["tmp_name"];
+                    if($img_name != ""){
 
-                    $dest_path = "../images/category/".$img_name;
+                        $ext = end(explode(".", $img_name));
 
-                    $upload = move_uploaded_file($src_path, $dest_path);
+                        $img_name = "Shoes_Category_".rand(000, 999).'.'.$ext;
 
-                    if($upload==false){
+                        $src_path = $_FILES["image"]["tmp_name"];
 
-                        $_SESSION["upload"] = "<div class='error'>Không thể tải lên hình ảnh</div>";
+                        $dest_path = "../images/category/".$img_name;
 
-                        header("location:add-category.php");
+                        $upload = move_uploaded_file($src_path, $dest_path);
 
-                        die();
+                        if($upload==false){
 
+                            $_SESSION["upload"] = "<div class='error'>Không thể tải lên hình ảnh</div>";
+
+                            header("location:manage-category.php");
+
+                            die();
+
+                        }
                     }
+                    
                 }
                 else{
-                    $img_name = "";
+                    $img_name = $current_image;
                 }
                
                 if(isset($_POST["featured"])){
