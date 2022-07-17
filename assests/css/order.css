@@ -1,0 +1,30 @@
+.order {
+  padding: var(--height-header) 0;
+  min-height: 250px;
+  margin: 50px 0;
+}
+.order .form-group {
+  margin: 10px 0;
+}
+.order img {
+  width: 80px;
+}
+.order td {
+  vertical-align: middle;
+}
+.order .quanlity {
+  width: 70px;
+}
+.order button {
+  margin-top: 10px;
+}
+.total p {
+  padding-right: 8px;
+  margin-bottom: 0;
+}
+.line {
+  border-left: 1px solid #ccc;
+}
+.order h2 {
+  color: var(--primary-color);
+}
