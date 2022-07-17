@@ -20,6 +20,7 @@
   margin-right: 10px;
   font-size: 0.8rem;
 }
+
 .contact__content h2 {
   margin-bottom: 30px;
   font-weight: 700;
@@ -33,32 +34,94 @@
 .contact__info a:hover {
   color: var(--primary-color);
 }
-.contact__form .input__group {
-  position: relative;
-  margin-bottom: 20px;
-}
 
-.contact__form textarea {
-  border: 1px solid rgb(167, 164, 164);
-}
-
-.contact__form textarea:focus {
-  box-shadow: none;
-  border: 1px solid var(--primary-color);
-}
-.contact__form .form-control:not(:placeholder-shown) + .form-text,
-.contact__form .form-control:focus + .form-text {
-  top: 0;
-  transition: all 0.5s ease;
-  color: var(--primary-color);
-  padding: 0 10px;
-  font-size: 14px;
-}
-.form-group textarea {
-  width: 100%;
-  padding: 20px 12px;
-  resize: none;
-}
-.contact .form-group {
+.form__field {
   margin: 10px 0;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid rgb(167, 164, 164);
+  transition: all 0.5s ease-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border: 1px solid var(--primary-color);
+  box-shadow: none;
+}
+
+.form-group input:valid ~ .form-label,
+.form-group input:focus ~ .form-label {
+  transform: translate(5px, -165%);
+  background-color: white;
+  padding: 0 10px;
+  color: var(--primary-color);
+  letter-spacing: 0.5px;
+}
+
+.form-group textarea:valid ~ .form-label,
+.form-group textarea:focus ~ .form-label {
+  transform: translate(5px, -42px);
+  background-color: white;
+  padding: 0 10px;
+  color: var(--primary-color);
+  letter-spacing: 0.5px;
+}
+
+.form-group textarea:valid ~ .form-label::before,
+.form-group textarea:focus ~ .form-label::before,
+.form-group input:valid ~ .form-label::before,
+.form-group input:focus ~ .form-label::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  width: 1px;
+  background-color: var(--primary-color);
+}
+
+.form-group textarea:valid ~ .form-label::after,
+.form-group textarea:focus ~ .form-label::after,
+.form-group input:valid ~ .form-label::after,
+.form-group input:focus ~ .form-label::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  background-color: var(--primary-color);
+}
+
+.form-group textarea:valid ~ .form-label,
+.form-group input:valid ~ .form-label {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.form-label {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translate(0, -50%);
+  color: rgb(168, 168, 168);
+  pointer-events: none;
+  transition: all 0.5s ease-out;
+}
+
+.form-message {
+  display: block;
+  margin-top: 10px;
 }

@@ -34,6 +34,7 @@
 .form-group {
   position: relative;
 }
+
 .form-group input {
   width: 100%;
   padding: 10px 15px;
@@ -42,6 +43,7 @@
   border: 1px solid rgb(167, 164, 164);
   transition: all 0.5s ease-out;
 }
+
 .form-group input:focus {
   border: 1px solid var(--primary-color);
 }
@@ -54,16 +56,7 @@
   color: var(--primary-color);
   letter-spacing: 0.5px;
 }
-.form-group textarea:valid ~ .form-label,
-.form-group textarea:focus ~ .form-label {
-  transform: translate(5px, -70px);
-  background-color: white;
-  padding: 0 10px;
-  color: var(--primary-color);
-  letter-spacing: 0.5px;
-}
-.form-group textarea:valid ~ .form-label::before,
-.form-group textarea:focus ~ .form-label::before,
+
 .form-group input:valid ~ .form-label::before,
 .form-group input:focus ~ .form-label::before {
   display: block;
@@ -75,8 +68,7 @@
   width: 1px;
   background-color: var(--primary-color);
 }
-.form-group textarea:valid ~ .form-label::after,
-.form-group textarea:focus ~ .form-label::after,
+
 .form-group input:valid ~ .form-label::after,
 .form-group input:focus ~ .form-label::after {
   display: block;
@@ -88,7 +80,7 @@
   width: 1px;
   background-color: var(--primary-color);
 }
-.form-group textarea:valid ~ .form-label,
+
 .form-group input:valid ~ .form-label {
   color: white;
   background-color: var(--primary-color);

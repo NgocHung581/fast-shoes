@@ -10,75 +10,135 @@ window.onscroll = function () {
 };
 
 // Validation form
-var btnRegister = document.querySelector(".btn-register");
-var emailInput = document.querySelector(".form__register-email");
-var passwordInput = document.querySelector(".form__register-password");
-var passwordConfirmInput = document.querySelector(
-  ".form__register-passwordConfirm"
-);
-var fullnameInput = document.querySelector(".form__register-fullname");
+function Validate(formSelector) {
+  function getParent(element, selector) {
+    while (element.parentElement) {
+      if (element.parentElement.matches(selector)) {
+        return element.parentElement;
+      }
+      element = element.parentElement;
+    }
+  }
 
-var message;
+  var formRules = {};
+  var validateRules = {
+    required: function (value) {
+      return value ? undefined : "Vui lòng nhập trường này.";
+    },
+    email: function (value) {
+      const regex =
+        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      return regex.test(value) ? undefined : "Trường này phải là email.";
+    },
+    min: function (min) {
+      return function (value) {
+        return value.length >= min
+          ? undefined
+          : `Vui lòng nhập ít nhất ${min} kí tự.`;
+      };
+    },
+    matchPassword: function (value, password) {
+      return value === password
+        ? undefined
+        : "Mật khẩu nhập lại không trùng khớp.";
+    },
+  };
 
-function checkEmail(input) {
-  var parentElement = input.parentElement;
-  const re =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  var message = re.test(input.value) ? "" : "Trường này phải là email.";
-  parentElement.nextElementSibling.innerHTML = message;
+  var formElement = document.querySelector(formSelector);
+
+  if (formElement) {
+    var inputs = formElement.querySelectorAll("[name][rules]");
+    for (var input of inputs) {
+      var rules = input.getAttribute("rules").split("|");
+
+      for (var rule of rules) {
+        var ruleHasValue = rule.includes(":");
+
+        if (ruleHasValue) {
+          var ruleInfo = rule.split(":");
+          rule = ruleInfo[0];
+        }
+
+        var ruleFunction = validateRules[rule];
+
+        if (ruleHasValue) {
+          ruleFunction = validateRules[rule]([ruleInfo[1]]);
+        }
+
+        if (Array.isArray(formRules[input.name])) {
+          formRules[input.name].push(ruleFunction);
+        } else {
+          formRules[input.name] = [ruleFunction];
+        }
+      }
+
+      input.onblur = handleValidate;
+      input.oninput = handleClearError;
+    }
+
+    function handleValidate(e) {
+      var rules = formRules[e.target.name];
+      var errorMessage;
+
+      for (var rule of rules) {
+        errorMessage = rule(e.target.value);
+        if (rule.name === "matchPassword") {
+          errorMessage = rule(
+            e.target.value,
+            formElement.querySelector("input[name=password]").value
+          );
+        }
+        if (errorMessage) break;
+      }
+
+      var formField = getParent(e.target, ".form__field");
+      if (formField) {
+        if (errorMessage) {
+          var formMessage = formField.querySelector(".form-message");
+
+          if (formMessage) {
+            formMessage.innerText = errorMessage;
+            formMessage.classList.add("error");
+          }
+        }
+      }
+
+      return errorMessage;
+    }
+
+    function handleClearError(e) {
+      var formField = getParent(e.target, ".form__field");
+      if (formField) {
+        var formMessage = formField.querySelector(".form-message");
+        if (formMessage.classList.contains("error")) {
+          formMessage.innerText = "";
+          formMessage.classList.remove("error");
+        }
+      }
+    }
+
+    formElement.onsubmit = function (e) {
+      e.preventDefault();
+
+      var inputs = formElement.querySelectorAll("[name][rules]");
+      var formValid = true;
+
+      for (var input of inputs) {
+        if (
+          handleValidate({
+            target: input,
+          })
+        ) {
+          formValid = false;
+        }
+      }
+      if (formValid) {
+        formElement.submit();
+      }
+    };
+  }
 }
 
-function checkPasswordLength(input, min) {
-  var parentElement = input.parentElement;
-
-  if (input.value.length < min) {
-    message = `Mật khẩu phải chứa ít nhất ${min} kí tự`;
-  } else {
-    message = "";
-  }
-  parentElement.nextElementSibling.innerHTML = message;
-}
-
-function checkMatchPassword(password, passwordConfirm) {
-  var parentElement = passwordConfirm.parentElement;
-
-  if (passwordConfirm.value !== password.value) {
-    message = "Mật khẩu không trùng khớp.";
-  } else {
-    message = "";
-  }
-  parentElement.nextElementSibling.innerHTML = message;
-}
-
-function checkEmpty(input) {
-  var parentElement = input.parentElement;
-
-  console.log(input.value);
-  if (input.value == "") {
-    message = "Trường này không được để trống.";
-    parentElement.nextElementSibling.innerHTML = message;
-    return true;
-  } else {
-    message = "";
-    parentElement.nextElementSibling.innerHTML = message;
-    return false;
-  }
-}
-
-btnRegister.onclick = function (e) {
-  e.preventDefault();
-
-  checkEmpty(fullnameInput);
-
-  if (!checkEmpty(emailInput)) {
-    checkEmail(emailInput);
-  }
-
-  if (!checkEmpty(passwordInput)) {
-    checkPasswordLength(passwordInput, 6);
-  }
-
-  if (!checkEmpty(passwordConfirmInput)) {
-    checkMatchPassword(passwordInput, passwordConfirmInput);
-  }
-};
+Validate("#form-register");
+Validate("#form-contact");
+Validate("#form-order");

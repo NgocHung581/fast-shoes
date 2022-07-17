@@ -20,10 +20,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
     <link rel="stylesheet" href="./assests/css/style.css" />
-    <!-- MY CSS -->
     <link rel="stylesheet" href="./assests/css/contact.css" />
-    <link rel="stylesheet" href="./assests/css/style.css" />
-    <link rel="stylesheet" href="./assests/css/login-register.css" />
     <title>Fast Shoes</title>
   </head>
   <body>
@@ -134,59 +131,81 @@
                   Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và
                   chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .
                 </p>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="form-group">
-                      <input
-                        required="required"
-                        type="text"
-                        name="username"
-                        id="form-username"
-                        class="form-username"
-                      />
-                      <span class="form-label">Tên của bạn</span>
+                <form action="" method="POST" id="form-contact">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form__field">
+                        <div class="form-group">
+                          <input
+                            required="required"
+                            type="text"
+                            name="username"
+                            rules="required"
+                          />
+                          <span class="form-label">Tên của bạn</span>
+                        </div>
+                        <span class="form-message"></span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form__field">
+                        <div class="form-group">
+                          <input
+                            required="required"
+                            type="text"
+                            name="email"
+                            rules="required|email"
+                            id="form-tel"
+                            class="form-tel"
+                          />
+                          <span class="form-label">Email của bạn</span>
+                        </div>
+                        <span class="form-message"></span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form__field">
+                        <div class="form-group">
+                          <input
+                            required="required"
+                            type="tel"
+                            name="tel"
+                            rules="required"
+                          />
+                          <span class="form-label">Số điện thoại của bạn</span>
+                        </div>
+                        <span class="form-message"></span>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form__field">
+                        <div class="form-group">
+                          <textarea
+                            name="description"
+                            id=""
+                            cols="30"
+                            rows="10"
+                            class="form-control"
+                            rules="required"
+                            required="required"
+                          ></textarea>
+                          <span style="top: 10%" class="form-label"
+                            >Nội dung</span
+                          >
+                        </div>
+                        <span class="form-message"></span>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <input
-                        required="required"
-                        type="text"
-                        name="tel"
-                        id="form-tel"
-                        class="form-tel"
-                      />
-                      <span class="form-label">Email của bạn</span>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <input
-                        required="required"
-                        type="tel"
-                        name="tel"
-                        id="form-tel"
-                        class="form-tel"
-                      />
-                      <span class="form-label">Số điện thoại của bạn</span>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="form-group">
-                      <textarea
-                        name=""
-                        id=""
-                        cols="30"
-                        rows="10"
-                        class="form-control"
-                        placeholder=""
-                        required="required"
-                      ></textarea>
-                      <span style="top: 20%" class="form-label">Nội dung</span>
-                    </div>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Gửi</button>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="margin-top: 15px"
+                  >
+                    Gửi
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -212,6 +231,11 @@
         </div>
       </div>
     </div>
+
+    <a href="#" class="go-to-top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
     <script src="./js/app.js"></script>
   </body>
 </html>

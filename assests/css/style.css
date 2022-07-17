@@ -39,6 +39,10 @@ ul {
   background-color: var(--primary-color);
 }
 
+.btn.btn-primary:focus {
+  box-shadow: none;
+}
+
 .mt-45 {
   margin-top: 45px;
 }
