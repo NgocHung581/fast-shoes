@@ -28,23 +28,56 @@
       <div class="container login__content">
         <form action="" method="POST" class="form">
           <h1 class="form-title text-center">Đăng ký</h1>
-          <div class="form-group">
-            <input required="required" type="text" name="fullname" />
-            <span class="form-label">Họ tên</span>
+          <div class="form__field">
+            <div class="form-group">
+              <input
+                required="required"
+                type="text"
+                name="fullname"
+                class="form__register-fullname"
+              />
+              <span class="form-label">Họ tên</span>
+            </div>
+            <span class="form-message error"></span>
           </div>
-          <div class="form-group">
-            <input required="required" type="text" name="username" />
-            <span class="form-label">Email</span>
+          <div class="form__field">
+            <div class="form-group">
+              <input
+                required="required"
+                type="text"
+                name="username"
+                class="form__register-email"
+              />
+              <span class="form-label">Email</span>
+            </div>
+            <span class="form-message error"></span>
           </div>
-          <div class="form-group">
-            <input required="required" type="password" name="password" />
-            <span class="form-label">Mật khẩu</span>
+          <div class="form__field">
+            <div class="form-group">
+              <input
+                required="required"
+                type="password"
+                name="password"
+                class="form__register-password"
+              />
+              <span class="form-label">Mật khẩu</span>
+            </div>
+            <span class="form-message error"></span>
           </div>
-          <div class="form-group">
-            <input required="required" type="password" name="passwordConfirm" />
-            <span class="form-label">Nhập lại mật khẩu</span>
+          <div class="form__field">
+            <div class="form-group">
+              <input
+                required="required"
+                type="password"
+                name="passwordConfirm"
+                class="form__register-passwordConfirm"
+              />
+              <span class="form-label">Nhập lại mật khẩu</span>
+            </div>
+            <span class="form-message error"></span>
           </div>
-          <div class="form-btn">
+
+          <div class="form-btn btn-register">
             <div class="inner"></div>
             <button type="submit" class="btn">Đăng ký</button>
           </div>

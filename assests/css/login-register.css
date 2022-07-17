@@ -27,9 +27,12 @@
   margin-bottom: 50px;
 }
 
+.form__field {
+  margin: 30px 0;
+}
+
 .form-group {
   position: relative;
-  margin: 30px 0;
 }
 .form-group textarea,
 .form-group input {
@@ -136,4 +139,9 @@
 
 .form-register:hover a {
   text-decoration: underline;
+}
+
+.form-message {
+  display: block;
+  margin-top: 10px;
 }

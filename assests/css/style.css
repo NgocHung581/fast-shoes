@@ -43,6 +43,14 @@ ul {
   margin-top: 45px;
 }
 
+.success {
+  color: #2ed573;
+}
+
+.error {
+  color: var(--primary-color);
+}
+
 /* Go to top */
 .go-to-top {
   display: flex;
