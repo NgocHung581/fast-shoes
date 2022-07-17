@@ -1,5 +1,9 @@
+<?php 
+include('../partials/header.php');
+?>
+
 <div class="main-content">
-    <div class="wrapper">
+    <div class="container">
 
         <h1>Thêm danh mục</h1>
 
@@ -27,7 +31,7 @@
        
         <br><br>
 
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
 
             <table class="tbl-category">
 
@@ -72,8 +76,6 @@
         </form>
 
         <?php
-        
-            require("../config/constants.php");
 
             if(isset($_POST['submit'])){
                 
@@ -147,3 +149,6 @@
     </div>
 </div>
 
+<?php 
+include('../partials/footer.php');
+?>
