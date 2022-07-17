@@ -42,3 +42,7 @@
 .comeback i {
   margin-right: 5px;
 }
+.cart .form-select:focus {
+  box-shadow: none;
+  border-color: var(--primary-color);
+}
