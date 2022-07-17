@@ -1,0 +1,121 @@
+:root {
+  --primary-color: #e62b4a;
+  --secondary-color: #1e90ff;
+  --line-color: #dfe4ea;
+  --background-color: #2f3542;
+  --height-header: 80px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+/* header */
+.header {
+  background-color: var(--background-color);
+  height: var(--height-header);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header__content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__logo-img {
+  height: 150%;
+  width: 150%;
+  object-fit: cover;
+}
+
+.header__navigation-link,
+.header__access-link,
+.header__cart-link {
+  display: block;
+  text-decoration: none;
+  margin: 0 15px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.5s ease-out;
+}
+
+.header__navigation-link.header__navigation-link--active,
+.header__navigation-link:hover,
+.header__access-link:hover,
+.header__cart-link:hover {
+  color: var(--primary-color);
+}
+
+.header__access-link:first-child:after {
+  display: block;
+  content: "";
+  border-right: 1px solid var(--line-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -15px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--background-color);
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer__social-link {
+  font-size: 40px;
+  text-decoration: none;
+  color: white;
+  margin: 30px;
+  text-shadow: 0 0 50px #e62b4a, 0 0 200px #e62b4a;
+  transition: all 0.5s ease-out;
+  animation: animate 0.5s linear infinite;
+}
+
+@keyframes animate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.footer__copyright {
+  margin-top: 50px;
+  color: white;
+}
+
+.footer__copyright a {
+  color: var(--primary-color);
+  transition: all 0.5s ease-out;
+}
+
+.footer__copyright a:hover {
+  opacity: 0.8;
+}
