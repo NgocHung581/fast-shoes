@@ -18,6 +18,8 @@
 .order button,
 .order a {
   margin-top: 10px;
+  color: #fff;
+  text-decoration: none;
 }
 .total p {
   padding-right: 8px;
