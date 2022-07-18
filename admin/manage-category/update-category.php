@@ -68,9 +68,9 @@ include('../partials/header.php');
 
                                 ?>
 
-                                    <img src="../images/category/<?php echo $current_image;?>" width="100px">
+                        <img src="../images/category/<?php echo $current_image;?>" width="100px">
 
-                                <?php
+                        <?php
 
                             }
                             else{
@@ -91,7 +91,8 @@ include('../partials/header.php');
                 <tr>
                     <td>Featured: </td>
                     <td>
-                        <input <?php if($featured == "Yes"){echo "checked";}?> type="radio" name="featured" value="Yes">Yes
+                        <input <?php if($featured == "Yes"){echo "checked";}?> type="radio" name="featured"
+                            value="Yes">Yes
                         <input <?php if($featured == "No"){echo "checked";}?> type="radio" name="featured" value="No">No
                     </td>
                 </tr>
@@ -99,7 +100,7 @@ include('../partials/header.php');
                 <tr>
                     <td>Active: </td>
                     <td>
-                        <input <?php if($active == "Yes"){echo "checked";}?>  type="radio" name="active" value="Yes">Yes
+                        <input <?php if($active == "Yes"){echo "checked";}?> type="radio" name="active" value="Yes">Yes
                         <input <?php if($active == "No"){echo "checked";}?> type="radio" name="active" value="No">No
                     </td>
                 </tr>
@@ -112,7 +113,7 @@ include('../partials/header.php');
             </table>
 
         </form>
-        
+
         <?php
             if(isset($_POST['submit'])){
                 
@@ -140,7 +141,7 @@ include('../partials/header.php');
 
                             $_SESSION["upload"] = "<div class='error'>Không thể xoá hình ảnh hiện tại</div>";
 
-                            header("location:manage-category.php");
+                            header("location:".SITEURL."admin/manage-category/manage-category.php");
 
                             die();
 
@@ -156,7 +157,7 @@ include('../partials/header.php');
     
                                 $_SESSION["failed-remove"] = "<div class='error'>Không thể tải lên hình ảnh</div>";
     
-                                header("location:manage-category.php");
+                                header("location:".SITEURL."admin/manage-category/manage-category.php");
     
                                 die();
     
@@ -190,19 +191,19 @@ include('../partials/header.php');
 
                     $_SESSION["update"] = "<div class='success'>Cập nhật danh mục thành công</div>";
 
-                    header("location:manage-category.php");
+                    header("location:".SITEURL."admin/manage-category/manage-category.php");
 
                 }
                 else{
                     
                     $_SESSION["update"] = "<div class='error'>Không thể cập nhật danh mục</div>";
 
-                    header("location:manage-category.php");
+                    header("location:".SITEURL."admin/manage-category/manage-category.php");
 
                 }
             }
         ?>
-        
+
     </div>
 </div>
 

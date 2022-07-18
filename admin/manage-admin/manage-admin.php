@@ -52,8 +52,8 @@ include('../partials/header.php');
                                         <td>'.$fullname.'</td>
                                         <td>'.$username.'</td>
                                         <td>
-                                            <a href="'.SITEURL.'admin/manage-admin/delete-admin.php?id='.$id.'" class="btn btn-danger">Xóa</a>
                                             <a href="'.SITEURL.'admin/manage-admin/update-admin.php?id='.$id.'" class="btn btn-primary">Cập nhật</a>
+                                            <a href="'.SITEURL.'admin/manage-admin/delete-admin.php?id='.$id.'" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>';
                             }
