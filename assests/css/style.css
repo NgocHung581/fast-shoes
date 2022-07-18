@@ -164,12 +164,12 @@ ul {
   transition: all 0.5s ease-out;
 }
 
-/* .header__access-link:hover ~ .header__access-options {
+.header__access:hover .header__access-options {
   opacity: 1;
   pointer-events: all;
-} */
+}
 
-/* .header__access-link::before {
+.header__access-link::before {
   content: "";
   height: 20px;
   width: 100px;
@@ -177,7 +177,7 @@ ul {
   top: 21px;
   right: 0;
   display: block;
-} */
+}
 
 .header__access-options::after {
   content: "";

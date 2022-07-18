@@ -3,7 +3,7 @@
   min-height: 250px;
   margin: 50px 0;
 }
-.order .form-group {
+.order #form__order-group {
   margin: 10px 0;
 }
 .order img {
@@ -36,15 +36,15 @@
   transition: all 0.5s ease-out;
 }
 
-.form__field {
+#form__order-field {
   margin: 10px 0;
 }
 
-.form-group {
+#form__order-group {
   position: relative;
 }
 
-.form-group input {
+#form__order-group input {
   width: 100%;
   padding: 10px 15px;
   border-radius: 5px;
@@ -53,13 +53,13 @@
   transition: all 0.5s ease-out;
 }
 
-.form-group input:focus {
+#form__order-group input:focus {
   border: 1px solid var(--primary-color);
   box-shadow: none;
 }
 
-.form-group input:valid ~ .form-label,
-.form-group input:focus ~ .form-label {
+#form__order-group input:valid ~ #form__order-label,
+#form__order-group input:focus ~ #form__order-label {
   transform: translate(5px, -165%);
   background-color: white;
   padding: 0 10px;
@@ -67,8 +67,8 @@
   letter-spacing: 0.5px;
 }
 
-.form-group input:valid ~ .form-label::before,
-.form-group input:focus ~ .form-label::before {
+#form__order-group input:valid ~ #form__order-label::before,
+#form__order-group input:focus ~ #form__order-label::before {
   display: block;
   content: "";
   position: absolute;
@@ -79,8 +79,8 @@
   background-color: var(--primary-color);
 }
 
-.form-group input:valid ~ .form-label::after,
-.form-group input:focus ~ .form-label::after {
+#form__order-group input:valid ~ #form__order-label::after,
+#form__order-group input:focus ~ #form__order-label::after {
   display: block;
   content: "";
   position: absolute;
@@ -91,12 +91,12 @@
   background-color: var(--primary-color);
 }
 
-.form-group input:valid ~ .form-label {
+#form__order-group input:valid ~ #form__order-label {
   color: white;
   background-color: var(--primary-color);
 }
 
-.form-label {
+#form__order-label {
   display: block;
   position: absolute;
   top: 50%;

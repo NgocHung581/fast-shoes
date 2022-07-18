@@ -134,22 +134,24 @@
                 <form action="" method="POST" id="form-contact">
                   <div class="row">
                     <div class="col-12">
-                      <div class="form__field">
-                        <div class="form-group">
+                      <div class="form__field" id="form__contact-field">
+                        <div class="form-group" id="form__contact-group">
                           <input
                             required="required"
                             type="text"
                             name="username"
                             rules="required"
                           />
-                          <span class="form-label">Tên của bạn</span>
+                          <span class="form-label" id="form__contact-label"
+                            >Tên của bạn</span
+                          >
                         </div>
                         <span class="form-message"></span>
                       </div>
                     </div>
                     <div class="col-6">
-                      <div class="form__field">
-                        <div class="form-group">
+                      <div class="form__field" id="form__contact-field">
+                        <div class="form-group" id="form__contact-group">
                           <input
                             required="required"
                             type="text"
@@ -158,28 +160,32 @@
                             id="form-tel"
                             class="form-tel"
                           />
-                          <span class="form-label">Email của bạn</span>
+                          <span class="form-label" id="form__contact-label"
+                            >Email của bạn</span
+                          >
                         </div>
                         <span class="form-message"></span>
                       </div>
                     </div>
                     <div class="col-6">
-                      <div class="form__field">
-                        <div class="form-group">
+                      <div class="form__field" id="form__contact-field">
+                        <div class="form-group" id="form__contact-group">
                           <input
                             required="required"
                             type="tel"
                             name="tel"
                             rules="required"
                           />
-                          <span class="form-label">Số điện thoại của bạn</span>
+                          <span class="form-label" id="form__contact-label"
+                            >Số điện thoại của bạn</span
+                          >
                         </div>
                         <span class="form-message"></span>
                       </div>
                     </div>
                     <div class="col-12">
-                      <div class="form__field">
-                        <div class="form-group">
+                      <div class="form__field" id="form__contact-field">
+                        <div class="form-group" id="form__contact-group">
                           <textarea
                             name="description"
                             id=""
@@ -189,7 +195,10 @@
                             rules="required"
                             required="required"
                           ></textarea>
-                          <span style="top: 10%" class="form-label"
+                          <span
+                            style="top: 10%"
+                            class="form-label"
+                            id="form__contact-label"
                             >Nội dung</span
                           >
                         </div>
