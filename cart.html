@@ -337,9 +337,9 @@
                
               </tbody>
             </table>
-            <button class="btn btn-primary checkout">
-              Hoàn tất
-            </button>
+            <a href="order.html" class="btn btn-primary w-100">
+              Đặt hàng
+            </a>
           </div>
         </div>
       </div>
@@ -364,16 +364,5 @@
       </div>
     </div>
     <script src="./js/app.js"></script>
-    <script>
-      var removeItem = document.getElementsByClassName('remove')
-      for(var i=0;i<removeItem.length;i++){
-        var button = removeItem[i]
-        button.addEventListener('click', function(e){
-          var buttonClicked = e.target
-          buttonClicked.parentElement.parentElement.parentElement.parentElement.remove() 
-        })
-      }
-      
-    </script>
   </body>
 </html>

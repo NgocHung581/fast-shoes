@@ -9,6 +9,16 @@ window.onscroll = function () {
   }
 };
 
+// Remove Item Cart
+var removeItem = document.getElementsByClassName("remove");
+for (var i = 0; i < removeItem.length; i++) {
+  var button = removeItem[i];
+  button.addEventListener("click", function (e) {
+    var buttonClicked = e.target;
+    buttonClicked.parentElement.parentElement.parentElement.parentElement.remove();
+  });
+}
+
 // Validation form
 function Validate(formSelector) {
   function getParent(element, selector) {

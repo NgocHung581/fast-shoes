@@ -29,19 +29,20 @@
   cursor: pointer;
   transition: all 0.2s;
 }
+
 .remove i:hover {
   border: 1px solid black;
   color: black;
 }
+
 .order__total td:last-of-type {
   text-align: right;
 }
-.checkout {
-  width: 100%;
-}
+
 .comeback i {
   margin-right: 5px;
 }
+
 .cart .form-select:focus {
   box-shadow: none;
   border-color: var(--primary-color);

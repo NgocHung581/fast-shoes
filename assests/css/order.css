@@ -15,7 +15,8 @@
 .order .quanlity {
   width: 70px;
 }
-.order button {
+.order button,
+.order a {
   margin-top: 10px;
 }
 .total p {
@@ -28,6 +29,11 @@
 .order h2 {
   color: var(--primary-color);
   font-weight: bold;
+}
+
+.form-select:focus {
+  border: 1px solid var(--primary-color);
+  transition: all 0.5s ease-out;
 }
 
 .form__field {
