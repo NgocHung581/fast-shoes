@@ -1,10 +1,12 @@
 <?php 
-    define('SERVER', 'localhost');
-    define('USERNAME', 'root');
-    define('PASSWORD', '');
-    define('DBNAME', 'fast-shoes');
+    session_start();
 
-    define('SITEURL', 'localhost/fast-shoes/');
+    define('LOCALHOST', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'fast-shoes');
 
-    $conn = mysqli_connect(SERVER, USERNAME, PASSWORD, DBNAME);
+    define('SITEURL', 'http://localhost/Shoes-Store/');
+
+    $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 ?>

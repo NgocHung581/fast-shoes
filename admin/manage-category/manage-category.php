@@ -4,13 +4,7 @@ include('../partials/header.php');
 
 <div class="main-content">
     <div class="container">
-
-        <br><br><br><br>
-
         <h1>Quản lý danh mục</h1>
-
-        <br><br>
-        
         <?php
              
             if(isset($_SESSION["add"])){
@@ -73,11 +67,11 @@ include('../partials/header.php');
 
         <br><br>
 
-        <a href="../manage-category/add-category.php" class="btn-primary">Thêm danh mục</a>
+        <a href="../manage-category/add-category.php" class="btn btn-success">Thêm danh mục</a>
 
         <br /><br /><br />
 
-        <table class="tbl-full"> 
+        <table class="w-100">
 
             <tr>
                 <th>S.N.</th>
@@ -85,6 +79,7 @@ include('../partials/header.php');
                 <th>Hình ảnh danh mục</th>
                 <th>Featured</th>
                 <th>Active</th>
+                <th>Actions</th>
             </tr>
 
             <?php
@@ -109,42 +104,45 @@ include('../partials/header.php');
                         
                         ?>
 
-                        <tr>
+            <tr>
 
-                            <td><?php echo $sn++.".";?></td>
+                <td><?php echo $sn++.".";?></td>
 
-                            <td><?php echo $name;?></td>
+                <td><?php echo $name;?></td>
 
-                            <td>
-                                <?php 
+                <td>
+                    <?php 
                                     if($img_name!=""){
 
                                         ?>
 
-                                            <img src="../images/category/<?php echo $img_name;?>" width="100px">   
-                                              
+                    <img src="../images/category/<?php echo $img_name;?>" width="100px">
 
-                                        <?php
+
+                    <?php
 
                                     }
                                     else{
                                         echo "<div class='error'>Hình ảnh không được thêm vào</div>";
                                     }
                                 ?>
-                            </td>
+                </td>
 
-                            <td><?php echo $featured;?></td>
+                <td><?php echo $featured;?></td>
 
-                            <td><?php echo $active;?></td>
+                <td><?php echo $active;?></td>
 
-                            <td>
-                                <a href="../manage-category/update-category.php?id=<?php echo $id;?>" class="btn-secondary">Cập nhật danh mục</a>
-                                <a href="../manage-category/delete-category.php?id=<?php echo $id;?>&img_name=<?php echo $img_name;?>" class="btn-danger">Xóa danh mục</a>
-                            </td>
+                <td>
+                    <a href="../manage-category/update-category.php?id=<?php echo $id;?>" class="btn btn-primary">Cập
+                        nhật
+                        danh mục</a>
+                    <a href="../manage-category/delete-category.php?id=<?php echo $id;?>&img_name=<?php echo $img_name;?>"
+                        class="btn btn-danger">Xóa danh mục</a>
+                </td>
 
-                        </tr>
+            </tr>
 
-                        <?php
+            <?php
 
                     }
                 }
@@ -152,13 +150,13 @@ include('../partials/header.php');
 
                     ?>
 
-                        <tr>
-                            <td colspan="6">
-                                <div class="error">Không có danh mục nào được thêm vào</div>
-                            </td>
-                        </tr>
+            <tr>
+                <td colspan="6">
+                    <div class="error">Không có danh mục nào được thêm vào</div>
+                </td>
+            </tr>
 
-                    <?php
+            <?php
                 }
                 
             ?>

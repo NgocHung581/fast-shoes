@@ -33,15 +33,19 @@
                     <a href="category.html" class="header__navigation-link">Danh mục</a>
                 </li>
                 <li class="header__navigation-item">
-                    <a href="./contact.html" class="header__navigation-link">Liên hệ</a>
+                    <a href="contact.html" class="header__navigation-link">Liên hệ</a>
                 </li>
             </ul>
             <div class="header__options d-flex align-items-center">
                 <div class="header__access">
                     <a href="login.html" class="header__access-link">Đăng nhập</a>
+                    <div class="header__access-options">
+                        <a href="#" class="header__options-item">Xem đơn hàng của bạn</a>
+                        <a href="login.html" class="header__options-item">Đăng xuất</a>
+                    </div>
                 </div>
                 <div class="header__cart">
-                    <a href="./cart.html" class="header__cart-link">
+                    <a href="cart.html" class="header__cart-link">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="header__cart-quantity">0</span>
                     </a>
