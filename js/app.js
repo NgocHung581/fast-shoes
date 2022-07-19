@@ -18,6 +18,16 @@ for (var i = 0; i < removeItem.length; i++) {
     buttonClicked.parentElement.parentElement.parentElement.parentElement.remove();
   });
 }
+//Remove Item Order
+var removeItemOrder = document.getElementsByClassName("removeOrder");
+for (var i = 0; i < removeItemOrder.length; i++) {
+  var button = removeItemOrder[i];
+  button.addEventListener("click", function (e) {
+    var buttonClicked = e.target;
+    buttonClicked.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+    var toRemove = document.querySelector('.modal-backdrop').remove()
+  });
+}
 
 // Validation form
 function Validate(formSelector) {
