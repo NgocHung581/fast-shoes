@@ -57,10 +57,11 @@ include('../partials/header.php');
                     $img_name = $_FILES["image"]["name"];
 
                     if($img_name != ""){
-                        $ext = end(explode(".", $img_name));
+                        $tmp = explode(".", $img_name);
+                        $ext = end($tmp);
                         $img_name = "Shoes_Category_".rand(000, 999).'.'.$ext;
                         $src_path = $_FILES["image"]["tmp_name"];
-                        $dest_path = "../images/category/".$img_name;
+                        $dest_path = "../../assests/images/category/".$img_name;
                         $upload = move_uploaded_file($src_path, $dest_path);
 
                         if($upload==false){
