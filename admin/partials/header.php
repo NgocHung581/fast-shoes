@@ -1,6 +1,11 @@
-<?php 
-    include('../../config/constants.php')
+<?php
+include('../../config/constants.php');
+
+if (!isset($_SESSION['admin'])) {
+    header("location:" . SITEURL . "login.php");
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +18,9 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <title>Fast Shoes</title>
 </head>
 
@@ -38,11 +46,23 @@
                 <li class="header__navigation-item">
                     <a href="../manage-customer/manage-customer.php" class="header__navigation-link">Customer</a>
                 </li>
+                <li class="header__navigation-item">
+                    <a href="../manage-contact/manage-contact.php" class="header__navigation-link">Liên hệ</a>
+                </li>
+                <li class="header__navigation-item">
+                    <a href="../manage-order/manage-order.php" class="header__navigation-link">Đơn hàng</a>
+                </li>
             </ul>
             <div class="header__options ">
                 <div class="header__access d-flex align-items-center">
-                    <a href="#" class="header__access-link">Đăng nhập</a>
-                    <a href="#" class="header__access-link">Đăng xuất</a>
+                    <span class="header__access-link">
+                        <?php
+                        if (isset($_SESSION['admin'])) {
+                            echo $_SESSION['admin'];
+                        }
+                        ?>
+                    </span>
+                    <a href="../../logout.php" class="header__access-link">Đăng xuất</a>
                 </div>
             </div>
         </div>

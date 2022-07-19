@@ -43,8 +43,8 @@ include('../partials/header.php');
         ?>
         <a href="add-category.php" class="btn btn-success mb-20">Thêm danh mục</a>
 
-        <table class="w-100">
-            <tr>
+        <table class="table align-middle">
+            <tr class="table-info">
                 <th>STT</th>
                 <th>Tên danh mục</th>
                 <th>Hình ảnh danh mục</th>

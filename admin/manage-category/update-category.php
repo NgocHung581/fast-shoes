@@ -139,10 +139,18 @@ include('../partials/header.php');
 
             if ($new_res == true) {
                 $_SESSION["update"] = "<div class='text-primary mb-10'>Cập nhật danh mục thành công.</div>";
-                header("location:" . SITEURL . "admin/manage-category/manage-category.php");
+        ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "admin/manage-category/manage-category.php';"); ?>
+        </script>
+        <?php
             } else {
                 $_SESSION["update"] = "<div class='text-danger mb-10'>Cập nhật danh mục thất bại.</div>";
-                header("location:" . SITEURL . "admin/manage-category/manage-category.php");
+            ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "admin/manage-category/manage-category.php';"); ?>
+        </script>
+        <?php
             }
         }
         ?>

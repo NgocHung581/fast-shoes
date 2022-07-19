@@ -1,44 +1,35 @@
-<?php 
+<?php
 include('../partials/header.php');
 ?>
 
-<?php 
-    if(isset($_POST['submit'])) {
-        $fullname = $_POST['fullname'];
-        $username = $_POST['username'];
-        $password = md5($_POST['password']);
+<?php
+if (isset($_POST['submit'])) {
+    $fullname = $_POST['fullname'];
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
 
-        $sql = "INSERT INTO tbl_user SET
+    $sql = "INSERT INTO tbl_user SET
             fullname = '$fullname',
             username = '$username',
             password = '$password',
             type = 'admin'
         ";
 
+    $res = mysqli_query($conn, $sql);
 
-        $res = mysqli_query($conn, $sql);
-
-        if ($res == true) {
-            $_SESSION['add'] = '<div class="text-primary mb-10">Thêm Admin thành công.</div>';
-            header("location:".SITEURL."admin/manage-admin/manage-admin.php");
-        } else {
-            $_SESSION['add'] = '<div class="text-danger">Thêm Admin thất bại.</div>';
-            header("location:".SITEURL."admin/manage-admin/add-admin.php");
-        }
+    if ($res == true) {
+        $_SESSION['add'] = '<div class="text-primary mb-10">Thêm Admin thành công.</div>';
+        header("location:" . SITEURL . "admin/manage-admin/manage-admin.php");
+    } else {
+        $_SESSION['add'] = '<div class="text-danger">Thêm Admin thất bại.</div>';
+        header("location:" . SITEURL . "admin/manage-admin/manage-admin.php");
     }
+}
 ?>
 
 <div class="main-content">
     <div class="container">
         <h1 class="mb-20">Thêm Admin</h1>
-
-        <?php 
-            if(isset($_SESSION['add'])) {
-
-                echo $_SESSION['add'];
-                unset($_SESSION['add']);
-            }
-        ?>
 
         <form action="" class="w-25" method="POST">
             <div class="form-group row mb-10">

@@ -25,7 +25,7 @@ for (var i = 0; i < removeItemOrder.length; i++) {
   button.addEventListener("click", function (e) {
     var buttonClicked = e.target;
     buttonClicked.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
-    var toRemove = document.querySelector('.modal-backdrop').remove()
+    var toRemove = document.querySelector(".modal-backdrop").remove();
   });
 }
 
@@ -136,26 +136,6 @@ function Validate(formSelector) {
         }
       }
     }
-
-    formElement.onsubmit = function (e) {
-      e.preventDefault();
-
-      var inputs = formElement.querySelectorAll("[name][rules]");
-      var formValid = true;
-
-      for (var input of inputs) {
-        if (
-          handleValidate({
-            target: input,
-          })
-        ) {
-          formValid = false;
-        }
-      }
-      if (formValid) {
-        formElement.submit();
-      }
-    };
   }
 }
 

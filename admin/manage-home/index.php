@@ -1,5 +1,5 @@
-<?php 
-    include('../partials/header.php');
+<?php
+include('../partials/header.php');
 ?>
 
 <div class="main-content">
@@ -47,5 +47,5 @@
 </div>
 
 <?php
-    include('../partials/footer.php');
+include('../partials/footer.php');
 ?>

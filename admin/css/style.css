@@ -138,6 +138,7 @@ ul {
 
 .main-content h1 {
   font-weight: bold;
+  color: var(--primary-color);
 }
 
 table tr th,

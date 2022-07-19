@@ -4,7 +4,7 @@ include('../partials/header.php');
 
 <div class="main-content">
     <div class="container">
-        <h1 class="mb-20">Quản lý người dùng</h1>
+        <h1 class="mb-20">Quản lý Admin</h1>
 
         <?php
         if (isset($_SESSION['add'])) {
@@ -21,11 +21,21 @@ include('../partials/header.php');
             echo $_SESSION['update'];
             unset($_SESSION['update']);
         }
+
+        if (isset($_SESSION['change-password'])) {
+            echo $_SESSION['change-password'];
+            unset($_SESSION['change-password']);
+        }
+
+        if (isset($_SESSION['no-admin-found'])) {
+            echo $_SESSION['no-admin-found'];
+            unset($_SESSION['no-admin-found']);
+        }
         ?>
 
         <a href="add-admin.php" class="btn btn-success mb-20">Thêm admin</a>
-        <table class="w-100">
-            <tr>
+        <table class="table align-middle">
+            <tr class="table-info">
                 <th>STT</th>
                 <th>Họ và tên</th>
                 <th>Username</th>
@@ -52,6 +62,7 @@ include('../partials/header.php');
                                         <td>' . $fullname . '</td>
                                         <td>' . $username . '</td>
                                         <td>
+                                            <a href="' . SITEURL . 'admin/manage-admin/changepassword-admin.php?id=' . $id . '" class="btn btn-secondary">Đổi mật khẩu</a>
                                             <a href="' . SITEURL . 'admin/manage-admin/update-admin.php?id=' . $id . '" class="btn btn-primary">Cập nhật</a>
                                             <a href="' . SITEURL . 'admin/manage-admin/delete-admin.php?id=' . $id . '" class="btn btn-danger">Xóa</a>
                                         </td>

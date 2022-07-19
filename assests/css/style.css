@@ -20,6 +20,10 @@ ul {
   list-style: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .btn {
   padding: 10px 28px;
   outline: none;
