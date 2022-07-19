@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fast Shoes</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assests/images/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./assests/css/carousel/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="./assests/css/carousel/owl.theme.default.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assests/css/style.css" />
+    <link rel="stylesheet" href="./assests/css/order-customer.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container header__content">
+        <a href="#" class="header__logo">
+          <img
+            class="header__logo-img"
+            src="./assests/images/logo-removebg.png"
+            alt="Logo"
+          />
+        </a>
+        <ul class="header__navigation d-flex align-items-center">
+          <li class="header__navigation-item">
+            <a
+              href="#"
+              class="header__navigation-link header__navigation-link--active"
+              >Trang chủ</a
+            >
+          </li>
+          <li class="header__navigation-item">
+            <a href="product.html" class="header__navigation-link">Sản phẩm</a>
+          </li>
+          <li class="header__navigation-item">
+            <a href="category.html" class="header__navigation-link">Danh mục</a>
+          </li>
+          <li class="header__navigation-item">
+            <a href="./contact.html" class="header__navigation-link">Liên hệ</a>
+          </li>
+        </ul>
+        <div class="header__options d-flex align-items-center">
+          <div class="header__access">
+            <a href="login.html" class="header__access-link">Đăng nhập</a>
+            <div class="header__access-options">
+              <a href="./orderCustomer.html" class="header__options-item"
+                >Xem đơn hàng của bạn</a
+              >
+              <a href="#" class="header__options-item">Đăng xuất</a>
+            </div>
+          </div>
+          <div class="header__cart">
+            <a href="./cart.html" class="header__cart-link">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="header__cart-quantity">0</span>
+            </a>
+            <div class="header__cart-box">
+              <h3 class="header-cart-title">Sản phảm đã thêm vào giỏ</h3>
+              <ul class="header__cart-list">
+                <li class="header__cart-item d-flex align-items-center">
+                  <div class="cart__item-img">
+                    <img src="./assests/images/product/nike.webp" alt="" />
+                  </div>
+                  <div
+                    class="cart__item-detail d-flex align-items-center justify-content-between"
+                  >
+                    <div class="cart__item-description">
+                      <h3 class="cart__item-name">Nike</h3>
+                      <p class="cart__item-price">2.050.000 VNĐ</p>
+                    </div>
+                    <div class="cart__item-quantity">x 1</div>
+                  </div>
+                </li>
+              </ul>
+              <p class="header-cart-description">
+                Nhấn vào giỏ hàng để xem chi tiết
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="order__customer">
+      <div class="container">
+        <h2>Đơn hàng của tôi</h2>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="all-tab"
+              data-toggle="tab"
+              href="#all"
+              role="tab"
+              aria-controls="all"
+              aria-selected="true"
+              >Tất cả</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="pay-tab"
+              data-toggle="tab"
+              href="#pay"
+              role="tab"
+              aria-controls="pay"
+              aria-selected="false"
+              >Chờ thanh toán</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="shipping-tab"
+              data-toggle="tab"
+              href="#shipping"
+              role="tab"
+              aria-controls="shipping"
+              aria-selected="false"
+              >Chờ vận chuyển</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="delivery-tab"
+              data-toggle="tab"
+              href="#delivery"
+              role="tab"
+              aria-controls="delivery"
+              aria-selected="false"
+              >Chờ giao hàng</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="cancel-tab"
+              data-toggle="tab"
+              href="#cancel"
+              role="tab"
+              aria-controls="cancel"
+              aria-selected="false"
+              >Đã hủy</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content content__tab" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="all"
+            role="tabpanel"
+            aria-labelledby="all-tab"
+          >
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center" colspan="3">Sản phẩm</th>
+                  <th>Size</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th>Thành tiền</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-5">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-7">
+                        <a
+                          data-toggle="modal"
+                          data-target="#DH01234All"
+                          >Nike</a
+                        >
+                        <!-- Modal -->
+                        <div
+                          class="modal fade"
+                          id="DH01234All"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="DH01234AllTitle"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2
+                                  class="modal-title"
+                                  id="DH01234AllTitle"
+                                >
+                                  Chi tiết đơn hàng
+                                </h2>
+                                <button
+                                  type="button"
+                                  class="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                      <div class="order__detail-customer text-start">
+                                        <h3>Thông tin khách hàng</h3>
+                                        <div class="row">
+                                          <div  class="col-6">Mã đơn hàng: ĐH01234</div>
+                                          <div class="col-6">Ngày đặt hàng: 17/07/2022</div>
+                                          <div class="col-6">Khách hàng: PHD</div>
+                                          <div class="col-6">Số điện thoại: 01234567</div>
+                                          <div class="col-6">Email: abc@gmail.com</div>
+                                          <div class="col-6">Địa chỉ: 68 Đặng Thùy Trâm</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 text-start">
+                                        <h3>Sản phẩm</h3>
+                                        <p style="font-size:24px;">Tổng tiền: 1.200.000 <sup>₫</sup></p>
+                                      <table class="table table-hover">
+                                          <thead>
+                                            <tr>
+                                              <th class="text-center" colspan="3">Sản phẩm</th>
+                                              <th>Size</th>
+                                              <th>Giá</th>
+                                              <th>Số lượng</th>
+                                              <th>Thành tiền</th>
+                                              <th>Trạng thái</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td colspan="3">
+                                                <div class="row align-items-center product">
+                                                 
+                                                  <div class="col-5">
+                                                    <img
+                                                      class="img-fluid"
+                                                      src="./assests/images/product/nike.webp"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                  <div class="col-7">
+                                                    <p class="mb-0">Nike</pc>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                35
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>
+                                                  1
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>Chờ giao hàng</td>
+                                            </tr>              
+                                                      
+                                          </tbody>
+                                        
+                                        </table> 
+                                      
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
+                                  data-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>35</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>1</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>Chờ giao hàng</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-5">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-7">
+                        <a
+                          data-toggle="modal"
+                          data-target="#DH04321All"
+                          >Adidas</a
+                        >
+                        <!-- Modal -->
+                        <div
+                          class="modal fade"
+                          id="DH04321All"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="DH04321AllTitle"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2
+                                  class="modal-title"
+                                  id="DH04321AllTitle"
+                                >
+                                  Chi tiết đơn hàng
+                                </h2>
+                                <button
+                                  type="button"
+                                  class="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                      <div class="order__detail-customer text-start">
+                                        <h3>Thông tin khách hàng</h3>
+                                        <div class="row">
+                                          <div  class="col-6">Mã đơn hàng: ĐH04321</div>
+                                          <div class="col-6">Ngày đặt hàng: 17/07/2022</div>
+                                          <div class="col-6">Khách hàng: HDP</div>
+                                          <div class="col-6">Số điện thoại: 076543321</div>
+                                          <div class="col-6">Email: xyz@gmail.com</div>
+                                          <div class="col-6">Địa chỉ: 86 Đặng Thùy Trâm</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 text-start">
+                                        <h3>Sản phẩm</h3>
+                                        <p style="font-size:24px;">Tổng tiền: 1.200.000 <sup>₫</sup></p>
+                                      <table class="table table-hover">
+                                          <thead>
+                                            <tr>
+                                              <th class="text-center" colspan="3">Sản phẩm</th>
+                                              <th>Size</th>
+                                              <th>Giá</th>
+                                              <th>Số lượng</th>
+                                              <th>Thành tiền</th>
+                                              <th>Trạng thái</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td colspan="3">
+                                                <div class="row align-items-center product">
+                                                 
+                                                  <div class="col-5">
+                                                    <img
+                                                      class="img-fluid"
+                                                      src="./assests/images/product/nike.webp"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                  <div class="col-7">
+                                                    <p class="mb-0">Adidas</pc>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                35
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>
+                                                  1
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>Chờ vận chuyển</td>
+                                            </tr>              
+                                                      
+                                          </tbody>
+                                        
+                                        </table> 
+                                      
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
+                                  data-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>35</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>1</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>Chờ vận chuyển</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pay"
+            role="tabpanel"
+            aria-labelledby="pay-tab"
+          >
+            <div class="midde__content">
+              <h3>Bạn vẫn chưa có đơn hàng</h3>
+              <a href="./product.html" class="btn btn-primary"
+                >Tiếp tục mua hàng</a
+              >
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="shipping"
+            role="tabpanel"
+            aria-labelledby="shipping-tab"
+          >
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center" colspan="3">Sản phẩm</th>
+                  <th>Size</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th>Thành tiền</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-5">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-7">
+                        <a
+                          data-toggle="modal"
+                          data-target="#DH04321"
+                          >Adidas</a
+                        >
+                        <!-- Modal -->
+                        <div
+                          class="modal fade"
+                          id="DH04321"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="DH04321Title"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2
+                                  class="modal-title"
+                                  id="DH04321Title"
+                                >
+                                  Chi tiết đơn hàng
+                                </h2>
+                                <button
+                                  type="button"
+                                  class="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                      <div class="order__detail-customer text-start">
+                                        <h3>Thông tin khách hàng</h3>
+                                        <div class="row">
+                                          <div  class="col-6">Mã đơn hàng: ĐH04321</div>
+                                          <div class="col-6">Ngày đặt hàng: 17/07/2022</div>
+                                          <div class="col-6">Khách hàng: HDP</div>
+                                          <div class="col-6">Số điện thoại: 076543321</div>
+                                          <div class="col-6">Email: xyz@gmail.com</div>
+                                          <div class="col-6">Địa chỉ: 86 Đặng Thùy Trâm</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 text-start">
+                                        <h3>Sản phẩm</h3>
+                                        <p style="font-size:24px;">Tổng tiền: 1.200.000 <sup>₫</sup></p>
+                                      <table class="table table-hover">
+                                          <thead>
+                                            <tr>
+                                              <th class="text-center" colspan="3">Sản phẩm</th>
+                                              <th>Size</th>
+                                              <th>Giá</th>
+                                              <th>Số lượng</th>
+                                              <th>Thành tiền</th>
+                                              <th>Trạng thái</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td colspan="3">
+                                                <div class="row align-items-center product">
+                                                 
+                                                  <div class="col-5">
+                                                    <img
+                                                      class="img-fluid"
+                                                      src="./assests/images/product/nike.webp"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                  <div class="col-7">
+                                                    <p class="mb-0">Adidas</pc>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                35
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>
+                                                  1
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>Chờ vận chuyển</td>
+                                            </tr>              
+                                                      
+                                          </tbody>
+                                        
+                                        </table> 
+                                      
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
+                                  data-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>35</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>1</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>Chờ vận chuyển</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="delivery"
+            role="tabpanel"
+            aria-labelledby="delivery-tab"
+          >
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center" colspan="3">Sản phẩm</th>
+                  <th>Size</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th>Thành tiền</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3">
+                    <div class="row align-items-center product">
+                      <div class="col-5">
+                        <img
+                          class="img-fluid"
+                          src="./assests/images/product/nike.webp"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-7">
+                        <a
+                          data-toggle="modal"
+                          data-target="#DH01234"
+                          >Nike</a
+                        >
+                        <!-- Modal -->
+                        <div
+                          class="modal fade"
+                          id="DH01234"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="DH01234Title"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2
+                                  class="modal-title"
+                                  id="DH01234Title"
+                                >
+                                  Chi tiết đơn hàng
+                                </h2>
+                                <button
+                                  type="button"
+                                  class="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                      <div class="order__detail-customer text-start">
+                                        <h3>Thông tin khách hàng</h3>
+                                        <div class="row">
+                                          <div  class="col-6">Mã đơn hàng: ĐH01234</div>
+                                          <div class="col-6">Ngày đặt hàng: 17/07/2022</div>
+                                          <div class="col-6">Khách hàng: PHD</div>
+                                          <div class="col-6">Số điện thoại: 01234567</div>
+                                          <div class="col-6">Email: abc@gmail.com</div>
+                                          <div class="col-6">Địa chỉ: 68 Đặng Thùy Trâm</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 text-start">
+                                        <h3>Sản phẩm</h3>
+                                        <p style="font-size:24px;">Tổng tiền: 1.200.000 <sup>₫</sup></p>
+                                      <table class="table table-hover">
+                                          <thead>
+                                            <tr>
+                                              <th class="text-center" colspan="3">Sản phẩm</th>
+                                              <th>Size</th>
+                                              <th>Giá</th>
+                                              <th>Số lượng</th>
+                                              <th>Thành tiền</th>
+                                              <th>Trạng thái</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td colspan="3">
+                                                <div class="row align-items-center product">
+                                                 
+                                                  <div class="col-5">
+                                                    <img
+                                                      class="img-fluid"
+                                                      src="./assests/images/product/nike.webp"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                  <div class="col-7">
+                                                    <p class="mb-0">Nike</pc>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                35
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>
+                                                  1
+                                              </td>
+                                              <td>1.200.000 <sup>₫</sup></td>
+                                              <td>Chờ giao hàng</td>
+                                            </tr>              
+                                                      
+                                          </tbody>
+                                        
+                                        </table> 
+                                      
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
+                                  data-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>35</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>1</td>
+                  <td>1.200.000 <sup>₫</sup></td>
+                  <td>Chờ giao hàng</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="cancel"
+            role="tabpanel"
+            aria-labelledby="cancel-tab"
+          >
+            <div class="midde__content">
+              <h3>Bạn vẫn chưa có đơn hàng</h3>
+              <a href="./product.html" class="btn btn-primary"
+                >Tiếp tục mua hàng</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="footer">
+      <div class="container footer__content">
+        <div class="footer__social">
+          <a href="#" class="footer__social-link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="#" class="footer__social-link">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="footer__social-link">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+        <div class="footer__copyright">
+          2022 All rights reserved, Fast Shoes. Developed By -
+          <a href="#">HPD</a>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
