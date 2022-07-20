@@ -87,18 +87,50 @@ include('./partials-frontend/header.php');
 <div class="category mt-45">
     <div class="container">
         <h2 class="category__title">Danh mục nổi bật</h2>
-        <div class="row">
-            <div class="col-6">
-                <a href="category.php" class="category__item">
-                    <div class="category__item-img">
-                        <img src="./assests/images/category/shoes.jpg" alt="" />
+        <?php
+
+            $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 3";
+            
+            $res = mysqli_query($conn, $sql);
+
+            $count = mysqli_num_rows($res);
+
+            if($count > 0){
+                while($row = mysqli_fetch_assoc($res)){
+                    $id = $row['category_id'];
+                    $name = $row['category_name'];
+                    $image_name = $row['category_img'];
+                    $featured = $row['category_featured'];
+                    $active = $row['category_active'];
+                ?>
+
+                <div class="row">
+                    <div class="col-6"> 
+                        <a href="category.php" class="category__item">
+                            <div class="category__item-img">
+                                <?php
+                                    if($image_name == ""){
+                                        echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
+                                    }
+                                    else{
+                                        ?>
+                                        <img src="./assests/images/category/<?php echo $image_name;?>" alt="" />
+                                        <?php
+                                    }
+                                ?>
+                            </div>
+                            <div class="category__item-name"><?php echo $name;?></div>
+                        </a>
                     </div>
-                    <div class="category__item-name">Giày</div>
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
-        </div>
+                </div>
+
+                <?php
+                }
+            }
+            else{
+                echo "<div class='text-danger'>Danh mục không được thêm vào</div>";
+            }
+        ?>
     </div>
 </div>
 

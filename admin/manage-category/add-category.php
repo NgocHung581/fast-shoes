@@ -65,7 +65,7 @@ include('../partials/header.php');
                         $upload = move_uploaded_file($src_path, $dest_path);
 
                         if($upload==false){
-                            $_SESSION["upload"] = "<div class='error'>Không thể tải lên hình ảnh</div>";
+                            $_SESSION["upload"] = "<div class='text-danger'>Không thể tải lên hình ảnh</div>";
                             header("location:".SITEURL."admin/manage-category/manage-category.php");
                             die();
                         }

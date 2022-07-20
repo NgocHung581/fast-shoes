@@ -1,3 +1,7 @@
+<?php
+include('./config/constants.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

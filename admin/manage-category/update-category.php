@@ -2,8 +2,6 @@
 include('../partials/header.php');
 ?>
 
-
-
 <div class="main-content">
     <div class="container">
         <h1 class="mb-20">Cập nhật danh mục</h1>
@@ -24,7 +22,7 @@ include('../partials/header.php');
                     $featured = $row['category_featured'];
                     $active = $row['category_active'];
                 } else {
-                    $_SESSION["no-category-found"] = "<div class='error'>Không thể tìm thấy danh mục</div>";
+                    $_SESSION["no-category-found"] = "<div class='text-danger'>Không thể tìm thấy danh mục</div>";
                     header("location:" . SITEURL . "admin/manage-category/manage-category.php");
                 }
             }

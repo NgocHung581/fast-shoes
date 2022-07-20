@@ -80,7 +80,7 @@ include('../partials/header.php');
                     <img src="../../assests/images/category/<?php echo $img_name; ?>" width="100px">
                     <?php
                                 } else {
-                                    echo "<div class='error'>Hình ảnh chưa được thêm vào</div>";
+                                    echo "<div class='text-danger'>Hình ảnh chưa được thêm vào</div>";
                                 }
                                 ?>
                 </td>
@@ -95,7 +95,8 @@ include('../partials/header.php');
             </tr>
             <?php
                     }
-                } else {
+                } 
+                else {
                     echo '<tr>
                     <td colspan="6">
                         <div class="text-danger">Không có danh mục nào được thêm vào.</div>
