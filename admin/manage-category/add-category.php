@@ -100,28 +100,20 @@ include('../partials/header.php');
             if ($res == true) {
                 $_SESSION["add"] = "<div class='text-primary mb-10'>Thêm danh mục thành công.</div>";
         ?>
-        <?php
-        if($res == true){
-        $_SESSION["add"] = "<div class='text-primary mb-10'>Thêm danh mục thành công.</div>";
-        ?>
         <script>
         <?php echo ("location.href = '" . SITEURL . "admin/manage-category/manage-category.php';"); ?>
         </script>
         <?php
-
             } else {
                 $_SESSION["add"] = "<div class='text-danger'>Thêm danh mục thất bại.</div>";
                 header("location:" . SITEURL . "admin/manage-category/add-category.php");
-                }
-                else{
-                    $_SESSION["add"] = "<div class='text-danger'>Thêm danh mục thất bại.</div>";
-                    ?>
+            }
+
+            ?>
         <script>
         <?php echo ("location.href = '" . SITEURL . "admin/manage-category/add-category.php';"); ?>
         </script>
         <?php
-                }
-            }
         }
         ?>
     </div>

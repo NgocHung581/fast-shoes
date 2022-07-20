@@ -142,3 +142,4 @@ function Validate(formSelector) {
 Validate("#form-register");
 Validate("#form-contact");
 Validate("#form-order");
+Validate("#form-forgetPassword");

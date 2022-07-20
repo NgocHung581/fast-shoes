@@ -1,4 +1,8 @@
 <?php
+include('./config/constants.php');
+?>
+
+<?php
 include('./partials-frontend/header.php');
 ?>
 
@@ -9,17 +13,17 @@ include('./partials-frontend/header.php');
 
             <?php
 
-                $sql = "SELECT * FROM tbl_category WHERE category_active = 'Yes'";
+            $sql = "SELECT * FROM tbl_category WHERE category_active = 'Yes'";
 
-                $res = mysqli_query($conn, $sql);
+            $res = mysqli_query($conn, $sql);
 
-                $count = mysqli_num_rows($res);
+            $count = mysqli_num_rows($res);
 
-                if($count > 0){
-                    while($row = mysqli_fetch_assoc($res)){
-                        $id = $row['category_id'];
-                        $name = $row['category_name'];
-                        $image_name = $row['category_img'];
+            if ($count > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $id = $row['category_id'];
+                    $name = $row['category_name'];
+                    $image_name = $row['category_img'];
 
             ?>
             <div class="col-4">
@@ -28,26 +32,24 @@ include('./partials-frontend/header.php');
 
                         <?php
 
-                                if($image_name == ""){
+                                if ($image_name == "") {
                                     echo "<div class='text-danger'>Không tìm thấy hình ảnh</div>";
-                                }
-                                else{
-                                    ?>
-                        <img src="./assests/images/category/<?php echo $image_name;?>" alt="" />
+                                } else {
+                                ?>
+                        <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
                         <?php
                                 }
                                 ?>
                     </div>
-                    <div class="categoryPage__item-name"><?php echo $name;?></div>
+                    <div class="categoryPage__item-name"><?php echo $name; ?></div>
                 </a>
             </div>
             <?php
-                        }
-                    }
-                    else{
-                        echo "<div class='text-danger'>Không tìm thấy danh mục</div>";
-                    }
-                ?>
+                }
+            } else {
+                echo "<div class='text-danger'>Không tìm thấy danh mục</div>";
+            }
+            ?>
 
 
         </div>

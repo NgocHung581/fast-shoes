@@ -25,11 +25,11 @@ include('./config/constants.php');
                 <h1 class="form-title text-center">Đăng ký</h1>
 
                 <?php
-        if (isset($_SESSION['pwd-not-match'])) {
-          echo $_SESSION['pwd-not-match'];
-          unset($_SESSION['pwd-not-match']);
-        }
-        ?>
+                if (isset($_SESSION['pwd-not-match'])) {
+                    echo $_SESSION['pwd-not-match'];
+                    unset($_SESSION['pwd-not-match']);
+                }
+                ?>
 
                 <div class="form__field">
                     <div class="form-group">
@@ -70,7 +70,7 @@ include('./config/constants.php');
                 </div>
 
                 <p class="form-register text-center">
-                    Tôi đã có tài khoản? <a href="login.html">Đăng nhập</a>
+                    Tôi đã có tài khoản? <a href="login.php">Đăng nhập</a>
                 </p>
             </form>
         </div>
@@ -83,29 +83,29 @@ include('./config/constants.php');
 
 <?php
 if (isset($_POST['register'])) {
-  $fullname = $_POST['fullname'];
-  $username = $_POST['username'];
-  $password = md5($_POST['password']);
-  $passwordConfirm = md5($_POST['passwordConfirm']);
+    $fullname = $_POST['fullname'];
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+    $passwordConfirm = md5($_POST['passwordConfirm']);
 
-  if ($password === $passwordConfirm) {
-    $sql = "INSERT INTO tbl_user SET
+    if ($password === $passwordConfirm) {
+        $sql = "INSERT INTO tbl_user SET
       fullname = '$fullname',
       username = '$username',
       password = '$password'
     ";
-    $res = mysqli_query($conn, $sql);
+        $res = mysqli_query($conn, $sql);
 
-    if ($res == true) {
-      $_SESSION['register'] = '<div class="text-primary mb-10">Đăng ký thành công.</div>';
-      header('location:' . SITEURL . 'login.php');
+        if ($res == true) {
+            $_SESSION['register'] = '<div class="text-primary">Đăng ký thành công.</div>';
+            header('location:' . SITEURL . 'login.php');
+        } else {
+            $_SESSION['register'] = '<div class="text-danger">Đăng ký thất bại.</div>';
+            header('location:' . SITEURL . 'login.php');
+        }
     } else {
-      $_SESSION['register'] = '<div class="text-danger mb-10">Đăng ký thất bại.</div>';
-      header('location:' . SITEURL . 'login.php');
+        $_SESSION['pwd-not-match'] = '<div class="text-danger mb-10">Mật khẩu nhập lại không trùng khớp.</div>';
+        header('location:' . SITEURL . 'register.php');
     }
-  } else {
-    $_SESSION['pwd-not-match'] = '<div class="text-danger mb-10">Mật khẩu nhập lại không trùng khớp.</div>';
-    header('location:' . SITEURL . 'register.php');
-  }
 }
 ?>

@@ -1,7 +1,3 @@
-<?php
-include('./config/constants.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,18 +47,26 @@ include('./config/constants.php');
             </ul>
             <div class="header__options d-flex align-items-center">
                 <div class="header__access">
-                    <a href="login.php" class="header__access-link">Đăng nhập</a>
-                    <div class="header__access-options">
+                    <?php
+                    if (isset($_SESSION["user"])) {
+                        echo '<span class="header__access-link">' . $_SESSION["user"] . '</span>';
+                        echo '<div class="header__access-options">
                         <a href="order-customer.php" class="header__options-item">Xem đơn hàng của bạn</a>
-                        <a href="login.php" class="header__options-item">Đăng xuất</a>
-                    </div>
+                        <a href="logout.php" class="header__options-item">Đăng xuất</a>
+                    </div>';
+                    } else {
+                        echo '<a href="login.php" class="header__access-link">Đăng nhập</a>';
+                    }
+                    ?>
                 </div>
                 <div class="header__cart">
                     <a href="cart.php" class="header__cart-link">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="header__cart-quantity">0</span>
                     </a>
-                    <div class="header__cart-box">
+                    <?php
+                    if (isset($_SESSION["user"])) {
+                        echo '<div class="header__cart-box">
                         <h3 class="header-cart-title">Sản phảm đã thêm vào giỏ</h3>
                         <ul class="header__cart-list">
                             <li class="header__cart-item d-flex align-items-center">
@@ -81,7 +85,9 @@ include('./config/constants.php');
                         <p class="header-cart-description">
                             Nhấn vào giỏ hàng để xem chi tiết
                         </p>
-                    </div>
+                    </div>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>

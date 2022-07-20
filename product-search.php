@@ -1,4 +1,8 @@
 <?php
+include('./config/constants.php');
+?>
+
+<?php
 include('./partials-frontend/header.php');
 ?>
 
@@ -7,12 +11,12 @@ include('./partials-frontend/header.php');
 
         <?php
 
-            $search = $_POST['search'];
+        $search = $_POST['search'];
 
         ?>
 
         <h1 class="search__title">
-            Sản phẩm từ tìm kiếm <span>"<?php echo $search;?>"</span>
+            Sản phẩm từ tìm kiếm <span>"<?php echo $search; ?>"</span>
         </h1>
     </div>
 </div>
@@ -23,52 +27,52 @@ include('./partials-frontend/header.php');
 
             <?php
 
-                $search = $_POST['search'];
+            $search = $_POST['search'];
 
-                $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
+            $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
 
-                $res = mysqli_query($conn, $sql);
+            $res = mysqli_query($conn, $sql);
 
-                $count = mysqli_num_rows($res);
+            $count = mysqli_num_rows($res);
 
-                if($count > 0){
-                    while($row = mysqli_fetch_assoc($res)){
-                        $id = $row['product_id'];
-                        $name = $row['product_name'];
-                        $image_name = $row['product_img'];
-                        $price = $row['product_price'];
+            if ($count > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $id = $row['product_id'];
+                    $name = $row['product_name'];
+                    $image_name = $row['product_img'];
+                    $price = $row['product_price'];
 
-                        ?>
+            ?>
 
             <div class="col-3">
                 <div class="product__item">
                     <div class="product__item-img">
                         <?php
 
-                        if($image_name == ""){
-                            echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
-                        }
-                        else{ 
-                            ?>
-                        <img src="./assests/images/product/<?php echo $image_name;?>" alt="" />
+                                if ($image_name == "") {
+                                    echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
+                                } else {
+                                ?>
+                        <img src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
                         <?php
-                        }
+                                }
 
-                    ?>
+                                ?>
                     </div>
                     <div class="product__item-description">
-                        <h3 class="product__item-name"><?php echo $name;?></h3>
+                        <h3 class="product__item-name"><?php echo $name; ?></h3>
                         <div class="product__item-price">
-                            <?php 
-                            if (!function_exists('currency_format')) {
-                                function currency_format($number, $suffix = 'đ') {
-                                    if (!empty($number)) {
-                                        return number_format($number, 0, ',', '.') . "{$suffix}";
+                            <?php
+                                    if (!function_exists('currency_format')) {
+                                        function currency_format($number, $suffix = 'đ')
+                                        {
+                                            if (!empty($number)) {
+                                                return number_format($number, 0, ',', '.') . "{$suffix}";
+                                            }
+                                        }
                                     }
-                                }
-                            }
-                            echo currency_format($price, " VND"); 
-                        ?>
+                                    echo currency_format($price, " VND");
+                                    ?>
                         </div>
                         <div class="product__item-rating">
                             <i class="fa-regular fa-star"></i>
@@ -90,11 +94,10 @@ include('./partials-frontend/header.php');
             </div>
 
             <?php
-                    }
                 }
-                else{
-                    echo "<div class='text-danger'>Không tìm thấy sản phẩm/div>";
-                }
+            } else {
+                echo "<div class='text-danger'>Không tìm thấy sản phẩm/div>";
+            }
             ?>
 
         </div>

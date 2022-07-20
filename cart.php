@@ -1,4 +1,9 @@
 <?php
+include('./config/constants.php');
+include('./partials-frontend/check-login-user.php');
+?>
+
+<?php
 include('./partials-frontend/header.php');
 ?>
 

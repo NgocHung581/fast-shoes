@@ -1,4 +1,8 @@
 <?php
+include('./config/constants.php');
+?>
+
+<?php
 include('./partials-frontend/header.php');
 ?>
 
@@ -64,21 +68,21 @@ include('./partials-frontend/header.php');
         <h2 class="favourite__title mt-45">Các sản phẩm nổi bật</h2>
         <div class="row gy-4">
 
-            <?php 
+            <?php
 
-                $sql2 = "SELECT * FROM tbl_product WHERE product_featured = 'Yes' AND product_active = 'Yes' LIMIT 4";
+            $sql2 = "SELECT * FROM tbl_product WHERE product_featured = 'Yes' AND product_active = 'Yes' LIMIT 4";
 
-                $res2 = mysqli_query($conn, $sql2);
+            $res2 = mysqli_query($conn, $sql2);
 
-                $count2 = mysqli_num_rows($res2);
+            $count2 = mysqli_num_rows($res2);
 
-                if($count2 > 0){
-                    while($row = mysqli_fetch_assoc($res2)){
-                        $id = $row['product_id'];
-                        $name = $row['product_name'];
-                        $image_name = $row['product_img'];
-                        $price = $row['product_price'];
-                        
+            if ($count2 > 0) {
+                while ($row = mysqli_fetch_assoc($res2)) {
+                    $id = $row['product_id'];
+                    $name = $row['product_name'];
+                    $image_name = $row['product_img'];
+                    $price = $row['product_price'];
+
             ?>
 
             <div class="col-3">
@@ -86,29 +90,29 @@ include('./partials-frontend/header.php');
                     <div class="favourite__item-img">
                         <?php
 
-                                if($image_name == ""){
+                                if ($image_name == "") {
                                     echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
-                                }
-                                else{ 
-                                    ?>
-                        <img src="./assests/images/product/<?php echo $image_name;?>" alt="" />
+                                } else {
+                                ?>
+                        <img src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
                         <?php
                                 }
 
-                            ?>
+                                ?>
                     </div>
                     <div class="favourite__item-description">
-                        <div class="favourite__item-name"><?php echo $name;?></div>
+                        <div class="favourite__item-name"><?php echo $name; ?></div>
                         <div class="favourite__item-price">
-                            <?php 
-                                        if (!function_exists('currency_format')) {
-                                            function currency_format($number, $suffix = 'đ') {
-                                                if (!empty($number)) {
-                                                    return number_format($number, 0, ',', '.') . "{$suffix}";
-                                                }
+                            <?php
+                                    if (!function_exists('currency_format')) {
+                                        function currency_format($number, $suffix = 'đ')
+                                        {
+                                            if (!empty($number)) {
+                                                return number_format($number, 0, ',', '.') . "{$suffix}";
                                             }
                                         }
-                                        echo currency_format($price, " VND"); 
+                                    }
+                                    echo currency_format($price, " VND");
                                     ?>
                         </div>
                     </div>
@@ -123,12 +127,11 @@ include('./partials-frontend/header.php');
                 </div>
             </div>
             <?php
-                        }
-                    }
-                    else{
-                        echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
-                    }
-                ?>
+                }
+            } else {
+                echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
+            }
+            ?>
 
         </div>
     </div>
@@ -140,48 +143,46 @@ include('./partials-frontend/header.php');
         <div class="row">
             <?php
 
-                $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 2";
+            $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 2";
 
-                $res = mysqli_query($conn, $sql);
+            $res = mysqli_query($conn, $sql);
 
-                $count = mysqli_num_rows($res);
+            $count = mysqli_num_rows($res);
 
-                if($count > 0){
-                    while($row = mysqli_fetch_assoc($res)){
-                        $id = $row['category_id'];
-                        $name = $row['category_name'];
-                        $image_name = $row['category_img'];
-                        
+            if ($count > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $id = $row['category_id'];
+                    $name = $row['category_name'];
+                    $image_name = $row['category_img'];
+
             ?>
 
             <div class="col-6">
-                <a href="category-product.php?category_id=<?php echo $id;?>" class="category__item">
+                <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
                     <div class="category__item-img">
 
                         <?php
 
-                                    if($image_name == ""){
-                                        echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
-                                    }
-                                    else{
-                                        ?>
-                        <img src="./assests/images/category/<?php echo $image_name;?>" alt="" />
+                                if ($image_name == "") {
+                                    echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
+                                } else {
+                                ?>
+                        <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
                         <?php
-                                    }
+                                }
 
                                 ?>
 
                     </div>
-                    <div class="category__item-name"><?php echo $name;?></div>
+                    <div class="category__item-name"><?php echo $name; ?></div>
                 </a>
             </div>
             <?php
-                        }
-                    }
-                    else{
-                        echo "<div class='text-danger'>Danh mục không được thêm vào</div>";
-                    }
-                ?>
+                }
+            } else {
+                echo "<div class='text-danger'>Danh mục không được thêm vào</div>";
+            }
+            ?>
 
         </div>
     </div>
