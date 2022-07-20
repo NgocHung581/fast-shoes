@@ -70,7 +70,7 @@ include('./partials-frontend/header.php');
 
             <?php
 
-            $sql2 = "SELECT * FROM tbl_product WHERE product_featured = 'Yes' AND product_active = 'Yes' LIMIT 4";
+            $sql2 = "SELECT * FROM tbl_product WHERE product_featured = 'Yes' AND product_active = 'Yes' LIMIT 8";
 
             $res2 = mysqli_query($conn, $sql2);
 
@@ -117,22 +117,35 @@ include('./partials-frontend/header.php');
                         </div>
                     </div>
                     <div class="favourite__item-buttons">
-                        <a href="cart.php" class="btn btn-primary favourite__item-cart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </a>
-                        <a href="order.php" class="btn btn-primary favourite__item-order">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                        </a>
+                        <form action="" method="POST">
+                            <input type="text" hidden name="user_id" value="
+                            <?php
+                            if (isset($_SESSION['user_id'])) {
+                                echo $_SESSION['user_id'];
+                            }
+                            ?>
+                            ">
+                            <input type="text" hidden name="product_id" value="<?php echo $id ?>">
+                            <button type="submit" name="cart-submit" class="btn btn-primary favourite__item-cart">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </form>
+                        <form action="" method="POST">
+                            <a href="order.php" class="btn btn-primary favourite__item-order">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </a>
+                        </form>
+
                     </div>
                 </div>
             </div>
+
             <?php
                 }
             } else {
                 echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
             }
             ?>
-
         </div>
     </div>
 </div>
@@ -195,4 +208,44 @@ include('./partials-frontend/header.php');
 
 <?php
 include('./partials-frontend/footer.php');
+?>
+
+<?php
+if (isset($_POST['cart-submit'])) {
+    $user_id = $_POST['user_id'];
+    $product_id = $_POST['product_id'];
+
+    $sql = "SELECT * FROM tbl_product WHERE product_id = $product_id";
+
+    $res = mysqli_query($conn, $sql);
+
+    if ($res == true) {
+        $count = mysqli_num_rows($res);
+
+        if ($count == 1) {
+            $row = mysqli_fetch_assoc($res);
+            $product_name = $row['product_name'];
+            $product_image = $row['product_img'];
+            $product_price = $row['product_price'];
+
+            $sql2 = "INSERT INTO tbl_cart SET
+                                product_name = '$product_name',
+                                product_image = '$product_image',
+                                product_price = '$product_price',
+                                user_id = '$user_id'
+                                ";
+
+            $res2 = mysqli_query($conn, $sql2);
+
+            if ($res2 == true) {
+                $_SESSION['cart-user-id'] = $user_id;
+?>
+<script>
+<?php echo ("location.href = '" . SITEURL . "cart.php';"); ?>
+</script>
+<?php
+            }
+        }
+    }
+}
 ?>

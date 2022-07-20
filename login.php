@@ -106,9 +106,11 @@ if (isset($_POST['submit'])) {
         if ($count == 1) {
             $row = mysqli_fetch_assoc($res);
             $fullname = $row['fullname'];
+            $id = $row['user_id'];
             $type = $row['type'];
 
             if ($type == 'user') {
+                $_SESSION['user_id'] = "$id";
                 $_SESSION["user"] = "$fullname";
                 header("location:" . SITEURL);
             }

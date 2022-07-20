@@ -1,6 +1,6 @@
 :root {
   --primary-color: #e62b4a;
-  --secondary-color: #1e90ff;
+  --second-color: #1e90ff;
   --line-color: #dfe4ea;
   --background-color: #2f3542;
   --height-header: 80px;
@@ -41,6 +41,15 @@ a:hover {
 
 .btn.btn-primary:hover {
   background-color: var(--primary-color);
+}
+
+.btn.btn-update {
+  background-color: var(--second-color);
+  color: white;
+}
+
+.btn.btn-update:hover {
+  opacity: 0.8;
 }
 
 .btn.btn-primary:focus,

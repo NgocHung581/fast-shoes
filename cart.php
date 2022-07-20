@@ -11,200 +11,140 @@ include('./partials-frontend/header.php');
     <div class="container">
         <h2 class="mt-5 mb-4">Giỏ hàng của bạn</h2>
         <div class="row">
-            <div class="col-7">
+            <div class="col-10">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th class="text-center" colspan="3">Sản phẩm</th>
                             <th>Size</th>
-                            <th>Giá</th>
+                            <th>Đơn giá</th>
                             <th>Số lượng</th>
                             <th>Tạm tính</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td colspan="3">
-                                <div class="row align-items-center product">
-                                    <div class="col-2 remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="img-fluid" src="./assests/images/product/nike.webp" alt="" />
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-0">Nike</pc>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">35</option>
-                                    <option value="2">36</option>
-                                    <option value="3">37</option>
-                                    <option value="3">38</option>
-                                    <option value="3">39</option>
-                                    <option value="3">40</option>
-                                </select>
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                            <td>
-                                <input class="quanlity" type="number" min="1" value="1" name="" id="" />
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <div class="row align-items-center product">
-                                    <div class="col-2 remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="img-fluid" src="./assests/images/product/nike.webp" alt="" />
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-0">Nike</pc>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">35</option>
-                                    <option value="2">36</option>
-                                    <option value="3">37</option>
-                                    <option value="3">38</option>
-                                    <option value="3">39</option>
-                                    <option value="3">40</option>
-                                </select>
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                            <td>
-                                <input class="quanlity" type="number" min="1" value="1" name="" id="" />
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <div class="row align-items-center product">
-                                    <div class="col-2 remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="img-fluid" src="./assests/images/product/nike.webp" alt="" />
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-0">Nike</pc>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">35</option>
-                                    <option value="2">36</option>
-                                    <option value="3">37</option>
-                                    <option value="3">38</option>
-                                    <option value="3">39</option>
-                                    <option value="3">40</option>
-                                </select>
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                            <td>
-                                <input class="quanlity" type="number" min="1" value="1" name="" id="" />
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <div class="row align-items-center product">
-                                    <div class="col-2 remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="img-fluid" src="./assests/images/product/nike.webp" alt="" />
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-0">Nike</pc>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">35</option>
-                                    <option value="2">36</option>
-                                    <option value="3">37</option>
-                                    <option value="3">38</option>
-                                    <option value="3">39</option>
-                                    <option value="3">40</option>
-                                </select>
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                            <td>
-                                <input class="quanlity" type="number" min="1" value="1" name="" id="" />
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <div class="row align-items-center product">
-                                    <div class="col-2 remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="img-fluid" src="./assests/images/product/nike.webp" alt="" />
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-0">Nike</pc>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">35</option>
-                                    <option value="2">36</option>
-                                    <option value="3">37</option>
-                                    <option value="3">38</option>
-                                    <option value="3">39</option>
-                                    <option value="3">40</option>
-                                </select>
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                            <td>
-                                <input class="quanlity" type="number" min="1" value="1" name="" id="" />
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <div class="row align-items-center product">
-                                    <div class="col-2 remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="img-fluid" src="./assests/images/product/nike.webp" alt="" />
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-0">Nike</pc>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">35</option>
-                                    <option value="2">36</option>
-                                    <option value="3">37</option>
-                                    <option value="3">38</option>
-                                    <option value="3">39</option>
-                                    <option value="3">40</option>
-                                </select>
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                            <td>
-                                <input class="quanlity" type="number" min="1" value="1" name="" id="" />
-                            </td>
-                            <td>1.200.000 <sup>₫</sup></td>
-                        </tr>
+                        <?php
+                        if (isset($_SESSION['cart-user-id'])) {
+                            $total = 0;
 
+                            $user_id = $_SESSION['cart-user-id'];
 
+                            $sql = "SELECT * FROM tbl_cart WHERE user_id = $user_id";
+
+                            $res = mysqli_query($conn, $sql);
+
+                            if ($res == true) {
+                                $count = mysqli_num_rows($res);
+
+                                if ($count > 0) {
+                                    while ($row = mysqli_fetch_assoc($res)) {
+                                        $cartId = $row['cart_id'];
+                                        $cartProductName = $row['product_name'];
+                                        $cartProductImage = $row['product_image'];
+                                        $cartProductPrice = $row['product_price'];
+                                        $cartTotalPrice = $row['total_price'];
+                                        $cartProductQuantity = $row['product_quantity'];
+                                        $cartProductSize = $row['product_size'];
+
+                                        if ($cartTotalPrice == 0) {
+                                            $total += $cartProductPrice;
+                                        } else {
+                                            $total += $cartTotalPrice;
+                                        }
+                        ?>
+                        <tr>
+                            <td colspan="3">
+                                <div class="row align-items-center product">
+                                    <div class="col-2">
+                                        <a href="<?php echo SITEURL . "admin/manage-cart/delete-cart.php?id=" . $cartId . "" ?>"
+                                            class="remove">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="img-fluid"
+                                            src="./assests/images/product/<?php echo $cartProductImage; ?>" alt="" />
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="mb-0"><?php echo $cartProductName; ?></pc>
+                                    </div>
+                                </div>
+                            </td>
+                            <form action="<?php
+                                                            echo SITEURL . "admin/manage-cart/update-cart.php"
+
+                                                            ?>" method="GET">
+                                <td>
+                                    <select name="size" class="form-select" aria-label="Default select example">
+                                        <option <?php
+                                                                if ($cartProductSize == 0 or $cartProductSize == 35) {
+                                                                    echo "selected";
+                                                                }
+                                                                ?> value="35">35</option>
+                                        <option <?php
+                                                                if ($cartProductSize == 36) {
+                                                                    echo "selected";
+                                                                }
+                                                                ?> value="36">36</option>
+                                        <option <?php
+                                                                if ($cartProductSize == 37) {
+                                                                    echo "selected";
+                                                                }
+                                                                ?> value="37">37</option>
+                                        <option <?php
+                                                                if ($cartProductSize == 38) {
+                                                                    echo "selected";
+                                                                }
+                                                                ?> value="38">38</option>
+                                        <option <?php
+                                                                if ($cartProductSize == 39) {
+                                                                    echo "selected";
+                                                                }
+                                                                ?> value="39">39</option>
+                                        <option <?php
+                                                                if ($cartProductSize == 40) {
+                                                                    echo "selected";
+                                                                }
+                                                                ?> value="40">40</option>
+                                    </select>
+                                </td>
+
+                                <td><?php echo $cartProductPrice; ?> <sup>₫</sup></td>
+                                <input type="text" hidden name='cart_id' value="<?php echo $cartId; ?>">
+                                <input type="text" hidden name='price' value="<?php echo $cartProductPrice; ?>">
+                                <td>
+                                    <input class="quanlity" type="number" min="1" value="<?php
+                                                                                                            if ($cartProductQuantity == 0) {
+                                                                                                                echo '1';
+                                                                                                            } else {
+                                                                                                                echo "$cartProductQuantity";
+                                                                                                            }
+                                                                                                            ?>"
+                                        name="quantity" />
+                                </td>
+                                <td>
+                                    <?php
+                                                    if ($cartTotalPrice == 0) {
+                                                        echo $cartProductPrice;
+                                                    } else {
+                                                        echo $cartTotalPrice;
+                                                    }
+                                                    ?>
+                                    <sup>₫</sup>
+                                </td>
+                                <td><button type="submit" class="btn btn-update">Cập nhật</button>
+                                </td>
+                            </form>
+
+                        </tr>
+                        <?php
+                                    }
+                                } else {
+                                    echo "<td colspan='8' class='text-center'><div class='text-danger'>Giỏ hàng của bạn chưa có sản phẩm.</div></td>";
+                                }
+                            }
+                            ?>
                     </tbody>
                 </table>
                 <a href="product.php">
@@ -214,22 +154,25 @@ include('./partials-frontend/header.php');
                     </button>
                 </a>
             </div>
-            <div class="col-5">
+            <div class="col-2">
                 <table class="table">
                     <thead>
                         <tr>
 
-                            <th scope="col">Cộng giỏ hàng</th>
-                            <th scope="col"></th>
+                            <th scope="col" colspan="2">Cộng giỏ hàng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="order__total">
 
                             <td>Tổng</td>
-                            <td>1.200.000 <sup>₫</sup></td>
-
+                            <?php
+                            echo "<td>$total <sup>₫</sup></td>";
+                            ?>
                         </tr>
+                        <?php
+                        }
+                    ?>
 
                     </tbody>
                 </table>

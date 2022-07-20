@@ -23,16 +23,16 @@
   width: 28px;
   height: 28px;
   line-height: 28px;
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   border-radius: 50%;
-  color: #ccc;
+  color: #000;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .remove i:hover {
-  border: 1px solid black;
-  color: black;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .order__total td:last-of-type {

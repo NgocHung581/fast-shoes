@@ -96,7 +96,7 @@ include('./partials-frontend/header.php');
             <?php
                 }
             } else {
-                echo "<div class='text-danger'>Không tìm thấy sản phẩm/div>";
+                echo "<div class='text-danger'>Không tìm thấy sản phẩm</div>";
             }
             ?>
 
