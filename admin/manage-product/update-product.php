@@ -138,10 +138,10 @@ include('../partials/header.php');
                         }
                     }
                 } else {
-                    $img_name = "";
+                    $img_name = $current_image;
                 }
             } else {
-                $img_name = "";
+                $img_name = $current_image;
             }
 
             $new_sql = "UPDATE tbl_product SET
