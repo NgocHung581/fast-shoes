@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('../partials/header.php');
 ?>
 
@@ -7,12 +7,12 @@ include('../partials/header.php');
         <h1 class="mb-20">Thêm danh mục</h1>
 
         <?php
-        if(isset($_SESSION["add"])){
+        if (isset($_SESSION["add"])) {
             echo $_SESSION["add"];
             unset($_SESSION["add"]);
         }
 
-        if(isset($_SESSION["upload"])){
+        if (isset($_SESSION["upload"])) {
             echo $_SESSION["upload"];
             unset($_SESSION["upload"]);
         }
@@ -50,66 +50,70 @@ include('../partials/header.php');
 
         <?php
 
-            if(isset($_POST['submit'])){
-                $name= $_POST["name"];
+        if (isset($_POST['submit'])) {
+            $name = $_POST["name"];
 
-                if(isset($_FILES["image"]["name"])){
-                    $img_name = $_FILES["image"]["name"];
+            if (isset($_FILES["image"]["name"])) {
+                $img_name = $_FILES["image"]["name"];
 
-                    if($img_name != ""){
-                        $tmp = explode(".", $img_name);
-                        $ext = end($tmp);
-                        $img_name = "Shoes_Category_".rand(000, 999).'.'.$ext;
-                        $src_path = $_FILES["image"]["tmp_name"];
-                        $dest_path = "../../assests/images/category/".$img_name;
-                        $upload = move_uploaded_file($src_path, $dest_path);
+                if ($img_name != "") {
+                    $tmp = explode(".", $img_name);
+                    $ext = end($tmp);
+                    $img_name = "Shoes_Category_" . rand(000, 999) . '.' . $ext;
+                    $src_path = $_FILES["image"]["tmp_name"];
+                    $dest_path = "../../assests/images/category/" . $img_name;
+                    $upload = move_uploaded_file($src_path, $dest_path);
 
-                        if($upload==false){
-                            $_SESSION["upload"] = "<div class='text-danger'>Không thể tải lên hình ảnh</div>";
-                            header("location:".SITEURL."admin/manage-category/manage-category.php");
-                            die();
-                        }
-                    } else {
-                        $img_name = "";
+                    if ($upload == false) {
+                        $_SESSION["upload"] = "<div class='text-danger'>Không thể tải lên hình ảnh</div>";
+                        header("location:" . SITEURL . "admin/manage-category/manage-category.php");
+                        die();
                     }
-                } else{
+                } else {
                     $img_name = "";
                 }
-               
-                if(isset($_POST["featured"])){
-                    $featured = $_POST["featured"];
-                } else{
-                    $featured = "No";
-                }
+            } else {
+                $img_name = "";
+            }
 
-                if(isset($_POST["active"])){
-                    $active = $_POST["active"];
-                } else{
-                    $active = "No";
-                }
-                
-                $sql = "INSERT INTO tbl_category SET
+            if (isset($_POST["featured"])) {
+                $featured = $_POST["featured"];
+            } else {
+                $featured = "No";
+            }
+
+            if (isset($_POST["active"])) {
+                $active = $_POST["active"];
+            } else {
+                $active = "No";
+            }
+
+            $sql = "INSERT INTO tbl_category SET
                     category_name='$name',
                     category_img='$img_name',
                     category_featured='$featured',
                     category_active='$active'
                 ";
-              
-                $res = mysqli_query($conn, $sql);
 
-                if($res == true){
-                    $_SESSION["add"] = "<div class='text-primary mb-10'>Thêm danh mục thành công.</div>";
-                    header("location:".SITEURL."admin/manage-category/manage-category.php");
-                }
-                else{
-                    $_SESSION["add"] = "<div class='text-danger'>Thêm danh mục thất bại.</div>";
-                    header("location:".SITEURL."admin/manage-category/add-category.php");
-                }
+            $res = mysqli_query($conn, $sql);
+
+            if ($res == true) {
+                $_SESSION["add"] = "<div class='text-primary mb-10'>Thêm danh mục thành công.</div>";
+        ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "admin/manage-category/manage-category.php';"); ?>
+        </script>
+        <?php
+
+            } else {
+                $_SESSION["add"] = "<div class='text-danger'>Thêm danh mục thất bại.</div>";
+                header("location:" . SITEURL . "admin/manage-category/add-category.php");
             }
+        }
         ?>
     </div>
 </div>
 
-<?php 
+<?php
 include('../partials/footer.php');
 ?>

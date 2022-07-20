@@ -13,15 +13,23 @@
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.5s ease-out;
+  height: 100%;
+  width: 100%;
+}
+
+.product__item-img {
+  height: 50%;
 }
 
 .product__item-img img {
+  height: 100%;
   width: 100%;
   border-radius: 10px;
 }
 
 .product__item-description {
   padding: 10px 10px;
+  height: 50%;
   transition: all 0.5s ease-out;
 }
 
