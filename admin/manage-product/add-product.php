@@ -48,8 +48,8 @@ include('../partials/header.php');
                                 $id = $row['category_id'];
                                 $name = $row['category_name'];
                                 ?>
-                                    <option value=<?php echo $id;?>><?php echo $name;?></option>
-                                <?php
+                    <option value=<?php echo $id;?>><?php echo $name;?></option>
+                    <?php
                             }
                         }
                         ?>
@@ -145,11 +145,19 @@ include('../partials/header.php');
 
                 if($res2 == true){
                     $_SESSION["add"] = "<div class='text-primary mb-10'>Thêm sản phẩm thành công.</div>";
-                    header("location:".SITEURL."admin/manage-product/manage-product.php");
+                    ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "admin/manage-product/manage-product.php';"); ?>
+        </script>
+        <?php
                 }
                 else{
                     $_SESSION["add"] = "<div class='text-danger'>Thêm sản phẩm thất bại.</div>";
-                    header("location:".SITEURL."admin/manage-product/add-product.php");
+                    ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "admin/manage-product/manage-product.php';"); ?>
+        </script>
+        <?php
                 }
             }
         ?>
