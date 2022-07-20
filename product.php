@@ -7,9 +7,9 @@ include('./partials-frontend/header.php');
         <div class="search__box">
             <form action="product-search.php" method="POST">
                 <input type="search" name="search" class="search__box-input" placeholder="Nhập sản phẩm cần tìm..." />
-                <a href="product-search.php" class="btn btn-primary">
+                <button type="submit" name="submit" class="btn btn-primary">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
+                </button>
             </form>
         </div>
     </div>
