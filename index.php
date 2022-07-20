@@ -5,10 +5,12 @@ include('./partials-frontend/header.php');
 <div class="search">
     <div class="container">
         <div class="search__box">
-            <input type="text" class="search__box-input" placeholder="Nhập sản phẩm cần tìm..." />
-            <a href="product-search.php" class="btn btn-primary">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
+            <form action="product-search.php" method="POST">
+                <input type="search" name="search" class="search__box-input" placeholder="Nhập sản phẩm cần tìm..." />
+                <a href="product-search.php" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </form>
         </div>
     </div>
 </div>
@@ -61,44 +63,44 @@ include('./partials-frontend/header.php');
     <div class="container">
         <h2 class="favourite__title mt-45">Các sản phẩm nổi bật</h2>
         <div class="row gy-4">
-            <div class="col-3">
 
-                <?php 
+            <?php 
 
-                    $sql2 = "SELECT * FROM tbl_product WHERE product_featured = 'Yes' AND product_active = 'Yes' LIMIT 6";
+                $sql2 = "SELECT * FROM tbl_product WHERE product_featured = 'Yes' AND product_active = 'Yes' LIMIT 4";
+
+                $res2 = mysqli_query($conn, $sql2);
+
+                $count2 = mysqli_num_rows($res2);
+
+                if($count2 > 0){
+                    while($row = mysqli_fetch_assoc($res2)){
+                        $id = $row['product_id'];
+                        $name = $row['product_name'];
+                        $image_name = $row['product_img'];
+                        $price = $row['product_price'];
                         
-                    $res2 = mysqli_query($conn, $sql2);
+            ?>
 
-                    $count2 = mysqli_num_rows($res2);
-
-                    if($count2 > 0){
-                        while($row = mysqli_fetch_assoc($res2)){
-                            $id = $row['product_id'];
-                            $name = $row['product_name'];
-                            $image_name = $row['product_img'];
-                            $price = $row['product_price'];
-
-                        ?>
-                            
-                        <div class="favourite__item">
-                            <div class="favourite__item-img">
-                            <?php
+            <div class="col-3">
+                <div class="favourite__item">
+                    <div class="favourite__item-img">
+                        <?php
 
                                 if($image_name == ""){
                                     echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
                                 }
                                 else{ 
                                     ?>
-                                    <img src="./assests/images/product/<?php echo $image_name;?>" alt="" />
-                                    <?php
+                        <img src="./assests/images/product/<?php echo $image_name;?>" alt="" />
+                        <?php
                                 }
 
                             ?>
-                            </div>
-                            <div class="favourite__item-description">
-                                <div class="favourite__item-name"><?php echo $name;?></div>
-                                <div class="favourite__item-price">
-                                    <?php 
+                    </div>
+                    <div class="favourite__item-description">
+                        <div class="favourite__item-name"><?php echo $name;?></div>
+                        <div class="favourite__item-price">
+                            <?php 
                                         if (!function_exists('currency_format')) {
                                             function currency_format($number, $suffix = 'đ') {
                                                 if (!empty($number)) {
@@ -108,26 +110,26 @@ include('./partials-frontend/header.php');
                                         }
                                         echo currency_format($price, " VND"); 
                                     ?>
-                                </div>
-                            </div>
-                            <div class="favourite__item-buttons">
-                                <a href="cart.php" class="btn btn-primary favourite__item-cart">
-                                    <i class="fa-solid fa-cart-plus"></i>
-                                </a>
-                                <a href="order.php" class="btn btn-primary favourite__item-order">
-                                    <i class="fa-solid fa-bag-shopping"></i>
-                                </a>
-                            </div>
-                        </div>            
-                            
-                        <?php
+                        </div>
+                    </div>
+                    <div class="favourite__item-buttons">
+                        <a href="cart.php" class="btn btn-primary favourite__item-cart">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </a>
+                        <a href="order.php" class="btn btn-primary favourite__item-order">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <?php
                         }
                     }
                     else{
                         echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
                     }
                 ?>
-            </div>
+
         </div>
     </div>
 </div>
@@ -136,51 +138,51 @@ include('./partials-frontend/header.php');
     <div class="container">
         <h2 class="category__title">Danh mục nổi bật</h2>
         <div class="row">
-            <div class="col-6"> 
-                <?php
+            <?php
 
-                    $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 3";
-                    
-                    $res = mysqli_query($conn, $sql);
+                $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 2";
 
-                    $count = mysqli_num_rows($res);
+                $res = mysqli_query($conn, $sql);
 
-                    if($count > 0){
-                        while($row = mysqli_fetch_assoc($res)){
-                            $id = $row['category_id'];
-                            $name = $row['category_name'];
-                            $image_name = $row['category_img'];
+                $count = mysqli_num_rows($res);
 
-                        ?>
+                if($count > 0){
+                    while($row = mysqli_fetch_assoc($res)){
+                        $id = $row['category_id'];
+                        $name = $row['category_name'];
+                        $image_name = $row['category_img'];
+                        
+            ?>
 
-                            <a href="category.php" class="category__item">
-                            <div class="category__item-img">
+            <div class="col-6">
+                <a href="category.php" class="category__item">
+                    <div class="category__item-img">
 
-                                <?php
+                        <?php
 
                                     if($image_name == ""){
                                         echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
                                     }
                                     else{
                                         ?>
-                                        <img src="./assests/images/category/<?php echo $image_name;?>" alt="" />
-                                        <?php
+                        <img src="./assests/images/category/<?php echo $image_name;?>" alt="" />
+                        <?php
                                     }
 
                                 ?>
 
-                            </div>
-                            <div class="category__item-name"><?php echo $name;?></div>
-                            </a>
-                                
-                        <?php
+                    </div>
+                    <div class="category__item-name"><?php echo $name;?></div>
+                </a>
+            </div>
+            <?php
                         }
                     }
                     else{
                         echo "<div class='text-danger'>Danh mục không được thêm vào</div>";
                     }
                 ?>
-            </div>
+
         </div>
     </div>
 </div>
