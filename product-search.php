@@ -12,9 +12,21 @@ include('./partials-frontend/header.php');
         <?php
 
         $search = $_POST['search'];
+        
+        if ($search == ""){
 
+            ?>
+
+            <script>
+            <?php echo ("location.href = '" . SITEURL . "';"); ?>
+            alert("Vui lòng nhập từ khóa tìm kiếm");
+            </script>
+
+            <?php
+
+            die();
+        }
         ?>
-
         <h1 class="search__title">
             Sản phẩm từ tìm kiếm <span>"<?php echo $search; ?>"</span>
         </h1>
@@ -26,8 +38,6 @@ include('./partials-frontend/header.php');
         <div class="row gy-4">
 
             <?php
-
-            $search = $_POST['search'];
 
             $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
 
