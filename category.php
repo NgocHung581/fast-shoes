@@ -26,7 +26,7 @@ include('./partials-frontend/header.php');
                     $image_name = $row['category_img'];
 
             ?>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-4 mb-2">
                 <a href="#" class="categoryPage__item">
                     <div class="categoryPage__item-img">
 

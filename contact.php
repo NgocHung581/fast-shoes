@@ -57,7 +57,7 @@ include('./partials-frontend/header.php');
                                         <span class="form-message"></span>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-xl-6">
                                     <div class="form__field" id="form__contact-field">
                                         <div class="form-group" id="form__contact-group">
                                             <input required="required" type="text" name="email" rules="required|email"
@@ -67,7 +67,7 @@ include('./partials-frontend/header.php');
                                         <span class="form-message"></span>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-xl-6">
                                     <div class="form__field" id="form__contact-field">
                                         <div class="form-group" id="form__contact-group">
                                             <input required="required" type="tel" name="tel" rules="required" />

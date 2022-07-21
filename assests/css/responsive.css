@@ -86,6 +86,8 @@
 .order th {
   min-width: 100px;
 }
+@media screen and (max-width: 1199.98) {
+}
 @media screen and (max-width: 991.98px) {
   .header__content {
     max-width: 100%;
@@ -100,6 +102,9 @@
   /* .modal td {
     font-size: 10px;
   } */
+  .cart__container {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 767.98px) {
@@ -136,6 +141,16 @@
   .go-to-top {
     width: 40px;
     height: 40px;
+  }
+}
+@media screen and (max-width: 415px) {
+  .footer__social-link {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 321px) {
+  .slider__item form {
+    top: 100px;
   }
 }
 
