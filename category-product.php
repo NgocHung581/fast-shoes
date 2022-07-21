@@ -21,8 +21,13 @@ include('./partials-frontend/header.php');
             $row = mysqli_fetch_assoc($res);
 
             $category_name = $row['category_name'];
-        } else {
-            header('location:' . SITEURL);
+        } 
+        else {
+            ?>
+            <script>
+            <?php echo ("location.href = '" . SITEURL . ";"); ?>
+            </script>   
+            <?php        
         }
 
         ?>
