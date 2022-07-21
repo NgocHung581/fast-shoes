@@ -21,18 +21,20 @@ include('./partials-frontend/header.php');
             $row = mysqli_fetch_assoc($res);
 
             $category_name = $row['category_name'];
-        } else {
-            header('location:' . SITEURL);
+        } 
+        else {
+            ?>
+            <script>
+            <?php echo ("location.href = '" . SITEURL . ";"); ?>
+            </script>   
+            <?php        
         }
 
         ?>
-        <div class="search">
-            <div class="container">
-                <h1 class="search__title">
-                    Sản phẩm từ danh mục <span>"<?php echo $category_name; ?>"</span>
-                </h1>
-            </div>
-        </div>
+
+        <h1 class="search__title">
+            Sản phẩm từ danh mục <span>"<?php echo $category_name; ?>"</span>
+        </h1>
     </div>
 </div>
 

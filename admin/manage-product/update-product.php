@@ -23,6 +23,8 @@ include('../partials/header.php');
                     $featured = $row['product_featured'];
                     $active = $row['product_active'];
                     $slider = $row['slider'];
+                    $category_id = $row['category_id'];
+
                 } else {
                     $_SESSION["no-product-found"] = "<div class='text-danger'>Không thể tìm thấy sản phẩm</div>";
                     header("location:" . SITEURL . "admin/manage-product/manage-product.php");
@@ -36,6 +38,37 @@ include('../partials/header.php');
             <div class="form-group row mb-10">
                 <label for="name" class="col-4">Tên sản phẩm:</label>
                 <input type="text" name="name" value="<?php echo $name; ?>" id="name" class="col-8">
+            </div>
+            <div class="form-group row mb-10">
+                <label for="category" class="col-4">Danh mục:</label>
+                <select name="category" class="col-8">
+                    <!-- Create PHP code to display categories from db -->
+                    <?php
+                        // 1. Create  SQL to get all active categories from db            
+                        $sql2 = "SELECT * FROM tbl_category WHERE category_active='Yes'";
+                        // Executing query
+                        $res2 = mysqli_query($conn, $sql2);
+                        // Counts rows to check categories
+                        $count2 = mysqli_num_rows($res2);
+                        // If count > 0, have category or not have
+                        if ($count2 > 0){
+                            while($row2 = mysqli_fetch_assoc($res2)){
+                                $id_ = $row2['category_id'];
+                                $name = $row2['category_name'];
+                                if ($id_ == $category_id){
+                                    ?>
+                                    <option selected="selected" value=<?php echo $id_;?>><?php echo $name;?></option>
+                                    <?php
+                                }
+                                else{
+                                    ?>
+                                    <option value=<?php echo $id_;?>><?php echo $name;?></option>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
+                </select>
             </div>
             <div class="form-group row mb-10">
                 <label for="" class="col-4">Hình ảnh hiện tại:</label>
@@ -107,6 +140,7 @@ include('../partials/header.php');
             $featured = $_POST['featured'];
             $active = $_POST['active'];
             $slider = $_POST['slider'];
+            $category = $_POST['category'];
 
             if (isset($_FILES['image']['name'])) {
                 $img_name = $_FILES['image']['name'];
@@ -143,9 +177,9 @@ include('../partials/header.php');
             } else {
                 $img_name = $current_image;
             }
-
             $new_sql = "UPDATE tbl_product SET
                             product_name = '$name',
+                            category_id = '$category',
                             product_img = '$img_name',
                             product_price = '$price',
                             product_featured = '$featured',

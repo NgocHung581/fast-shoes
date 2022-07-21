@@ -24,7 +24,7 @@ include('../partials/header.php');
                 <input type="text" name="name" placeholder="Tên sản phẩm" id="name" class="col-8">
             </div>
             <div class="form-group row mb-10">
-                <label for="name" class="col-4">Giá tiền:</label>
+                <label for="price" class="col-4">Giá tiền:</label>
                 <input type="number" name="price" placeholder="Giá tiền" id="name" class="col-8">
             </div>
             <div class="form-group row mb-10">
@@ -32,7 +32,7 @@ include('../partials/header.php');
                 <input type="file" name="image" id="image" class="col-8">
             </div>
             <div class="form-group row mb-10">
-                <label for="name" class="col-4">Danh mục:</label>
+                <label for="category" class="col-4">Danh mục:</label>
                 <select name="category" class="col-8">
                     <!-- Create PHP code to display categories from db -->
                     <?php
