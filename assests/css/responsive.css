@@ -80,6 +80,12 @@
 .header__mobile-navigation-link:hover {
   color: var(--primary-color);
 }
+.order__customer th {
+  min-width: 122px;
+}
+.order th {
+  min-width: 100px;
+}
 @media screen and (max-width: 991.98px) {
   .header__content {
     max-width: 100%;
@@ -91,9 +97,9 @@
   .slider {
     height: 500px;
   }
-  .modal td {
+  /* .modal td {
     font-size: 10px;
-  }
+  } */
 }
 
 @media screen and (max-width: 767.98px) {
@@ -121,7 +127,11 @@
     max-width: 100%;
   }
 }
-
+@media screen and (max-width: 594px) {
+  .order__customer .nav-link {
+    padding: 10px 6px;
+  }
+}
 @media screen and (max-width: 575.98px) {
   .go-to-top {
     width: 40px;
