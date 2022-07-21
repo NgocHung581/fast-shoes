@@ -110,7 +110,7 @@ if (isset($_POST['submit'])) {
             $type = $row['type'];
 
             if ($type == 'user') {
-                $_SESSION['user_id'] = "$id";
+                $_SESSION['user_id'] = $id;
                 $_SESSION["user"] = "$fullname";
                 header("location:" . SITEURL);
             }

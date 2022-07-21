@@ -2,6 +2,7 @@
 include('../../config/constants.php');
 
 if (isset($_GET['cart_id']) and isset($_GET['price']) and isset($_GET['quantity'])) {
+    echo $page = $_GET['page-order'];
     $cart_id = $_GET['cart_id'];
     $price = $_GET['price'];
     $quantity = $_GET['quantity'];
@@ -17,6 +18,10 @@ if (isset($_GET['cart_id']) and isset($_GET['price']) and isset($_GET['quantity'
     $res = mysqli_query($conn, $sql);
 
     if ($res == true) {
-        header("location:" . SITEURL . "cart.php");
+        if ($page == 'order') {
+            header("location:" . SITEURL . "order.php");
+        } else {
+            header("location:" . SITEURL . "cart.php");
+        }
     }
 }

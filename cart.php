@@ -113,19 +113,11 @@ include('./partials-frontend/header.php');
                                 </td>
 
                                 <td><?php
-                                                    if (!function_exists('currency_format')) {
-                                                        function currency_format($number, $suffix = 'đ')
-                                                        {
-                                                            if (!empty($number)) {
-                                                                return number_format($number, 0, ',', '.') . "{$suffix}";
-                                                            }
-                                                        }
-                                                    }
                                                     echo currency_format($cartProductPrice, " VND");
                                                     ?>
                                 </td>
-                                <input type="text" hidden name='cart_id' value="<?php echo $cartId; ?>">
-                                <input type="text" hidden name='price' value="<?php echo $cartProductPrice; ?>">
+                                <input type="hidden" name='cart_id' value="<?php echo $cartId; ?>">
+                                <input type="hidden" name='price' value="<?php echo $cartProductPrice; ?>">
                                 <td>
                                     <input class="quanlity" type="number" min="1" value="<?php
                                                                                                             if ($cartProductQuantity == 0) {
@@ -139,24 +131,8 @@ include('./partials-frontend/header.php');
                                 <td>
                                     <?php
                                                     if ($cartTotalPrice == 0) {
-                                                        if (!function_exists('currency_format')) {
-                                                            function currency_format($number, $suffix = 'đ')
-                                                            {
-                                                                if (!empty($number)) {
-                                                                    return number_format($number, 0, ',', '.') . "{$suffix}";
-                                                                }
-                                                            }
-                                                        }
                                                         echo currency_format($cartProductPrice, " VND");
                                                     } else {
-                                                        if (!function_exists('currency_format')) {
-                                                            function currency_format($number, $suffix = 'đ')
-                                                            {
-                                                                if (!empty($number)) {
-                                                                    return number_format($number, 0, ',', '.') . "{$suffix}";
-                                                                }
-                                                            }
-                                                        }
                                                         echo currency_format($cartTotalPrice, " VND");
                                                     }
                                                     ?>
@@ -182,6 +158,14 @@ include('./partials-frontend/header.php');
                     </button>
                 </a>
             </div>
+
+            <?php
+
+                            if ($res == true) {
+                                $count = mysqli_num_rows($res);
+
+                                if ($count > 0) {
+            ?>
             <div class="col-2">
                 <table class="table">
                     <thead>
@@ -196,27 +180,25 @@ include('./partials-frontend/header.php');
                             <td>Tổng</td>
                             <td>
                                 <?php
-                                if (!function_exists('currency_format')) {
-                                    function currency_format($number, $suffix = 'đ')
-                                    {
-                                        if (!empty($number)) {
-                                            return number_format($number, 0, ',', '.') . "{$suffix}";
-                                        }
-                                    }
-                                }
-                                echo currency_format($total, " VND");
-                                ?>
+                                        echo currency_format($total, " VND");
+                                        ?>
                             </td>
                         </tr>
-                        <?php
-                        }
-                    ?>
 
                     </tbody>
                 </table>
-                <a href="order.php" class="btn btn-primary w-100">
-                    Đặt hàng
-                </a>
+                <form action="" method="post">
+                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                    <button type="submit" name="order-submit" class="btn btn-primary w-100">
+                        Đặt hàng
+                    </button>
+                </form>
+                <?php
+                                }
+                            }
+                        }
+            ?>
+
             </div>
         </div>
     </div>
@@ -224,4 +206,16 @@ include('./partials-frontend/header.php');
 
 <?php
 include('./partials-frontend/footer.php');
+?>
+
+<?php
+if (isset($_POST['order-submit'])) {
+    $user_id = $_POST['user_id'];
+    $_SESSION['order-user-id'] = $user_id;
+?>
+<script>
+<?php echo ("location.href = '" . SITEURL . "order.php';"); ?>
+</script>
+<?php
+}
 ?>

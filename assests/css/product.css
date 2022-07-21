@@ -17,6 +17,10 @@
   width: 100%;
 }
 
+.product__item-img {
+  height: 60%;
+}
+
 .product__item-img img {
   height: 100%;
   width: 100%;

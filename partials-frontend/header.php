@@ -1,3 +1,7 @@
+<?php
+include('convert-money.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +72,9 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="header__cart-quantity">0</span>
                     </a>
+
+
+
                     <?php
                     if (isset($_SESSION["user"])) {
                     ?>
@@ -99,14 +106,6 @@
                                     <div class="cart__item-description">
                                         <h3 class="cart__item-name"><?php echo $product_name ?></h3>
                                         <p class="cart__item-price"><?php
-                                                                                    if (!function_exists('currency_format')) {
-                                                                                        function currency_format($number, $suffix = 'đ')
-                                                                                        {
-                                                                                            if (!empty($number)) {
-                                                                                                return number_format($number, 0, ',', '.') . "{$suffix}";
-                                                                                            }
-                                                                                        }
-                                                                                    }
                                                                                     echo currency_format($product_price, " VND");
                                                                                     ?>
                                         </p>

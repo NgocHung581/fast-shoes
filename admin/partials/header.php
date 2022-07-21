@@ -1,5 +1,6 @@
 <?php
 include('../../config/constants.php');
+include('../../partials-frontend/convert-money.php');
 
 if (!isset($_SESSION['admin'])) {
     header("location:" . SITEURL . "login.php");

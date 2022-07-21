@@ -132,14 +132,6 @@ include('./partials-frontend/header.php');
                         <div class="favourite__item-name"><?php echo $name; ?></div>
                         <div class="favourite__item-price">
                             <?php
-                                    if (!function_exists('currency_format')) {
-                                        function currency_format($number, $suffix = 'đ')
-                                        {
-                                            if (!empty($number)) {
-                                                return number_format($number, 0, ',', '.') . "{$suffix}";
-                                            }
-                                        }
-                                    }
                                     echo currency_format($price, " VND");
                                     ?>
                         </div>
@@ -181,7 +173,7 @@ include('./partials-frontend/header.php');
 <div class="category mt-45">
     <div class="container">
         <h2 class="category__title">Danh mục nổi bật</h2>
-        <div class="row">
+        <div class="row gy-4">
             <?php
 
             $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 2";
@@ -198,7 +190,7 @@ include('./partials-frontend/header.php');
 
             ?>
 
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-4">
                 <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
                     <div class="category__item-img">
 

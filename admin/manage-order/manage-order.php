@@ -22,10 +22,39 @@ include('../partials/header.php');
                 </tr>
             </thead>
             <tbody>
+                <?php
+                $sql = "SELECT * FROM tbl_order";
+
+                $res = mysqli_query($conn, $sql);
+
+                if ($res == true) {
+                    $count = mysqli_num_rows($res);
+                    $stt = 1;
+
+                    if ($count > 0) {
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            $order_id = $row['order_id'];
+                            $order_date = $row['order_date'];
+                            $order_status = $row['order_status'];
+                            $total_price = $row['total_price'];
+
+                            $product_name = explode(',', $row['product_name']);
+                            $product_image = explode(',', $row['product_image']);
+                            $product_size = explode(',', $row['product_size']);
+                            $product_price = explode(',', $row['product_price']);
+                            $product_quantity = explode(',', $row['product_quantity']);
+
+                            $customer_id = $row['customer_id'];
+                            $customer_fullname = $row['customer_fullname'];
+                            $customer_email = $row['customer_email'];
+                            $customer_phone = $row['customer_phone'];
+                            $customer_address = $row['customer_address'];
+
+                ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>20/7/2022</td>
-                    <td class="text-primary">Đã đặt hàng</td>
+                    <th scope="row"><?php echo $stt++; ?></th>
+                    <td><?php echo $order_date; ?></td>
+                    <td class="text-primary"><?php echo $order_status; ?></td>
                     <td class="text-decoration-underline text-primary align-middle" style="cursor: pointer;"
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Ấn để xem
@@ -56,20 +85,27 @@ include('../partials/header.php');
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                            for ($i = 0; $i <=  count($product_name) - 1; $i++) {
+                                                                echo $product_name[$i];
+                                                            ?>
                                                 <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Nike</td>
-                                                    <td><img src="../../assests/images/product/nike.webp" alt=""
-                                                            class="w-25 h-25"></td>
-                                                    <td>1.200.000 VNĐ</td>
-                                                    <td>1</td>
-                                                    <td>1.200.000 VNĐ</td>
+                                                    <th scope="row"><?php echo $i + 1; ?></th>
+                                                    <td><?php echo $product_name[$i]; ?></td>
+                                                    <td><img src="../../assests/images/product/<?php echo $product_image[$i]; ?>"
+                                                            alt="" class="w-25 h-25"></td>
+                                                    <td><?php echo currency_format($product_price[$i], " VND"); ?></td>
+                                                    <td><?php echo $product_quantity[$i]; ?></td>
+                                                    <td><?php echo currency_format($product_price[$i] * $product_quantity[$i], " VND"); ?>
+                                                    </td>
                                                 </tr>
-
+                                                <?php
+                                                            }
+                                                            ?>
                                             </tbody>
                                             <tfoot>
                                                 <td class="text-end text-danger fw-bold" colspan="6">Tổng tiền:
-                                                    1.200.000 VNĐ</td>
+                                                    <?php echo currency_format($total_price, " VND"); ?></td>
                                             </tfoot>
                                         </table>
                                     </div>
@@ -81,16 +117,28 @@ include('../partials/header.php');
                             </div>
                         </div>
                     </td>
-                    <td>2.000.000 VNĐ</td>
-                    <td>KH1</td>
-                    <td>email@gmail.com</td>
-                    <td>012345789</td>
-                    <td style="max-width: 270px">Thành phố hồ chí minh</td>
+                    <td><?php echo currency_format($total_price, " VND"); ?></td>
+                    <td>KH<?php echo $customer_id; ?></td>
+                    <td><?php echo $customer_email; ?></td>
+                    <td><?php echo $customer_phone; ?></td>
+                    <td style="max-width: 270px"><?php echo $customer_address; ?></td>
                     <td>
-                        <a class="btn btn-primary" href="update-order.php">Cập nhật</a>
+                        <?php
+                                    if ($order_status != "Đã hủy") {
+                                        echo '<a class="btn btn-primary" href="update-order.php">Cập nhật</a>';
+                                    }
+                                    ?>
                     </td>
                 </tr>
-
+                <?php
+                        }
+                    } else {
+                        echo "<tr>
+                                <td colspan='10'>Chưa có đơn hàng nào.</td>
+                            </tr>?";
+                    }
+                }
+                ?>
             </tbody>
         </table>
     </div>

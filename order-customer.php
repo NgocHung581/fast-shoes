@@ -46,17 +46,53 @@ include('./partials-frontend/header.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            if (isset($_SESSION['user_id'])) {
+                                $user_id = $_SESSION['user_id'];
+
+                                $sql = "SELECT * FROM tbl_order WHERE customer_id = $user_id";
+
+                                $res = mysqli_query($conn, $sql);
+
+                                if ($res == true) {
+                                    $count = mysqli_num_rows($res);
+                                    if ($count > 0) {
+                                        while ($row = mysqli_fetch_assoc($res)) {
+                                            $order_id = $row['order_id'];
+                                            $order_date = $row['order_date'];
+                                            $order_status = $row['order_status'];
+                                            $total_price = $row['total_price'];
+
+                                            $product_name = explode(',', $row['product_name']);
+                                            $product_image = explode(',', $row['product_image']);
+                                            $product_size = explode(',', $row['product_size']);
+                                            $product_price = explode(',', $row['product_price']);
+
+                                            $customer_fullname = $row['customer_fullname'];
+                                            $customer_email = $row['customer_email'];
+                                            $customer_phone = $row['customer_phone'];
+                                            $customer_address = $row['customer_address'];
+                                            $product_quantity = explode(',', $row['product_quantity']);
+                                            $order_quantity = 0;
+                                            foreach ($product_quantity as $item) {
+                                                $order_quantity += $item;
+                                            }
+                            ?>
+
                             <tr>
                                 <!-- Button trigger modal -->
-                                <td data-toggle="modal" data-target="#DH01234">
-                                    DH01234
+                                <td data-toggle="modal" data-target="#<?php echo "DH" . $order_id; ?>"
+                                    class="link-primary text-decoration-underline">
+                                    <?php echo "DH" . $order_id; ?>
                                     <!-- Modal -->
-                                    <div class="modal fade " id="DH01234" tabindex="-1" role="dialog"
-                                        aria-labelledby="DH01234Title" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+                                    <div class="modal fade " id="<?php echo "DH" . $order_id; ?>" tabindex="-1"
+                                        role="dialog" aria-labelledby="<?php echo "DH" . $order_id; ?>Title"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+                                            role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h2 class="modal-title" id="DH01234Title">
+                                                    <h2 class="modal-title" id="<?php echo "DH" . $order_id; ?>Title">
                                                         Chi tiết đơn hàng
                                                     </h2>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -70,29 +106,43 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6 ">
-                                                                        Mã đơn hàng: ĐH01234
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Mã đơn hàng:
+                                                                        <span
+                                                                            class="fw-bold">DH<?php echo $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 ">
-                                                                        Ngày đặt hàng: 17/07/2022
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Ngày đặt hàng:
+                                                                        <span
+                                                                            class="fw-bold"><?php echo $order_status; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 ">Khách hàng: PHD</div>
-                                                                    <div class="col-12 col-xl-6 ">
-                                                                        Số điện thoại: 01234567
+                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                        <span
+                                                                            class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 ">
-                                                                        Email: abc@gmail.com
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Số điện thoại:
+                                                                        <span
+                                                                            class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 ">
-                                                                        Địa chỉ: 68 Đặng Thùy Trâm
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Email:
+                                                                        <span
+                                                                            class="fw-bold"><?php echo $customer_email; ?></span>
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Địa chỉ:
+                                                                        <span
+                                                                            class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-12 text-start">
                                                             <h3>Sản phẩm</h3>
-                                                            <p style="font-size: 24px">
-                                                                Tổng tiền: 1.200.000 <sup>₫</sup>
+                                                            <p style="font-size: 24px" class="text-dark">
+                                                                Tổng tiền: <span
+                                                                    class="fw-bold"><?php echo currency_format($total_price, " VND"); ?></span>
                                                             </p>
                                                             <div class="table-responsive">
                                                                 <table class="table table-hover">
@@ -105,30 +155,41 @@ include('./partials-frontend/header.php');
                                                                             <th>Giá tiền</th>
                                                                             <th>Số lượng</th>
                                                                             <th>Thành tiền</th>
-                                                                            <th>Trạng thái</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
+                                                                        <?php
+                                                                                        for ($i = 0; $i <=  count($product_name) - 1; $i++) {
+                                                                                        ?>
                                                                         <tr>
                                                                             <td colspan="3">
                                                                                 <div
                                                                                     class="row align-items-center product">
                                                                                     <div class="col-5">
                                                                                         <img class="img-fluid"
-                                                                                            src="./assests/images/product/nike.webp"
+                                                                                            src="./assests/images/product/<?php echo $product_image[$i]; ?>"
                                                                                             alt="" />
                                                                                     </div>
                                                                                     <div class="col-7">
-                                                                                        <p class="mb-0">Nike</p>
+                                                                                        <p class="mb-0">
+                                                                                            <?php echo $product_name[$i]; ?>
+                                                                                        </p>
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>1</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>Đã đặt hàng</td>
+                                                                            <td><?php echo $product_size[$i]; ?>
+                                                                            </td>
+                                                                            <td><?php echo currency_format($product_price[$i], " VND"); ?>
+                                                                            </td>
+                                                                            <td><?php echo $product_quantity[$i]; ?>
+                                                                            </td>
+                                                                            <td><?php echo currency_format($product_price[$i] * $product_quantity[$i], " VND"); ?>
+                                                                            </td>
                                                                         </tr>
+                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -141,10 +202,13 @@ include('./partials-frontend/header.php');
                                         </div>
                                     </div>
                                 </td>
-                                <td>17/07/2022</td>
-                                <td>1</td>
-                                <td>Đã đặt hàng</td>
+                                <td><?php echo $order_date; ?></td>
+                                <td><?php echo $order_quantity; ?></td>
+                                <td><?php echo $order_status; ?></td>
                                 <td>
+                                    <?php
+                                                    if ($order_status == "Đã đặt hàng") {
+                                                    ?>
                                     <!-- Button trigger modal -->
                                     <i data-toggle="modal" data-target="#cancelModal" class="fa fa-times"></i>
 
@@ -176,127 +240,23 @@ include('./partials-frontend/header.php');
                                             </div>
                                         </div>
                                     </div>
+                                    <?php
+                                                    }
+                                                    ?>
+
                                 </td>
                             </tr>
-                            <tr>
-                                <!-- Button trigger modal -->
-                                <td data-toggle="modal" data-target="#DH04321">
-                                    DH04321
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="DH04321" tabindex="-1" role="dialog"
-                                        aria-labelledby="DH04321Title" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h2 class="modal-title" id="DH04321Title">
-                                                        Chi tiết đơn hàng
-                                                    </h2>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-6 mb-3">
-                                                            <div class="order__detail-customer text-start">
-                                                                <h3>Thông tin khách hàng</h3>
-                                                                <div class="row">
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Mã đơn hàng: DH04321
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Ngày đặt hàng: 16/07/2022
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6">Khách hàng: DHP</div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Số điện thoại: 0387482374
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Email: xyz@gmail.com
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Địa chỉ: 68 Đặng Thùy Trâm
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 text-start">
-                                                            <h3>Sản phẩm</h3>
-                                                            <p style="font-size: 24px">
-                                                                Tổng tiền: 2.400.000 <sup>₫</sup>
-                                                            </p>
-                                                            <div class="table-responsive">
-                                                                <table class="table table-hover">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th class="text-center" colspan="3">
-                                                                                Sản phẩm
-                                                                            </th>
-                                                                            <th>Size</th>
-                                                                            <th>Giá tiền</th>
-                                                                            <th>Số lượng</th>
-                                                                            <th>Thành tiền</th>
-                                                                            <th>Trạng thái</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td colspan="3">
-                                                                                <div
-                                                                                    class="row align-items-center product">
-                                                                                    <div class="col-5">
-                                                                                        <img class="img-fluid"
-                                                                                            src="./assests/images/product/nike.webp"
-                                                                                            alt="" />
-                                                                                    </div>
-                                                                                    <div class="col-7">
-                                                                                        <p class="mb-0">Nike</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>1</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>Chờ giao hàng</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td colspan="3">
-                                                                                <div
-                                                                                    class="row align-items-center product">
-                                                                                    <div class="col-5">
-                                                                                        <img class="img-fluid"
-                                                                                            src="./assests/images/product/nike.webp"
-                                                                                            alt="" />
-                                                                                    </div>
-                                                                                    <div class="col-7">
-                                                                                        <p class="mb-0">Adidas</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>1</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>Chờ giao hàng</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>16/07/2022</td>
-                                <td>2</td>
-                                <td>Chờ giao hàng</td>
-                                <td></td>
-                            </tr>
+
+                            <?php
+                                        }
+                                    } else {
+                                        echo '<tr>
+                                        <td colspan="5" class="text-danger">Bạn chưa có đơn hàng nào.</td>
+                                        </tr>';
+                                    }
+                                }
+                                ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -314,17 +274,51 @@ include('./partials-frontend/header.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $sql2 = "SELECT * FROM tbl_order WHERE customer_id = $user_id AND order_status = 'Đã đặt hàng'";
+
+                                $res2 = mysqli_query($conn, $sql2);
+
+                                if ($res2 == true) {
+                                    $count2 = mysqli_num_rows($res2);
+                                    if ($count2 > 0) {
+                                        while ($row2 = mysqli_fetch_assoc($res2)) {
+                                            $order_id = $row2['order_id'];
+                                            $order_date = $row2['order_date'];
+                                            $order_status = $row2['order_status'];
+                                            $total_price = $row2['total_price'];
+
+                                            $product_name = explode(',', $row2['product_name']);
+                                            $product_image = explode(',', $row2['product_image']);
+                                            $product_size = explode(',', $row2['product_size']);
+                                            $product_price = explode(',', $row2['product_price']);
+
+                                            $customer_fullname = $row2['customer_fullname'];
+                                            $customer_email = $row2['customer_email'];
+                                            $customer_phone = $row2['customer_phone'];
+                                            $customer_address = $row2['customer_address'];
+                                            $product_quantity = explode(',', $row2['product_quantity']);
+                                            $order_quantity = 0;
+                                            foreach ($product_quantity as $item) {
+                                                $order_quantity += $item;
+                                            }
+
+                            ?>
                             <tr>
                                 <!-- Button trigger modal -->
-                                <td data-toggle="modal" data-target="#DH01234Order">
-                                    DH01234
+                                <td data-toggle="modal" data-target="#DH<?php echo "DH" . $order_id; ?>Order"
+                                    class="link-primary text-decoration-underline">
+                                    <?php echo "DH" . $order_id; ?>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="DH01234Order" tabindex="-1" role="dialog"
-                                        aria-labelledby="DH01234OrderTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+                                    <div class="modal fade" id="DH<?php echo "DH" . $order_id; ?>Order" tabindex="-1"
+                                        role="dialog" aria-labelledby="DH<?php echo "DH" . $order_id; ?>OrderTitle"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+                                            role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h2 class="modal-title" id="DH01234OrderTitle">
+                                                    <h2 class="modal-title"
+                                                        id="DH<?php echo "DH" . $order_id; ?>OrderTitle">
                                                         Chi tiết đơn hàng
                                                     </h2>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -338,29 +332,38 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Mã đơn hàng: ĐH01234
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Mã đơn hàng: <span
+                                                                            class="fw-bold">DH<?php echo $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Ngày đặt hàng: 17/07/2022
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Ngày đặt hàng: <span
+                                                                            class="fw-bold"><?php echo $order_status; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">Khách hàng: PHD</div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Số điện thoại: 01234567
+                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                        <span
+                                                                            class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Email: abc@gmail.com
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Số điện thoại: <span
+                                                                            class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Địa chỉ: 68 Đặng Thùy Trâm
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Email: <span
+                                                                            class="fw-bold"><?php echo $customer_email; ?></span>
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Địa chỉ: <span
+                                                                            class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-12 text-start">
                                                             <h3>Sản phẩm</h3>
-                                                            <p style="font-size: 24px">
-                                                                Tổng tiền: 1.200.000 <sup>₫</sup>
+                                                            <p style="font-size: 24px" class="text-dark">
+                                                                Tổng tiền: <span
+                                                                    class="fw-bold"><?php echo currency_format($total_price, " VND"); ?></span>
                                                             </p>
                                                             <div class="table-responsive">
                                                                 <table class="table table-hover">
@@ -373,17 +376,19 @@ include('./partials-frontend/header.php');
                                                                             <th>Giá tiền</th>
                                                                             <th>Số lượng</th>
                                                                             <th>Thành tiền</th>
-                                                                            <th>Trạng thái</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
+                                                                        <?php
+                                                                                    for ($i = 0; $i <=  count($product_name) - 1; $i++) {
+                                                                                    ?>
                                                                         <tr>
                                                                             <td colspan="3">
                                                                                 <div
                                                                                     class="row align-items-center product">
                                                                                     <div class="col-5">
                                                                                         <img class="img-fluid"
-                                                                                            src="./assests/images/product/nike.webp"
+                                                                                            src="./assests/images/product/<?php echo $product_image[$i]; ?>"
                                                                                             alt="" />
                                                                                     </div>
                                                                                     <div class="col-7">
@@ -391,12 +396,17 @@ include('./partials-frontend/header.php');
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>1</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>Đã đặt hàng</td>
+                                                                            <td><?php echo $product_size[$i]; ?></td>
+                                                                            <td><?php echo currency_format($product_price[$i], " VND"); ?>
+                                                                            </td>
+                                                                            <td><?php echo $product_quantity[$i]; ?>
+                                                                            </td>
+                                                                            <td><?php echo currency_format($product_price[$i] * $product_quantity[$i], " VND"); ?>
+                                                                            </td>
                                                                         </tr>
+                                                                        <?php
+                                                                                    }
+                                                                                    ?>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -408,9 +418,9 @@ include('./partials-frontend/header.php');
                                         </div>
                                     </div>
                                 </td>
-                                <td>17/07/2022</td>
-                                <td>1</td>
-                                <td>Đã đặt hàng</td>
+                                <td><?php echo $order_date; ?></td>
+                                <td><?php echo $order_quantity; ?></td>
+                                <td><?php echo $order_status; ?></td>
                                 <td>
                                     <!-- Button trigger modal -->
                                     <i data-toggle="modal" data-target="#cancelModalOrder" class="fa fa-times"></i>
@@ -445,6 +455,18 @@ include('./partials-frontend/header.php');
                                     </div>
                                 </td>
                             </tr>
+                            <?php
+                                        }
+                                    } else {
+                                        echo '<tr>
+                                        <td colspan="5" class="text-danger">Bạn chưa có đơn hàng nào.</td>
+                                        </tr>';
+                                    }
+                                }
+                            ?>
+
+
+
                         </tbody>
                     </table>
                 </div>
@@ -462,17 +484,48 @@ include('./partials-frontend/header.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $sql3 = "SELECT * FROM tbl_order WHERE customer_id = $user_id AND order_status = 'Đang giao hàng'";
+
+                                $res3 = mysqli_query($conn, $sql3);
+
+                                if ($res3 == true) {
+                                    $count3 = mysqli_num_rows($res3);
+                                    if ($count3 > 0) {
+                                        while ($row3 = mysqli_fetch_assoc($res3)) {
+                                            $order_id = $row3['order_id'];
+                                            $order_date = $row3['order_date'];
+                                            $order_status = $row3['order_status'];
+                                            $total_price = $row3['total_price'];
+
+                                            $product_name = explode(',', $row3['product_name']);
+                                            $product_image = explode(',', $row3['product_image']);
+                                            $product_size = explode(',', $row3['product_size']);
+                                            $product_price = explode(',', $row3['product_price']);
+
+                                            $customer_fullname = $row3['customer_fullname'];
+                                            $customer_email = $row3['customer_email'];
+                                            $customer_phone = $row3['customer_phone'];
+                                            $customer_address = $row3['customer_address'];
+                                            $product_quantity = explode(',', $row3['product_quantity']);
+                                            $order_quantity = 0;
+                                            foreach ($product_quantity as $item) {
+                                                $order_quantity += $item;
+                                            }
+                            ?>
                             <tr>
                                 <!-- Button trigger modal -->
-                                <td data-toggle="modal" data-target="#DH04321Delivery">
-                                    DH04321
+                                <td data-toggle="modal" data-target="#<?php echo "DH" . $order_id; ?>Delivery">
+                                    <?php echo "DH" . $order_id; ?>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="DH04321Delivery" tabindex="-1" role="dialog"
-                                        aria-labelledby="DH04321DeliveryTitle" aria-hidden="true">
+                                    <div class="modal fade" id="<?php echo "DH" . $order_id; ?>Delivery" tabindex="-1"
+                                        role="dialog" aria-labelledby="<?php echo "DH" . $order_id; ?>DeliveryTitle"
+                                        aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h2 class="modal-title" id="DH04321DeliveryTitle">
+                                                    <h2 class="modal-title"
+                                                        id="<?php echo "DH" . $order_id; ?>DeliveryTitle">
                                                         Chi tiết đơn hàng
                                                     </h2>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -487,28 +540,36 @@ include('./partials-frontend/header.php');
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
                                                                     <div class="col-12 col-xl-6">
-                                                                        Mã đơn hàng: DH04321
+                                                                        Mã đơn hàng: <span
+                                                                            class="fw-bold">DH<?php echo $order_id; ?></span>
                                                                     </div>
                                                                     <div class="col-12 col-xl-6">
-                                                                        Ngày đặt hàng: 16/07/2022
+                                                                        Ngày đặt hàng: <span
+                                                                            class="fw-bold"><?php echo $order_status; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">Khách hàng: DHP</div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Số điện thoại: 0387482374
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Email: xyz@gmail.com
+                                                                    <div class="col-12 col-xl-6">Khách hàng: <span
+                                                                            class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
                                                                     <div class="col-12 col-xl-6">
-                                                                        Địa chỉ: 68 Đặng Thùy Trâm
+                                                                        Số điện thoại: <span
+                                                                            class="fw-bold"><?php echo $customer_phone; ?></span>
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Email: <span
+                                                                            class="fw-bold"><?php echo $customer_email; ?></span>
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Địa chỉ: <span
+                                                                            class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-12 text-start">
                                                             <h3>Sản phẩm</h3>
-                                                            <p style="font-size: 24px">
-                                                                Tổng tiền: 2.400.000 <sup>₫</sup>
+                                                            <p style="font-size: 24px" class="text-dark">
+                                                                Tổng tiền: <span
+                                                                    class="fw-bold"><?php echo currency_format($total_price, " VND"); ?></span>
                                                             </p>
                                                             <div class="table-responsive">
                                                                 <table class="table table-hover">
@@ -521,17 +582,19 @@ include('./partials-frontend/header.php');
                                                                             <th>Giá tiền</th>
                                                                             <th>Số lượng</th>
                                                                             <th>Thành tiền</th>
-                                                                            <th>Trạng thái</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
+                                                                        <?php
+                                                                                    for ($i = 0; $i <=  count($product_name) - 1; $i++) {
+                                                                                    ?>
                                                                         <tr>
                                                                             <td colspan="3">
                                                                                 <div
                                                                                     class="row align-items-center product">
                                                                                     <div class="col-5">
                                                                                         <img class="img-fluid"
-                                                                                            src="./assests/images/product/nike.webp"
+                                                                                            src="./assests/images/product/<?php echo $product_image[$i]; ?>"
                                                                                             alt="" />
                                                                                     </div>
                                                                                     <div class="col-7">
@@ -539,32 +602,17 @@ include('./partials-frontend/header.php');
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>1</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>Chờ giao hàng</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td colspan="3">
-                                                                                <div
-                                                                                    class="row align-items-center product">
-                                                                                    <div class="col-5">
-                                                                                        <img class="img-fluid"
-                                                                                            src="./assests/images/product/nike.webp"
-                                                                                            alt="" />
-                                                                                    </div>
-                                                                                    <div class="col-7">
-                                                                                        <p class="mb-0">Adidas</p>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <td><?php echo $product_size[$i]; ?></td>
+                                                                            <td><?php echo currency_format($product_price[$i], " VND"); ?>
                                                                             </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>1</td>
-                                                                            <td>1.200.000 <sup>₫</sup></td>
-                                                                            <td>Chờ giao hàng</td>
+                                                                            <td><?php echo $product_quantity[$i]; ?>
+                                                                            </td>
+                                                                            <td><?php echo currency_format($product_price[$i] * $product_quantity[$i], " VND"); ?>
+                                                                            </td>
                                                                         </tr>
+                                                                        <?php
+                                                                                    }
+                                                                                    ?>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -576,11 +624,22 @@ include('./partials-frontend/header.php');
                                         </div>
                                     </div>
                                 </td>
-                                <td>16/07/2022</td>
-                                <td>2</td>
-                                <td>Chờ giao hàng</td>
+                                <td><?php echo $order_date; ?></td>
+                                <td><?php echo $order_quantity; ?></td>
+                                <td><?php echo $order_status; ?></td>
                                 <td></td>
                             </tr>
+                            <?php
+
+                                        }
+                                    } else {
+                                        echo '<tr>
+                                        <td colspan="5" class="text-danger">Bạn chưa có đơn hàng nào.</td>
+                                        </tr>';
+                                    }
+                                }
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -597,6 +656,9 @@ include('./partials-frontend/header.php');
                     <a href="./product.html" class="btn btn-primary">Tiếp tục mua hàng</a>
                 </div>
             </div>
+            <?php
+                            }
+        ?>
         </div>
     </div>
 </section>

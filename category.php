@@ -9,7 +9,7 @@ include('./partials-frontend/header.php');
 <div class="categoryPage">
     <div class="container">
         <h1 class="categoryPage__title">Danh mục tại cửa hàng</h1>
-        <div class="row">
+        <div class="row gy-4">
 
             <?php
 
@@ -26,7 +26,7 @@ include('./partials-frontend/header.php');
                     $image_name = $row['category_img'];
 
             ?>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-4">
                 <a href="#" class="categoryPage__item">
                     <div class="categoryPage__item-img">
 
