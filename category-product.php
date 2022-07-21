@@ -24,7 +24,7 @@ include('./partials-frontend/header.php');
         } else {
         ?>
         <script>
-        <?php echo ("location.href = '" . SITEURL . ";"); ?>
+        <?php echo ("location.href = '" . SITEURL . "';"); ?>
         </script>
         <?php
         }
