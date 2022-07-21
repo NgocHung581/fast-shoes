@@ -11,13 +11,28 @@ include('./partials-frontend/header.php');
 
         <?php
 
-        $search = $_POST['search'];
+        if (isset($_GET['category_id'])) {
+            $category_id = $_GET['category_id'];
+
+            $sql = "SELECT category_name FROM tbl_category WHERE category_id = $category_id";
+
+            $res = mysqli_query($conn, $sql);
+
+            $row = mysqli_fetch_assoc($res);
+
+            $category_name = $row['category_name'];
+        } else {
+            header('location:' . SITEURL);
+        }
 
         ?>
-
-        <h1 class="search__title">
-            Sản phẩm từ tìm kiếm <span>"<?php echo $search; ?>"</span>
-        </h1>
+        <div class="search">
+            <div class="container">
+                <h1 class="search__title">
+                    Sản phẩm từ danh mục <span>"<?php echo $category_name; ?>"</span>
+                </h1>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -27,20 +42,18 @@ include('./partials-frontend/header.php');
 
             <?php
 
-            $search = $_POST['search'];
+            $sql2 = "SELECT * FROM tbl_product WHERE category_id = $category_id";
 
-            $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
+            $res2 = mysqli_query($conn, $sql2);
 
-            $res = mysqli_query($conn, $sql);
+            $count2 = mysqli_num_rows($res2);
 
-            $count = mysqli_num_rows($res);
-
-            if ($count > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $id = $row['product_id'];
-                    $name = $row['product_name'];
-                    $image_name = $row['product_img'];
-                    $price = $row['product_price'];
+            if ($count2 > 0) {
+                while ($row2 = mysqli_fetch_assoc($res2)) {
+                    $id = $row2['product_id'];
+                    $name = $row2['product_name'];
+                    $image_name = $row2['product_img'];
+                    $price = $row2['product_price'];
 
             ?>
 
@@ -96,7 +109,7 @@ include('./partials-frontend/header.php');
             <?php
                 }
             } else {
-                echo "<div class='text-danger'>Không tìm thấy sản phẩm</div>";
+                echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
             }
             ?>
 

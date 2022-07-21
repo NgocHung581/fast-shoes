@@ -36,13 +36,16 @@ include('../partials/header.php');
                             <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn hàng</h5>
+                                        <h5 class="modal-title text-danger fs-2 fw-bold" id="exampleModalLabel">Chi tiết
+                                            đơn
+                                            hàng
+                                        </h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <table class="table table-striped align-middle">
-                                            <thead>
+                                            <thead class="table-info">
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Tên sản phẩm</th>

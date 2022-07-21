@@ -1,4 +1,8 @@
 <?php
+include('./config/constants.php');
+?>
+
+<?php
 include('./partials-frontend/header.php');
 ?>
 

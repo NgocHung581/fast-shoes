@@ -29,6 +29,21 @@ include('./config/constants.php');
                     echo $_SESSION['register'];
                     unset($_SESSION['register']);
                 }
+
+                if (isset($_SESSION['login-require'])) {
+                    echo $_SESSION['login-require'];
+                    unset($_SESSION['login-require']);
+                }
+
+                if (isset($_SESSION['login-incorrect'])) {
+                    echo $_SESSION['login-incorrect'];
+                    unset($_SESSION['login-incorrect']);
+                }
+
+                if (isset($_SESSION['change-password'])) {
+                    echo $_SESSION['change-password'];
+                    unset($_SESSION['change-password']);
+                }
                 ?>
 
                 <div class="form__field">
@@ -50,6 +65,17 @@ include('./config/constants.php');
                 <div class="form-btn">
                     <div class="inner"></div>
                     <button type="submit" name="submit" class="btn">Đăng nhập</button>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <a href="index.php" class="text-decoration-none link-primary"><i
+                                class="fa-solid fa-arrow-left-long"></i>
+                            Quay lại trang chủ</a>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="forget-password.php" class="text-decoration-none link-primary">Quên mật khẩu?</a>
+                    </div>
                 </div>
 
                 <p class="form-register text-center">
@@ -80,12 +106,21 @@ if (isset($_POST['submit'])) {
         if ($count == 1) {
             $row = mysqli_fetch_assoc($res);
             $fullname = $row['fullname'];
+            $id = $row['user_id'];
+            $type = $row['type'];
 
-            $_SESSION["user"] = "$fullname";
-            $_SESSION['admin'] = "$fullname";
-            header("location:" . SITEURL . "admin/manage-home/index.php");
+            if ($type == 'user') {
+                $_SESSION['user_id'] = "$id";
+                $_SESSION["user"] = "$fullname";
+                header("location:" . SITEURL);
+            }
+
+            if ($type == 'admin') {
+                $_SESSION['admin'] = "$fullname";
+                header("location:" . SITEURL . "admin/manage-home/index.php");
+            }
         } else {
-            $_SESSION['login-admin'] = "<div>Tài khoản hoặc mật khẩu không đúng.</div>";
+            $_SESSION['login-incorrect'] = '<div class="text-danger">Tài khoản hoặc mật khẩu không đúng.</div>';
             header("location:" . SITEURL . "login.php");
         }
     }
