@@ -90,10 +90,39 @@ include('./partials-frontend/header.php');
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" style="margin-top: 15px">
+                            <button type="submit" name="submit" class="btn btn-primary" style="margin-top: 15px">
                                 Gửi
                             </button>
                         </form>
+
+                        <?php
+                            if (isset($_POST['submit'])) {
+                                $username = $_POST['username'];
+                                $email = $_POST['email'];
+                                $tel = $_POST['tel'];
+                                $description = $_POST['description'];
+
+                                $sql = "INSERT INTO tbl_contact SET
+                                        contact_username = '$username',
+                                        contact_email = '$email',
+                                        contact_tel = '$tel',
+                                        contact_description = '$description'
+                                        ";
+                                $res = mysqli_query($conn, $sql);
+                          
+                                if ($res == true){
+                                    ?>
+                                        <script>alert("Đã gửi liên hệ thành công")</script>
+                                    <?php    
+                                }
+                                else{
+                                    ?>
+                                        <script>alert("Không thể gửi liên hệ")</script>
+                                    <?php 
+                                }
+                            } 
+                        ?>
+
                     </div>
                 </div>
             </div>

@@ -27,7 +27,7 @@ include('./partials-frontend/header.php');
 
             ?>
             <div class="col-6 col-md-4 col-lg-3">
-                <a href="#" class="categoryPage__item">
+                <a href="category-product.php?category_id=<?php echo $id; ?>" class="categoryPage__item">
                     <div class="categoryPage__item-img">
 
                         <?php

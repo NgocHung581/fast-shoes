@@ -15,6 +15,12 @@ include('./partials-frontend/header.php');
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
+            <?php
+                if(isset($_SESSION["comeback-home"])){
+                    echo $_SESSION["comeback-home"];
+                    unset($_SESSION["comeback-home"]);
+                }
+            ?>
         </div>
     </div>
 </div>
@@ -24,7 +30,7 @@ include('./partials-frontend/header.php');
         <div class="slider__list owl-carousel">
             <?php
 
-            $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' LIMIT 5";
+            $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' LIMIT 3";
 
             $res_slider = mysqli_query($conn, $sql_slider);
 
@@ -184,7 +190,7 @@ include('./partials-frontend/header.php');
         <div class="row">
             <?php
 
-            $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 2";
+            $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 4";
 
             $res = mysqli_query($conn, $sql);
 
