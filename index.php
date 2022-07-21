@@ -77,7 +77,7 @@ include('./partials-frontend/header.php');
                 <div class="about__description">
                     <h2 class="about__description-title">Giới thiệu</h2>
                     <p class="about__description-detail">
-                        Được thành lập từ 2022, với tinh thần mang đến các sản phẩm chất
+                        Được thành lập bởi Dương Hùng Phát vào năm 2022 với tinh thần mang đến các sản phẩm chất
                         lượng, cam kết uy tín và sự tín nhiệm cao nhất từ Khách hàng.
                         <br />
                         <br />
@@ -119,7 +119,7 @@ include('./partials-frontend/header.php');
 
             ?>
 
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
                 <div class="favourite__item">
                     <div class="favourite__item-img">
                         <?php
@@ -204,7 +204,7 @@ include('./partials-frontend/header.php');
 
             ?>
 
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-4 mb-2">
                 <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
                     <div class="category__item-img">
 

@@ -58,7 +58,7 @@ include('./partials-frontend/header.php');
 
             ?>
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
                 <div class="product__item">
                     <div class="product__item-img">
                         <?php
