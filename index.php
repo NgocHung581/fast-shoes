@@ -227,52 +227,53 @@ include('./partials-frontend/header.php');
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="./js/owl.carousel.min.js"></script>
-    <script src="./js/carousel.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="./js/owl.carousel.min.js"></script>
+<script src="./js/carousel.js"></script>
 
-    <?php
-    include('./partials-frontend/footer.php');
-    ?>
+<?php
+include('./partials-frontend/footer.php');
+?>
 
-    <?php
-    if (isset($_POST['cart-submit'])) {
-        $user_id = $_POST['user_id'];
-        $product_id = $_POST['product_id'];
+<?php
+if (isset($_POST['cart-submit'])) {
+    $user_id = $_POST['user_id'];
+    $product_id = $_POST['product_id'];
 
-        $sql = "SELECT * FROM tbl_product WHERE product_id = $product_id";
+    $sql = "SELECT * FROM tbl_product WHERE product_id = $product_id";
 
-        $res = mysqli_query($conn, $sql);
+    $res = mysqli_query($conn, $sql);
 
-        if ($res == true) {
-            $count = mysqli_num_rows($res);
+    if ($res == true) {
+        $count = mysqli_num_rows($res);
 
-            if ($count == 1) {
-                $row = mysqli_fetch_assoc($res);
-                $product_name = $row['product_name'];
-                $product_image = $row['product_img'];
-                $product_price = $row['product_price'];
+        if ($count == 1) {
+            $row = mysqli_fetch_assoc($res);
+            $product_name = $row['product_name'];
+            $product_image = $row['product_img'];
+            $product_price = $row['product_price'];
 
-                $sql2 = "INSERT INTO tbl_cart SET
+            $sql2 = "INSERT INTO tbl_cart SET
                                     product_name = '$product_name',
                                     product_image = '$product_image',
                                     product_price = '$product_price',
                                     user_id = '$user_id'
                                     ";
 
-                $res2 = mysqli_query($conn, $sql2);
+            $res2 = mysqli_query($conn, $sql2);
 
-                if ($res2 == true) {
-                    $_SESSION['cart-user-id'] = $user_id;
-    ?>
-    <script>
-    <?php echo ("location.href = '" . SITEURL . "cart.php';"); ?>
-    </script>
-    <?php
-                }
+            if ($res2 == true) {
+                $_SESSION['cart-user-id'] = $user_id;
+?>
+<script>
+<?php echo ("location.href = '" . SITEURL . "cart.php';"); ?>
+</script>
+<?php
             }
         }
     }
-    ?>
+}
+?>

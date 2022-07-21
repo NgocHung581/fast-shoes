@@ -59,7 +59,9 @@ include('./partials-frontend/header.php');
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <?php
-        include('./partials-frontend/footer.php');
-        ?>
+<?php
+include('./partials-frontend/footer.php');
+?>
