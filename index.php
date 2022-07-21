@@ -229,11 +229,11 @@ if (isset($_POST['cart-submit'])) {
             $product_price = $row['product_price'];
 
             $sql2 = "INSERT INTO tbl_cart SET
-                                product_name = '$product_name',
-                                product_image = '$product_image',
-                                product_price = '$product_price',
-                                user_id = '$user_id'
-                                ";
+                                    product_name = '$product_name',
+                                    product_image = '$product_image',
+                                    product_price = '$product_price',
+                                    user_id = '$user_id'
+                                    ";
 
             $res2 = mysqli_query($conn, $sql2);
 

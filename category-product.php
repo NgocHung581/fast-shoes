@@ -26,13 +26,10 @@ include('./partials-frontend/header.php');
         }
 
         ?>
-        <div class="search">
-            <div class="container">
-                <h1 class="search__title">
-                    Sản phẩm từ danh mục <span>"<?php echo $category_name; ?>"</span>
-                </h1>
-            </div>
-        </div>
+
+        <h1 class="search__title">
+            Sản phẩm từ danh mục <span>"<?php echo $category_name; ?>"</span>
+        </h1>
     </div>
 </div>
 
