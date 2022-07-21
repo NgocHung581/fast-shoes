@@ -78,9 +78,19 @@ include('./partials-frontend/header.php');
                         </div>
                     </div>
                     <div class="product__item-buttons">
-                        <a href="cart.php" class="btn btn-primary product__item-cart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </a>
+                        <form action="" method="POST">
+                            <input type="hidden" name="user_id" value="
+                            <?php
+                            if (isset($_SESSION['user_id'])) {
+                                echo $_SESSION['user_id'];
+                            }
+                            ?>
+                            ">
+                            <input type="hidden" name="product_id" value="<?php echo $id ?>">
+                            <button type="submit" name="cart-submit" class="btn btn-primary product__item-cart">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </form>
                         <a href="order.php" class="btn btn-primary product__item-order">
                             <i class="fa-solid fa-bag-shopping"></i>
                         </a>
@@ -101,4 +111,44 @@ include('./partials-frontend/header.php');
 
 <?php
 include('./partials-frontend/footer.php');
+?>
+
+<?php
+if (isset($_POST['cart-submit'])) {
+    $user_id = $_POST['user_id'];
+    $product_id = $_POST['product_id'];
+
+    $sql2 = "SELECT * FROM tbl_product WHERE product_id = $product_id";
+
+    $res2 = mysqli_query($conn, $sql2);
+
+    if ($res2 == true) {
+        $count2 = mysqli_num_rows($res2);
+
+        if ($count2 == 1) {
+            $row = mysqli_fetch_assoc($res2);
+            $product_name = $row['product_name'];
+            $product_image = $row['product_img'];
+            $product_price = $row['product_price'];
+
+            $sql3 = "INSERT INTO tbl_cart SET
+                                    product_name = '$product_name',
+                                    product_image = '$product_image',
+                                    product_price = '$product_price',
+                                    user_id = '$user_id'
+                                    ";
+
+            $res3 = mysqli_query($conn, $sql3);
+
+            if ($res3 == true) {
+                $_SESSION['cart-user-id'] = $user_id;
+?>
+<script>
+<?php echo ("location.href = '" . SITEURL . "cart.php';"); ?>
+</script>
+<?php
+            }
+        }
+    }
+}
 ?>

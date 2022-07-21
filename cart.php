@@ -31,8 +31,10 @@ include('./partials-frontend/header.php');
                             $user_id = $_SESSION['cart-user-id'];
 
                             $sql = "SELECT * FROM tbl_cart WHERE user_id = $user_id";
+                            $sql2 = "DELETE FROM tbl_cart WHERE user_id = 0";
 
                             $res = mysqli_query($conn, $sql);
+                            $res2 = mysqli_query($conn, $sql2);
 
                             if ($res == true) {
                                 $count = mysqli_num_rows($res);
@@ -110,7 +112,18 @@ include('./partials-frontend/header.php');
                                     </select>
                                 </td>
 
-                                <td><?php echo $cartProductPrice; ?> <sup>₫</sup></td>
+                                <td><?php
+                                                    if (!function_exists('currency_format')) {
+                                                        function currency_format($number, $suffix = 'đ')
+                                                        {
+                                                            if (!empty($number)) {
+                                                                return number_format($number, 0, ',', '.') . "{$suffix}";
+                                                            }
+                                                        }
+                                                    }
+                                                    echo currency_format($cartProductPrice, " VND");
+                                                    ?>
+                                </td>
                                 <input type="text" hidden name='cart_id' value="<?php echo $cartId; ?>">
                                 <input type="text" hidden name='price' value="<?php echo $cartProductPrice; ?>">
                                 <td>
@@ -126,12 +139,27 @@ include('./partials-frontend/header.php');
                                 <td>
                                     <?php
                                                     if ($cartTotalPrice == 0) {
-                                                        echo $cartProductPrice;
+                                                        if (!function_exists('currency_format')) {
+                                                            function currency_format($number, $suffix = 'đ')
+                                                            {
+                                                                if (!empty($number)) {
+                                                                    return number_format($number, 0, ',', '.') . "{$suffix}";
+                                                                }
+                                                            }
+                                                        }
+                                                        echo currency_format($cartProductPrice, " VND");
                                                     } else {
-                                                        echo $cartTotalPrice;
+                                                        if (!function_exists('currency_format')) {
+                                                            function currency_format($number, $suffix = 'đ')
+                                                            {
+                                                                if (!empty($number)) {
+                                                                    return number_format($number, 0, ',', '.') . "{$suffix}";
+                                                                }
+                                                            }
+                                                        }
+                                                        echo currency_format($cartTotalPrice, " VND");
                                                     }
                                                     ?>
-                                    <sup>₫</sup>
                                 </td>
                                 <td><button type="submit" class="btn btn-update">Cập nhật</button>
                                 </td>
@@ -166,9 +194,19 @@ include('./partials-frontend/header.php');
                         <tr class="order__total">
 
                             <td>Tổng</td>
-                            <?php
-                            echo "<td>$total <sup>₫</sup></td>";
-                            ?>
+                            <td>
+                                <?php
+                                if (!function_exists('currency_format')) {
+                                    function currency_format($number, $suffix = 'đ')
+                                    {
+                                        if (!empty($number)) {
+                                            return number_format($number, 0, ',', '.') . "{$suffix}";
+                                        }
+                                    }
+                                }
+                                echo currency_format($total, " VND");
+                                ?>
+                            </td>
                         </tr>
                         <?php
                         }
