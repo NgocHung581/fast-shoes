@@ -94,6 +94,7 @@ a:hover {
 }
 
 /* Header */
+
 .header {
   background-color: var(--background-color);
   height: var(--height-header);
