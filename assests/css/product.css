@@ -17,10 +17,6 @@
   width: 100%;
 }
 
-.product__item-img {
-  height: 50%;
-}
-
 .product__item-img img {
   height: 100%;
   width: 100%;
@@ -31,11 +27,15 @@
   padding: 10px 10px;
   height: 50%;
   transition: all 0.5s ease-out;
+  width: 100%;
 }
 
 .product__item-name {
   margin-bottom: 0;
   color: #797979;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .product__item-price {

@@ -76,8 +76,9 @@
   text-align: justify;
 }
 
-.about__img img {
+.about img {
   border-radius: 20px;
+  width: 100%;
 }
 
 /* favourite */
@@ -132,6 +133,7 @@
 }
 
 .favourite__item-description {
+  width: 100%;
   text-align: center;
   color: black;
   position: absolute;
@@ -144,7 +146,7 @@
 }
 
 .favourite__item-name {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
 }
 

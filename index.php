@@ -37,19 +37,19 @@ include('./partials-frontend/header.php');
 
                         ?>
 
-                        <div class="slider__item">
-                            <img src="./assests/images/product/<?php echo $product_img; ?>" alt="" />
-                            <h1><?php echo $product_name; ?></h1>
-                            <a href="cart.php" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                        </div>
+            <div class="slider__item">
+                <img src="./assests/images/product/<?php echo $product_img; ?>" alt="" />
+                <h1><?php echo $product_name; ?></h1>
+                <a href="cart.php" class="btn btn-primary">Thêm vào giỏ hàng</a>
+            </div>
 
-                        <?php
+            <?php
                     }
                 }
                 else{
                     echo "<div class='text-danger'>Slider không có sẵn</div>";
                 }
-            ?>  
+            ?>
         </div>
     </div>
 </div>
@@ -57,7 +57,7 @@ include('./partials-frontend/header.php');
 <div class="about mt-45">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="about__description">
                     <h2 class="about__description-title">Giới thiệu</h2>
                     <p class="about__description-detail">
@@ -72,10 +72,10 @@ include('./partials-frontend/header.php');
                     </p>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="about__img text-end">
-                    <img src="./assests/images/logo.png" alt="" />
-                </div>
+            <div class="col-12 col-md-6">
+
+                <img class="img-fluid" src="./assests/images/logo.png" alt="" />
+
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@ include('./partials-frontend/header.php');
 
             ?>
 
-            <div class="col-3">
+            <div class="col-6 col-md-4 col-lg-3">
                 <div class="favourite__item">
                     <div class="favourite__item-img">
                         <?php
@@ -188,7 +188,7 @@ include('./partials-frontend/header.php');
 
             ?>
 
-            <div class="col-6">
+            <div class="col-6 col-md-4 col-lg-3">
                 <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
                     <div class="category__item-img">
 

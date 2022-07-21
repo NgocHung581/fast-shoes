@@ -16,7 +16,7 @@ include('./partials-frontend/header.php');
     <div class="contact__content">
         <div class="container">
             <div class="row">
-                <div class="col-5">
+                <div class="col-12 col-md-5 mb-5">
                     <div class="contact__info">
                         <h2>Thông tin liên hệ</h2>
                         <ul>
@@ -39,7 +39,7 @@ include('./partials-frontend/header.php');
                         </ul>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-12 col-md-7">
                     <div class="contact__form">
                         <h2>Gửi thắc mắc cho chúng tôi</h2>
                         <p>

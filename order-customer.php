@@ -8,7 +8,7 @@ include('./partials-frontend/header.php');
 ?>
 
 <section class="order__customer">
-    <div class="container">
+    <div class="container order__mobile">
         <h2>Đơn hàng của bạn</h2>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
@@ -69,20 +69,20 @@ include('./partials-frontend/header.php');
                                                         <div class="order__detail-customer text-start">
                                                             <h3>Thông tin khách hàng</h3>
                                                             <div class="row">
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6 ">
                                                                     Mã đơn hàng: ĐH01234
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6 ">
                                                                     Ngày đặt hàng: 17/07/2022
                                                                 </div>
-                                                                <div class="col-6">Khách hàng: PHD</div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6 ">Khách hàng: PHD</div>
+                                                                <div class="col-12 col-xl-6 ">
                                                                     Số điện thoại: 01234567
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6 ">
                                                                     Email: abc@gmail.com
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6 ">
                                                                     Địa chỉ: 68 Đặng Thùy Trâm
                                                                 </div>
                                                             </div>
@@ -100,7 +100,7 @@ include('./partials-frontend/header.php');
                                                                         Sản phẩm
                                                                     </th>
                                                                     <th>Size</th>
-                                                                    <th>Giá</th>
+                                                                    <th>Giá tiền</th>
                                                                     <th>Số lượng</th>
                                                                     <th>Thành tiền</th>
                                                                     <th>Trạng thái</th>
@@ -197,20 +197,20 @@ include('./partials-frontend/header.php');
                                                         <div class="order__detail-customer text-start">
                                                             <h3>Thông tin khách hàng</h3>
                                                             <div class="row">
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Mã đơn hàng: DH04321
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Ngày đặt hàng: 16/07/2022
                                                                 </div>
-                                                                <div class="col-6">Khách hàng: DHP</div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">Khách hàng: DHP</div>
+                                                                <div class="col-12 col-xl-6">
                                                                     Số điện thoại: 0387482374
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Email: xyz@gmail.com
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Địa chỉ: 68 Đặng Thùy Trâm
                                                                 </div>
                                                             </div>
@@ -228,7 +228,7 @@ include('./partials-frontend/header.php');
                                                                         Sản phẩm
                                                                     </th>
                                                                     <th>Size</th>
-                                                                    <th>Giá</th>
+                                                                    <th>Giá tiền</th>
                                                                     <th>Số lượng</th>
                                                                     <th>Thành tiền</th>
                                                                     <th>Trạng thái</th>
@@ -327,20 +327,20 @@ include('./partials-frontend/header.php');
                                                         <div class="order__detail-customer text-start">
                                                             <h3>Thông tin khách hàng</h3>
                                                             <div class="row">
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Mã đơn hàng: ĐH01234
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Ngày đặt hàng: 17/07/2022
                                                                 </div>
-                                                                <div class="col-6">Khách hàng: PHD</div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">Khách hàng: PHD</div>
+                                                                <div class="col-12 col-xl-6">
                                                                     Số điện thoại: 01234567
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Email: abc@gmail.com
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Địa chỉ: 68 Đặng Thùy Trâm
                                                                 </div>
                                                             </div>
@@ -358,7 +358,7 @@ include('./partials-frontend/header.php');
                                                                         Sản phẩm
                                                                     </th>
                                                                     <th>Size</th>
-                                                                    <th>Giá</th>
+                                                                    <th>Giá tiền</th>
                                                                     <th>Số lượng</th>
                                                                     <th>Thành tiền</th>
                                                                     <th>Trạng thái</th>
@@ -470,20 +470,20 @@ include('./partials-frontend/header.php');
                                                         <div class="order__detail-customer text-start">
                                                             <h3>Thông tin khách hàng</h3>
                                                             <div class="row">
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Mã đơn hàng: DH04321
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Ngày đặt hàng: 16/07/2022
                                                                 </div>
-                                                                <div class="col-6">Khách hàng: DHP</div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">Khách hàng: DHP</div>
+                                                                <div class="col-12 col-xl-6">
                                                                     Số điện thoại: 0387482374
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Email: xyz@gmail.com
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12 col-xl-6">
                                                                     Địa chỉ: 68 Đặng Thùy Trâm
                                                                 </div>
                                                             </div>
@@ -501,7 +501,7 @@ include('./partials-frontend/header.php');
                                                                         Sản phẩm
                                                                     </th>
                                                                     <th>Size</th>
-                                                                    <th>Giá</th>
+                                                                    <th>Giá tiền</th>
                                                                     <th>Số lượng</th>
                                                                     <th>Thành tiền</th>
                                                                     <th>Trạng thái</th>

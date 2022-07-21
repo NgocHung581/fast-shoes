@@ -39,7 +39,7 @@ include('./partials-frontend/header.php');
                     $price = $row['product_price'];
 
             ?>
-            <div class="col-3">
+            <div class="col-6 col-md-4 col-lg-3">
                 <div class="product__item">
                     <div class="product__item-img">
                         <?php
@@ -48,7 +48,7 @@ include('./partials-frontend/header.php');
                                     echo "<div class='text-danger'>Không tìm thấy hình ảnh</div>";
                                 } else {
                                 ?>
-                        <img src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
+                        <img class="img-fluid" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
                         <?php
                                 }
 

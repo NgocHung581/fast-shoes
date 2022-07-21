@@ -1,6 +1,7 @@
 .categoryPage {
   margin-top: calc(var(--height-header) + 45px);
   margin-bottom: 45px;
+  height: 50vh;
 }
 
 .categoryPage__title {
