@@ -60,8 +60,15 @@
   margin-top: 24px;
 }
 .header__mobile-navigation-item {
+  display: flex;
+  align-items: center;
   border-bottom: 1px dashed #ccc;
 }
+.header__mobile-navigation-item i {
+  color: #fff;
+  margin-right: 10px;
+}
+
 .header__mobile-navigation-link {
   text-decoration: none;
   color: #fff;
