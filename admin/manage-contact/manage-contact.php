@@ -17,19 +17,47 @@ include('../partials/header.php');
                     <th scope="col">Hành động</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">1</td>
-                    <td>Huỳnh Ngọc Hùng</td>
-                    <td>email@gmail.com</td>
-                    <td>012345789</td>
-                    <td style="max-width: 570px;">Đây là nội dung.</td>
-                    <td class="text-danger">Chưa phản hồi</td>
-                    <td>
-                        <a href="#" class="btn btn-primary">Cập nhật</a>
+                
+            <?php
+
+                $sql = "SELECT * FROM tbl_contact";
+                $res = mysqli_query($conn, $sql);
+                $count = mysqli_num_rows($res);
+                $sn = 1;
+
+                if ($count > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+
+                        $username = $row['contact_username'];
+                        $email = $row['contact_email'];
+                        $tel = $row['contact_tel'];
+                        $description = $row['contact_description'];
+                                                
+                        ?>
+                        <tbody>
+                        <tr>
+                            <td scope="row"><?php echo $sn++;?></td>
+                            <td><?php echo $username;?></td>
+                            <td><?php echo $email;?></td>
+                            <td><?php echo $tel;?></td>
+                            <td style="max-width: 570px;"><?php echo $description;?></td>
+                            <td class="text-danger">Chưa phản hồi</td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Cập nhật</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <?php
+                    }
+                }
+                else{
+                    echo '<tr>
+                    <td colspan="7">
+                        <div class="text-danger">Không có liên hệ</div>
                     </td>
-                </tr>
-            </tbody>
+                </tr>';
+                }
+            ?>
         </table>
     </div>
 </div>

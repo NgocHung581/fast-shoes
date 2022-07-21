@@ -15,6 +15,12 @@ include('./partials-frontend/header.php');
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
+            <?php
+            if (isset($_SESSION["comeback-home"])) {
+                echo $_SESSION["comeback-home"];
+                unset($_SESSION["comeback-home"]);
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -24,7 +30,7 @@ include('./partials-frontend/header.php');
         <div class="slider__list owl-carousel">
             <?php
 
-            $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' LIMIT 5";
+            $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' LIMIT 3";
 
             $res_slider = mysqli_query($conn, $sql_slider);
 
@@ -71,7 +77,7 @@ include('./partials-frontend/header.php');
                 <div class="about__description">
                     <h2 class="about__description-title">Giới thiệu</h2>
                     <p class="about__description-detail">
-                        Được thành lập từ 2022, với tinh thần mang đến các sản phẩm chất
+                        Được thành lập bởi Dương Hùng Phát vào năm 2022 với tinh thần mang đến các sản phẩm chất
                         lượng, cam kết uy tín và sự tín nhiệm cao nhất từ Khách hàng.
                         <br />
                         <br />
@@ -113,7 +119,7 @@ include('./partials-frontend/header.php');
 
             ?>
 
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
                 <div class="favourite__item">
                     <div class="favourite__item-img">
                         <?php
@@ -176,7 +182,7 @@ include('./partials-frontend/header.php');
         <div class="row gy-4">
             <?php
 
-            $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 2";
+            $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 4";
 
             $res = mysqli_query($conn, $sql);
 
@@ -191,81 +197,82 @@ include('./partials-frontend/header.php');
             ?>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
-                    <div class="category__item-img">
+                <div class="col-12 col-md-6 col-lg-4 mb-2">
+                    <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
+                        <div class="category__item-img">
 
-                        <?php
+                            <?php
 
-                                if ($image_name == "") {
-                                    echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
-                                } else {
-                                ?>
-                        <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
-                        <?php
-                                }
+                                    if ($image_name == "") {
+                                        echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
+                                    } else {
+                                    ?>
+                            <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
+                            <?php
+                                    }
 
-                                ?>
+                                    ?>
 
-                    </div>
-                    <div class="category__item-name"><?php echo $name; ?></div>
-                </a>
-            </div>
-            <?php
+                        </div>
+                        <div class="category__item-name"><?php echo $name; ?></div>
+                    </a>
+                </div>
+                <?php
                 }
             } else {
                 echo "<div class='text-danger'>Danh mục không được thêm vào</div>";
             }
-            ?>
+                ?>
 
+            </div>
         </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="./js/owl.carousel.min.js"></script>
-<script src="./js/carousel.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./js/owl.carousel.min.js"></script>
+    <script src="./js/carousel.js"></script>
 
-<?php
-include('./partials-frontend/footer.php');
-?>
+    <?php
+    include('./partials-frontend/footer.php');
+    ?>
 
-<?php
-if (isset($_POST['cart-submit'])) {
-    $user_id = $_POST['user_id'];
-    $product_id = $_POST['product_id'];
+    <?php
+    if (isset($_POST['cart-submit'])) {
+        $user_id = $_POST['user_id'];
+        $product_id = $_POST['product_id'];
 
-    $sql = "SELECT * FROM tbl_product WHERE product_id = $product_id";
+        $sql = "SELECT * FROM tbl_product WHERE product_id = $product_id";
 
-    $res = mysqli_query($conn, $sql);
+        $res = mysqli_query($conn, $sql);
 
-    if ($res == true) {
-        $count = mysqli_num_rows($res);
+        if ($res == true) {
+            $count = mysqli_num_rows($res);
 
-        if ($count == 1) {
-            $row = mysqli_fetch_assoc($res);
-            $product_name = $row['product_name'];
-            $product_image = $row['product_img'];
-            $product_price = $row['product_price'];
+            if ($count == 1) {
+                $row = mysqli_fetch_assoc($res);
+                $product_name = $row['product_name'];
+                $product_image = $row['product_img'];
+                $product_price = $row['product_price'];
 
-            $sql2 = "INSERT INTO tbl_cart SET
+                $sql2 = "INSERT INTO tbl_cart SET
                                     product_name = '$product_name',
                                     product_image = '$product_image',
                                     product_price = '$product_price',
                                     user_id = '$user_id'
                                     ";
 
-            $res2 = mysqli_query($conn, $sql2);
+                $res2 = mysqli_query($conn, $sql2);
 
-            if ($res2 == true) {
-                $_SESSION['cart-user-id'] = $user_id;
-?>
-<script>
-<?php echo ("location.href = '" . SITEURL . "cart.php';"); ?>
-</script>
-<?php
+                if ($res2 == true) {
+                    $_SESSION['cart-user-id'] = $user_id;
+    ?>
+    <script>
+    <?php echo ("location.href = '" . SITEURL . "cart.php';"); ?>
+    </script>
+    <?php
+                }
             }
         }
     }
-}
-?>
+    ?>

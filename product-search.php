@@ -15,16 +15,17 @@ include('./partials-frontend/header.php');
         
         if ($search == ""){
 
+            $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
+
             ?>
 
-            <script>
-            <?php echo ("location.href = '" . SITEURL . "';"); ?>
-            alert("Vui lòng nhập từ khóa tìm kiếm");
-            </script>
-
+                <script>
+                    <?php echo ("location.href = '" . SITEURL . "';"); ?>
+                </script>
+                
+                
             <?php
-
-            die();
+                // die();
         }
         ?>
         <h1 class="search__title">
