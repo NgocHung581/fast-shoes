@@ -22,16 +22,34 @@ include('./partials-frontend/header.php');
 <div class="slider mt-45">
     <div class="container slider__content">
         <div class="slider__list owl-carousel">
-            <div class="slider__item">
-                <img src="./assests/images/product/nike.webp" alt="" />
-                <h1>Nike Air Force 1 '07</h1>
-                <a href="cart.php" class="btn btn-primary">Thêm vào giỏ hàng</a>
-            </div>
-            <div class="slider__item">
-                <img src="./assests/images/product/nike2.webp" alt="" />
-                <h1>Nike Air Max Impact 3</h1>
-                <a href="cart.php" class="btn btn-primary">Thêm vào giỏ hàng</a>
-            </div>
+            <?php
+
+                $sql_slider = "SELECT product_name, product_img FROM tbl_product WHERE slider = 'Yes' LIMIT 5";
+
+                $res_slider = mysqli_query($conn, $sql_slider);
+
+                $count_slider = mysqli_num_rows($res_slider);
+
+                if ($count_slider > 0) {
+                    while ($row = mysqli_fetch_array($res_slider)) { 
+                        $product_name = $row['product_name'];
+                        $product_img = $row['product_img'];
+
+                        ?>
+
+                        <div class="slider__item">
+                            <img src="./assests/images/product/<?php echo $product_img; ?>" alt="" />
+                            <h1><?php echo $product_name; ?></h1>
+                            <a href="cart.php" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                        </div>
+
+                        <?php
+                    }
+                }
+                else{
+                    echo "<div class='text-danger'>Slider không có sẵn</div>";
+                }
+            ?>  
         </div>
     </div>
 </div>

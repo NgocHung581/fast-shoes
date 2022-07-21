@@ -47,6 +47,7 @@
             <tr class="table-info">
                 <th>STT</th>
                 <th>Tên sản phẩm</th>
+                <th>Danh mục</th>
                 <th>Hình ảnh sản phẩm</th>
                 <th>Giá tiền</th>
                 <th>Featured</th>
@@ -57,7 +58,7 @@
 
             <?php
             $sql = "SELECT * FROM tbl_product";
-
+            
             $res = mysqli_query($conn, $sql);
 
             if ($res ==  true) {
@@ -73,10 +74,18 @@
                         $featured = $row['product_featured'];
                         $active = $row['product_active'];
                         $slider = $row['slider'];
+                        $category_id = $row['category_id'];
+                        
+                        // Get category_name
+                        $sql2 = "SELECT category_name FROM tbl_category WHERE category_id = $category_id";
+                        $res2 = mysqli_query($conn, $sql2);
+                        $row2 = mysqli_fetch_assoc($res2);
+                        $category_name = $row2['category_name'];
             ?>
             <tr>
                 <td><?php echo $sn++; ?></td>
                 <td><?php echo $name; ?></td>
+                <td><?php echo $category_name; ?></td>
                 <td>
                     <?php
                                 if ($img_name != "") {
@@ -114,7 +123,7 @@
                     }
                 } else {
                     echo '<tr>
-                    <td colspan="6">
+                    <td colspan="9">
                         <div class="text-danger">Không có sản phẩm nào được thêm vào.</div>
                     </td>
                 </tr>';
