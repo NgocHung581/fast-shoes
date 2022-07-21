@@ -9,6 +9,9 @@
   font-weight: 700;
   margin-bottom: 20px;
 }
+.order__customer h4 {
+  color: var(--primary-color);
+}
 .order__customer .nav-link {
   color: black;
 }
@@ -38,9 +41,13 @@
   text-decoration: none;
   color: #212529;
 }
-.order__customer .modal.show .modal-dialog {
-  max-width: 1000px;
-}
 .modal-footer {
   border-top: 1px solid transparent;
+}
+.close {
+  border: none;
+  background: transparent;
+}
+.order__customer .close .span {
+  padding: 5px;
 }

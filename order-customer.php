@@ -45,9 +45,9 @@ include('./partials-frontend/header.php');
                             <td data-toggle="modal" data-target="#DH01234">
                                 DH01234
                                 <!-- Modal -->
-                                <div class="modal fade" id="DH01234" tabindex="-1" role="dialog"
+                                <div class="modal fade " id="DH01234" tabindex="-1" role="dialog"
                                     aria-labelledby="DH01234Title" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h2 class="modal-title" id="DH01234Title">
@@ -141,15 +141,15 @@ include('./partials-frontend/header.php');
                                 <!-- Modal -->
                                 <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog"
                                     aria-labelledby="cancelModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-sm" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h2 class="modal-title" id="cancelModalLabel">
+                                                <h4 class="modal-title" id="cancelModalLabel">
                                                     Hủy hóa đơn
-                                                </h2>
+                                                </h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
                                                 </button>
                                             </div>
                                             <div class="modal-body text-start fw-bold">
@@ -175,7 +175,7 @@ include('./partials-frontend/header.php');
                                 <!-- Modal -->
                                 <div class="modal fade" id="DH04321" tabindex="-1" role="dialog"
                                     aria-labelledby="DH04321Title" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h2 class="modal-title" id="DH04321Title">
@@ -305,7 +305,7 @@ include('./partials-frontend/header.php');
                                 <!-- Modal -->
                                 <div class="modal fade" id="DH01234Order" tabindex="-1" role="dialog"
                                     aria-labelledby="DH01234OrderTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h2 class="modal-title" id="DH01234OrderTitle">
@@ -399,12 +399,12 @@ include('./partials-frontend/header.php');
                                 <!-- Modal -->
                                 <div class="modal fade" id="cancelModalOrder" tabindex="-1" role="dialog"
                                     aria-labelledby="cancelModalOrderLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-sm" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h2 class="modal-title" id="cancelModalOrderLabel">
+                                                <h4 class="modal-title" id="cancelModalOrderLabel">
                                                     Hủy hóa đơn
-                                                </h2>
+                                                </h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -448,7 +448,7 @@ include('./partials-frontend/header.php');
                                 <!-- Modal -->
                                 <div class="modal fade" id="DH04321Delivery" tabindex="-1" role="dialog"
                                     aria-labelledby="DH04321DeliveryTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h2 class="modal-title" id="DH04321DeliveryTitle">

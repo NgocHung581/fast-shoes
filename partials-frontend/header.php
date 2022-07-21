@@ -23,6 +23,7 @@ include('./config/constants.php');
     <link rel="stylesheet" href="./assests/css/order-customer.css" />
     <link rel="stylesheet" href="./assests/css/cart.css" />
     <link rel="stylesheet" href="./assests/css/order.css" />
+    <link rel="stylesheet" href="./assests/css/responsive.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
@@ -35,20 +36,23 @@ include('./config/constants.php');
             <a href="index.php" class="header__logo">
                 <img class="header__logo-img" src="./assests/images/logo-removebg.png" alt="Logo" />
             </a>
-            <ul class="header__navigation d-flex align-items-center">
-                <li class="header__navigation-item">
-                    <a href="index.php" class="header__navigation-link">Trang chủ</a>
-                </li>
-                <li class="header__navigation-item">
-                    <a href="product.php" class="header__navigation-link">Sản phẩm</a>
-                </li>
-                <li class="header__navigation-item">
-                    <a href="category.php" class="header__navigation-link">Danh mục</a>
-                </li>
-                <li class="header__navigation-item">
-                    <a href="contact.php" class="header__navigation-link">Liên hệ</a>
-                </li>
-            </ul>
+            <nav class="nav__bar">
+                <ul class="header__navigation d-flex align-items-center">
+                    <li class="header__navigation-item">
+                        <a href="index.php" class="header__navigation-link">Trang chủ</a>
+                    </li>
+                    <li class="header__navigation-item">
+                        <a href="product.php" class="header__navigation-link">Sản phẩm</a>
+                    </li>
+                    <li class="header__navigation-item">
+                        <a href="category.php" class="header__navigation-link">Danh mục</a>
+                    </li>
+                    <li class="header__navigation-item">
+                        <a href="contact.php" class="header__navigation-link">Liên hệ</a>
+                    </li>
+                </ul>
+            </nav>
+
             <div class="header__options d-flex align-items-center">
                 <div class="header__access">
                     <a href="login.php" class="header__access-link">Đăng nhập</a>
@@ -84,5 +88,39 @@ include('./config/constants.php');
                     </div>
                 </div>
             </div>
+            <label for="nav__mobile-input" class="d-lg-none">
+                <i class="fa fa-bars nav__bar-btn"></i>
+            </label>
+            <input type="checkbox" name="" id="nav__mobile-input">
+            <label for="nav__mobile-input" class="nav__overlay"></label>
+            <nav class="nav__bar-mobile">
+                <div class="nav__mobile-close">
+                    <a style="font-size:2rem" href="login.php" class="header__mobile-navigation-link">Đăng nhập</a>
+                    <label for="nav__mobile-input">
+                        <i class="fa fa-times"></i>
+                    </label>
+
+                </div>
+                <ul class="header__mobile-navigation">
+                    <li class="header__mobile-navigation-item">
+                        <a href="index.php" class="header__mobile-navigation-link">Trang chủ</a>
+                    </li>
+                    <li class="header__mobile-navigation-item">
+                        <a href="product.php" class="header__mobile-navigation-link">Sản phẩm</a>
+                    </li>
+                    <li class="header__mobile-navigation-item">
+                        <a href="category.php" class="header__mobile-navigation-link">Danh mục</a>
+                    </li>
+                    <li class="header__mobile-navigation-item">
+                        <a href="contact.php" class="header__mobile-navigation-link">Liên hệ</a>
+                    </li>
+                    <li class="header__mobile-navigation-item">
+                        <a href="order-customer.php" class="header__mobile-navigation-link">Xem đơn hàng</a>
+                    </li>
+                    <li class="header__mobile-navigation-item">
+                        <a href="login.php" class="header__mobile-navigation-link">Đăng xuất</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
