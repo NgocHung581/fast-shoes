@@ -24,31 +24,41 @@ include('./partials-frontend/header.php');
         <div class="slider__list owl-carousel">
             <?php
 
-                $sql_slider = "SELECT product_name, product_img FROM tbl_product WHERE slider = 'Yes' LIMIT 5";
+            $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' LIMIT 5";
 
-                $res_slider = mysqli_query($conn, $sql_slider);
+            $res_slider = mysqli_query($conn, $sql_slider);
 
-                $count_slider = mysqli_num_rows($res_slider);
+            $count_slider = mysqli_num_rows($res_slider);
 
-                if ($count_slider > 0) {
-                    while ($row = mysqli_fetch_array($res_slider)) { 
-                        $product_name = $row['product_name'];
-                        $product_img = $row['product_img'];
+            if ($count_slider > 0) {
+                while ($row = mysqli_fetch_assoc($res_slider)) {
+                    $product_name = $row['product_name'];
+                    $product_img = $row['product_img'];
+                    $product_id = $row['product_id'];
 
-                        ?>
+            ?>
 
             <div class="slider__item">
                 <img src="./assests/images/product/<?php echo $product_img; ?>" alt="" />
                 <h1><?php echo $product_name; ?></h1>
-                <a href="cart.php" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                <form action="" method="POST">
+                    <input type="hidden" name="user_id" value="
+                    <?php
+                    if (isset($_SESSION['user_id'])) {
+                        echo $_SESSION['user_id'];
+                    }
+                    ?>
+                    ">
+                    <input type="hidden" name='product_id' value="<?php echo $product_id; ?>">
+                    <button type="submit" name="cart-submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                </form>
             </div>
 
             <?php
-                    }
                 }
-                else{
-                    echo "<div class='text-danger'>Slider không có sẵn</div>";
-                }
+            } else {
+                echo "<div class='text-danger'>Slider không có sẵn</div>";
+            }
             ?>
         </div>
     </div>
@@ -136,14 +146,14 @@ include('./partials-frontend/header.php');
                     </div>
                     <div class="favourite__item-buttons">
                         <form action="" method="POST">
-                            <input type="text" hidden name="user_id" value="
+                            <input type="hidden" name="user_id" value="
                             <?php
                             if (isset($_SESSION['user_id'])) {
                                 echo $_SESSION['user_id'];
                             }
                             ?>
                             ">
-                            <input type="text" hidden name="product_id" value="<?php echo $id ?>">
+                            <input type="hidden" name="product_id" value="<?php echo $id ?>">
                             <button type="submit" name="cart-submit" class="btn btn-primary favourite__item-cart">
                                 <i class="fa-solid fa-cart-plus"></i>
                             </button>

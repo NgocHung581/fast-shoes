@@ -70,26 +70,75 @@
                     </a>
                     <?php
                     if (isset($_SESSION["user"])) {
-                        echo '<div class="header__cart-box">
+                    ?>
+                    <div class="header__cart-box">
                         <h3 class="header-cart-title">Sản phảm đã thêm vào giỏ</h3>
                         <ul class="header__cart-list">
+                            <?php
+                                if (isset($_SESSION['user_id'])) {
+                                    $user_id = $_SESSION['user_id'];
+                                    $conn = mysqli_connect('localhost', 'root', '', 'fast-shoes');
+
+                                    $sql = "SELECT * FROM tbl_cart WHERE user_id = $user_id";
+                                    $res = mysqli_query($conn, $sql);
+
+                                    $count = mysqli_num_rows($res);
+
+                                    if ($count > 0) {
+                                        while ($row = mysqli_fetch_assoc($res)) {
+                                            $product_image = $row['product_image'];
+                                            $product_name = $row['product_name'];
+                                            $product_price = $row['product_price'];
+                                            $product_quantity = $row['product_quantity'];
+                                ?>
                             <li class="header__cart-item d-flex align-items-center">
                                 <div class="cart__item-img">
-                                    <img src="./assests/images/product/nike.webp" alt="" />
+                                    <img src="./assests/images/product/<?php echo $product_image ?>" alt="" />
                                 </div>
                                 <div class="cart__item-detail d-flex align-items-center justify-content-between">
                                     <div class="cart__item-description">
-                                        <h3 class="cart__item-name">Nike</h3>
-                                        <p class="cart__item-price">2.050.000 VNĐ</p>
+                                        <h3 class="cart__item-name"><?php echo $product_name ?></h3>
+                                        <p class="cart__item-price"><?php
+                                                                                    if (!function_exists('currency_format')) {
+                                                                                        function currency_format($number, $suffix = 'đ')
+                                                                                        {
+                                                                                            if (!empty($number)) {
+                                                                                                return number_format($number, 0, ',', '.') . "{$suffix}";
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                    echo currency_format($product_price, " VND");
+                                                                                    ?>
+                                        </p>
                                     </div>
-                                    <div class="cart__item-quantity">x 1</div>
+                                    <div class="cart__item-quantity">x <?php if ($product_quantity == 0) {
+                                                                                            $product_quantity = 1;
+                                                                                            echo $product_quantity;
+                                                                                        } else {
+                                                                                            echo $product_quantity;
+                                                                                        } ?></div>
                                 </div>
                             </li>
+                            <?php
+
+                                        }
+                                    } else {
+                                        ?>
+                            <li class="header__cart-item d-flex align-items-center" style="height: unset">
+                                <div class="cart__item-img" style="width: 100%">
+                                    <img src="./assests/images/cart-empty.png" alt="" />
+                                </div>
+                            </li>
+                            <?php
+                                    }
+                                }
+                                ?>
                         </ul>
                         <p class="header-cart-description">
                             Nhấn vào giỏ hàng để xem chi tiết
                         </p>
-                    </div>';
+                    </div>
+                    <?php
                     }
                     ?>
                 </div>
