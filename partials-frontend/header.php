@@ -158,21 +158,27 @@
                 </div>
                 <ul class="header__mobile-navigation">
                     <li class="header__mobile-navigation-item">
+                        <i class="fa fa-home"></i>
                         <a href="index.php" class="header__mobile-navigation-link">Trang chủ</a>
                     </li>
                     <li class="header__mobile-navigation-item">
+                        <i class="fa fa-shopping-cart"></i>
                         <a href="product.php" class="header__mobile-navigation-link">Sản phẩm</a>
                     </li>
                     <li class="header__mobile-navigation-item">
+                        <i class="fa fa-list"></i>
                         <a href="category.php" class="header__mobile-navigation-link">Danh mục</a>
                     </li>
                     <li class="header__mobile-navigation-item">
+                        <i class="fa fa-phone"></i>
                         <a href="contact.php" class="header__mobile-navigation-link">Liên hệ</a>
                     </li>
                     <li class="header__mobile-navigation-item">
+                        <i class="fa fa-book-open"></i>
                         <a href="order-customer.php" class="header__mobile-navigation-link">Xem đơn hàng</a>
                     </li>
                     <li class="header__mobile-navigation-item">
+                        <i class="fa fa-sign-out-alt"></i>
                         <a href="login.php" class="header__mobile-navigation-link">Đăng xuất</a>
                     </li>
                 </ul>
