@@ -144,7 +144,7 @@
 .favourite__item-description {
   width: 100%;
   text-align: center;
-  color: black;
+  color: var(--primary-color);
   position: absolute;
   left: 50%;
   bottom: 10px;
