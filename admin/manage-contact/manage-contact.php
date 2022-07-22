@@ -2,6 +2,13 @@
 include('../partials/header.php');
 ?>
 
+<?php
+    if (isset($_SESSION['update'])) {
+        echo $_SESSION['update'];
+        unset($_SESSION['update']);
+    }
+?>
+
 <div class="main-content">
     <div class="container">
         <h1 class="mb-20">Quản lý liên hệ</h1>
@@ -27,11 +34,12 @@ include('../partials/header.php');
 
                 if ($count > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {
-
+                        $id = $row['contact_id'];
                         $username = $row['contact_username'];
                         $email = $row['contact_email'];
                         $tel = $row['contact_tel'];
                         $description = $row['contact_description'];
+                        $status = $row['contact_status'];
                                                 
                         ?>
                         <tbody>
@@ -41,10 +49,27 @@ include('../partials/header.php');
                             <td><?php echo $email;?></td>
                             <td><?php echo $tel;?></td>
                             <td style="max-width: 570px;"><?php echo $description;?></td>
-                            <td class="text-danger">Chưa phản hồi</td>
-                            <td>
-                                <a href="#" class="btn btn-primary">Cập nhật</a>
-                            </td>
+                            <td class="text-danger"><?php echo $status;?></td>
+
+                            <?php
+
+                                if ($status == "Chưa phản hồi"){
+
+                                    ?>
+                                        <td>
+                                            <a href="../manage-contact/update-contact.php?id=<?php echo $id; ?>" class="btn btn-primary">Cập nhật</a>
+                                        </td>
+                                    <?php
+        
+                                }
+                                else{
+
+                                    ?>
+                                        <td></td>
+                                    <?php
+
+                                }
+                            ?>
                         </tr>
                         </tbody>
                         <?php
