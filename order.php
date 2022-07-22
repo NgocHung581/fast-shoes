@@ -78,7 +78,7 @@ include('./partials-frontend/header.php');
                             ?>
                             <tr>
                                 <td colspan="3">
-                                    <div class="row align-items-center product">
+                                    <div class="row align-items-center">
 
                                         <div class="col-5">
                                             <img class="img-fluid"
