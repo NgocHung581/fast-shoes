@@ -176,7 +176,13 @@ include('convert-money.php');
             <label for="nav__mobile-input" class="nav__overlay"></label>
             <nav class="nav__bar-mobile">
                 <div class="nav__mobile-close">
-                    <a style="font-size:2rem" href="login.php" class="header__mobile-navigation-link">Đăng nhập</a>
+                    <?php
+                    if (isset($_SESSION["user"])) {
+                        echo '<span style="font-size:2rem" class="header__mobile-navigation-link">' . $_SESSION["user"] . '</span>';
+                    } else {
+                        echo '<a style="font-size:2rem" href="login.php" class="header__mobile-navigation-link">Đăng nhập</a>';
+                    }
+                    ?>
                     <label for="nav__mobile-input">
                         <i class="fa fa-times"></i>
                     </label>
@@ -199,14 +205,18 @@ include('convert-money.php');
                         <i class="fa fa-phone"></i>
                         <a href="contact.php" class="header__mobile-navigation-link">Liên hệ</a>
                     </li>
-                    <li class="header__mobile-navigation-item">
+                    <?php
+                    if (isset($_SESSION["user"])) {
+                        echo '<li class="header__mobile-navigation-item">
                         <i class="fa fa-book-open"></i>
                         <a href="order-customer.php" class="header__mobile-navigation-link">Xem đơn hàng</a>
                     </li>
                     <li class="header__mobile-navigation-item">
                         <i class="fa fa-sign-out-alt"></i>
-                        <a href="login.php" class="header__mobile-navigation-link">Đăng xuất</a>
-                    </li>
+                        <a href="logout.php" class="header__mobile-navigation-link">Đăng xuất</a>
+                    </li>';
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>

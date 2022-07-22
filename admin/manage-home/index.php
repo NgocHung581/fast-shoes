@@ -81,11 +81,11 @@ include('../partials/header.php');
                         if ($count5 > 0) {
                             while ($row5 = mysqli_fetch_assoc($res5)) {
                                 $total += $row5['total_price'];
-                                echo currency_format($total, " VND");
                             }
                         } else {
                             echo "0 VND";
                         }
+                        echo currency_format($total, " VND");
                         ?>
                     </span>
                 </div>

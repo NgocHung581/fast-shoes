@@ -95,37 +95,45 @@ if (isset($_POST['register'])) {
 
     $sql2 = "SELECT * FROM tbl_user WHERE type = 'user'";
     $res2 = mysqli_query($conn, $sql2);
+    $userExists = false;
     if ($res2 == true) {
         $count2 = mysqli_num_rows($res2);
         if ($count2 > 0) {
             while ($row2 = mysqli_fetch_assoc($res2)) {
                 $usernameBD = $row2['username'];
-                if ($username != $usernameBD) {
-                    if ($password === $passwordConfirm) {
-                        $sql = "INSERT INTO tbl_user SET
-                      fullname = '$fullname',
-                      username = '$username',
-                      password = '$password'
-                    ";
-                        $res = mysqli_query($conn, $sql);
-
-                        if ($res == true) {
-                            $_SESSION['register'] = '<div class="text-primary">Đăng ký thành công.</div>';
-                            header('location:' . SITEURL . 'login.php');
-                        } else {
-                            $_SESSION['register'] = '<div class="text-danger">Đăng ký thất bại.</div>';
-                            header('location:' . SITEURL . 'login.php');
-                        }
-                    } else {
-                        $_SESSION['pwd-not-match'] = '<div class="text-danger mb-10">Mật khẩu nhập lại không trùng khớp.</div>';
-                        header('location:' . SITEURL . 'register.php');
-                    }
-                } else {
-                    $_SESSION['exists-user'] = '<div class="text-danger mb-10">Tài khoản đã tồn tại.</div>';
-                    header('location:' . SITEURL . 'register.php');
+                if ($username == $usernameBD) {
+                    $userExists = true;
+                    break;
                 }
             }
+        } else {
+            $userExists = false;
         }
+    }
+
+    if (!$userExists) {
+        if ($password === $passwordConfirm) {
+            $sql = "INSERT INTO tbl_user SET
+          fullname = '$fullname',
+          username = '$username',
+          password = '$password'
+        ";
+            $res = mysqli_query($conn, $sql);
+
+            if ($res == true) {
+                $_SESSION['register'] = '<div class="text-primary">Đăng ký thành công.</div>';
+                header('location:' . SITEURL . 'login.php');
+            } else {
+                $_SESSION['register'] = '<div class="text-danger">Đăng ký thất bại.</div>';
+                header('location:' . SITEURL . 'login.php');
+            }
+        } else {
+            $_SESSION['pwd-not-match'] = '<div class="text-danger mb-10">Mật khẩu nhập lại không trùng khớp.</div>';
+            header('location:' . SITEURL . 'register.php');
+        }
+    } else {
+        $_SESSION['exists-user'] = '<div class="text-danger mb-10">Tài khoản đã tồn tại.</div>';
+        header('location:' . SITEURL . 'register.php');
     }
 }
 ?>
