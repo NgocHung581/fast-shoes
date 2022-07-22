@@ -156,12 +156,6 @@ include('./partials-frontend/header.php');
                                 <i class="fa-solid fa-cart-plus"></i>
                             </button>
                         </form>
-                        <form action="" method="POST">
-                            <a href="order.php" class="btn btn-primary favourite__item-order">
-                                <i class="fa-solid fa-bag-shopping"></i>
-                            </a>
-                        </form>
-
                     </div>
                 </div>
             </div>

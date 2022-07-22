@@ -108,9 +108,6 @@ include('./partials-frontend/header.php');
                             </button>
                         </form>
 
-                        <a href="order.php" class="btn btn-primary product__item-order">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                        </a>
                     </div>
                 </div>
             </div>

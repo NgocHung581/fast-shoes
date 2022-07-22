@@ -50,8 +50,6 @@ include('./partials-frontend/header.php');
                             <?php
 
                             $total_order = 0;
-
-
                             $sql = "SELECT * FROM tbl_cart WHERE user_id = $user_id";
 
                             $res = mysqli_query($conn, $sql);
@@ -158,6 +156,7 @@ include('./partials-frontend/header.php');
                                     }
                                 }
                             }
+
                             ?>
 
 
