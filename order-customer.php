@@ -645,15 +645,237 @@ include('./partials-frontend/header.php');
                 </div>
             </div>
             <div class="tab-pane fade" id="receive" role="tabpanel" aria-labelledby="receive-tab">
-                <div class="midde__content">
-                    <h3>Bạn vẫn chưa có đơn hàng</h3>
-                    <a href="./product.html" class="btn btn-primary">Tiếp tục mua hàng</a>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Số lượng sản phẩm</th>
+                                <th>Trạng thái</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-bs-toggle="modal" data-bs-target="#DH54321Delivery">DH54321
+                                    <!-- Button trigger modal -->
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="DH54321Delivery" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h2 class="modal-title" id="DH54321DeliveryLabel">Chi tiết đơn hàng
+                                                    </h2>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-6 mb-3">
+                                                            <div class="order__detail-customer text-start">
+                                                                <h3>Thông tin khách hàng</h3>
+                                                                <div class="row">
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Mã đơn hàng: DH54321
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Ngày đặt hàng: 22/07/2022
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">Khách hàng: HDP
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Số điện thoại: 012342134213
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Email: hdp@gmail.com
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Địa chỉ: 68 Đặng Thùy Trâm
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 text-start">
+                                                            <h3>Sản phẩm</h3>
+                                                            <p style="font-size: 24px" class="text-dark">
+                                                                Tổng tiền: 1.200.000 VND
+                                                            </p>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center" colspan="3">
+                                                                                Sản phẩm
+                                                                            </th>
+                                                                            <th>Size</th>
+                                                                            <th>Giá tiền</th>
+                                                                            <th>Số lượng</th>
+                                                                            <th>Thành tiền</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                        <tr>
+                                                                            <td colspan="3">
+                                                                                <div class="row align-items-center">
+                                                                                    <div class="col-5">
+                                                                                        <img class="img-fluid"
+                                                                                            src="./assests/images/nike.jpg"
+                                                                                            alt="" />
+                                                                                    </div>
+                                                                                    <div class="col-7">
+                                                                                        <p class="mb-0">Nike</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>35</td>
+                                                                            <td>1.200.000 VND
+                                                                            </td>
+                                                                            <td>1
+                                                                            </td>
+                                                                            <td>1.200.000VND
+                                                                            </td>
+                                                                        </tr>
+
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>22/07/2022</td>
+                                <td>1</td>
+                                <td>Đã giao hàng</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="tab-pane fade" id="cancel" role="tabpanel" aria-labelledby="cancel-tab">
-                <div class="midde__content">
-                    <h3>Bạn vẫn chưa có đơn hàng</h3>
-                    <a href="./product.html" class="btn btn-primary">Tiếp tục mua hàng</a>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Số lượng sản phẩm</th>
+                                <th>Trạng thái</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-bs-toggle="modal" data-bs-target="#DH54321Cancel">
+                                <td>DH54321
+                                    <!-- Button trigger modal -->
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="DH54321Cancel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h2 class="modal-title" id="DH54321CancelLabel">Chi tiết đơn hàng
+                                                    </h2>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-6 mb-3">
+                                                            <div class="order__detail-customer text-start">
+                                                                <h3>Thông tin khách hàng</h3>
+                                                                <div class="row">
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Mã đơn hàng: DH54321
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Ngày đặt hàng: 22/07/2022
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">Khách hàng: HDP
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Số điện thoại: 012342134213
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Email: hdp@gmail.com
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Địa chỉ: 68 Đặng Thùy Trâm
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 text-start">
+                                                            <h3>Sản phẩm</h3>
+                                                            <p style="font-size: 24px" class="text-dark">
+                                                                Tổng tiền: 1.200.000 VND
+                                                            </p>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center" colspan="3">
+                                                                                Sản phẩm
+                                                                            </th>
+                                                                            <th>Size</th>
+                                                                            <th>Giá tiền</th>
+                                                                            <th>Số lượng</th>
+                                                                            <th>Thành tiền</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                        <tr>
+                                                                            <td colspan="3">
+                                                                                <div class="row align-items-center">
+                                                                                    <div class="col-5">
+                                                                                        <img class="img-fluid"
+                                                                                            src="./assests/images/nike.jpg"
+                                                                                            alt="" />
+                                                                                    </div>
+                                                                                    <div class="col-7">
+                                                                                        <p class="mb-0">Nike</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>35</td>
+                                                                            <td>1.200.000 VND
+                                                                            </td>
+                                                                            <td>1
+                                                                            </td>
+                                                                            <td>1.200.000VND
+                                                                            </td>
+                                                                        </tr>
+
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>22/07/2022</td>
+                                <td>1</td>
+                                <td>Đã hủy</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <?php
