@@ -45,7 +45,7 @@ if (!isset($_SESSION['admin'])) {
                     <a href="../manage-admin/manage-admin.php" class="header__navigation-link ">Admin</a>
                 </li>
                 <li class="header__navigation-item">
-                    <a href="../manage-customer/manage-customer.php" class="header__navigation-link">Customer</a>
+                    <a href="../manage-customer/manage-customer.php" class="header__navigation-link">Khách hàng</a>
                 </li>
                 <li class="header__navigation-item">
                     <a href="../manage-contact/manage-contact.php" class="header__navigation-link">Liên hệ</a>

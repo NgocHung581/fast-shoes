@@ -42,7 +42,7 @@ include('./partials-frontend/header.php');
                                 <th>Ngày đặt</th>
                                 <th>Số lượng sản phẩm</th>
                                 <th>Trạng thái</th>
-                                <th>Hủy đơn hàng</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -206,6 +206,17 @@ include('./partials-frontend/header.php');
                                 <td><?php echo $order_status; ?></td>
                                 <td>
                                     <?php
+                                                    if ($order_status == "Đang giao hàng") {
+                                                    ?>
+                                    <form action="<?php echo SITEURL . 'admin/manage-order/update-order.php'; ?>"
+                                        method="get">
+                                        <button class="btn btn-primary" type="submit" name="confirm-submit">Đã giao
+                                            hàng</button>
+                                        <input type="hidden" name="order_id" value="<?php echo $order_id; ?>">
+                                    </form>
+                                    <?php
+                                                    }
+
                                                     if ($order_status == "Đã đặt hàng") {
                                                     ?>
                                     <!-- Button trigger modal -->
@@ -229,19 +240,16 @@ include('./partials-frontend/header.php');
                                                     Bạn có chắc hủy hóa đơn không?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form action="" method="post">
+                                                    <form
+                                                        action="<?php echo SITEURL . 'admin/manage-order/update-order.php'; ?>"
+                                                        method="GET">
+                                                        <input type="hidden" name="order_id"
+                                                            value="<?php echo $order_id; ?>">
                                                         <button type="submit" name="cancel-submit"
                                                             class="btn btn-primary removeOrder">
                                                             Có
                                                         </button>
                                                     </form>
-
-                                                    <?php
-                                                                        if (isset($_POST['cancel-submit'])) {
-                                                                            $sql6 = "UPDATE tbl_order SET order_status = 'Đã hủy' WHERE order_id = $order_id";
-                                                                            $res6 = mysqli_query($conn, $sql6);
-                                                                        }
-                                                                        ?>
 
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal">
                                                         Không
@@ -452,19 +460,18 @@ include('./partials-frontend/header.php');
                                                     Bạn có chắc hủy hóa đơn không?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form action="" method="post">
+                                                    <form
+                                                        action="<?php echo SITEURL . 'admin/manage-order/update-order.php'; ?>"
+                                                        method="GET">
+                                                        <input type="hidden" name="order_id"
+                                                            value="<?php echo $order_id; ?>">
                                                         <button type="submit" name="cancel-submit"
                                                             class="btn btn-primary removeOrder">
                                                             Có
                                                         </button>
                                                     </form>
 
-                                                    <?php
-                                                                if (isset($_POST['cancel-submit'])) {
-                                                                    $sql7 = "UPDATE tbl_order SET order_status = 'Đã hủy' WHERE order_id = $order_id";
-                                                                    $res7 = mysqli_query($conn, $sql7);
-                                                                }
-                                                                ?>
+
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal">
                                                         Không
                                                     </button>
@@ -499,6 +506,7 @@ include('./partials-frontend/header.php');
                                 <th>Ngày đặt</th>
                                 <th>Số lượng sản phẩm</th>
                                 <th>Trạng thái</th>
+                                <th>Xác nhận</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -646,7 +654,14 @@ include('./partials-frontend/header.php');
                                 <td><?php echo $order_date; ?></td>
                                 <td><?php echo $order_quantity; ?></td>
                                 <td><?php echo $order_status; ?></td>
-                                <td></td>
+                                <td>
+                                    <form action="<?php echo SITEURL . 'admin/manage-order/update-order.php'; ?>"
+                                        method="get">
+                                        <button class="btn btn-primary" type="submit" name="confirm-submit">Đã giao
+                                            hàng</button>
+                                        <input type="hidden" name="order_id" value="<?php echo $order_id; ?>">
+                                    </form>
+                                </td>
                             </tr>
                             <?php
 
@@ -1008,6 +1023,7 @@ include('./partials-frontend/header.php');
                             }
         ?>
         </div>
+        <a href="index.php" class="btn btn-primary"><i class="fa-solid fa-arrow-left-long"></i> Trờ lại trang chủ</a>
     </div>
 </section>
 

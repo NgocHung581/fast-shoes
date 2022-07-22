@@ -58,14 +58,6 @@ include('./partials-frontend/header.php');
                         <h3 class="product__item-name"><?php echo $name; ?></h3>
                         <div class="product__item-price">
                             <?php
-                                    if (!function_exists('currency_format')) {
-                                        function currency_format($number, $suffix = 'đ')
-                                        {
-                                            if (!empty($number)) {
-                                                return number_format($number, 0, ',', '.') . "{$suffix}";
-                                            }
-                                        }
-                                    }
                                     echo currency_format($price, " VND");
                                     ?>
                         </div>

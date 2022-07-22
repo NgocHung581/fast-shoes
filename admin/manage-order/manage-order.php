@@ -138,13 +138,13 @@ include('../partials/header.php');
                     <form action="<?php echo SITEURL . 'admin/manage-order/update-order.php' ?>" method="get">
                         <input type="hidden" name="order_id" value="<?php echo $order_id ?>">
                         <td>
-                            <select <?php if ($order_status == 'Đang giao hàng' or $order_status == 'Đã nhận hàng' or $order_status == 'Đã hủy') {
+                            <select <?php if ($order_status == 'Đang giao hàng' or $order_status == 'Đã giao hàng' or $order_status == 'Đã hủy') {
                                                     echo "disabled";
                                                 } ?> class="form-select <?php if ($order_status == 'Đã đặt hàng') {
                                                                             echo 'text-primary';
                                                                         } elseif ($order_status == 'Đang giao hàng') {
                                                                             echo 'text-warning';
-                                                                        } elseif ($order_status == 'Đã nhận hàng') {
+                                                                        } elseif ($order_status == 'Đã giao hàng') {
                                                                             echo 'text-success';
                                                                         } else {
                                                                             echo 'text-danger';

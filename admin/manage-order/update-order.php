@@ -17,3 +17,29 @@ if (isset($_GET['order_id']) and isset($_GET['order_status'])) {
         header('location:' . SITEURL . 'admin/manage-order/manage-order.php');
     }
 }
+
+if (isset($_GET['order_id']) and isset($_GET['cancel-submit'])) {
+    $order_id = $_GET['order_id'];
+    $sql = "UPDATE tbl_order SET order_status = 'Đã hủy' WHERE order_id = $order_id";
+
+    $res = mysqli_query($conn, $sql);
+
+    if ($res == true) {
+        header('location:' . SITEURL . 'order-customer.php');
+    } else {
+        header('location:' . SITEURL . 'order-customer.php');
+    }
+}
+
+if (isset($_GET['order_id']) and isset($_GET['confirm-submit'])) {
+    $order_id = $_GET['order_id'];
+    $sql = "UPDATE tbl_order SET order_status = 'Đã giao hàng' WHERE order_id = $order_id";
+
+    $res = mysqli_query($conn, $sql);
+
+    if ($res == true) {
+        header('location:' . SITEURL . 'order-customer.php');
+    } else {
+        header('location:' . SITEURL . 'order-customer.php');
+    }
+}
