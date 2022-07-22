@@ -11,20 +11,21 @@ include('./partials-frontend/header.php');
     <div class="container cart__container">
         <h2 class="mt-5 mb-4">Giỏ hàng của bạn</h2>
         <div class="row">
-            <div class="col-6 col-sm-10">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th style="min-width: 265px;" class="text-center" colspan="3">Sản phẩm</th>
-                            <th style="min-width: 86px;">Size</th>
-                            <th style="min-width: 104px;">Đơn giá</th>
-                            <th style="min-width: 88px;">Số lượng</th>
-                            <th style="min-width: 104px;">Tạm tính</th>
-                            <th style="min-width: 137px;">Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 265px;" class="text-center" colspan="3">Sản phẩm</th>
+                                <th style="min-width: 86px;">Size</th>
+                                <th style="min-width: 104px;">Đơn giá</th>
+                                <th style="min-width: 88px;">Số lượng</th>
+                                <th style="min-width: 104px;">Tạm tính</th>
+                                <th style="min-width: 137px;">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                         if (isset($_SESSION['cart-user-id'])) {
                             $total = 0;
 
@@ -55,114 +56,116 @@ include('./partials-frontend/header.php');
                                             $total += $cartTotalPrice;
                                         }
                         ?>
-                        <tr>
-                            <td colspan="3">
-                                <div class="row align-items-center product">
-                                    <div class="col-2">
-                                        <a href="<?php echo SITEURL . "admin/manage-cart/delete-cart.php?id=" . $cartId . "" ?>"
-                                            class="remove">
-                                            <i class="fa fa-times"></i>
-                                        </a>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="row align-items-center">
+                                        <div class="col-2">
+                                            <a href="<?php echo SITEURL . "admin/manage-cart/delete-cart.php?id=" . $cartId . "" ?>"
+                                                class="remove">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <img class="img-fluid"
+                                                src="./assests/images/product/<?php echo $cartProductImage; ?>"
+                                                alt="" />
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="mb-0"><?php echo $cartProductName; ?></p>
+                                        </div>
                                     </div>
-                                    <div class="col-4">
-                                        <img class="img-fluid"
-                                            src="./assests/images/product/<?php echo $cartProductImage; ?>" alt="" />
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="mb-0"><?php echo $cartProductName; ?></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <form action="<?php
+                                </td>
+                                <form action="<?php
                                                             echo SITEURL . "admin/manage-cart/update-cart.php"
 
                                                             ?>" method="GET">
-                                <td>
-                                    <select name="size" class="form-select" aria-label="Default select example">
-                                        <option <?php
+                                    <td>
+                                        <select name="size" class="form-select" aria-label="Default select example">
+                                            <option <?php
                                                                 if ($cartProductSize == 0 or $cartProductSize == 35) {
                                                                     echo "selected";
                                                                 }
                                                                 ?> value="35">35</option>
-                                        <option <?php
+                                            <option <?php
                                                                 if ($cartProductSize == 36) {
                                                                     echo "selected";
                                                                 }
                                                                 ?> value="36">36</option>
-                                        <option <?php
+                                            <option <?php
                                                                 if ($cartProductSize == 37) {
                                                                     echo "selected";
                                                                 }
                                                                 ?> value="37">37</option>
-                                        <option <?php
+                                            <option <?php
                                                                 if ($cartProductSize == 38) {
                                                                     echo "selected";
                                                                 }
                                                                 ?> value="38">38</option>
-                                        <option <?php
+                                            <option <?php
                                                                 if ($cartProductSize == 39) {
                                                                     echo "selected";
                                                                 }
                                                                 ?> value="39">39</option>
-                                        <option <?php
+                                            <option <?php
                                                                 if ($cartProductSize == 40) {
                                                                     echo "selected";
                                                                 }
                                                                 ?> value="40">40</option>
-                                    </select>
-                                </td>
+                                        </select>
+                                    </td>
 
-                                <td><?php
+                                    <td><?php
                                                     echo currency_format($cartProductPrice, " VND");
                                                     ?>
-                                </td>
-                                <input type="hidden" name='cart_id' value="<?php echo $cartId; ?>">
-                                <input type="hidden" name='price' value="<?php echo $cartProductPrice; ?>">
-                                <td>
-                                    <input class="quanlity" type="number" min="1" value="<?php if ($cartProductQuantity == 0) {
+                                    </td>
+                                    <input type="hidden" name='cart_id' value="<?php echo $cartId; ?>">
+                                    <input type="hidden" name='price' value="<?php echo $cartProductPrice; ?>">
+                                    <td>
+                                        <input class="quanlity" type="number" min="1" value="<?php if ($cartProductQuantity == 0) {
                                                                                                                 echo '1';
                                                                                                             } else {
                                                                                                                 echo "$cartProductQuantity";
                                                                                                             } ?>"
-                                        name="quantity">
-                                </td>
-                                <td>
-                                    <?php
+                                            name="quantity">
+                                    </td>
+                                    <td>
+                                        <?php
                                                     if ($cartTotalPrice == 0) {
                                                         echo currency_format($cartProductPrice, " VND");
                                                     } else {
                                                         echo currency_format($cartTotalPrice, " VND");
                                                     }
                                                     ?>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-update">Cập nhật</button>
-                                </td>
-                            </form>
-                        </tr>
-                        <?php
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-update">Cập nhật</button>
+                                    </td>
+                                </form>
+                            </tr>
+                            <?php
                                     }
                                 } else {
                                     echo "<td colspan='8' class='text-center'><div class='text-danger'>Giỏ hàng của bạn chưa có sản phẩm.</div></td>";
                                 }
                             }
                             ?>
-                    </tbody>
-                </table>
-                <a href="product.php" class="d-none d-sm-block">
+                        </tbody>
+                    </table>
+                </div>
+                <a href="product.php" class="d-none d-sm-block mt-3">
                     <button class="btn btn-primary comeback">
                         <i class="fa fa-long-arrow-alt-left"></i>
                         Tiếp tục xem sản phẩm
                     </button>
                 </a>
             </div>
-
+            <div class="col-6 "></div>
             <?php
                             if ($res == true) {
                                 $count = mysqli_num_rows($res);
                                 if ($count > 0) {
             ?>
-            <div class="col-6 col-sm-2">
+            <div class="col-12 col-sm-6 mt-3">
                 <table class="table">
                     <thead>
                         <tr>

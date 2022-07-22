@@ -26,7 +26,7 @@ include('./partials-frontend/header.php');
 </div>
 
 <div class="slider mt-45">
-    <div class="container slider__content">
+    <div class=" slider__content">
         <div class="slider__list owl-carousel">
             <?php
 
