@@ -11,7 +11,7 @@ include('./partials-frontend/header.php');
     <div class="container cart__container">
         <h2 class="mt-5 mb-4">Giỏ hàng của bạn</h2>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-md-9">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -152,20 +152,20 @@ include('./partials-frontend/header.php');
                         </tbody>
                     </table>
                 </div>
-                <a href="product.php" class="d-none d-sm-block mt-3">
+                <a href="product.php" class="d-none d-md-block mt-4">
                     <button class="btn btn-primary comeback">
                         <i class="fa fa-long-arrow-alt-left"></i>
                         Tiếp tục xem sản phẩm
                     </button>
                 </a>
             </div>
-            <div class="col-6 "></div>
+
             <?php
                             if ($res == true) {
                                 $count = mysqli_num_rows($res);
                                 if ($count > 0) {
             ?>
-            <div class="col-12 col-sm-6 mt-3">
+            <div class="col-6 col-md-3 mt-4 mt-md-0">
                 <table class="table">
                     <thead>
                         <tr>

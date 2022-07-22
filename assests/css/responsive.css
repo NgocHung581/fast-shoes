@@ -86,7 +86,10 @@
 .order th {
   min-width: 100px;
 }
-@media screen and (max-width: 1199.98) {
+@media screen and (max-width: 1199.98px) {
+  .cart__container {
+    max-width: 100%;
+  }
 }
 @media screen and (max-width: 991.98px) {
   .header__content {
@@ -102,9 +105,6 @@
   /* .modal td {
     font-size: 10px;
   } */
-  .cart__container {
-    max-width: 100%;
-  }
 }
 
 @media screen and (max-width: 767.98px) {
@@ -130,6 +130,9 @@
 
   .order__mobile {
     max-width: 100%;
+  }
+  .slider__item img {
+    object-fit: cover;
   }
 }
 @media screen and (max-width: 594px) {
