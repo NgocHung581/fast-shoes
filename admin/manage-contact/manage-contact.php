@@ -2,16 +2,15 @@
 include('../partials/header.php');
 ?>
 
-<?php
-    if (isset($_SESSION['update'])) {
-        echo $_SESSION['update'];
-        unset($_SESSION['update']);
-    }
-?>
-
 <div class="main-content">
     <div class="container">
         <h1 class="mb-20">Quản lý liên hệ</h1>
+        <?php
+            if (isset($_SESSION['update'])) {
+                echo $_SESSION['update'];
+                unset($_SESSION['update']);
+            }
+        ?>
         <table class="table align-middle">
             <thead class="table-info">
                 <tr>
