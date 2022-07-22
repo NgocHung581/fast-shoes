@@ -28,14 +28,26 @@ include('../partials/header.php');
                             $id = $row['user_id'];
                             $fullname = $row['fullname'];
                             $username = $row['username'];
-
-                            echo '</tr> 
-                                        <td>' . $stt++ . '</td>
-                                        <td>KH' . $id . '</td>
-                                        <td>' . $fullname . '</td>
-                                        <td>' . $username . '</td>
-                                        <td>2</td>
-                                    </tr>';
+                ?>
+            </tr>
+            <td><?php echo $stt++ ?></td>
+            <td>KH<?php echo $id ?></td>
+            <td><?php echo $fullname ?></td>
+            <td><?php echo $username ?></td>
+            <td>
+                <?php
+                            $sql1 = "SELECT * FROM tbl_order WHERE customer_id = $id";
+                            $res1 = mysqli_query($conn, $sql1);
+                            if ($res1 == true) {
+                                $count1 = mysqli_num_rows($res1);
+                                echo $count1;
+                            } else {
+                                echo '<div class="text-danger">Chưa xác định.</div>';
+                            }
+                ?>
+            </td>
+            </tr>
+            <?php
                         }
                         echo '<tr class="table-info">
                             <td colspan="5"><div class="text-primary text-end fw-bold fs-4">Hiện tại đang có ' . $count . ' khách hàng</div></td>
@@ -46,7 +58,7 @@ include('../partials/header.php');
                                 </tr>';
                     }
                 }
-                ?>
+?>
 
         </table>
     </div>

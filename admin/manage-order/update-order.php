@@ -1,13 +1,19 @@
 <?php
-include('../partials/header.php');
-?>
+include('../../config/constants.php');
 
-<div class="main-content">
-    <div class="container">
-        <h1 class="mb-20">Cập nhật đơn hàng</h1>
-    </div>
-</div>
+if (isset($_GET['order_id']) and isset($_GET['order_status'])) {
+    $order_id = $_GET['order_id'];
+    $order_status = $_GET['order_status'];
 
-<?php
-include('../partials/footer.php');
-?>
+    $sql = "UPDATE tbl_order SET order_status = '$order_status' WHERE order_id = $order_id";
+
+    $res = mysqli_query($conn, $sql);
+
+    if ($res == true) {
+        $_SESSION['update'] = '<div class="text-primary mb-10">Cập nhật trạng thái đơn hàng thành công.</div>';
+        header('location:' . SITEURL . 'admin/manage-order/manage-order.php');
+    } else {
+        $_SESSION['update'] = '<div class="text-danger mb-10">Cập nhật trạng thái đơn hàng thất bại.</div>';
+        header('location:' . SITEURL . 'admin/manage-order/manage-order.php');
+    }
+}
