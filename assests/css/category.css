@@ -1,7 +1,6 @@
 .categoryPage {
   padding-top: calc(var(--height-header) + 20px);
   margin-bottom: 45px;
-  margin-bottom: 115px;
 }
 
 .categoryPage__title {

@@ -28,38 +28,36 @@ include('./partials-frontend/header.php');
             ?>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="category-product.php?category_id=<?php echo $id; ?>" class="categoryPage__item">
-                        <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <a href="#" class="categoryPage__item">
-                                <div class="categoryPage__item-img">
+                <a href="category-product.php?category_id=<?php echo $id; ?>" class="categoryPage__item">
+                    <div class="categoryPage__item-img">
 
-                                    <?php
-
-                                            if ($image_name == "") {
-                                                echo "<div class='text-danger'>Không tìm thấy hình ảnh</div>";
-                                            } else {
-                                            ?>
-                                    <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
-                                    <?php
-                                            }
-                                            ?>
-                                </div>
-                                <div class="categoryPage__item-name"><?php echo $name; ?></div>
-                            </a>
-                        </div>
                         <?php
-                    }
-                } else {
-                    echo "<div class='text-danger'>Không tìm thấy danh mục</div>";
-                }
-                        ?>
 
-
-                </div>
+                                if ($image_name == "") {
+                                    echo "<div class='text-danger'>Không tìm thấy hình ảnh</div>";
+                                } else {
+                                ?>
+                        <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
+                        <?php
+                                }
+                                ?>
+                    </div>
+                    <div class="categoryPage__item-name"><?php echo $name; ?></div>
+                </a>
             </div>
+            <?php
+                }
+            } else {
+                echo "<div class='text-danger'>Không tìm thấy danh mục</div>";
+            }
+            ?>
+
+
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 
 <?php

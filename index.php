@@ -197,36 +197,36 @@ include('./partials-frontend/header.php');
             ?>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="col-12 col-md-6 col-lg-4 mb-2">
-                    <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
-                        <div class="category__item-img">
+                <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
+                    <div class="category__item-img">
 
-                            <?php
+                        <?php
 
-                                    if ($image_name == "") {
-                                        echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
-                                    } else {
-                                    ?>
-                            <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
-                            <?php
-                                    }
+                                if ($image_name == "") {
+                                    echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
+                                } else {
+                                ?>
+                        <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
+                        <?php
+                                }
 
-                                    ?>
+                                ?>
 
-                        </div>
-                        <div class="category__item-name"><?php echo $name; ?></div>
-                    </a>
-                </div>
-                <?php
+                    </div>
+                    <div class="category__item-name"><?php echo $name; ?></div>
+                </a>
+            </div>
+            <?php
                 }
             } else {
                 echo "<div class='text-danger'>Danh mục không được thêm vào</div>";
             }
-                ?>
+            ?>
 
-            </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
