@@ -12,20 +12,20 @@ include('./partials-frontend/header.php');
         <?php
 
         $search = $_POST['search'];
-        
-        if ($search == ""){
+
+        if ($search == "") {
 
             $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
 
-            ?>
+        ?>
 
-                <script>
-                    <?php echo ("location.href = '" . SITEURL . "';"); ?>
-                </script>
-                
-                
-            <?php
-                // die();
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "';"); ?>
+        </script>
+
+
+        <?php
+            // die();
         }
         ?>
         <h1 class="search__title">
