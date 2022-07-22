@@ -42,7 +42,7 @@ include('./partials-frontend/header.php');
                                 <th>Ngày đặt</th>
                                 <th>Số lượng sản phẩm</th>
                                 <th>Trạng thái</th>
-                                <th></th>
+                                <th>Hủy đơn hàng</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,7 +114,7 @@ include('./partials-frontend/header.php');
                                                                     <div class="col-12 col-xl-6 text-dark">
                                                                         Ngày đặt hàng:
                                                                         <span
-                                                                            class="fw-bold"><?php echo $order_status; ?></span>
+                                                                            class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
                                                                     <div class="col-12 col-xl-6 text-dark">Khách hàng:
                                                                         <span
@@ -230,9 +230,20 @@ include('./partials-frontend/header.php');
                                                     Bạn có chắc hủy hóa đơn không?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary removeOrder">
-                                                        Có
-                                                    </button>
+                                                    <form action="" method="post">
+                                                        <button type="submit" name="cancel-submit"
+                                                            class="btn btn-primary removeOrder">
+                                                            Có
+                                                        </button>
+                                                    </form>
+
+                                                    <?php
+                                                                        if (isset($_POST['cancel-submit'])) {
+                                                                            $sql6 = "UPDATE tbl_order SET order_status = 'Đã hủy' WHERE order_id = $order_id";
+                                                                            $res6 = mysqli_query($conn, $sql6);
+                                                                        }
+                                                                        ?>
+
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal">
                                                         Không
                                                     </button>
@@ -270,7 +281,7 @@ include('./partials-frontend/header.php');
                                 <th>Ngày đặt</th>
                                 <th>Số lượng sản phẩm</th>
                                 <th>Trạng thái</th>
-                                <th></th>
+                                <th>Hủy đơn hàng</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -338,7 +349,7 @@ include('./partials-frontend/header.php');
                                                                     </div>
                                                                     <div class="col-12 col-xl-6 text-dark">
                                                                         Ngày đặt hàng: <span
-                                                                            class="fw-bold"><?php echo $order_status; ?></span>
+                                                                            class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
                                                                     <div class="col-12 col-xl-6 text-dark">Khách hàng:
                                                                         <span
@@ -443,9 +454,19 @@ include('./partials-frontend/header.php');
                                                     Bạn có chắc hủy hóa đơn không?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary removeOrder">
-                                                        Có
-                                                    </button>
+                                                    <form action="" method="post">
+                                                        <button type="submit" name="cancel-submit"
+                                                            class="btn btn-primary removeOrder">
+                                                            Có
+                                                        </button>
+                                                    </form>
+
+                                                    <?php
+                                                                if (isset($_POST['cancel-submit'])) {
+                                                                    $sql7 = "UPDATE tbl_order SET order_status = 'Đã hủy' WHERE order_id = $order_id";
+                                                                    $res7 = mysqli_query($conn, $sql7);
+                                                                }
+                                                                ?>
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal">
                                                         Không
                                                     </button>
@@ -480,7 +501,6 @@ include('./partials-frontend/header.php');
                                 <th>Ngày đặt</th>
                                 <th>Số lượng sản phẩm</th>
                                 <th>Trạng thái</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -515,7 +535,8 @@ include('./partials-frontend/header.php');
                             ?>
                             <tr>
                                 <!-- Button trigger modal -->
-                                <td data-toggle="modal" data-target="#<?php echo "DH" . $order_id; ?>Delivery">
+                                <td class="link-primary text-decoration-underline" data-toggle="modal"
+                                    data-target="#<?php echo "DH" . $order_id; ?>Delivery">
                                     <?php echo "DH" . $order_id; ?>
                                     <!-- Modal -->
                                     <div class="modal fade" id="<?php echo "DH" . $order_id; ?>Delivery" tabindex="-1"
@@ -539,26 +560,27 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-xl-6 text-dark">
                                                                         Mã đơn hàng: <span
                                                                             class="fw-bold">DH<?php echo $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-xl-6 text-dark">
                                                                         Ngày đặt hàng: <span
-                                                                            class="fw-bold"><?php echo $order_status; ?></span>
+                                                                            class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">Khách hàng: <span
+                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                        <span
                                                                             class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-xl-6 text-dark">
                                                                         Số điện thoại: <span
                                                                             class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-xl-6 text-dark">
                                                                         Email: <span
                                                                             class="fw-bold"><?php echo $customer_email; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-xl-6 text-dark">
                                                                         Địa chỉ: <span
                                                                             class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
@@ -657,17 +679,51 @@ include('./partials-frontend/header.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $sql4 = "SELECT * FROM tbl_order WHERE customer_id = $user_id AND order_status = 'Đã giao hàng'";
+
+                                $res4 = mysqli_query($conn, $sql4);
+
+                                if ($res4 == true) {
+                                    $count4 = mysqli_num_rows($res4);
+                                    if ($count4 > 0) {
+                                        while ($row4 = mysqli_fetch_assoc($res4)) {
+                                            $order_id = $row4['order_id'];
+                                            $order_date = $row4['order_date'];
+                                            $order_status = $row4['order_status'];
+                                            $total_price = $row4['total_price'];
+
+                                            $product_name = explode(',', $row4['product_name']);
+                                            $product_image = explode(',', $row4['product_image']);
+                                            $product_size = explode(',', $row4['product_size']);
+                                            $product_price = explode(',', $row4['product_price']);
+
+                                            $customer_fullname = $row4['customer_fullname'];
+                                            $customer_email = $row4['customer_email'];
+                                            $customer_phone = $row4['customer_phone'];
+                                            $customer_address = $row4['customer_address'];
+                                            $product_quantity = explode(',', $row4['product_quantity']);
+                                            $order_quantity = 0;
+                                            foreach ($product_quantity as $item) {
+                                                $order_quantity += $item;
+                                            }
+
+                            ?>
                             <tr>
-                                <td data-bs-toggle="modal" data-bs-target="#DH54321Delivery">DH54321
+                                <td class="link-primary text-decoration-underline" data-bs-toggle="modal"
+                                    data-bs-target="#<?php echo "DH" . $order_id; ?>Delivery">
+                                    <?php echo "DH" . $order_id; ?>
                                     <!-- Button trigger modal -->
 
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="DH54321Delivery" tabindex="-1">
+                                    <div class="modal fade" id="<?php echo "DH" . $order_id; ?>Delivery" tabindex="-1">
                                         <div class="modal-dialog modal-dialog-scrollable modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h2 class="modal-title" id="DH54321DeliveryLabel">Chi tiết đơn hàng
+                                                    <h2 class="modal-title"
+                                                        id="<?php echo "DH" . $order_id; ?>DeliveryLabel">Chi tiết đơn
+                                                        hàng
                                                     </h2>
                                                     <button type="button" class="btn-close"
                                                         data-bs-dismiss="modal"></button>
@@ -678,22 +734,29 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Mã đơn hàng: DH54321
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Mã đơn hàng: <span
+                                                                            class="fw-bold"><?php echo "DH" . $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Ngày đặt hàng: 22/07/2022
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Ngày đặt hàng: <span
+                                                                            class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">Khách hàng: HDP
+                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                        <span
+                                                                            class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Số điện thoại: 012342134213
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Số điện thoại: <span
+                                                                            class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Email: hdp@gmail.com
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Email: <span
+                                                                            class="fw-bold"><?php echo $customer_email; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Địa chỉ: 68 Đặng Thùy Trâm
+                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                        Địa chỉ: <span
+                                                                            class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -701,7 +764,8 @@ include('./partials-frontend/header.php');
                                                         <div class="col-12 text-start">
                                                             <h3>Sản phẩm</h3>
                                                             <p style="font-size: 24px" class="text-dark">
-                                                                Tổng tiền: 1.200.000 VND
+                                                                Tổng tiền: <span
+                                                                    class="fw-bold"><?php echo currency_format($total_price, " VND"); ?></span>
                                                             </p>
                                                             <div class="table-responsive">
                                                                 <table class="table table-hover">
@@ -718,12 +782,16 @@ include('./partials-frontend/header.php');
                                                                     </thead>
                                                                     <tbody>
 
+                                                                        <?php
+                                                                                    for ($i = 0; $i <=  count($product_name) - 1; $i++) {
+                                                                                    ?>
                                                                         <tr>
                                                                             <td colspan="3">
-                                                                                <div class="row align-items-center">
+                                                                                <div
+                                                                                    class="row align-items-center product">
                                                                                     <div class="col-5">
                                                                                         <img class="img-fluid"
-                                                                                            src="./assests/images/nike.jpg"
+                                                                                            src="./assests/images/product/<?php echo $product_image[$i]; ?>"
                                                                                             alt="" />
                                                                                     </div>
                                                                                     <div class="col-7">
@@ -731,15 +799,17 @@ include('./partials-frontend/header.php');
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 VND
+                                                                            <td><?php echo $product_size[$i]; ?></td>
+                                                                            <td><?php echo currency_format($product_price[$i], " VND"); ?>
                                                                             </td>
-                                                                            <td>1
+                                                                            <td><?php echo $product_quantity[$i]; ?>
                                                                             </td>
-                                                                            <td>1.200.000VND
+                                                                            <td><?php echo currency_format($product_price[$i] * $product_quantity[$i], " VND"); ?>
                                                                             </td>
                                                                         </tr>
-
+                                                                        <?php
+                                                                                    }
+                                                                                    ?>
 
                                                                     </tbody>
                                                                 </table>
@@ -752,11 +822,19 @@ include('./partials-frontend/header.php');
                                         </div>
                                     </div>
                                 </td>
-                                <td>22/07/2022</td>
-                                <td>1</td>
-                                <td>Đã giao hàng</td>
+                                <td><?php echo $order_date; ?></td>
+                                <td><?php echo $order_quantity; ?></td>
+                                <td><?php echo $order_status; ?></td>
                             </tr>
-
+                            <?php
+                                        }
+                                    } else {
+                                        echo '<tr>
+                                        <td colspan="5" class="text-danger">Bạn chưa có đơn hàng nào.</td>
+                                        </tr>';
+                                    }
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -774,17 +852,49 @@ include('./partials-frontend/header.php');
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-bs-toggle="modal" data-bs-target="#DH54321Cancel">
-                                <td>DH54321
+                            <?php
+                                $sql5 = "SELECT * FROM tbl_order WHERE customer_id = $user_id AND order_status = 'Đã hủy'";
+
+                                $res5 = mysqli_query($conn, $sql5);
+
+                                if ($res5 == true) {
+                                    $count5 = mysqli_num_rows($res5);
+                                    if ($count5 > 0) {
+                                        while ($row5 = mysqli_fetch_assoc($res5)) {
+                                            $order_id = $row5['order_id'];
+                                            $order_date = $row5['order_date'];
+                                            $order_status = $row5['order_status'];
+                                            $total_price = $row5['total_price'];
+
+                                            $product_name = explode(',', $row5['product_name']);
+                                            $product_image = explode(',', $row5['product_image']);
+                                            $product_size = explode(',', $row5['product_size']);
+                                            $product_price = explode(',', $row5['product_price']);
+
+                                            $customer_fullname = $row5['customer_fullname'];
+                                            $customer_email = $row5['customer_email'];
+                                            $customer_phone = $row5['customer_phone'];
+                                            $customer_address = $row5['customer_address'];
+                                            $product_quantity = explode(',', $row5['product_quantity']);
+                                            $order_quantity = 0;
+                                            foreach ($product_quantity as $item) {
+                                                $order_quantity += $item;
+                                            }
+
+                            ?>
+                            <tr data-bs-toggle="modal" data-bs-target="#<?php echo "DH" . $order_id; ?>Cancel">
+                                <td class="link-primary text-decoration-underline"><?php echo "DH" . $order_id; ?>
                                     <!-- Button trigger modal -->
 
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="DH54321Cancel" tabindex="-1">
+                                    <div class="modal fade" id="<?php echo "DH" . $order_id; ?>Cancel" tabindex="-1">
                                         <div class="modal-dialog modal-dialog-scrollable modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h2 class="modal-title" id="DH54321CancelLabel">Chi tiết đơn hàng
+                                                    <h2 class="modal-title"
+                                                        id="<?php echo "DH" . $order_id; ?>CancelLabel">Chi tiết đơn
+                                                        hàng
                                                     </h2>
                                                     <button type="button" class="btn-close"
                                                         data-bs-dismiss="modal"></button>
@@ -796,21 +906,26 @@ include('./partials-frontend/header.php');
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
                                                                     <div class="col-12 col-xl-6">
-                                                                        Mã đơn hàng: DH54321
+                                                                        Mã đơn hàng: <?php echo "DH" . $order_id; ?>
                                                                     </div>
                                                                     <div class="col-12 col-xl-6">
-                                                                        Ngày đặt hàng: 22/07/2022
+                                                                        Ngày đặt hàng: <span
+                                                                            class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">Khách hàng: HDP
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Số điện thoại: 012342134213
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6">
-                                                                        Email: hdp@gmail.com
+                                                                    <div class="col-12 col-xl-6">Khách hàng: <span
+                                                                            class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
                                                                     <div class="col-12 col-xl-6">
-                                                                        Địa chỉ: 68 Đặng Thùy Trâm
+                                                                        Số điện thoại: <span
+                                                                            class="fw-bold"><?php echo $customer_phone; ?></span>
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Email: <span
+                                                                            class="fw-bold"><?php echo $customer_email; ?></span>
+                                                                    </div>
+                                                                    <div class="col-12 col-xl-6">
+                                                                        Địa chỉ: <span
+                                                                            class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -818,7 +933,8 @@ include('./partials-frontend/header.php');
                                                         <div class="col-12 text-start">
                                                             <h3>Sản phẩm</h3>
                                                             <p style="font-size: 24px" class="text-dark">
-                                                                Tổng tiền: 1.200.000 VND
+                                                                Tổng tiền: <span
+                                                                    class="fw-bold"><?php echo currency_format($total_price, " VND"); ?></span>
                                                             </p>
                                                             <div class="table-responsive">
                                                                 <table class="table table-hover">
@@ -835,12 +951,16 @@ include('./partials-frontend/header.php');
                                                                     </thead>
                                                                     <tbody>
 
+                                                                        <?php
+                                                                                    for ($i = 0; $i <=  count($product_name) - 1; $i++) {
+                                                                                    ?>
                                                                         <tr>
                                                                             <td colspan="3">
-                                                                                <div class="row align-items-center">
+                                                                                <div
+                                                                                    class="row align-items-center product">
                                                                                     <div class="col-5">
                                                                                         <img class="img-fluid"
-                                                                                            src="./assests/images/nike.jpg"
+                                                                                            src="./assests/images/product/<?php echo $product_image[$i]; ?>"
                                                                                             alt="" />
                                                                                     </div>
                                                                                     <div class="col-7">
@@ -848,16 +968,17 @@ include('./partials-frontend/header.php');
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
-                                                                            <td>35</td>
-                                                                            <td>1.200.000 VND
+                                                                            <td><?php echo $product_size[$i]; ?></td>
+                                                                            <td><?php echo currency_format($product_price[$i], " VND"); ?>
                                                                             </td>
-                                                                            <td>1
+                                                                            <td><?php echo $product_quantity[$i]; ?>
                                                                             </td>
-                                                                            <td>1.200.000VND
+                                                                            <td><?php echo currency_format($product_price[$i] * $product_quantity[$i], " VND"); ?>
                                                                             </td>
                                                                         </tr>
-
-
+                                                                        <?php
+                                                                                    }
+                                                                                    ?>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -869,11 +990,21 @@ include('./partials-frontend/header.php');
                                         </div>
                                     </div>
                                 </td>
-                                <td>22/07/2022</td>
-                                <td>1</td>
-                                <td>Đã hủy</td>
+                                <td><?php echo $order_date; ?></td>
+                                <td><?php echo $order_quantity; ?></td>
+                                <td><?php echo $order_status; ?></td>
                             </tr>
+                            <?php
 
+                                        }
+                                    } else {
+                                        echo '<tr>
+                                        <td colspan="5" class="text-danger">Bạn chưa có đơn hàng nào.</td>
+                                        </tr>';
+                                    }
+                                }
+
+                            ?>
                         </tbody>
                     </table>
                 </div>

@@ -68,31 +68,38 @@ include('convert-money.php');
                     ?>
                 </div>
                 <div class="header__cart">
-                    <a href="cart.php" class="header__cart-link">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="header__cart-quantity">
-                            <?php
-                            if (isset($_SESSION['user_id'])) {
-                                $customer_id = $_SESSION['user_id'];
-                                $conn = mysqli_connect('localhost', 'root', '', 'fast-shoes');
+                    <form action="" method="post">
+                        <button type="submit" name='view-cart-submit' class="header__cart-link">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="header__cart-quantity">
+                                <?php
+                                if (isset($_SESSION['user_id'])) {
+                                    $customer_id = $_SESSION['user_id'];
+                                    $conn = mysqli_connect('localhost', 'root', '', 'fast-shoes');
 
-                                $sql1 = "SELECT * FROM tbl_cart WHERE user_id = $customer_id";
+                                    $sql1 = "SELECT * FROM tbl_cart WHERE user_id = $customer_id";
 
-                                $res1 = mysqli_query($conn, $sql1);
+                                    $res1 = mysqli_query($conn, $sql1);
 
-                                if ($res1 == true) {
-                                    $count = mysqli_num_rows($res1);
-                                    echo $count;
+                                    if ($res1 == true) {
+                                        $count = mysqli_num_rows($res1);
+                                        echo $count;
+                                    } else {
+                                        echo 0;
+                                    }
                                 } else {
                                     echo 0;
                                 }
-                            } else {
-                                echo 0;
-                            }
-                            ?>
-                        </span>
-                    </a>
-
+                                ?>
+                            </span>
+                        </button>
+                    </form>
+                    <?php
+                    if (isset($_POST['view-cart-submit'])) {
+                        $_SESSION['cart-user-id'] = $_SESSION['user_id'];
+                        header("location:" . SITEURL . 'cart.php');
+                    }
+                    ?>
 
 
                     <?php
