@@ -63,7 +63,7 @@ include('./partials-frontend/header.php');
             <?php
                 }
             } else {
-                echo "<div class='text-danger'>Slider không có sẵn</div>";
+                echo "<div class='text-danger' style='text-align: center;'>Slider không có sẵn</div>";
             }
             ?>
         </div>
