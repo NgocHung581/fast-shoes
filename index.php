@@ -30,7 +30,7 @@ include('./partials-frontend/header.php');
         <div class="slider__list owl-carousel">
             <?php
 
-            $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' LIMIT 3";
+            $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' AND product_active = 'Yes' LIMIT 3";
 
             $res_slider = mysqli_query($conn, $sql_slider);
 
