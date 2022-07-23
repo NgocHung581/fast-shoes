@@ -106,31 +106,31 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Mã đơn hàng:
                                                                         <span
                                                                             class="fw-bold">DH<?php echo $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Ngày đặt hàng:
                                                                         <span
                                                                             class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                    <div class="col-12 col-lg-6 text-dark">Khách hàng:
                                                                         <span
                                                                             class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Số điện thoại:
                                                                         <span
                                                                             class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Email:
                                                                         <span
                                                                             class="fw-bold"><?php echo $customer_email; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Địa chỉ:
                                                                         <span
                                                                             class="fw-bold"><?php echo $customer_address; ?></span>
@@ -350,27 +350,27 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Mã đơn hàng: <span
                                                                             class="fw-bold">DH<?php echo $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Ngày đặt hàng: <span
                                                                             class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                    <div class="col-12 col-lg-6 text-dark">Khách hàng:
                                                                         <span
                                                                             class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Số điện thoại: <span
                                                                             class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Email: <span
                                                                             class="fw-bold"><?php echo $customer_email; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Địa chỉ: <span
                                                                             class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
@@ -566,27 +566,27 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Mã đơn hàng: <span
                                                                             class="fw-bold">DH<?php echo $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Ngày đặt hàng: <span
                                                                             class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                    <div class="col-12 col-lg-6 text-dark">Khách hàng:
                                                                         <span
                                                                             class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Số điện thoại: <span
                                                                             class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Email: <span
                                                                             class="fw-bold"><?php echo $customer_email; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Địa chỉ: <span
                                                                             class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
@@ -746,27 +746,27 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Mã đơn hàng: <span
                                                                             class="fw-bold"><?php echo "DH" . $order_id; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Ngày đặt hàng: <span
                                                                             class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">Khách hàng:
+                                                                    <div class="col-12 col-lg-6 text-dark">Khách hàng:
                                                                         <span
                                                                             class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Số điện thoại: <span
                                                                             class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Email: <span
                                                                             class="fw-bold"><?php echo $customer_email; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6 text-dark">
+                                                                    <div class="col-12 col-lg-6 text-dark">
                                                                         Địa chỉ: <span
                                                                             class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
@@ -916,25 +916,25 @@ include('./partials-frontend/header.php');
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-lg-6">
                                                                         Mã đơn hàng: <?php echo "DH" . $order_id; ?>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-lg-6">
                                                                         Ngày đặt hàng: <span
                                                                             class="fw-bold"><?php echo $order_date; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">Khách hàng: <span
+                                                                    <div class="col-12 col-lg-6">Khách hàng: <span
                                                                             class="fw-bold"><?php echo $customer_fullname; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-lg-6">
                                                                         Số điện thoại: <span
                                                                             class="fw-bold"><?php echo $customer_phone; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-lg-6">
                                                                         Email: <span
                                                                             class="fw-bold"><?php echo $customer_email; ?></span>
                                                                     </div>
-                                                                    <div class="col-12 col-xl-6">
+                                                                    <div class="col-12 col-lg-6">
                                                                         Địa chỉ: <span
                                                                             class="fw-bold"><?php echo $customer_address; ?></span>
                                                                     </div>
