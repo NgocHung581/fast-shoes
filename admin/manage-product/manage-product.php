@@ -1,5 +1,5 @@
-<?php 
-    include('../partials/header.php');
+<?php
+include('../partials/header.php');
 ?>
 
 <div class="main-content">
@@ -43,22 +43,25 @@
         ?>
         <a href="add-product.php" class="btn btn-success mb-20">Thêm sản phẩm</a>
 
-        <table class="table align-middle">
-            <tr class="table-info">
-                <th>STT</th>
-                <th>Tên sản phẩm</th>
-                <th>Danh mục</th>
-                <th>Hình ảnh sản phẩm</th>
-                <th>Giá tiền</th>
-                <th>Featured</th>
-                <th>Active</th>
-                <th>Slider</th>
-                <th>Hành động</th>
-            </tr>
+        <table class="table table-striped align-middle">
+            <thead class="table-info">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Danh mục</th>
+                    <th>Hình ảnh sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Featured</th>
+                    <th>Active</th>
+                    <th>Slider</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+
 
             <?php
             $sql = "SELECT * FROM tbl_product";
-            
+
             $res = mysqli_query($conn, $sql);
 
             if ($res ==  true) {
@@ -75,7 +78,7 @@
                         $active = $row['product_active'];
                         $slider = $row['slider'];
                         $category_id = $row['category_id'];
-                        
+
                         // Get category_name
                         $sql2 = "SELECT category_name FROM tbl_category WHERE category_id = $category_id";
                         $res2 = mysqli_query($conn, $sql2);
@@ -98,16 +101,17 @@
                                 ?>
                 </td>
                 <td>
-                    <?php 
-                        if (!function_exists('currency_format')) {
-                            function currency_format($number, $suffix = 'đ') {
-                                if (!empty($number)) {
-                                    return number_format($number, 0, ',', '.') . "{$suffix}";
+                    <?php
+                                if (!function_exists('currency_format')) {
+                                    function currency_format($number, $suffix = 'đ')
+                                    {
+                                        if (!empty($number)) {
+                                            return number_format($number, 0, ',', '.') . "{$suffix}";
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        echo currency_format($price, " VND"); 
-                    ?>
+                                echo currency_format($price, " VND");
+                                ?>
                 </td>
                 <td><?php echo $featured; ?></td>
                 <td><?php echo $active; ?></td>
@@ -124,7 +128,7 @@
                 } else {
                     echo '<tr>
                     <td colspan="9">
-                        <div class="text-danger">Không có sản phẩm nào được thêm vào.</div>
+                        <div class="text-danger text-center">Không có sản phẩm nào được thêm vào.</div>
                     </td>
                 </tr>';
                 }
@@ -135,5 +139,5 @@
 </div>
 
 <?php
-    include('../partials/footer.php');
+include('../partials/footer.php');
 ?>

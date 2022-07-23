@@ -34,30 +34,33 @@ include('../partials/header.php');
         ?>
 
         <a href="add-admin.php" class="btn btn-success mb-20">Thêm admin</a>
-        <table class="table align-middle">
-            <tr class="table-info">
-                <th>STT</th>
-                <th>Họ và tên</th>
-                <th>Username</th>
-                <th>Hành động</th>
+        <table class="table table-striped align-middle">
+            <thead class="table-info">
+                <tr>
+                    <th>STT</th>
+                    <th>Họ và tên</th>
+                    <th>Username</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
 
-                <?php
-                $sql = "SELECT * FROM tbl_user WHERE type = 'admin'";
+            <?php
+            $sql = "SELECT * FROM tbl_user WHERE type = 'admin'";
 
-                $res = mysqli_query($conn, $sql);
+            $res = mysqli_query($conn, $sql);
 
-                if ($res == true) {
-                    $count = mysqli_num_rows($res);
-                    $stt = 1;
+            if ($res == true) {
+                $count = mysqli_num_rows($res);
+                $stt = 1;
 
-                    if ($count > 0) {
-                        while ($row = mysqli_fetch_assoc($res)) {
-                            $id = $row['user_id'];
-                            $fullname = $row['fullname'];
-                            $username = $row['username'];
-                            $type = $row['type'];
+                if ($count > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        $id = $row['user_id'];
+                        $fullname = $row['fullname'];
+                        $username = $row['username'];
+                        $type = $row['type'];
 
-                            echo '</tr> 
+                        echo '</tr> 
                                         <td>' . $stt++ . '</td>
                                         <td>' . $fullname . '</td>
                                         <td>' . $username . '</td>
@@ -67,14 +70,14 @@ include('../partials/header.php');
                                             <a href="' . SITEURL . 'admin/manage-admin/delete-admin.php?id=' . $id . '" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>';
-                        }
-                    } else {
-                        echo '</tr> 
+                    }
+                } else {
+                    echo '</tr> 
                                     <td colspan="5"><div class="text-danger">Chưa có Admin nào được thêm vào.</div></td>
                                 </tr>';
-                    }
                 }
-                ?>
+            }
+            ?>
 
         </table>
     </div>
