@@ -43,15 +43,18 @@ include('../partials/header.php');
         ?>
         <a href="add-category.php" class="btn btn-success mb-20">Thêm danh mục</a>
 
-        <table class="table align-middle">
-            <tr class="table-info">
-                <th>STT</th>
-                <th>Tên danh mục</th>
-                <th>Hình ảnh danh mục</th>
-                <th>Featured</th>
-                <th>Active</th>
-                <th>Hành động</th>
-            </tr>
+        <table class="table table-striped align-middle">
+            <thead class="table-info">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên danh mục</th>
+                    <th>Hình ảnh danh mục</th>
+                    <th>Featured</th>
+                    <th>Active</th>
+                    <th>Hành động</th>
+                </tr>
+
+            </thead>
 
             <?php
             $sql = "SELECT * FROM tbl_category";
@@ -95,11 +98,10 @@ include('../partials/header.php');
             </tr>
             <?php
                     }
-                } 
-                else {
+                } else {
                     echo '<tr>
                     <td colspan="6">
-                        <div class="text-danger">Không có danh mục nào được thêm vào.</div>
+                        <div class="text-danger text-center">Không có danh mục nào được thêm vào.</div>
                     </td>
                 </tr>';
                 }

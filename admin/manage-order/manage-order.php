@@ -167,7 +167,7 @@ include('../partials/header.php');
                         }
                     } else {
                         echo '<tr>
-                            <td colspan="10">Chưa có đơn hàng nào.</td>
+                            <td colspan="10"><div class="text-danger text-center">Chưa có đơn hàng nào.</div></td>
                         </tr>';
                     }
                 }
