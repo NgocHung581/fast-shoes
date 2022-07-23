@@ -109,7 +109,7 @@
 
 .favourite__item::before {
   content: "";
-  height: 150%;
+  height: 170%;
   width: 150px;
   position: absolute;
   background: linear-gradient(#00ccff, #d400d4);
@@ -183,13 +183,13 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  transition: all 0.5s;
+  transition: all 0.5s ease-out;
 }
 
 .favourite__item:hover .favourite__item-buttons,
 .favourite__item:hover .favourite__item-buttons {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   z-index: 1;
   transform: translate(-50%, -50%);

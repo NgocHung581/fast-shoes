@@ -57,14 +57,13 @@
   top: -20%;
   left: 50%;
   transform: translateX(-50%);
-
   transition: all 0.5s ease-out;
   z-index: 1;
 }
 .product__item:hover .product__item-buttons,
 .product__item:hover .product__item-buttons {
   position: absolute;
-  top: 35%;
+  top: 10%;
   left: 50%;
   z-index: 1;
   transform: translate(-50%, -20%);
