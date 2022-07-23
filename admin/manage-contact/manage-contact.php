@@ -48,7 +48,7 @@ include('../partials/header.php');
                     <td><?php echo $email; ?></td>
                     <td><?php echo $tel; ?></td>
                     <td style="max-width: 570px;"><?php echo $description; ?></td>
-                    <td class="text-danger"><?php echo $status; ?></td>
+                    <td class="<?php if($status == 'Đã phản hồi'){echo "text-primary";}else{echo "text-danger";}?>"><?php echo $status; ?></td>
 
                     <?php
 

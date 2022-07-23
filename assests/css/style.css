@@ -200,7 +200,7 @@ a:hover {
 .header__access-link::before {
   content: "";
   height: 20px;
-  width: 100px;
+  width: 230px;
   position: absolute;
   top: 21px;
   right: 0;
