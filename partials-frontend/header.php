@@ -36,22 +36,38 @@ include('convert-money.php');
             <a href="index.php" class="header__logo">
                 <img class="header__logo-img" src="./assests/images/logo-removebg.png" alt="Logo" />
             </a>
+
             <nav class="nav__bar">
                 <ul class="header__navigation d-flex align-items-center">
-                    <li class="header__navigation-item">
-                        <a href="index.php" class="header__navigation-link">Trang chủ</a>
+                    <li>
+                        <a href="index.php" <?=echoActiveClassIfRequestMatches("index")?>
+                            class="header__navigation-link">Trang chủ</a>
                     </li>
-                    <li class="header__navigation-item">
-                        <a href="product.php" class="header__navigation-link">Sản phẩm</a>
+                    <li>
+                        <a href="product.php" <?=echoActiveClassIfRequestMatches("product")?>
+                            class="header__navigation-link">Sản phẩm</a>
                     </li>
-                    <li class="header__navigation-item">
-                        <a href="category.php" class="header__navigation-link">Danh mục</a>
+                    <li>
+                        <a href="category.php" <?=echoActiveClassIfRequestMatches("category")?>
+                            class="header__navigation-link">Danh mục</a>
                     </li>
-                    <li class="header__navigation-item">
-                        <a href="contact.php" class="header__navigation-link">Liên hệ</a>
+                    <li>
+                        <a href="contact.php" <?=echoActiveClassIfRequestMatches("contact")?>
+                            class="header__navigation-link">Liên hệ</a>
                     </li>
                 </ul>
             </nav>
+            <?php 
+
+function echoActiveClassIfRequestMatches($requestUri)
+{
+    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+
+    if ($current_file_name == $requestUri)
+        echo 'class="header__active"';
+}
+
+?>
 
             <div class="header__options d-flex align-items-center">
                 <div class="header__access">

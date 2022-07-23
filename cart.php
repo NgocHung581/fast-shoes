@@ -11,16 +11,16 @@ include('./partials-frontend/header.php');
     <div class="container cart__container">
         <h2 class="mt-5 mb-4">Giỏ hàng của bạn</h2>
         <div class="row">
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-lg-9">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th style="min-width: 265px;" class="text-center" colspan="3">Sản phẩm</th>
                                 <th style="min-width: 86px;">Size</th>
-                                <th style="min-width: 104px;">Đơn giá</th>
+                                <th style="min-width: 126px;">Đơn giá</th>
                                 <th style="min-width: 88px;">Số lượng</th>
-                                <th style="min-width: 104px;">Tạm tính</th>
+                                <th style="min-width: 126px;">Tạm tính</th>
                                 <th style="min-width: 137px;">Hành động</th>
                             </tr>
                         </thead>
@@ -152,7 +152,7 @@ include('./partials-frontend/header.php');
                         </tbody>
                     </table>
                 </div>
-                <a href="product.php" class="d-none d-md-block mt-4">
+                <a href="product.php" class="d-none d-lg-block mt-4">
                     <button class="btn btn-primary comeback">
                         <i class="fa fa-long-arrow-alt-left"></i>
                         Tiếp tục xem sản phẩm
@@ -165,7 +165,7 @@ include('./partials-frontend/header.php');
                                     $count = mysqli_num_rows($res);
                                     if ($count > 0) {
             ?>
-            <div class="col-6 col-md-3 mt-4 mt-md-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4 mt-lg-0">
                 <table class="table">
                     <thead>
                         <tr>

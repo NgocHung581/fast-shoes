@@ -134,6 +134,11 @@
   .slider__item img {
     object-fit: cover;
   }
+  .cart__item-name {
+    max-width: 190px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 @media screen and (max-width: 594px) {
   .order__customer .nav-link {
@@ -149,6 +154,14 @@
 @media screen and (max-width: 415px) {
   .footer__social-link {
     font-size: 30px;
+  }
+  .header__cart-box {
+    width: 250px;
+  }
+  .cart__item-name {
+    max-width: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 @media screen and (max-width: 321px) {

@@ -102,7 +102,7 @@ include('./partials-frontend/header.php');
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-12 mb-3">
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
@@ -346,7 +346,7 @@ include('./partials-frontend/header.php');
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-12 mb-3">
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
@@ -562,7 +562,7 @@ include('./partials-frontend/header.php');
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-12 mb-3">
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
@@ -742,7 +742,7 @@ include('./partials-frontend/header.php');
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-12 mb-3">
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">
@@ -912,7 +912,7 @@ include('./partials-frontend/header.php');
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-12 mb-3">
                                                             <div class="order__detail-customer text-start">
                                                                 <h3>Thông tin khách hàng</h3>
                                                                 <div class="row">

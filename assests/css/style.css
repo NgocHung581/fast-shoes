@@ -95,7 +95,19 @@ a:hover {
 }
 
 /* Header */
+.header__active {
+  color: var(--primary-color);
+  display: block;
+  text-decoration: none;
+  margin: 0 15px;
 
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.5s ease-out;
+  background-color: unset;
+  border: none;
+}
 .header {
   background-color: var(--background-color);
   height: var(--height-header);
@@ -325,9 +337,8 @@ a:hover {
 }
 
 .header__cart-item {
-  height: 100px;
   flex: 1;
-  padding: 20px;
+  padding: 10px 20px;
   transition: all 0.5s ease-out;
 }
 
