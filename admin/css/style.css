@@ -60,7 +60,16 @@ ul {
   width: 150%;
   object-fit: cover;
 }
-
+.header__active {
+  display: block;
+  text-decoration: none;
+  margin: 0 15px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.5s ease-out;
+}
 .header__navigation-link,
 .header__access-link,
 .header__cart-link {
