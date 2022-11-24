@@ -24,9 +24,11 @@ a:hover {
   text-decoration: none;
 }
 
-input {
+input,
+button {
   outline: none;
   border: none;
+  background-color: transparent;
 }
 
 .btn {
@@ -160,32 +162,88 @@ input {
 .header__navigation-link.header__navigation-link--active,
 .header__navigation-link:hover,
 .header__access-link:hover,
-.header__cart-link:hover {
+.header__cart-link:hover,
+.header__search-label:hover {
   color: var(--primary-color);
 }
 
-.header__access {
+.header__search {
+  margin: 0 10px;
   position: relative;
 }
 
-.header__access-link {
-  margin: 0 30px;
+#header__search-toggle,
+.header__search-box {
+  display: none;
 }
 
-.header__access-link::after {
+#header__search-toggle:checked ~ .header__search-box {
   display: block;
-  content: "";
-  border-right: 1px solid var(--line-color);
+  width: 300px;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: -15px;
+  top: 140%;
+  right: -20px;
+  padding: 10px;
+  box-shadow: 0 1px 3.125rem 0 rgb(0 0 0 / 20%);
+  background-color: white;
+}
+
+.header__search-box::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+
+  border-bottom: 12px solid white;
+}
+
+.header__search-box > div {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.header__search-box > div > input {
+  flex: 1;
+  border-right: 1px solid black;
+  margin-right: 10px;
+  padding-right: 8px;
+  font-size: 14px;
+}
+
+.header__search-label {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+.header__access {
+  margin: 0 10px;
+  position: relative;
+}
+
+.header__access-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header__access-link {
+  font-size: 24px;
 }
 
 .header__access-options {
   position: absolute;
-  bottom: -86px;
-  right: 32px;
+  top: 170%;
+  right: -35px;
   width: 200px;
   padding: 10px;
   padding-bottom: 5px;
@@ -197,17 +255,27 @@ input {
   transition: all 0.5s ease-out;
 }
 
+.header__access-options > span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
 .header__access:hover .header__access-options {
   opacity: 1;
   pointer-events: all;
 }
 
-.header__access-link::before {
+.header__access-options::before {
   content: "";
   height: 20px;
-  width: 230px;
+  width: 100%;
   position: absolute;
-  top: 21px;
+  top: -20px;
   right: 0;
   display: block;
 }
@@ -241,6 +309,7 @@ input {
 
 .header__cart-link {
   font-size: 20px;
+  margin: 0 10px;
 }
 
 .header__cart-quantity {

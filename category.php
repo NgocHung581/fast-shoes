@@ -1,9 +1,5 @@
 <?php
-include('./config/constants.php');
-?>
-
-<?php
-include('./partials-frontend/header.php');
+include_once('./partials-frontend/header.php');
 ?>
 
 <div class="categoryPage">
@@ -61,5 +57,5 @@ include('./partials-frontend/header.php');
 </div>
 
 <?php
-include('./partials-frontend/footer.php');
+include_once('./partials-frontend/footer.php');
 ?>

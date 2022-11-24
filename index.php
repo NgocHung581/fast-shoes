@@ -1,30 +1,6 @@
 <?php
-include('./config/constants.php');
+include_once('./partials-frontend/header.php');
 ?>
-
-<?php
-include('./partials-frontend/header.php');
-?>
-
-<div class="search">
-    <div class="container">
-        <div class="search__box">
-            <form action="product-search.php" method="POST">
-                <input type="search" name="search" class="search__box-input" placeholder="Nhập sản phẩm cần tìm..." />
-                <button type="submit" name="submit" class="btn btn-primary">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
-            <?php
-            if (isset($_SESSION["comeback-home"])) {
-                echo $_SESSION["comeback-home"];
-                unset($_SESSION["comeback-home"]);
-            }
-            ?>
-        </div>
-    </div>
-</div>
-
 
 <div class="swiper-container ">
     <div class="swiper-wrapper">
@@ -81,33 +57,6 @@ include('./partials-frontend/header.php');
     <div class="swiper-button-next"></div>
 
 
-</div>
-
-<div class="about mt-45">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <div class="about__description">
-                    <h2 class="about__description-title">Giới thiệu</h2>
-                    <p class="about__description-detail">
-                        Được thành lập bởi Dương Hùng Phát vào năm 2022 với tinh thần mang đến các sản phẩm chất
-                        lượng, cam kết uy tín và sự tín nhiệm cao nhất từ Khách hàng.
-                        <br />
-                        <br />
-                        Địa chỉ: Hẻm 69/68 Đặng Thuỳ Trâm, Phường 13, Bình Thạnh, Thành
-                        phố Hồ Chí Minh <br />
-                        Điện thoại: 0123456789 <br />
-                        Email: vlu@gmail.com
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-md-6">
-
-                <img class="img-fluid" src="./assests/images/logo.png" alt="" />
-
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="favourite mt-45">
@@ -170,68 +119,8 @@ include('./partials-frontend/header.php');
 </div>
 
 
-
-
-<div class="category mt-45">
-    <div class="container">
-        <h2 class="category__title">Danh mục nổi bật</h2>
-        <div class="row gy-4">
-            <?php
-
-            $sql = "SELECT * FROM tbl_category WHERE category_featured = 'Yes' AND category_active = 'Yes' LIMIT 4";
-
-            $res = mysqli_query($conn, $sql);
-
-            $count = mysqli_num_rows($res);
-
-            if ($count > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $id = $row['category_id'];
-                    $name = $row['category_name'];
-                    $image_name = $row['category_img'];
-
-            ?>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <a href="category-product.php?category_id=<?php echo $id; ?>" class="category__item">
-                    <div class="category__item-img">
-
-                        <?php
-
-                                if ($image_name == "") {
-                                    echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
-                                } else {
-                                ?>
-                        <img src="./assests/images/category/<?php echo $image_name; ?>" alt="" />
-                        <?php
-                                }
-
-                                ?>
-
-                    </div>
-                    <div class="category__item-name"><?php echo $name; ?></div>
-                </a>
-            </div>
-            <?php
-                }
-            } else {
-                echo "<div class='text-danger'>Danh mục không được thêm vào</div>";
-            }
-            ?>
-
-        </div>
-    </div>
-</div>
-</div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="./js/owl.carousel.min.js"></script>
-<script src="./js/carousel.js"></script>
-
 <?php
-include('./partials-frontend/footer.php');
+include_once('./partials-frontend/footer.php');
 ?>
 
 <?php

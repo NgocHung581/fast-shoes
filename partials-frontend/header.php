@@ -11,8 +11,6 @@ include_once('convert-money.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./assests/images/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./assests/css/carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="./assests/css/carousel/owl.theme.default.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -77,8 +75,8 @@ include_once('convert-money.php');
                     <input type="checkbox" id="header__search-toggle">
                     <form action="product-search.php" method="POST" class="header__search-box">
                         <div>
-                            <input type="text" name="search" class="" placeholder="Nhập sản phẩm cần tìm..." />
-                            <button type="submit" name="submit" class="">
+                            <input type="text" name="search" placeholder="Nhập sản phẩm cần tìm..." />
+                            <button type="submit" name="submit">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </div>
@@ -98,8 +96,8 @@ include_once('convert-money.php');
 
                     <div class="header__access-options">
                         <span class=""><?php echo $_SESSION["user"]; ?></span>
-                        <a href="account.php" class="header__options-item">Tài khoản của bạn</a>
-                        <a href="order-customer.php" class="header__options-item">Xem đơn hàng của bạn</a>
+                        <a href="account.php" class="header__options-item">Tài khoản</a>
+                        <a href="order-customer.php" class="header__options-item">Xem đơn hàng</a>
                         <a href="logout.php" class="header__options-item">Đăng xuất</a>
 
                     </div>
