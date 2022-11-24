@@ -24,6 +24,11 @@ a:hover {
   text-decoration: none;
 }
 
+input {
+  outline: none;
+  border: none;
+}
+
 .btn {
   padding: 10px 28px;
   outline: none;
