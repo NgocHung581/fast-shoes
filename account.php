@@ -3,12 +3,18 @@ include_once('./partials-frontend/header.php');
 ?>
 
 <div class="accountPage">
-    <div class="container mt-45">
+    <div class="container">
         <h1>Thông tin tài khoản</h1>
         <div class="row">
-            <div class="col-lg-4">
-                <img src="./assests/images/user.png" alt="" />
-                <input type="file">
+            <div class="col-lg-4 text-center">
+                <label for="" class="form-label">Ảnh đại diện</label>
+                <div class="position-relative">
+                    <img src="./assests/images/user.png" alt="" class="accountPage__avatar" id="avatar-img" />
+                    <label for="avatar" class="accountPage__avatar-btn">
+                        <i class="fa-solid fa-pencil"></i>
+                    </label>
+                </div>
+                <input type="file" class="d-none" id="avatar">
             </div>
             <div class="col-lg-8">
                 <div class="row">
@@ -55,6 +61,15 @@ include_once('./partials-frontend/header.php');
         </div>
     </div>
 </div>
+
+<script>
+var avatarInput = document.getElementById('avatar')
+var avatarImg = document.getElementById('avatar-img')
+
+avatarInput.onchange = () => {
+    avatarImg.src = URL.createObjectURL(avatarInput.files[0])
+}
+</script>
 
 <?php
 include_once('./partials-frontend/footer.php');

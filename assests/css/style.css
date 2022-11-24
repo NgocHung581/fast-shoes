@@ -24,7 +24,6 @@ a:hover {
   text-decoration: none;
 }
 
-input,
 button {
   outline: none;
   border: none;
@@ -211,6 +210,8 @@ button {
 
 .header__search-box > div > input {
   flex: 1;
+  border: none;
+  outline: none;
   border-right: 1px solid black;
   margin-right: 10px;
   padding-right: 8px;
@@ -330,7 +331,7 @@ button {
 .header__cart-box {
   position: absolute;
   top: 150%;
-  right: 0;
+  right: -10px;
   width: 450px;
   background-color: white;
   box-shadow: 0 1px 3.125rem 0 rgb(0 0 0 / 20%);
@@ -376,7 +377,7 @@ button {
 
 .header__cart-list {
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: overlay;
 }
 
 .header__cart-list::-webkit-scrollbar {
@@ -458,40 +459,6 @@ button {
   content: "";
   border-bottom: 1px solid var(--line-color);
   margin-bottom: 10px;
-}
-
-/* Search */
-.search {
-  padding: 150px 0;
-  background-image: url(../images/background.jpg!s2);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-  margin-top: var(--height-header);
-}
-
-.search__box-input {
-  width: 70%;
-  padding: 8px 20px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  transition: all 0.5s ease-out;
-}
-
-.search__box-input:focus {
-  outline: 2px solid var(--primary-color);
-  box-shadow: 0 0 10px var(--primary-color);
-}
-
-.search__title {
-  font-weight: bold;
-  color: white;
-}
-
-.search__title span {
-  color: var(--primary-color);
 }
 
 /* Footer */

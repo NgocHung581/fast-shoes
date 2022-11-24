@@ -1,6 +1,11 @@
 .product {
-  margin: 10px 0;
-  min-height: 40vh;
+  padding-top: calc(var(--height-header) + 20px);
+  min-height: 80vh;
+}
+
+.search__title {
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
 .product__title {

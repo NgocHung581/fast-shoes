@@ -2,19 +2,6 @@
 include_once('./partials-frontend/header.php');
 ?>
 
-<div class="search">
-    <div class="container">
-        <div class="search__box">
-            <form action="product-search.php" method="POST">
-                <input type="search" name="search" class="search__box-input" placeholder="Nhập sản phẩm cần tìm..." />
-                <button type="submit" name="submit" class="btn btn-primary">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
-
 <div class="product">
     <div class="container">
         <h1 class="product__title">Sản phẩm tại cửa hàng</h1>

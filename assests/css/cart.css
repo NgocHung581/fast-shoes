@@ -15,6 +15,11 @@
 .cart .quanlity {
   width: 70px;
 }
+.cart .quanlity:focus {
+  box-shadow: none;
+  border-color: var(--primary-color);
+}
+
 .cart td {
   vertical-align: middle;
 }

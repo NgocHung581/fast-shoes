@@ -56,93 +56,88 @@ include('./partials-frontend/header.php');
                                                 $total += $cartTotalPrice;
                                             }
                             ?>
-                            <tr>
-                                <td colspan="3">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <a href="<?php echo SITEURL . "admin/manage-cart/delete-cart.php?id=" . $cartId . "" ?>"
-                                                class="remove">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <img class="img-fluid"
-                                                src="./assests/images/product/<?php echo $cartProductImage; ?>"
-                                                alt="" />
-                                        </div>
-                                        <div class="col-6">
-                                            <p class="mb-0"><?php echo $cartProductName; ?></p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <form action="<?php
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-2">
+                                                            <a href="<?php echo SITEURL . "admin/manage-cart/delete-cart.php?id=" . $cartId . "" ?>" class="remove">
+                                                                <i class="fa fa-times"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <img class="img-fluid" src="./assests/images/product/<?php echo $cartProductImage; ?>" alt="" />
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="mb-0"><?php echo $cartProductName; ?></p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <form action="<?php
                                                                 echo SITEURL . "admin/manage-cart/update-cart.php"
-
                                                                 ?>" method="GET">
-                                    <td>
-                                        <select name="size" class="form-select" aria-label="Default select example">
-                                            <option <?php
+                                                    <td>
+                                                        <select name="size" class="form-select" aria-label="Default select example">
+                                                            <option <?php
                                                                     if ($cartProductSize == 0 or $cartProductSize == 35) {
                                                                         echo "selected";
                                                                     }
                                                                     ?> value="35">35</option>
-                                            <option <?php
+                                                            <option <?php
                                                                     if ($cartProductSize == 36) {
                                                                         echo "selected";
                                                                     }
                                                                     ?> value="36">36</option>
-                                            <option <?php
+                                                            <option <?php
                                                                     if ($cartProductSize == 37) {
                                                                         echo "selected";
                                                                     }
                                                                     ?> value="37">37</option>
-                                            <option <?php
+                                                            <option <?php
                                                                     if ($cartProductSize == 38) {
                                                                         echo "selected";
                                                                     }
                                                                     ?> value="38">38</option>
-                                            <option <?php
+                                                            <option <?php
                                                                     if ($cartProductSize == 39) {
                                                                         echo "selected";
                                                                     }
                                                                     ?> value="39">39</option>
-                                            <option <?php
+                                                            <option <?php
                                                                     if ($cartProductSize == 40) {
                                                                         echo "selected";
                                                                     }
                                                                     ?> value="40">40</option>
-                                        </select>
-                                    </td>
+                                                        </select>
+                                                    </td>
 
-                                    <td><?php
+                                                    <td><?php
                                                         echo currency_format($cartProductPrice, " VND");
                                                         ?>
-                                    </td>
-                                    <input type="hidden" name='cart_id' value="<?php echo $cartId; ?>">
-                                    <input type="hidden" name='price' value="<?php echo $cartProductPrice; ?>">
-                                    <td>
-                                        <input class="quanlity" type="number" min="1" value="<?php if ($cartProductQuantity == 0) {
-                                                                                                                    echo '1';
-                                                                                                                } else {
-                                                                                                                    echo "$cartProductQuantity";
-                                                                                                                } ?>"
-                                            name="quantity">
-                                    </td>
-                                    <td>
-                                        <?php
+                                                    </td>
+                                                    <input type="hidden" name='cart_id' value="<?php echo $cartId; ?>">
+                                                    <input type="hidden" name='price' value="<?php echo $cartProductPrice; ?>">
+                                                    <td>
+                                                        <input class="quanlity form-control" type="number" min="1" value="<?php if ($cartProductQuantity == 0) {
+                                                                                                                                echo '1';
+                                                                                                                            } else {
+                                                                                                                                echo "$cartProductQuantity";
+                                                                                                                            } ?>" name="quantity">
+                                                    </td>
+                                                    <td>
+                                                        <?php
                                                         if ($cartTotalPrice == 0) {
                                                             echo currency_format($cartProductPrice, " VND");
                                                         } else {
                                                             echo currency_format($cartTotalPrice, " VND");
                                                         }
                                                         ?>
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-update">Cập nhật</button>
-                                    </td>
-                                </form>
-                            </tr>
-                            <?php
+                                                    </td>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-update">Cập nhật</button>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                <?php
                                         }
                                     } else {
                                         echo "<td colspan='8' class='text-center'><div class='text-danger'>Giỏ hàng của bạn chưa có sản phẩm.</div></td>";
@@ -165,43 +160,43 @@ include('./partials-frontend/header.php');
                                     $count = mysqli_num_rows($res);
                                     if ($count > 0) {
             ?>
-            <div class="col-12 col-sm-6 col-lg-3 mt-4 mt-lg-0">
-                <table class="table">
-                    <thead>
-                        <tr>
+                    <div class="col-12 col-sm-6 col-lg-3 mt-4 mt-lg-0">
+                        <table class="table">
+                            <thead>
+                                <tr>
 
-                            <th scope="col" colspan="3">Cộng giỏ hàng</th>
+                                    <th scope="col" colspan="3">Cộng giỏ hàng</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="order__total">
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="order__total">
 
-                            <td>Tổng</td>
-                            <td colspan="2">
-                                <?php
+                                    <td>Tổng</td>
+                                    <td colspan="2">
+                                        <?php
                                         echo currency_format($total, " VND");
                                         ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <form action="" method="post">
-                                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                                    <button type="submit" name="order-submit" class="btn btn-primary w-100">
-                                        Đặt hàng
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        <?php
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <form action="" method="post">
+                                            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                                            <button type="submit" name="order-submit" class="btn btn-primary w-100">
+                                                Đặt hàng
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                    <?php
                                     }
                                 }
                             }
                     ?>
-                    </tbody>
-                </table>
-            </div>
+                            </tbody>
+                        </table>
+                    </div>
 
         </div>
     </div>
@@ -216,9 +211,9 @@ if (isset($_POST['order-submit'])) {
     $user_id = $_POST['user_id'];
     $_SESSION['order-user-id'] = $user_id;
 ?>
-<script>
-<?php echo ("location.href = '" . SITEURL . "order.php';"); ?>
-</script>
+    <script>
+        <?php echo ("location.href = '" . SITEURL . "order.php';"); ?>
+    </script>
 <?php
 }
 ?>

@@ -2,7 +2,7 @@
 include_once('./partials-frontend/header.php');
 ?>
 
-<div class="search">
+<div class="product">
     <div class="container">
         <?php
         $search = $_POST['search'];
@@ -16,13 +16,8 @@ include_once('./partials-frontend/header.php');
         }
         ?>
         <h1 class="search__title">
-            Sản phẩm từ tìm kiếm <span>"<?php echo $search; ?>"</span>
+            Sản phẩm từ tìm kiếm "<?php echo $search; ?>"
         </h1>
-    </div>
-</div>
-
-<div class="product">
-    <div class="container">
         <div class="row gy-4">
             <?php
             $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";

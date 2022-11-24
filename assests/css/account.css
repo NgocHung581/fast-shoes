@@ -1,4 +1,29 @@
 .accountPage {
   padding-top: calc(var(--height-header) + 20px);
-  margin-bottom: 55px;
+  margin-bottom: 110px;
+}
+
+.accountPage__avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.accountPage__avatar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(
+    90deg,
+    hsla(211, 96%, 62%, 1) 0%,
+    hsla(295, 94%, 76%, 1) 100%
+  );
+  border-radius: 50%;
+  position: absolute;
+  bottom: 15px;
+  right: 30%;
+  cursor: pointer;
 }
