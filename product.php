@@ -40,49 +40,28 @@ include('./partials-frontend/header.php');
 
             ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
-                <div class="product__item">
-                    <div class="product__item-img">
-                        <?php
-
-                                if ($image_name == "") {
-                                    echo "<div class='text-danger'>Không tìm thấy hình ảnh</div>";
-                                } else {
-                                ?>
-                        <img class="img-fluid" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
-                        <?php
-                                }
-
-                                ?>
-                    </div>
-                    <div class="product__item-description">
-                        <h3 class="product__item-name"><?php echo $name; ?></h3>
-                        <div class="product__item-price">
-                            <?php
-                                    echo currency_format($price, " VND");
-                                    ?>
-                        </div>
-                        <div class="product__item-rating">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="product__item-buttons">
-                        <form action="" method="POST">
-                            <input type="hidden" name="user_id" value="
+                <div class="card text-center card__item" style="width: 18rem;">
+                    <img class="img__product" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
+                    <div class="card-body card__content">
+                        <h1 class="card-title"><?php echo $name; ?></h5>
+                            <h3 class="card-text"><?php echo currency_format($price, " VND");?></h3>
+                            <form action="" method="POST">
+                                <input type="hidden" name="user_id" value="
                             <?php
                             if (isset($_SESSION['user_id'])) {
                                 echo $_SESSION['user_id'];
                             }
                             ?>
                             ">
-                            <input type="hidden" name="product_id" value="<?php echo $id ?>">
-                            <button type="submit" name="cart-submit" class="btn btn-primary product__item-cart">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </button>
-                        </form>
+                                <input type="hidden" name="product_id" value="<?php echo $id ?>">
+                                <button type="submit" name="cart-submit" class="btn btn-primary add__cart">
+                                    <i class="fa-solid fa-cart-plus"></i> Thêm giỏ hàng
+                                </button>
+                                <button style="min-width: 185px;" class="btn btn-primary view__detail mt-2">
+                                    <a style="text-decoration: none;color: #fff" href=""><i class="fa fa-book-open"></i>
+                                        Xem chi tiết</a>
+                                </button>
+                            </form>
                     </div>
                 </div>
             </div>
