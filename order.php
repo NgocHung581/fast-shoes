@@ -1,10 +1,6 @@
 <?php
-include('./config/constants.php');
-include('./partials-frontend/check-login-user.php');
-?>
-
-<?php
-include('./partials-frontend/header.php');
+include_once('./partials-frontend/header.php');
+include_once('./partials-frontend/check-login-user.php');
 ?>
 
 <section class="order">
@@ -238,7 +234,7 @@ include('./partials-frontend/header.php');
 </section>
 
 <?php
-include('./partials-frontend/footer.php');
+include_once('./partials-frontend/footer.php');
 ?>
 
 <?php

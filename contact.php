@@ -1,9 +1,5 @@
 <?php
-include('./config/constants.php');
-?>
-
-<?php
-include('./partials-frontend/header.php');
+include_once('./partials-frontend/header.php');
 ?>
 
 <section class="contact">
@@ -96,31 +92,34 @@ include('./partials-frontend/header.php');
                         </form>
 
                         <?php
-                            if (isset($_POST['submit'])) {
-                                $username = $_POST['username'];
-                                $email = $_POST['email'];
-                                $tel = $_POST['tel'];
-                                $description = $_POST['description'];
+                        if (isset($_POST['submit'])) {
+                            $username = $_POST['username'];
+                            $email = $_POST['email'];
+                            $tel = $_POST['tel'];
+                            $description = $_POST['description'];
 
-                                $sql = "INSERT INTO tbl_contact SET
+                            $sql = "INSERT INTO tbl_contact SET
                                         contact_username = '$username',
                                         contact_email = '$email',
                                         contact_tel = '$tel',
                                         contact_description = '$description'
                                         ";
-                                $res = mysqli_query($conn, $sql);
-                          
-                                if ($res == true){
-                                    ?>
-                                        <script>alert("Đã gửi liên hệ thành công")</script>
-                                    <?php    
-                                }
-                                else{
-                                    ?>
-                                        <script>alert("Không thể gửi liên hệ")</script>
-                                    <?php 
-                                }
-                            } 
+                            $res = mysqli_query($conn, $sql);
+
+                            if ($res == true) {
+                        ?>
+                        <script>
+                        alert("Đã gửi liên hệ thành công")
+                        </script>
+                        <?php
+                            } else {
+                            ?>
+                        <script>
+                        alert("Không thể gửi liên hệ")
+                        </script>
+                        <?php
+                            }
+                        }
                         ?>
 
                     </div>
@@ -131,5 +130,5 @@ include('./partials-frontend/header.php');
 </section>
 
 <?php
-include('./partials-frontend/footer.php');
+include_once('./partials-frontend/footer.php');
 ?>

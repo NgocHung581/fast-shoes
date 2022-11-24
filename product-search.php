@@ -1,31 +1,18 @@
 <?php
-include('./config/constants.php');
-?>
-
-<?php
-include('./partials-frontend/header.php');
+include_once('./partials-frontend/header.php');
 ?>
 
 <div class="search">
     <div class="container">
-
         <?php
-
         $search = $_POST['search'];
-
         if ($search == "") {
-
             $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
-
         ?>
-
         <script>
         <?php echo ("location.href = '" . SITEURL . "';"); ?>
         </script>
-
-
         <?php
-            // die();
         }
         ?>
         <h1 class="search__title">
@@ -37,29 +24,21 @@ include('./partials-frontend/header.php');
 <div class="product">
     <div class="container">
         <div class="row gy-4">
-
             <?php
-
             $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
-
             $res = mysqli_query($conn, $sql);
-
             $count = mysqli_num_rows($res);
-
             if ($count > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                     $id = $row['product_id'];
                     $name = $row['product_name'];
                     $image_name = $row['product_img'];
                     $price = $row['product_price'];
-
             ?>
-
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="product__item">
                     <div class="product__item-img">
                         <?php
-
                                 if ($image_name == "") {
                                     echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
                                 } else {
@@ -67,7 +46,6 @@ include('./partials-frontend/header.php');
                         <img src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
                         <?php
                                 }
-
                                 ?>
                     </div>
                     <div class="product__item-description">
@@ -124,7 +102,7 @@ include('./partials-frontend/header.php');
 </div>
 
 <?php
-include('./partials-frontend/footer.php');
+include_once('./partials-frontend/footer.php');
 ?>
 
 

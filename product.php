@@ -1,9 +1,5 @@
 <?php
-include('./config/constants.php');
-?>
-
-<?php
-include('./partials-frontend/header.php');
+include_once('./partials-frontend/header.php');
 ?>
 
 <div class="search">
@@ -44,7 +40,7 @@ include('./partials-frontend/header.php');
                     <img class="img__product" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
                     <div class="card-body card__content">
                         <h1 class="card-title"><?php echo $name; ?></h5>
-                            <h3 class="card-text"><?php echo currency_format($price, " VND");?></h3>
+                            <h3 class="card-text"><?php echo currency_format($price, " VND"); ?></h3>
                             <form action="" method="POST">
                                 <input type="hidden" name="user_id" value="
                             <?php
@@ -78,7 +74,7 @@ include('./partials-frontend/header.php');
 </div>
 
 <?php
-include('./partials-frontend/footer.php');
+include_once('./partials-frontend/footer.php');
 ?>
 
 <?php

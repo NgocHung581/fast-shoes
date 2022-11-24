@@ -30,19 +30,19 @@ include('./partials-frontend/header.php');
     <div class="swiper-wrapper">
         <?php
 
-$sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' AND product_active = 'Yes' LIMIT 3";
+        $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' AND product_active = 'Yes' LIMIT 3";
 
-$res_slider = mysqli_query($conn, $sql_slider);
+        $res_slider = mysqli_query($conn, $sql_slider);
 
-$count_slider = mysqli_num_rows($res_slider);
+        $count_slider = mysqli_num_rows($res_slider);
 
-if ($count_slider > 0) {
-    while ($row = mysqli_fetch_assoc($res_slider)) {
-        $product_name = $row['product_name'];
-        $product_img = $row['product_img'];
-        $product_id = $row['product_id'];
+        if ($count_slider > 0) {
+            while ($row = mysqli_fetch_assoc($res_slider)) {
+                $product_name = $row['product_name'];
+                $product_img = $row['product_img'];
+                $product_id = $row['product_id'];
 
-?>
+        ?>
 
         <div class="swiper-slide">
             <img class="img-slide" src="./assests/images/product/<?php echo $product_img; ?>" alt="">
@@ -52,9 +52,9 @@ if ($count_slider > 0) {
                 <form action="" method="POST">
                     <input type="hidden" name="user_id" value="
         <?php
-        if (isset($_SESSION['user_id'])) {
-            echo $_SESSION['user_id'];
-        }
+                if (isset($_SESSION['user_id'])) {
+                    echo $_SESSION['user_id'];
+                }
         ?>
         ">
                     <input type="hidden" name='product_id' value="<?php echo $product_id; ?>">
@@ -66,11 +66,11 @@ if ($count_slider > 0) {
         </div>
 
         <?php
-    }
-} else {
-    echo "<div class='text-danger' style='text-align: center;'>Slider không có sẵn</div>";
-}
-?>
+            }
+        } else {
+            echo "<div class='text-danger' style='text-align: center;'>Slider không có sẵn</div>";
+        }
+        ?>
 
 
     </div>
@@ -137,7 +137,7 @@ if ($count_slider > 0) {
                     <img class="img__product" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
                     <div class="card-body card__content">
                         <h1 class="card-title"><?php echo $name; ?></h5>
-                            <h3 class="card-text"><?php echo currency_format($price, " VND");?></h3>
+                            <h3 class="card-text"><?php echo currency_format($price, " VND"); ?></h3>
                             <form action="" method="POST">
                                 <input type="hidden" name="user_id" value="
                             <?php

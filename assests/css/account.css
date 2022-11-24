@@ -1,0 +1,4 @@
+.accountPage {
+  padding-top: calc(var(--height-header) + 20px);
+  margin-bottom: 55px;
+}

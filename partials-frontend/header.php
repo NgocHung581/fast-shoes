@@ -1,5 +1,6 @@
 <?php
-include('convert-money.php');
+include_once('./config/constants.php');
+include_once('convert-money.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +16,6 @@ include('convert-money.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <!-- swiper -->
-    <link rel="stylesheet" href="./assests/css/swiper.min.css" />
     <link rel="stylesheet" href="./assests/css/style.css" />
     <link rel="stylesheet" href="./assests/css/home.css" />
     <link rel="stylesheet" href="./assests/css/product.css" />
@@ -25,8 +24,8 @@ include('convert-money.php');
     <link rel="stylesheet" href="./assests/css/order-customer.css" />
     <link rel="stylesheet" href="./assests/css/cart.css" />
     <link rel="stylesheet" href="./assests/css/order.css" />
+    <link rel="stylesheet" href="./assests/css/account.css" />
     <link rel="stylesheet" href="./assests/css/responsive.css" />
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
@@ -43,46 +42,74 @@ include('convert-money.php');
             <nav class="nav__bar">
                 <ul class="header__navigation d-flex align-items-center">
                     <li>
-                        <a href="index.php" <?=echoActiveClassIfRequestMatches("index")?>
+                        <a href="index.php" <?= echoActiveClassIfRequestMatches("index") ?>
                             class="header__navigation-link">Trang chủ</a>
                     </li>
                     <li>
-                        <a href="product.php" <?=echoActiveClassIfRequestMatches("product")?>
+                        <a href="product.php" <?= echoActiveClassIfRequestMatches("product") ?>
                             class="header__navigation-link">Sản phẩm</a>
                     </li>
                     <li>
-                        <a href="category.php" <?=echoActiveClassIfRequestMatches("category")?>
+                        <a href="category.php" <?= echoActiveClassIfRequestMatches("category") ?>
                             class="header__navigation-link">Danh mục</a>
                     </li>
                     <li>
-                        <a href="contact.php" <?=echoActiveClassIfRequestMatches("contact")?>
+                        <a href="contact.php" <?= echoActiveClassIfRequestMatches("contact") ?>
                             class="header__navigation-link">Liên hệ</a>
                     </li>
                 </ul>
             </nav>
-            <?php 
+            <?php
 
-function echoActiveClassIfRequestMatches($requestUri)
-{
-    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
-
-    if ($current_file_name == $requestUri)
-        echo 'class="header__active"';
-}
-
-?>
+            function echoActiveClassIfRequestMatches($requestUri)
+            {
+                $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+                if ($current_file_name == $requestUri)
+                    echo 'class="header__active"';
+            }
+            ?>
 
             <div class="header__options d-flex align-items-center">
+                <div class="header__search">
+                    <label for="header__search-toggle" class="header__search-label">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <input type="checkbox" id="header__search-toggle">
+                    <form action="product-search.php" method="POST" class="header__search-box">
+                        <div>
+                            <input type="text" name="search" class="" placeholder="Nhập sản phẩm cần tìm..." />
+                            <button type="submit" name="submit" class="">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <?php
+                    if (isset($_SESSION["comeback-home"])) {
+                        echo $_SESSION["comeback-home"];
+                        unset($_SESSION["comeback-home"]);
+                    }
+                    ?>
+                </div>
                 <div class="header__access">
                     <?php
                     if (isset($_SESSION["user"])) {
-                        echo '<span class="header__access-link">' . $_SESSION["user"] . '</span>';
-                        echo '<div class="header__access-options">
+                    ?>
+                    <img src="./assests/images/user.png" alt="" class="header__access-avatar" />
+
+                    <div class="header__access-options">
+                        <span class=""><?php echo $_SESSION["user"]; ?></span>
+                        <a href="account.php" class="header__options-item">Tài khoản của bạn</a>
                         <a href="order-customer.php" class="header__options-item">Xem đơn hàng của bạn</a>
                         <a href="logout.php" class="header__options-item">Đăng xuất</a>
-                    </div>';
+
+                    </div>
+                    <?php
                     } else {
-                        echo '<a href="login.php" class="header__access-link">Đăng nhập</a>';
+                    ?>
+                    <a href="login.php" class="header__access-link">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </a>
+                    <?php
                     }
                     ?>
                 </div>
@@ -94,7 +121,6 @@ function echoActiveClassIfRequestMatches($requestUri)
                                 <?php
                                 if (isset($_SESSION['user_id'])) {
                                     $customer_id = $_SESSION['user_id'];
-                                    $conn = mysqli_connect('localhost', 'root', '', 'fast-shoes');
 
                                     $sql1 = "SELECT * FROM tbl_cart WHERE user_id = $customer_id";
 
@@ -115,8 +141,14 @@ function echoActiveClassIfRequestMatches($requestUri)
                     </form>
                     <?php
                     if (isset($_POST['view-cart-submit'])) {
-                        $_SESSION['cart-user-id'] = $_SESSION['user_id'];
-                        header("location:" . SITEURL . 'cart.php');
+                        if (isset($_SESSION['user_id'])) {
+                            $_SESSION['cart-user-id'] = $_SESSION['user_id'];
+                        }
+                    ?>
+                    <script>
+                    <?php echo ("location.href = '" . SITEURL . "cart.php';"); ?>
+                    </script>
+                    <?php
                     }
                     ?>
 
@@ -130,7 +162,6 @@ function echoActiveClassIfRequestMatches($requestUri)
                             <?php
                                 if (isset($_SESSION['user_id'])) {
                                     $user_id = $_SESSION['user_id'];
-                                    $conn = mysqli_connect('localhost', 'root', '', 'fast-shoes');
 
                                     $sql = "SELECT * FROM tbl_cart WHERE user_id = $user_id";
                                     $res = mysqli_query($conn, $sql);
