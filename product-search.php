@@ -2,36 +2,7 @@
 include_once('./partials-frontend/header.php');
 ?>
 
-<div class="product">
-    <div class="container">
-        <?php
-        $search = $_POST['search'];
-        if ($search == "") {
-            $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
-        ?>
-        <script>
-        <?php echo ("location.href = '" . SITEURL . "';"); ?>
-        </script>
-        <?php
-        }
-        ?>
-        <h1 class="search__title">
-            Sản phẩm từ tìm kiếm "<?php echo $search; ?>"
-        </h1>
-        <div class="row gy-4">
-            <?php
-            $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
-            $res = mysqli_query($conn, $sql);
-            $count = mysqli_num_rows($res);
-            if ($count > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $id = $row['product_id'];
-                    $name = $row['product_name'];
-                    $image_name = $row['product_img'];
-                    $price = $row['product_price'];
-            ?>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="product__item">
+<!-- <div class="product__item">
                     <div class="product__item-img">
                         <?php
                                 if ($image_name == "") {
@@ -81,6 +52,75 @@ include_once('./partials-frontend/header.php');
                             </button>
                         </form>
 
+                    </div>
+                </div> -->
+
+<div class="product">
+    <div class="container">
+        <?php
+        $search = $_POST['search'];
+        if ($search == "") {
+            $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
+        ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "';"); ?>
+        </script>
+        <?php
+        }
+        ?>
+        <h1 class="search__title">
+            Sản phẩm từ tìm kiếm "<?php echo $search; ?>"
+        </h1>
+        <div class="row gy-4">
+            <?php
+            $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
+            $res = mysqli_query($conn, $sql);
+            $count = mysqli_num_rows($res);
+            if ($count > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $id = $row['product_id'];
+                    $name = $row['product_name'];
+                    $image_name = $row['product_img'];
+                    $price = $row['product_price'];
+            ?>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card text-center card__item" style="width: 18rem;">
+                    <img class="img__product" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
+                    <div class="card-body card__content">
+                        <h1 class="card-title"><?php echo $name; ?></h5>
+                            <h3 class="card-text"> <?php
+                                    if (!function_exists('currency_format')) {
+                                        function currency_format($number, $suffix = 'đ')
+                                        {
+                                            if (!empty($number)) {
+                                                return number_format($number, 0, ',', '.') . "{$suffix}";
+                                            }
+                                        }
+                                    }
+                                    echo currency_format($price, " VND");
+                                    ?></h3>
+                            <form action="" method="POST">
+                                <input type="hidden" name="user_id" value="
+                            <?php
+                            if (isset($_SESSION['user_id'])) {
+                                echo $_SESSION['user_id'];
+                            }
+                            ?>
+                            ">
+                                <input type="hidden" name="product_id" value="<?php echo $id ?>">
+                                <div class="menu__product">
+                                    <button type="submit" name="cart-submit" class="product_item add__cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="product_item view__detail ">
+                                        <a class="view__detail__css" style="text-decoration: none" href=""><i
+                                                class="fa fa-eye"></i></a>
+                                    </button>
+                                    <button class="product_item like__product ">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>
