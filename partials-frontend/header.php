@@ -83,12 +83,6 @@ include_once('convert-money.php');
                             </button>
                         </div>
                     </form>
-                    <?php
-                    if (isset($_SESSION["comeback-home"])) {
-                        echo $_SESSION["comeback-home"];
-                        unset($_SESSION["comeback-home"]);
-                    }
-                    ?>
                 </div>
                 <div class="header__access">
                     <?php

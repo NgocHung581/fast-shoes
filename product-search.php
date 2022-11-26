@@ -5,14 +5,17 @@ include_once('./partials-frontend/header.php');
 <div class="product">
     <div class="container">
         <?php
-        $search = $_POST['search'];
-        if ($search == "") {
-            $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
+        $search = "";
+        if (isset($_POST['search'])) {
+            $search = $_POST['search'];
+            if ($search == "") {
+                $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
         ?>
         <script>
         <?php echo ("location.href = '" . SITEURL . "';"); ?>
         </script>
         <?php
+            }
         }
         ?>
         <h1 class="search__title">
