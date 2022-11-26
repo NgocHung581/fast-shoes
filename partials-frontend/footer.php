@@ -24,6 +24,8 @@
 
 <script src="./js/app.js"></script>
 <script src="./js/swiper.min.js"></script>
+<script src="./js/detail-page.js"></script>
+
 <script>
 var swiper = new Swiper(".swiper-container", {
     effect: "coverflow",

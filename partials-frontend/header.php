@@ -26,6 +26,10 @@ include_once('convert-money.php');
     <link rel="stylesheet" href="./assests/css/order.css" />
     <link rel="stylesheet" href="./assests/css/account.css" />
     <link rel="stylesheet" href="./assests/css/responsive.css" />
+    <link rel="stylesheet" href="./assests/css/detail-page.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
