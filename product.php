@@ -37,13 +37,18 @@ include_once('./partials-frontend/header.php');
                             ?>
                             ">
                                 <input type="hidden" name="product_id" value="<?php echo $id ?>">
-                                <button type="submit" name="cart-submit" class="btn btn-primary add__cart">
-                                    <i class="fa-solid fa-cart-plus"></i> Thêm giỏ hàng
-                                </button>
-                                <button style="min-width: 185px;" class="btn btn-primary view__detail mt-2">
-                                    <a style="text-decoration: none;color: #fff" href=""><i class="fa fa-book-open"></i>
-                                        Xem chi tiết</a>
-                                </button>
+                                <div class="menu__product">
+                                    <button type="submit" name="cart-submit" class="product_item add__cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="product_item view__detail ">
+                                        <a class="view__detail__css" style="text-decoration: none" href=""><i
+                                                class="fa fa-eye"></i></a>
+                                    </button>
+                                    <button class="product_item like__product ">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                </div>
                             </form>
                     </div>
                 </div>
