@@ -157,22 +157,15 @@
 .product_item {
   width: 30px;
   height: 30px;
+  line-height: 30px;
   background: black;
   border-radius: 50%;
   color: white;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 .product_item:hover {
   color: var(--primary-color);
-}
-
-.view__detail__css {
-  color: #fff;
-  transition: all 0.5s;
-}
-
-.view__detail__css:hover {
-  color: var(--primary-color);
+  transform: scale(1.2);
 }
 
 .card__item:hover .menu__product {

@@ -36,11 +36,9 @@ include_once('./partials-frontend/header.php');
                                     <button type="submit" name="cart-submit" class="product_item add__cart">
                                         <i class="fa fa-shopping-cart"></i>
                                     </button>
-                                    <button class="product_item view__detail">
-                                        <a class="view__detail__css" style="text-decoration: none" href=""><i
-                                                class="fa fa-eye"></i></a>
-                                    </button>
-                                    <button class="product_item like__product">
+                                    <a class=" product_item view__detail" style="text-decoration: none"
+                                        href="detail-page.php"><i class="fa fa-eye"></i></a>
+                                    <button class="product_item like__product ">
                                         <i class="fa fa-heart"></i>
                                     </button>
                                 </div>
