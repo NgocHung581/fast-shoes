@@ -2,70 +2,20 @@
 include_once('./partials-frontend/header.php');
 ?>
 
-<!-- <div class="product__item">
-                    <div class="product__item-img">
-                        <?php
-                                if ($image_name == "") {
-                                    echo "<div class='text-danger'>Hình ảnh không có sẵn</div>";
-                                } else {
-                                ?>
-                        <img src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
-                        <?php
-                                }
-                                ?>
-                    </div>
-                    <div class="product__item-description">
-                        <h3 class="product__item-name"><?php echo $name; ?></h3>
-                        <div class="product__item-price">
-                            <?php
-                                    if (!function_exists('currency_format')) {
-                                        function currency_format($number, $suffix = 'đ')
-                                        {
-                                            if (!empty($number)) {
-                                                return number_format($number, 0, ',', '.') . "{$suffix}";
-                                            }
-                                        }
-                                    }
-                                    echo currency_format($price, " VND");
-                                    ?>
-                        </div>
-                        <div class="product__item-rating">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="product__item-buttons">
-                        <form action="" method="post">
-                            <input type="hidden" name="user_id" value="
-                            <?php
-                            if (isset($_SESSION['user_id'])) {
-                                echo $_SESSION['user_id'];
-                            }
-                            ?>
-                            ">
-                            <input type="hidden" name="product_id" value="<?php echo $id ?>">
-                            <button type="submit" name="cart-submit" class="btn btn-primary product__item-cart">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </button>
-                        </form>
-
-                    </div>
-                </div> -->
-
 <div class="product">
     <div class="container">
         <?php
-        $search = $_POST['search'];
-        if ($search == "") {
-            $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
+        $search = "";
+        if (isset($_POST['search'])) {
+            $search = $_POST['search'];
+            if ($search == "") {
+                $_SESSION["comeback-home"] = "<script>alert('Vui lòng nhập từ khóa tìm kiếm')</script>";
         ?>
         <script>
         <?php echo ("location.href = '" . SITEURL . "';"); ?>
         </script>
         <?php
+            }
         }
         ?>
         <h1 class="search__title">
@@ -89,16 +39,16 @@ include_once('./partials-frontend/header.php');
                     <div class="card-body card__content">
                         <h1 class="card-title"><?php echo $name; ?></h5>
                             <h3 class="card-text"> <?php
-                                    if (!function_exists('currency_format')) {
-                                        function currency_format($number, $suffix = 'đ')
-                                        {
-                                            if (!empty($number)) {
-                                                return number_format($number, 0, ',', '.') . "{$suffix}";
-                                            }
-                                        }
-                                    }
-                                    echo currency_format($price, " VND");
-                                    ?></h3>
+                                                            if (!function_exists('currency_format')) {
+                                                                function currency_format($number, $suffix = 'đ')
+                                                                {
+                                                                    if (!empty($number)) {
+                                                                        return number_format($number, 0, ',', '.') . "{$suffix}";
+                                                                    }
+                                                                }
+                                                            }
+                                                            echo currency_format($price, " VND");
+                                                            ?></h3>
                             <form action="" method="POST">
                                 <input type="hidden" name="user_id" value="
                             <?php
