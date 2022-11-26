@@ -38,17 +38,19 @@ include_once('convert-money.php');
 
 <body>
     <?php
-    $user_id = $_SESSION['user_id'];
-    $sql2 = "SELECT * FROM tbl_user WHERE user_id = $user_id";
-    $res2 = mysqli_query($conn, $sql2);
-    if ($res2 == true) {
-        $count2 = mysqli_num_rows($res2);
-        if ($count2 == 1) {
-            $row = mysqli_fetch_assoc($res2);
-            $fullname = $row['fullname'];
-            $avatar = $row['avatar'];
+        if (isset($_SESSION['user-id'])){
+            $user_id = $_SESSION['user_id']; 
+            $sql2 = "SELECT * FROM tbl_user WHERE user_id = $user_id";
+            $res2 = mysqli_query($conn, $sql2);
+            if ($res2 == true) {
+                $count2 = mysqli_num_rows($res2);
+                if ($count2 == 1) {
+                    $row = mysqli_fetch_assoc($res2);
+                    $fullname = $row['fullname'];
+                    $avatar = $row['avatar'];
+                }
+            }
         }
-    }
     ?>
 
     <div class="header">

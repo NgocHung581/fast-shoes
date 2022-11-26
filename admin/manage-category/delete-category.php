@@ -22,6 +22,7 @@ if (isset($_GET['id']) and isset($_GET['img_name'])) {
 
     if ($res == true) {
         $_SESSION["delete"] = "<div class='text-primary mb-10'>Xóa danh mục thành công.</div>";
+        $_SESSION["IsDelete"] = true;
         header("location:" . SITEURL . "admin/manage-category/manage-category.php");
     } else {
         $_SESSION["delete"] = "<div class='text-danger'>Xóa danh mục thất bại.</div>";
