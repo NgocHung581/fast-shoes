@@ -7,20 +7,15 @@ include_once('./partials-frontend/header.php');
         <h1 class="product__title">Sản phẩm tại cửa hàng</h1>
         <div class="row gy-4">
             <?php
-
             $sql = "SELECT * FROM tbl_product WHERE product_active = 'Yes'";
-
             $res = mysqli_query($conn, $sql);
-
             $count = mysqli_num_rows($res);
-
             if ($count > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                     $id = $row['product_id'];
                     $name = $row['product_name'];
                     $image_name = $row['product_img'];
                     $price = $row['product_price'];
-
             ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
                 <div class="card text-center card__item" style="width: 18rem;">
@@ -41,11 +36,11 @@ include_once('./partials-frontend/header.php');
                                     <button type="submit" name="cart-submit" class="product_item add__cart">
                                         <i class="fa fa-shopping-cart"></i>
                                     </button>
-                                    <button class="product_item view__detail ">
+                                    <button class="product_item view__detail">
                                         <a class="view__detail__css" style="text-decoration: none" href=""><i
                                                 class="fa fa-eye"></i></a>
                                     </button>
-                                    <button class="product_item like__product ">
+                                    <button class="product_item like__product">
                                         <i class="fa fa-heart"></i>
                                     </button>
                                 </div>

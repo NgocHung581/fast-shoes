@@ -33,6 +33,20 @@ include_once('convert-money.php');
 </head>
 
 <body>
+    <?php
+    $user_id = $_SESSION['user_id'];
+    $sql2 = "SELECT * FROM tbl_user WHERE user_id = $user_id";
+    $res2 = mysqli_query($conn, $sql2);
+    if ($res2 == true) {
+        $count2 = mysqli_num_rows($res2);
+        if ($count2 == 1) {
+            $row = mysqli_fetch_assoc($res2);
+            $fullname = $row['fullname'];
+            $avatar = $row['avatar'];
+        }
+    }
+    ?>
+
     <div class="header">
         <div class="container header__content">
             <a href="index.php" class="header__logo">
@@ -88,13 +102,25 @@ include_once('convert-money.php');
                     <?php
                     if (isset($_SESSION["user"])) {
                     ?>
-                    <img src="./assests/images/user.png" alt="" class="header__access-avatar" />
-
+                    <img src="<?php if ($avatar) {
+                                        echo './assests/images/user/' . $avatar;
+                                    } else {
+                                        echo './assests/images/user.png';
+                                    } ?>" alt="" class="header__access-avatar" />
                     <div class="header__access-options">
-                        <span class=""><?php echo $_SESSION["user"]; ?></span>
-                        <a href="account.php" class="header__options-item">Tài khoản</a>
-                        <a href="order-customer.php" class="header__options-item">Xem đơn hàng</a>
-                        <a href="logout.php" class="header__options-item">Đăng xuất</a>
+                        <span><?php echo $_SESSION["user"]; ?></span>
+                        <a href="account.php" class="header__options-item">
+                            <i class="fa-solid fa-user me-1" style="width: 20px"></i>
+                            <span>Tài khoản</span>
+                        </a>
+                        <a href="order-customer.php" class="header__options-item">
+                            <i class="fa-solid fa-book-open me-1" style="width: 20px"></i>
+                            <span>Xem đơn hàng</span>
+                        </a>
+                        <a href="logout.php" class="header__options-item">
+                            <i class="fa-solid fa-arrow-right-from-bracket me-1" style="width: 20px"></i>
+                            <span>Đăng xuất</span>
+                        </a>
 
                     </div>
                     <?php
