@@ -3,18 +3,20 @@ include_once('./partials-frontend/header.php');
 ?>
 
 <?php
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT * FROM tbl_user WHERE user_id = $user_id";
-$res = mysqli_query($conn, $sql);
-if ($res == true) {
-    $count = mysqli_num_rows($res);
-    if ($count == 1) {
-        $row = mysqli_fetch_assoc($res);
-        $fullname = $row['fullname'];
-        $email = $row['username'];
-        $gender = $row['gender'];
-        $phone = $row['phone'];
-        $avatar = $row['avatar'];
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT * FROM tbl_user WHERE user_id = $user_id";
+    $res = mysqli_query($conn, $sql);
+    if ($res == true) {
+        $count = mysqli_num_rows($res);
+        if ($count == 1) {
+            $row = mysqli_fetch_assoc($res);
+            $fullname = $row['fullname'];
+            $email = $row['username'];
+            $gender = $row['gender'];
+            $phone = $row['phone'];
+            $avatar = $row['avatar'];
+        }
     }
 }
 ?>

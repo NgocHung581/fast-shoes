@@ -96,6 +96,13 @@
 .favourite {
   border-top: 1px solid var(--line-color);
 }
+
+.favourite__title {
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .card__item {
   background: hsla(280, 95%, 57%, 1);
 

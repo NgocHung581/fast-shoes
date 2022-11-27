@@ -5,7 +5,7 @@ include_once('./partials-frontend/header.php');
 <div class="swiper-container ">
     <div class="swiper-wrapper">
         <?php
-        $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' AND product_active = 'Yes' LIMIT 3";
+        $sql_slider = "SELECT * FROM tbl_product WHERE slider = 'Yes' AND product_active = 'Yes'";
         $res_slider = mysqli_query($conn, $sql_slider);
         $count_slider = mysqli_num_rows($res_slider);
         if ($count_slider > 0) {
@@ -50,10 +50,10 @@ include_once('./partials-frontend/header.php');
 
 <div class="favourite mt-45">
     <div class="container">
-        <h2 class="favourite__title mt-45">Các sản phẩm nổi bật</h2>
+        <h2 class="favourite__title mt-45">Các sản phẩm được yêu thích nhất</h2>
         <div class="row gy-4">
             <?php
-            $sql2 = "SELECT * FROM tbl_product WHERE product_featured = 'Yes' AND product_active = 'Yes' LIMIT 8";
+            $sql2 = "SELECT * FROM tbl_product WHERE like_count > 0 ORDER BY like_count DESC LIMIT 8";
             $res2 = mysqli_query($conn, $sql2);
             $count2 = mysqli_num_rows($res2);
             if ($count2 > 0) {
@@ -69,7 +69,7 @@ include_once('./partials-frontend/header.php');
                     <div class="card-body card__content">
                         <h1 class="card-title"><?php echo $name; ?></h5>
                             <h3 class="card-text"><?php echo currency_format($price, " VND"); ?></h3>
-                            <form action="" method="POST">
+                            <form method="POST">
                                 <input type="hidden" name="user_id" value="
                             <?php
                             if (isset($_SESSION['user_id'])) {
@@ -82,27 +82,33 @@ include_once('./partials-frontend/header.php');
                                     <button type="submit" name="cart-submit" class="product_item add__cart">
                                         <i class="fa fa-shopping-cart"></i>
                                     </button>
+                            </form>
 
-                                    <a class=" product_item view__detail" style="text-decoration: none"
-                                        href="detail-page.php"><i class="fa fa-eye"></i></a>
-
-                                    <button class="product_item like__product ">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                </div>
+                            <form action="detail-page.php" method="GET">
+                                <input type="hidden" name="id" value="<?php echo $id ?>">
+                                <button class="product_item view__detail" style="text-decoration: none">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                            </form>
+                            <form action="product_liked.php" method="POST">
+                                <input type="hidden" name="product_id" value="<?php echo $id ?>">
+                                <button type="submit" name="like" class="product_item like__product">
+                                    <i class="fa fa-heart"></i>
+                                </button>
                             </form>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <?php
+        <?php
                 }
             } else {
                 echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
             }
-            ?>
-        </div>
+?>
     </div>
+</div>
 </div>
 
 

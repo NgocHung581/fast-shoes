@@ -1,6 +1,6 @@
 .accountPage {
   padding-top: calc(var(--height-header) + 20px);
-  margin-bottom: 110px;
+  min-height: 80vh;
 }
 
 .accountPage__avatar {
