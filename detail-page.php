@@ -5,6 +5,7 @@ if (isset($_GET['id'])) {
 
 <?php
     include_once('./partials-frontend/header.php');
+    include_once('./partials-frontend/functions.php');
     include_once('./partials-frontend/convert-money.php');
     ?>
 
@@ -84,54 +85,15 @@ if (isset($_GET['id'])) {
                                 $name = $row['product_name'];
                                 $image_name = $row['product_img'];
                                 $price = $row['product_price'];
-                        ?>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
-                <div class="card text-center card__item" style="width: 18rem;">
-                    <img class="img__product" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
-                    <div class="card-body card__content">
-                        <h1 class="card-title"><?php echo $name; ?></h5>
-                            <h3 class="card-text"><?php echo currency_format($price); ?></h3>
-                            <form action="index.php" method="POST">
-                                <input type="hidden" name="user_id" value="
-                            <?php
-                                if (isset($_SESSION['user_id'])) {
-                                    echo $_SESSION['user_id'];
-                                }
-                            ?>
-                            ">
-                                <input type="hidden" name="product_id" value="<?php echo $id ?>">
-                                <div class="menu__product">
-                                    <button type="submit" name="cart-submit" class="product_item add__cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </button>
-                            </form>
 
-                            <form action="detail-page.php" method="GET">
-                                <input type="hidden" name="id" value="<?php echo $id ?>">
-                                <button class="product_item view__detail" style="text-decoration: none">
-                                    <i class="fa fa-eye"></i>
-                                </button>
-                            </form>
-
-                            <form action="product_liked.php" method="POST">
-                                <input type="hidden" name="product_id" value="<?php echo $id ?>">
-                                <button type="submit" name="like" class="product_item like__product">
-                                    <i class="fa fa-heart"></i>
-                                </button>
-                            </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <?php
+                                renderProduct($id, $name, $image_name, $price);
                             }
                         } else {
                             echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
                         }
-            ?>
+                        ?>
+        </div>
     </div>
-</div>
 </div>
 <?php
         } else {

@@ -88,7 +88,8 @@ if (isset($_SESSION['user_id'])) {
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Số điện thoại</label>
-                                <input type="text" name="phone" id="phone" class="form-control">
+                                <input type="text" name="phone" id="phone" class="form-control"
+                                    value="<?php echo $phone; ?>">
                             </div>
                         </div>
                     </div>

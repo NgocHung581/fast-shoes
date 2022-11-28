@@ -9,7 +9,6 @@ include_once('./partials-frontend/check-login-user.php');
             <div class="col-12 col-lg-8 ">
                 <h2>Đơn hàng của bạn</h2>
                 <div class="row py-3">
-
                     <?php
                     if (isset($_SESSION['order-user-id'])) {
                         $user_id =  $_SESSION['order-user-id'];
@@ -19,13 +18,13 @@ include_once('./partials-frontend/check-login-user.php');
                         $row2 = mysqli_fetch_assoc($res2);
                         $fullname = $row2['fullname'];
                         $username = $row2['username'];
+                        $phone = $row2['phone'];
                     ?>
-
                     <div class="col-6">Họ và tên khách hàng: <span class="fw-bold"><?php echo $fullname; ?></span></div>
                     <div class="col-6 text-end">Ngày đặt hàng: <span class="fw-bold">
                             <?php
                                 date_default_timezone_set('Asia/Ho_Chi_Minh');
-                                $date = date('d-m-Y - H:i:s');
+                                $date = date('d/m/Y - H:i:s');
                                 echo $date; ?></span>
                     </div>
                 </div>
@@ -42,17 +41,12 @@ include_once('./partials-frontend/check-login-user.php');
                             </tr>
                         </thead>
                         <tbody>
-
                             <?php
-
                             $total_order = 0;
                             $sql = "SELECT * FROM tbl_cart WHERE user_id = $user_id";
-
                             $res = mysqli_query($conn, $sql);
-
                             if ($res == true) {
                                 $count = mysqli_num_rows($res);
-
                                 if ($count > 0) {
                                     while ($row = mysqli_fetch_assoc($res)) {
                                         $cart_id = $row['cart_id'];
@@ -68,12 +62,10 @@ include_once('./partials-frontend/check-login-user.php');
                                         } else {
                                             $total_order += $total_price;
                                         }
-
                             ?>
                             <tr>
                                 <td colspan="3">
                                     <div class="row align-items-center">
-
                                         <div class="col-5">
                                             <img class="img-fluid"
                                                 src="./assests/images/product/<?php echo $product_image; ?>" alt="" />
@@ -84,64 +76,36 @@ include_once('./partials-frontend/check-login-user.php');
                                     </div>
                                 </td>
                                 <td>
-                                    <form action="<?php
-                                                                echo SITEURL . "admin/manage-cart/update-cart.php"
-
-                                                                ?>" method="GET">
+                                    <form action="<?php echo SITEURL . "admin/manage-cart/update-cart.php" ?>"
+                                        method="GET">
                                         <select name="size" class="form-select" aria-label="Default select example">
-                                            <option <?php
-                                                                if ($product_size == 0 or $product_size == 35) {
-                                                                    echo "selected";
-                                                                }
-                                                                ?> value="35">35</option>
-                                            <option <?php
-                                                                if ($product_size == 36) {
-                                                                    echo "selected";
-                                                                }
-                                                                ?> value="36">36</option>
-                                            <option <?php
-                                                                if ($product_size == 37) {
-                                                                    echo "selected";
-                                                                }
-                                                                ?> value="37">37</option>
-                                            <option <?php
-                                                                if ($product_size == 38) {
-                                                                    echo "selected";
-                                                                }
-                                                                ?> value="38">38</option>
-                                            <option <?php
-                                                                if ($product_size == 39) {
-                                                                    echo "selected";
-                                                                }
-                                                                ?> value="39">39</option>
-                                            <option <?php
-                                                                if ($product_size == 40) {
-                                                                    echo "selected";
-                                                                }
-                                                                ?> value="40">40</option>
+                                            <option <?php if ($product_size == 35) echo "selected"; ?> value="35">35
+                                            </option>
+                                            <option <?php if ($product_size == 36) echo "selected"; ?> value="36">36
+                                            </option>
+                                            <option <?php if ($product_size == 37) echo "selected"; ?> value="37">37
+                                            </option>
+                                            <option <?php if ($product_size == 38) echo "selected"; ?> value="38">38
+                                            </option>
+                                            <option <?php if ($product_size == 39) echo "selected"; ?> value="39">39
+                                            </option>
+                                            <option <?php if ($product_size == 40) echo "selected"; ?> value="40">40
+                                            </option>
                                         </select>
                                 </td>
-                                <td><?php
-                                                echo currency_format($product_price, " VND");
-                                                ?></td>
+                                <td><?php echo currency_format($product_price); ?></td>
                                 <input type="hidden" name='page-order' value="order">
                                 <input type="hidden" name='cart_id' value="<?php echo $cart_id; ?>">
                                 <input type="hidden" name='price' value="<?php echo $product_price; ?>">
                                 <td>
-                                    <input class="quanlity" type="number" min="1" value="<?php
-                                                                                                        if ($product_quantity == 0) {
-                                                                                                            echo '1';
-                                                                                                        } else {
-                                                                                                            echo "$product_quantity";
-                                                                                                        }
-                                                                                                        ?>"
-                                        name="quantity" />
+                                    <input class="quanlity form-control" type="number" min="1"
+                                        value="<?php echo "$product_quantity"; ?>" name="quantity" />
                                 </td>
                                 <td><?php
                                                 if ($total_price == 0) {
-                                                    echo currency_format($product_price, " VND");
+                                                    echo currency_format($product_price);
                                                 } else {
-                                                    echo currency_format($total_price, " VND");
+                                                    echo currency_format($total_price);
                                                 }
                                                 ?></td>
                                 <td><button type="submit" class="btn btn-update">Cập nhật</button>
@@ -152,18 +116,12 @@ include_once('./partials-frontend/check-login-user.php');
                                     }
                                 }
                             }
-
                             ?>
-
-
-
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7">Tổng tiền</td>
-                                <td><?php
-                                    echo currency_format($total_order, " VND");
-                                    ?></td>
+                                <td colspan="7"><strong class="text-uppercase">Tổng tiền</strong></td>
+                                <td><strong><?php echo currency_format($total_order); ?></strong></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -194,7 +152,7 @@ include_once('./partials-frontend/check-login-user.php');
                             <div class="form__field" id="form__order-field">
                                 <div class="form-group" id="form__order-group">
                                     <input required="required" type="tel" name="tel" rules="required" id="form-tel"
-                                        class="form-tel" />
+                                        class="form-tel" value="<?php echo $phone; ?>" />
                                     <span class="form-label" id="form__order-label">Số điện thoại</span>
                                 </div>
                                 <div class="form-message"></div>
@@ -307,9 +265,7 @@ if (isset($_POST['submit'])) {
 
         if ($res4 == true) {
             $sql5 = "DELETE FROM tbl_cart WHERE user_id = $user_id";
-
             $res5 = mysqli_query($conn, $sql5);
-
 ?>
 <script>
 <?php echo ("location.href = '" . SITEURL . "order-customer.php';"); ?>

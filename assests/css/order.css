@@ -1,6 +1,6 @@
 .order {
   padding: var(--height-header) 0;
-  min-height: 250px;
+  min-height: 80vh;
 }
 .order #form__order-group {
   margin: 10px 0;
@@ -13,6 +13,10 @@
 }
 .order .quanlity {
   width: 70px;
+}
+.order .quanlity:focus {
+  box-shadow: none;
+  border-color: var(--primary-color);
 }
 .order button,
 .order a {
@@ -30,7 +34,7 @@
 }
 .order h2 {
   color: var(--primary-color);
-  font-weight: bold;
+  font-weight: 600;
   margin-top: 30px;
 }
 
@@ -68,35 +72,13 @@
   padding: 0 10px;
   color: var(--primary-color);
   letter-spacing: 0.5px;
-}
-
-#form__order-group input:valid ~ #form__order-label::before,
-#form__order-group input:focus ~ #form__order-label::before {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0;
-  height: 100%;
-  width: 1px;
-  background-color: var(--primary-color);
-}
-
-#form__order-group input:valid ~ #form__order-label::after,
-#form__order-group input:focus ~ #form__order-label::after {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 0px;
-  right: 0;
-  height: 100%;
-  width: 1px;
-  background-color: var(--primary-color);
+  font-size: 14px;
 }
 
 #form__order-group input:valid ~ #form__order-label {
   color: white;
   background-color: var(--primary-color);
+  font-size: 14px;
 }
 
 #form__order-label {

@@ -6,8 +6,7 @@
 }
 .order__customer h2 {
   color: var(--primary-color);
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-weight: 600;
 }
 .order__customer h4 {
   color: var(--primary-color);
@@ -47,6 +46,7 @@
 .close {
   border: none;
   background: transparent;
+  font-size: 30px;
 }
 .order__customer .close .span {
   padding: 5px;

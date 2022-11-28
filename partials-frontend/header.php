@@ -52,7 +52,6 @@ include_once('convert-money.php');
         }
     }
     ?>
-
     <div class="header">
         <div class="container header__content">
             <a href="index.php" class="header__logo">
@@ -79,8 +78,8 @@ include_once('convert-money.php');
                     </li>
                 </ul>
             </nav>
-            <?php
 
+            <?php
             function echoActiveClassIfRequestMatches($requestUri)
             {
                 $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
@@ -149,9 +148,7 @@ include_once('convert-money.php');
                                     $customer_id = $_SESSION['user_id'];
 
                                     $sql1 = "SELECT * FROM tbl_cart WHERE user_id = $customer_id";
-
                                     $res1 = mysqli_query($conn, $sql1);
-
                                     if ($res1 == true) {
                                         $count = mysqli_num_rows($res1);
                                         echo $count;
@@ -191,9 +188,7 @@ include_once('convert-money.php');
 
                                     $sql = "SELECT * FROM tbl_cart WHERE user_id = $user_id";
                                     $res = mysqli_query($conn, $sql);
-
                                     $count = mysqli_num_rows($res);
-
                                     if ($count > 0) {
                                         while ($row = mysqli_fetch_assoc($res)) {
                                             $product_image = $row['product_image'];
@@ -208,21 +203,12 @@ include_once('convert-money.php');
                                 <div class="cart__item-detail d-flex align-items-center justify-content-between">
                                     <div class="cart__item-description">
                                         <h3 class="cart__item-name"><?php echo $product_name ?></h3>
-                                        <p class="cart__item-price"><?php
-                                                                                    echo currency_format($product_price, " VND");
-                                                                                    ?>
-                                        </p>
+                                        <p class="cart__item-price"><?php echo currency_format($product_price); ?></p>
                                     </div>
-                                    <div class="cart__item-quantity">x <?php if ($product_quantity == 0) {
-                                                                                            $product_quantity = 1;
-                                                                                            echo $product_quantity;
-                                                                                        } else {
-                                                                                            echo $product_quantity;
-                                                                                        } ?></div>
+                                    <div class="cart__item-quantity">x <?php echo $product_quantity; ?></div>
                                 </div>
                             </li>
                             <?php
-
                                         }
                                     } else {
                                         ?>
