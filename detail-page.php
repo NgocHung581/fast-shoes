@@ -63,7 +63,7 @@ if (isset($_GET['id'])) {
             </div>
             <br>
             <a href="#" class="btn btn-primary">
-                <i class="fas fa-shopping-cart"></i> Add to card
+                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
             </a>
         </div>
     </div>

@@ -294,8 +294,8 @@ function renderListOrder($conn, $user_id, $status = "")
 function renderProduct($id, $name, $image_name, $price)
 {
     ?>
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
-    <div class="card text-center card__item" style="width: 18rem;">
+<div class="col-6 col-lg-4 col-xl-3 mb-2">
+    <div class="card text-center card__item" style="">
         <img class="img__product" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
         <div class="card-body card__content">
             <h1 class="card-title"><?php echo $name; ?></h1>

@@ -230,10 +230,11 @@ include_once('convert-money.php');
                     }
                     ?>
                 </div>
+                <label for="nav__mobile-input" class="d-md-none">
+                    <i class="fa fa-bars nav__bar-btn"></i>
+                </label>
             </div>
-            <label for="nav__mobile-input" class="d-lg-none">
-                <i class="fa fa-bars nav__bar-btn"></i>
-            </label>
+
             <input type="checkbox" name="" id="nav__mobile-input">
             <label for="nav__mobile-input" class="nav__overlay"></label>
             <nav class="nav__bar-mobile">
