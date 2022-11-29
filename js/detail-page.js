@@ -18,9 +18,11 @@ let x = window.matchMedia("(max-width: 1000px)");
 
 function changeHeight() {
   if (x.matches) {
-    let shoeHeight = shoes[0].offsetHeight;
-    if (shoeBg) {
-      shoeBg.style.height = `${shoeHeight * 0.9}px`;
+    if (shoes[0]) {
+      let shoeHeight = shoes[0].offsetHeight;
+      if (shoeBg) {
+        shoeBg.style.height = `${shoeHeight * 0.9}px`;
+      }
     }
   } else {
     if (shoeBg) {

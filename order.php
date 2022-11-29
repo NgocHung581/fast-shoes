@@ -32,12 +32,12 @@ include_once('./partials-frontend/check-login-user.php');
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center" colspan="3">Sản phẩm</th>
-                                <th>Size</th>
-                                <th>Đơn giá</th>
-                                <th>Số lượng</th>
-                                <th>Tạm tính</th>
-                                <th>Hành động</th>
+                                <th style="min-width: 265px;" class="text-center" colspan="3">Sản phẩm</th>
+                                <th style="min-width: 86px;">Size</th>
+                                <th style="min-width: 126px;">Đơn giá</th>
+                                <th style="min-width: 88px;">Số lượng</th>
+                                <th style="min-width: 126px;">Tạm tính</th>
+                                <th style="min-width: 137px;">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>

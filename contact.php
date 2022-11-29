@@ -14,7 +14,7 @@ include_once('./partials-frontend/header.php');
             <div class="row">
                 <div class="col-12 col-md-5 mb-5">
                     <div class="contact__info">
-                        <h2>Thông tin liên hệ</h2>
+                        <h2 style="font-weight: 600;">Thông tin liên hệ</h2>
                         <ul>
                             <li class="d-flex align-items-center">
                                 <i class="fa fa-map-marker-alt"></i>
@@ -37,7 +37,7 @@ include_once('./partials-frontend/header.php');
                 </div>
                 <div class="col-12 col-md-7">
                     <div class="contact__form">
-                        <h2>Gửi thắc mắc cho chúng tôi</h2>
+                        <h2 style="font-weight: 600;">Gửi thắc mắc cho chúng tôi</h2>
                         <p>
                             Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và
                             chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .

@@ -21,6 +21,7 @@ if (isset($_GET['id'])) {
             $product_price = $row['product_price'];
             $category_id = $row['category_id'];
             $category_name = $row['category_name'];
+            $created_at = $row['created_at'];
     ?>
 <div class="detail-page-container">
     <div class="card__detail">
@@ -36,7 +37,19 @@ if (isset($_GET['id'])) {
             <div class="shoeName">
                 <div>
                     <h1 class="big"><?php echo $product_name; ?></h1>
+                    <?php
+                                $date1 = $created_at;
+                                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                                $date2 = date("Y-m-d");
+                                $timestamp1 = strtotime($date1);
+                                $timestamp2 = strtotime($date2);
+                                $difference = $timestamp2 - $timestamp1;
+                                if ($difference <= 86400) {
+                                ?>
                     <span class="new">new</span>
+                    <?php
+                                }
+                                ?>
                 </div>
                 <h3 class="small">Men's running shoes</h3>
             </div>
@@ -62,13 +75,29 @@ if (isset($_GET['id'])) {
                 <h1><?php echo currency_format($product_price); ?></h1>
             </div>
             <br>
-            <a href="#" class="btn btn-primary">
-                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
-            </a>
+            <form action="cart.php" method="POST">
+                <input type="hidden" name="user_id"
+                    value="<?php if (isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>">
+                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                <input type="hidden" name="size" id="size" value="35">
+                <button type="submit" name="cart-submit" class="btn btn-primary">
+                    <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+                </button>
+            </form>
         </div>
     </div>
-
 </div>
+
+<script>
+const sizeElements = document.getElementsByClassName('size')
+const sizeValue = document.getElementById('size')
+Array.prototype.forEach.call(sizeElements, size => {
+    size.onclick = () => {
+        sizeValue.value = size.textContent
+    }
+});
+</script>
+
 <hr style="width: 50%; text-align: center;transform: translateX(50%)">
 
 <div class="container">

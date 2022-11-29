@@ -1,6 +1,6 @@
 .cart {
   padding: var(--height-header) 0;
-  min-height: 767px;
+  min-height: 90vh;
 }
 .cart table {
   box-shadow: 0 0 8px 1px;
