@@ -13,7 +13,7 @@
         </div>
         <div class="footer__copyright">
             2022 All rights reserved, Fast Shoes. Developed By -
-            <a href="#">HPD</a>
+            <a href="#">HPDN</a>
         </div>
     </div>
 </div>
@@ -47,7 +47,7 @@ var swiper = new Swiper(".swiper-container", {
         el: ".swiper-pagination",
     },
     autoplay: {
-        delay: 4000,
+        delay: 3000,
 
     },
 });

@@ -118,6 +118,10 @@ include_once('convert-money.php');
                             <i class="fa-solid fa-user me-1" style="width: 20px"></i>
                             <span>Tài khoản</span>
                         </a>
+                        <a href="product_liked.php" class="header__options-item">
+                            <i class="fa fa-heart me-1" style="width: 20px"></i>
+                            <span>Yêu thích</span>
+                        </a>
                         <a href="order-customer.php" class="header__options-item">
                             <i class="fa-solid fa-book-open me-1" style="width: 20px"></i>
                             <span>Xem đơn hàng</span>

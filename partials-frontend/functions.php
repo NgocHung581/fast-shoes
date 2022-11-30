@@ -1,5 +1,5 @@
 <?php
-function addToCart($conn)
+function addToCart($conn, $size = 35)
 {
     $user_id = $_POST['user_id'];
     $product_id = $_POST['product_id'];
@@ -14,16 +14,17 @@ function addToCart($conn)
             $product_image = $row['product_img'];
             $product_price = $row['product_price'];
 
-            $sql_second = "SELECT * FROM tbl_cart WHERE user_id = $user_id AND product_id = $product_id";
+            $sql_second = "SELECT * FROM tbl_cart WHERE user_id = $user_id AND product_id = $product_id AND product_size = $size";
             $res_second = mysqli_query($conn, $sql_second);
             if ($res_second == true) {
                 $count_second = mysqli_num_rows($res_second);
                 if ($count_second > 0) {
-                    $sql_third = "UPDATE tbl_cart SET product_quantity = product_quantity + 1 WHERE user_id = $user_id AND product_id = $product_id";
+                    $sql_third = "UPDATE tbl_cart SET product_quantity = product_quantity + 1 WHERE user_id = $user_id AND product_id = $product_id AND product_size = $size";
                 } else {
                     $sql_third = "INSERT INTO tbl_cart SET
                                 product_id = '$product_id',
                                 product_name = '$product_name',
+                                product_size = $size,
                                 product_image = '$product_image',
                                 product_price = '$product_price',
                                 user_id = '$user_id'
