@@ -6,6 +6,6 @@ define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'fast-shoes');
 
-define('SITEURL', 'http://localhost/Shoes-Store/');
+define('SITEURL', 'http://localhost:8080/Shoes-Store/');
 
 $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME);

@@ -79,18 +79,13 @@ include('../partials/header.php');
                         $slider = $row['slider'];
                         $category_id = $row['category_id'];
 
-                        // Get category_name
+                        // Get category_name                                           
+                        $sql2 = "SELECT category_name FROM tbl_category WHERE category_id = $category_id";
+                        $res2 = mysqli_query($conn, $sql2);
+                        $row2 = mysqli_fetch_assoc($res2);
+                        $category_name = $row2['category_name'];
                         
-                        if (isset($_SESSION["IsDelete"])) {
-                            $category_name = "";                             
-                        }
-                        else {
-                            $sql2 = "SELECT category_name FROM tbl_category WHERE category_id = $category_id";
-                            $res2 = mysqli_query($conn, $sql2);
-                            $row2 = mysqli_fetch_assoc($res2);
-                            $category_name = $row2['category_name'];
-                            unset($_SESSION["IsDelete"]);
-                        }       
+                        
             ?>
             <tr>
                 <td><?php echo $sn++; ?></td>
