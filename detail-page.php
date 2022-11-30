@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
             <div class="gradients">
                 <div class="gradient second" color="blue"></div>
             </div>
-            <h1 class="nike">nike</h1>
+
             <img src="img/logo.png" alt="" class="logo">
             <img src="./assests/images/product/<?php echo $product_img; ?>" alt="" class="shoe show" color="blue">
         </div>
@@ -38,7 +38,6 @@ if (isset($_GET['id'])) {
                     <h1 class="big"><?php echo $product_name; ?></h1>
                     <span class="new">new</span>
                 </div>
-                <h3 class="small">Men's running shoes</h3>
             </div>
             <div class="description">
                 <h3 class="title">Mô tả</h3>
@@ -71,7 +70,9 @@ if (isset($_GET['id'])) {
 </div>
 <hr style="width: 50%; text-align: center;transform: translateX(50%)">
 
+
 <div class="container">
+
     <div class="orther__product">
         <h1 class="text-center">Vì bạn đã xem <?php echo $category_name; ?></h1>
         <div class="row gy-4">
