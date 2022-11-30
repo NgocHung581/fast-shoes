@@ -196,6 +196,9 @@ include_once('./partials-frontend/footer.php');
 ?>
 
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 if (isset($_POST['submit'])) {
     $order_date = $date;
     $order_status = "Đã đặt hàng";
@@ -266,6 +269,47 @@ if (isset($_POST['submit'])) {
         if ($res4 == true) {
             $sql5 = "DELETE FROM tbl_cart WHERE user_id = $user_id";
             $res5 = mysqli_query($conn, $sql5);
+
+            // Gửi email khi đặt hàng thành công    
+            require "vendor/phpmailer/phpmailer/src/phpmailer.php";
+            require "vendor/phpmailer/phpmailer/src/exception.php";
+            require "vendor/phpmailer/phpmailer/src/smtp.php";
+            require "vendor/autoload.php";
+            
+            $mail = new PHPMailer;
+
+            try {
+                $mail->CharSet = "UTF-8";
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = SMTP_HOST;
+                $mail->SMTPAuth = true;
+                $mail->Username = SMTP_UNAME;
+                $mail->Password = SMTP_PWORD;
+                $mail->SMTPSecure = "ssl";
+                $mail->Port = SMTP_PORT;
+
+                $mail->setFrom(SMTP_UNAME, "Fast Shoes");
+                $mail->addAddress($customer_email, $customer_fullname);
+                $mail->addReplyTo(SMTP_UNAME);
+                $mail->isHTML(true);
+                $subject = "Thông báo xác nhận đơn hàng";
+                $mail->Subject = $subject;
+                $body = "<h3>Welcome to Fast Shoes!</h3>";
+                $body .= "<p>Xin chào " . $customer_fullname . ", chúng tôi đang chuẩn bị sản phẩm để gửi đi cho bạn.</p>";
+                $body .= "<p>Chúng tôi sẽ liên lạc cho bạn qua số điện thoại " . $customer_phone . " trước khi đến nơi. Hàng sẽ được giao lại hoàn toàn miễn phí nếu bạn vắng nhà.</p>";
+                $body .= "<p>Cảm ơn bạn đã đồng hành cùng Fast Shoes.</p>";
+                $body .= "<a href='http://fast-shoes.infinityfreeapp.com' class=''>Đến cửa hàng</a>";
+                $mail->Body = $body;
+                $result = $mail->send();
+                if (!$result) {
+                    $error = "Có lỗi xảy ra trong quá trình gửi mail";
+                }
+            }
+            catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: ", $mail->ErrorInfo;
+            }
+
 ?>
 <script>
 <?php echo ("location.href = '" . SITEURL . "order-customer.php';"); ?>
