@@ -1,7 +1,7 @@
 <?php
 session_start();
 // 127.0.0.1:3300 này localhost của Dương xóa đá cm :)))
-define('LOCALHOST', 'localhost');
+define('LOCALHOST', '127.0.0.1:3300');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'fast-shoes');
