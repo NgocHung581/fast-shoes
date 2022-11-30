@@ -84,6 +84,8 @@ include('../partials/header.php');
             $name = $_POST["name"];
             $price = $_POST["price"];
             $category = $_POST["category"];
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $date = date('Y-m-d');
 
             if (isset($_FILES["image"]["name"])) {
                 $img_name = $_FILES["image"]["name"];
@@ -133,7 +135,8 @@ include('../partials/header.php');
                     product_price='$price',
                     product_active='$active',
                     slider='$slider',
-                    category_id ='$category'
+                    category_id ='$category',
+                    created_at = '$date'
                 ";
 
             $res2 = mysqli_query($conn, $sql2);

@@ -10,13 +10,18 @@ include('./partials-frontend/functions.php');
 
 <?php
 if (isset($_POST['cart-submit'])) {
-    addToCart($conn);
+    if (isset($_POST['size'])) {
+        $size = (int)$_POST['size'];
+        addToCart($conn, $size);
+    } else {
+        addToCart($conn);
+    }
 }
 ?>
 
 <section class="cart">
     <div class="container cart__container">
-        <h2 class="mt-5 mb-4">Giỏ hàng của bạn</h2>
+        <h2 class="mt-5 mb-4" style="font-weight: 600;">Giỏ hàng của bạn</h2>
         <div class="row">
             <div class="col-12 col-lg-9">
                 <div class="table-responsive">
@@ -118,7 +123,8 @@ if (isset($_POST['cart-submit'])) {
                                                         ?>
                                     </td>
                                     <td>
-                                        <button type="submit" class="btn btn-update">Cập nhật</button>
+                                        <button type="submit" class="btn btn-update" style="padding: 10px 14px;">Cập
+                                            nhật</button>
                                     </td>
                                 </form>
                             </tr>

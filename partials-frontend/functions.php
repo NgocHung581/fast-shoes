@@ -1,5 +1,5 @@
 <?php
-function addToCart($conn)
+function addToCart($conn, $size = 35)
 {
     $user_id = $_POST['user_id'];
     $product_id = $_POST['product_id'];
@@ -14,16 +14,17 @@ function addToCart($conn)
             $product_image = $row['product_img'];
             $product_price = $row['product_price'];
 
-            $sql_second = "SELECT * FROM tbl_cart WHERE user_id = $user_id AND product_id = $product_id";
+            $sql_second = "SELECT * FROM tbl_cart WHERE user_id = $user_id AND product_id = $product_id AND product_size = $size";
             $res_second = mysqli_query($conn, $sql_second);
             if ($res_second == true) {
                 $count_second = mysqli_num_rows($res_second);
                 if ($count_second > 0) {
-                    $sql_third = "UPDATE tbl_cart SET product_quantity = product_quantity + 1 WHERE user_id = $user_id AND product_id = $product_id";
+                    $sql_third = "UPDATE tbl_cart SET product_quantity = product_quantity + 1 WHERE user_id = $user_id AND product_id = $product_id AND product_size = $size";
                 } else {
                     $sql_third = "INSERT INTO tbl_cart SET
                                 product_id = '$product_id',
                                 product_name = '$product_name',
+                                product_size = $size,
                                 product_image = '$product_image',
                                 product_price = '$product_price',
                                 user_id = '$user_id'
@@ -294,8 +295,8 @@ function renderListOrder($conn, $user_id, $status = "")
 function renderProduct($id, $name, $image_name, $price)
 {
     ?>
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
-    <div class="card text-center card__item" style="width: 18rem;">
+<div class="col-6 col-lg-4 col-xl-3 mb-2">
+    <div class="card text-center card__item" style="">
         <img class="img__product" src="./assests/images/product/<?php echo $image_name; ?>" alt="" />
         <div class="card-body card__content">
             <h1 class="card-title"><?php echo $name; ?></h1>
@@ -327,5 +328,29 @@ function renderProduct($id, $name, $image_name, $price)
     </div>
 </div>
 <?php
+}
+function get_time_ago( $time )
+{
+    $time_difference = time() - $time;
+
+    if( $time_difference < 1 ) { return ' 1 giây trước'; }
+    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
+                30 * 24 * 60 * 60       =>  'tháng',
+                24 * 60 * 60            =>  'ngày',
+                60 * 60                 =>  'giờ',
+                60                      =>  'phút',
+                1                       =>  'giây'
+    );
+
+    foreach( $condition as $secs => $str )
+    {
+        $d = $time_difference / $secs;
+
+        if( $d >= 1 )
+        {
+            $t = round( $d );
+            return  $t . ' ' . $str  . ' trước';
+        }
+    }
 }
 ?>

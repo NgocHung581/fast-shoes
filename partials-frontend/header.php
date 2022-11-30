@@ -118,6 +118,10 @@ include_once('convert-money.php');
                             <i class="fa-solid fa-user me-1" style="width: 20px"></i>
                             <span>Tài khoản</span>
                         </a>
+                        <a href="product_liked.php" class="header__options-item">
+                            <i class="fa fa-heart me-1" style="width: 20px"></i>
+                            <span>Yêu thích</span>
+                        </a>
                         <a href="order-customer.php" class="header__options-item">
                             <i class="fa-solid fa-book-open me-1" style="width: 20px"></i>
                             <span>Xem đơn hàng</span>
@@ -230,10 +234,11 @@ include_once('convert-money.php');
                     }
                     ?>
                 </div>
+                <label for="nav__mobile-input" class="d-md-none">
+                    <i class="fa fa-bars nav__bar-btn"></i>
+                </label>
             </div>
-            <label for="nav__mobile-input" class="d-lg-none">
-                <i class="fa fa-bars nav__bar-btn"></i>
-            </label>
+
             <input type="checkbox" name="" id="nav__mobile-input">
             <label for="nav__mobile-input" class="nav__overlay"></label>
             <nav class="nav__bar-mobile">
