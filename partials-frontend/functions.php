@@ -292,8 +292,31 @@ function renderListOrder($conn, $user_id, $status = "")
     }
 }
 
-function renderProduct($id, $name, $image_name, $price)
+function renderProduct($conn, $id, $name, $image_name, $price)
 {
+    if (isset($_SESSION['user_id'])) {
+        $liked = false;
+        $user_id = $_SESSION['user_id'];
+        $sql_like = "SELECT * FROM tbl_user WHERE user_id = $user_id";
+        $res_like = mysqli_query($conn, $sql_like);
+        if ($res_like) {
+            $count_like = mysqli_num_rows($res_like);
+            if ($count_like == 1) {
+                $row_like = mysqli_fetch_assoc($res_like);
+                if ($row_like['product_like']) {
+                    $product_like = explode(',', $row_like['product_like']);
+                    for ($i = 0; $i < count($product_like); $i++) {
+                        if ($product_like[$i] == $id) {
+                            $liked = true;
+                            break;
+                        } else {
+                            $liked = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
     ?>
 <div class="col-6 col-lg-4 col-xl-3 mb-2">
     <div class="card text-center card__item" style="">
@@ -320,7 +343,7 @@ function renderProduct($id, $name, $image_name, $price)
                 <form action="product_liked.php" method="POST">
                     <input type="hidden" name="product_id" value="<?php echo $id ?>">
                     <button type="submit" name="like" class="product_item like__product">
-                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-heart" style="<?php if ($liked) echo "color: var(--primary-color)" ?>"></i>
                     </button>
                 </form>
             </div>
@@ -329,28 +352,56 @@ function renderProduct($id, $name, $image_name, $price)
 </div>
 <?php
 }
-function get_time_ago( $time )
+
+function get_time_ago($time)
 {
     $time_difference = time() - $time;
 
-    if( $time_difference < 1 ) { return ' 1 giây trước'; }
-    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
-                30 * 24 * 60 * 60       =>  'tháng',
-                24 * 60 * 60            =>  'ngày',
-                60 * 60                 =>  'giờ',
-                60                      =>  'phút',
-                1                       =>  'giây'
+    if ($time_difference < 1) {
+        return ' 1 giây trước';
+    }
+    $condition = array(
+        12 * 30 * 24 * 60 * 60 =>  'year',
+        30 * 24 * 60 * 60       =>  'tháng',
+        24 * 60 * 60            =>  'ngày',
+        60 * 60                 =>  'giờ',
+        60                      =>  'phút',
+        1                       =>  'giây'
     );
 
-    foreach( $condition as $secs => $str )
-    {
+    foreach ($condition as $secs => $str) {
         $d = $time_difference / $secs;
 
-        if( $d >= 1 )
-        {
-            $t = round( $d );
+        if ($d >= 1) {
+            $t = round($d);
             return  $t . ' ' . $str  . ' trước';
         }
     }
+}
+
+function renderToastMessage($message = "")
+{
+?>
+<div class="position-fixed top-0 end-0 p-3 h-25 mt-5" style="z-index: 1000">
+    <div class="toast bg-success h-50 align-bottom" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex align-items-center h-100" style="font-size: 16px;">
+            <div class="toast-body text-white">
+                <?php echo $message; ?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+<script>
+var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastList = toastElList.map(function(toastEl) {
+    return new bootstrap.Toast(toastEl, {
+        delay: 3000
+    })
+});
+toastList.forEach(toast => toast.show());
+</script>
+<?php
 }
 ?>

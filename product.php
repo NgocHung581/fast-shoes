@@ -18,7 +18,7 @@ include_once('./partials-frontend/functions.php');
                     $image_name = $row['product_img'];
                     $price = $row['product_price'];
 
-                    renderProduct($id, $name, $image_name, $price);
+                    renderProduct($conn, $id, $name, $image_name, $price);
                 }
             } else {
                 echo "<div class='text-danger'>Không tìm thấy sản phẩm</div>";
