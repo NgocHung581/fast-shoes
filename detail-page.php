@@ -101,7 +101,94 @@ Array.prototype.forEach.call(sizeElements, size => {
 
 
 <div class="container">
+    <div class="comment">
 
+        <?php
+        $sql3 = "SELECT * FROM tbl_comment INNER JOIN tbl_product INNER JOIN tbl_user ON tbl_comment.product_id = tbl_product.product_id AND tbl_comment.username = tbl_user.username WHERE product_name LIKE '%$product_name%' ORDER BY comment_id DESC LIMIT 0,5";
+        $res3 = mysqli_query($conn, $sql3);
+        $count = mysqli_num_rows($res3);
+        ?>
+        <h1 class="text-center">Bình luận(<?php echo $count?>)</h1>
+        <?php
+            if ($count > 0) {
+            
+                while ($row = mysqli_fetch_array($res3)){
+                    $created_at = $row['created_at'];
+                    $fullname = $row['fullname'];      
+                    $content = $row['content'];
+                    $avatar = $row['avatar'];
+                    $username = $row['username'];
+                ?>
+
+        <div class="content__comment">
+
+            <div class="header__content-comment d-flex align-items-center ">
+                <img width="50" height="50" src="<?php if ($avatar) {
+                                                echo "./assests/images/user/$avatar";
+                                            } else {
+                                                echo './assests/images/user.png';
+                                            } ?>" alt="">
+                <?php
+                $name = $_SESSION['username'];
+                if($name == $username){
+                    echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
+                }else{
+                    echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger'>$fullname</h3>";
+
+                }
+                
+                ?>
+            </div>
+            <i style="font-size:0.875rem"><?php
+                  
+                     echo get_time_ago(strtotime($created_at)) ?></i>
+            <p><?php echo $content;?></p>
+        </div>
+
+        <?php
+                }
+            }else{
+                
+                    echo "<div class='text-danger mb-3'>Bạn hãy là người bình luận đầu tiên!!</div>";
+               
+            }
+        ?>
+        <form action="" method="post">
+            <input style="width: 50%;height: 42px;border-radius: 10px;padding: 0 10px" type="text" name="comment"
+                placeholder="Hãy nhập bình luận của bạn">
+            <button name="submit-comment" class="btn btn-primary" type="submit">Gửi</button>
+        </form>
+
+        <?php
+        
+        if (isset($_SESSION['username'])) {
+            if(isset($_POST['submit-comment'])){
+                $comment = $_POST['comment'];
+                $name = $_SESSION['username'];
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                $date = date('Y-m-d');
+
+                $sql = "INSERT INTO tbl_comment(content,product_id,username,created_at) VALUES ('$comment',$product_id,'$name','$date')";
+                mysqli_query($conn, $sql);
+                
+                ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "detail-page.php?id=$product_id'"); ?>
+        </script>
+        <?php
+                }
+            } else {
+                echo '<a style="font-size:2rem" href="login.php" class="header__mobile-navigation-link">Đăng nhập</a>';
+            }
+            ?>
+
+
+
+        <hr style="width: 50%; text-align: center;transform: translateX(50%)">
+
+
+
+    </div>
     <div class="orther__product">
         <h1 class="text-center">Vì bạn đã xem <?php echo $category_name; ?></h1>
         <div class="row gy-4">
