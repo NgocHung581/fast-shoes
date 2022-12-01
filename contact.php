@@ -25,7 +25,7 @@ include_once('./partials-frontend/header.php');
                             <li class="d-flex align-items-center">
                                 <i class="fa fa-envelope"></i>
 
-                                <a href="mailto:vlu@gmail.com">vlu@gmail.com</a>
+                                <a href="mailto:fastshoes.hpdn@gmail.com">fastshoes.hpdn@gmail.com</a>
                             </li>
                             <li class="d-flex align-items-center">
                                 <i class="fa fa-phone"></i>

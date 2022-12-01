@@ -33,51 +33,52 @@ if (!isset($_SESSION['admin'])) {
             </a>
             <ul class="header__navigation d-flex align-items-center">
                 <li class="header__navigation-item">
-                    <a href="../manage-home/index.php" <?=echoActiveClassIfRequestMatches("index")?>
+                    <a href="../manage-home/index.php" <?= echoActiveClassIfRequestMatches("index") ?>
                         class="header__navigation-link">Trang chủ</a>
                 </li>
                 <li class="header__navigation-item">
                     <a href="../manage-product/manage-product.php"
-                        <?=echoActiveClassIfRequestMatches("manage-product")?> class="header__navigation-link">Sản
+                        <?= echoActiveClassIfRequestMatches("manage-product") ?> class="header__navigation-link">Sản
                         phẩm</a>
                 </li>
                 <li class="header__navigation-item">
                     <a href="../manage-category/manage-category.php"
-                        <?=echoActiveClassIfRequestMatches("manage-category")?> class="header__navigation-link">Danh
+                        <?= echoActiveClassIfRequestMatches("manage-category") ?> class="header__navigation-link">Danh
                         mục</a>
                 </li>
                 <li class="header__navigation-item">
-                    <a href="../manage-admin/manage-admin.php" <?=echoActiveClassIfRequestMatches("manage-admin")?>
+                    <a href="../manage-admin/manage-admin.php" <?= echoActiveClassIfRequestMatches("manage-admin") ?>
                         class="header__navigation-link ">Admin</a>
                 </li>
                 <li class="header__navigation-item">
                     <a href="../manage-customer/manage-customer.php"
-                        <?=echoActiveClassIfRequestMatches("manage-customer")?> class="header__navigation-link">Khách
+                        <?= echoActiveClassIfRequestMatches("manage-customer") ?> class="header__navigation-link">Khách
                         hàng</a>
                 </li>
                 <li class="header__navigation-item">
                     <a href="../manage-contact/manage-contact.php"
-                        <?=echoActiveClassIfRequestMatches("manage-contact")?> class="header__navigation-link">Liên
+                        <?= echoActiveClassIfRequestMatches("manage-contact") ?> class="header__navigation-link">Liên
                         hệ</a>
                 </li>
                 <li class="header__navigation-item">
-                    <a href="../manage-order/manage-order.php" <?=echoActiveClassIfRequestMatches("manage-order")?>
+                    <a href="../manage-order/manage-order.php" <?= echoActiveClassIfRequestMatches("manage-order") ?>
                         class="header__navigation-link">Đơn hàng</a>
                 </li>
             </ul>
-            <?php 
+            <?php
 
-function echoActiveClassIfRequestMatches($requestUri)
-{
-    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+            function echoActiveClassIfRequestMatches($requestUri)
+            {
+                $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
 
-    if ($current_file_name == $requestUri)
-        echo 'class="header__active"';
-}
+                if ($current_file_name == $requestUri)
+                    echo 'class="header__active"';
+            }
 
-?>
+            ?>
             <div class="header__options ">
                 <div class="header__access d-flex align-items-center">
+                    <a href="../../index.php" class="header__access-link">Xem cửa hàng</a>
                     <span class="header__access-link">
                         <?php
                         if (isset($_SESSION['admin'])) {

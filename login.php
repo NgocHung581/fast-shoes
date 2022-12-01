@@ -118,6 +118,8 @@ if (isset($_POST['submit'])) {
             }
 
             if ($type == 'admin') {
+                $_SESSION['user_id'] = $id;
+                $_SESSION['username'] = $username;
                 $_SESSION['admin'] = "$fullname";
                 header("location:" . SITEURL . "admin/manage-home/index.php");
             }

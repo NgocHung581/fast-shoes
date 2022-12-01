@@ -31,7 +31,6 @@ if (isset($_GET['id'])) {
                 <div class="gradient second" color="blue"></div>
             </div>
 
-            <img src="img/logo.png" alt="" class="logo">
             <img src="./assests/images/product/<?php echo $product_img; ?>" alt="" class="shoe show" color="blue">
         </div>
         <div class="info__detail">
@@ -125,10 +124,10 @@ Array.prototype.forEach.call(sizeElements, size => {
 
             <div class="header__content-comment d-flex align-items-center ">
                 <img style="border-radius:50%" width="50" height="50" src="<?php if ($avatar) {
-                                                                            echo "./assests/images/user/$avatar";
-                                                                        } else {
-                                                                            echo './assests/images/user.png';
-                                                                        } ?>" alt="">
+                                                                                                    echo "./assests/images/user/$avatar";
+                                                                                                } else {
+                                                                                                    echo './assests/images/user.png';
+                                                                                                } ?>" alt="">
                 <?php
                                     $name = $_SESSION['username'];
                                     if ($name == $username) {
@@ -140,7 +139,6 @@ Array.prototype.forEach.call(sizeElements, size => {
                                     ?>
             </div>
             <i style="font-size:0.875rem"><?php
-
                                                                 echo get_time_ago(strtotime($created_at)) ?></i>
             <p><?php echo $content; ?></p>
         </div>
@@ -180,12 +178,6 @@ Array.prototype.forEach.call(sizeElements, size => {
                         echo '<a style="font-size:2rem" href="login.php" class="header__mobile-navigation-link">Đăng nhập</a>';
                     }
                     ?>
-
-
-
-
-
-
     </div>
     <hr style="width: 50%; text-align: center;transform: translateX(50%)">
     <div class="orther__product">

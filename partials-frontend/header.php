@@ -113,7 +113,23 @@ include_once('convert-money.php');
                                         echo './assests/images/user.png';
                                     } ?>" alt="" class="header__access-avatar" />
                     <div class="header__access-options">
-                        <span><?php echo $_SESSION["user"]; ?></span>
+                        <span><?php
+                                    if (isset($_SESSION["user"])) {
+                                        echo $_SESSION["user"];
+                                    } elseif (isset($_SESSION["admin"])) {
+                                        echo $_SESSION["admin"];
+                                    }
+                                    ?></span>
+                        <?php
+                            if (isset($_SESSION["admin"])) {
+                            ?>
+                        <a href="admin/manage-home/index.php" class="header__options-item">
+                            <i class="fa-solid fa-house me-1" style="width: 20px"></i>
+                            <span>Trang quản trị</span>
+                        </a>
+                        <?php
+                            }
+                            ?>
                         <a href="account.php" class="header__options-item">
                             <i class="fa-solid fa-user me-1" style="width: 20px"></i>
                             <span>Tài khoản</span>
@@ -260,6 +276,8 @@ include_once('convert-money.php');
                         <i class="fa fa-home"></i>
                         <a href="index.php" class="header__mobile-navigation-link">Trang chủ</a>
                     </li>
+                    <?php
+                    ?>
                     <li class="header__mobile-navigation-item">
                         <i class="fa fa-shopping-cart"></i>
                         <a href="product.php" class="header__mobile-navigation-link">Sản phẩm</a>
@@ -273,15 +291,21 @@ include_once('convert-money.php');
                         <a href="contact.php" class="header__mobile-navigation-link">Liên hệ</a>
                     </li>
                     <?php
-                    if (isset($_SESSION["user"])) {
-                        echo '<li class="header__mobile-navigation-item">
+                    if (isset($_SESSION["user_id"])) {
+                    ?>
+                    <li class="header__mobile-navigation-item">
                         <i class="fa fa-book-open"></i>
                         <a href="order-customer.php" class="header__mobile-navigation-link">Xem đơn hàng</a>
                     </li>
                     <li class="header__mobile-navigation-item">
+                        <i class="fa fa-heart"></i>
+                        <a href="product_liked.php" class="header__mobile-navigation-link">Yêu thích</a>
+                    </li>
+                    <li class="header__mobile-navigation-item">
                         <i class="fa fa-sign-out-alt"></i>
                         <a href="logout.php" class="header__mobile-navigation-link">Đăng xuất</a>
-                    </li>';
+                    </li>
+                    <?php
                     }
                     ?>
                 </ul>
