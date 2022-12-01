@@ -154,7 +154,7 @@ function renderListOrder($conn, $user_id, $status = "")
                                                                 alt="" />
                                                         </div>
                                                         <div class="col-7">
-                                                            <p class="mb-0">Nike</p>
+                                                            <p class="mb-0"><?php echo $product_name[$i]; ?></p>
                                                         </div>
                                                     </div>
                                                 </td>
