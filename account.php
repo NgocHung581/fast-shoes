@@ -1,5 +1,6 @@
 <?php
 include_once('./partials-frontend/header.php');
+include_once('./partials-frontend/functions.php');
 ?>
 
 <?php
@@ -23,7 +24,7 @@ if (isset($_SESSION['user_id'])) {
 
 <div class="accountPage">
     <div class="container">
-        <h1 class="mb-3">Thông tin tài khoản</h1>
+        <h1 class="mb-3" style="color: var(--primary-color);">Thông tin tài khoản</h1>
         <form method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-lg-4 text-center">
@@ -100,28 +101,7 @@ if (isset($_SESSION['user_id'])) {
     </div>
     <?php
     if (isset($_SESSION['Update-account-success'])) {
-    ?>
-    <div class="position-fixed top-0 end-0 p-3 h-25 mt-5" style="z-index: 1000">
-        <div class="toast bg-success h-50 align-bottom" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex align-items-center h-100" style="font-size: 16px;">
-                <div class="toast-body text-white">
-                    <?php echo $_SESSION['Update-account-success']; ?>
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                    aria-label="Close"></button>
-            </div>
-        </div>
-    </div>
-    <script>
-    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-    var toastList = toastElList.map(function(toastEl) {
-        return new bootstrap.Toast(toastEl, {
-            delay: 3000
-        })
-    });
-    toastList.forEach(toast => toast.show());
-    </script>
-    <?php
+        renderToastMessage($_SESSION['Update-account-success']);
         unset($_SESSION['Update-account-success']);
     }
     ?>

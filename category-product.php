@@ -39,7 +39,7 @@ include_once('./partials-frontend/functions.php');
                     $image_name = $row2['product_img'];
                     $price = $row2['product_price'];
 
-                    renderProduct($id, $name, $image_name, $price);
+                    renderProduct($conn, $id, $name, $image_name, $price);
                 }
             } else {
                 echo "<div class='text-danger'>Sản phẩm không có sẵn</div>";
