@@ -7,6 +7,7 @@ if (isset($_GET['id'])) {
     include_once('./partials-frontend/header.php');
     include_once('./partials-frontend/functions.php');
     include_once('./partials-frontend/convert-money.php');
+
     ?>
 
 <?php
@@ -123,7 +124,7 @@ Array.prototype.forEach.call(sizeElements, size => {
         <div class="content__comment">
 
             <div class="header__content-comment d-flex align-items-center ">
-                <img width="50" height="50" src="<?php if ($avatar) {
+                <img style="border-radius:50%" width="50" height="50" src="<?php if ($avatar) {
                                                 echo "./assests/images/user/$avatar";
                                             } else {
                                                 echo './assests/images/user.png';
@@ -133,14 +134,14 @@ Array.prototype.forEach.call(sizeElements, size => {
                 if($name == $username){
                     echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
                 }else{
-                    echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger'>$fullname</h3>";
+                    echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
 
                 }
                 
                 ?>
             </div>
             <i style="font-size:0.875rem"><?php
-                  
+                
                      echo get_time_ago(strtotime($created_at)) ?></i>
             <p><?php echo $content;?></p>
         </div>
@@ -177,9 +178,7 @@ Array.prototype.forEach.call(sizeElements, size => {
         </script>
         <?php
                 }
-            } else {
-                echo '<a style="font-size:2rem" href="login.php" class="header__mobile-navigation-link">Đăng nhập</a>';
-            }
+            } 
             ?>
 
 

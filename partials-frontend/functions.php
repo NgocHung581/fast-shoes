@@ -332,9 +332,10 @@ function renderProduct($id, $name, $image_name, $price)
 function get_time_ago( $time )
 {
     $time_difference = time() - $time;
+ 
 
     if( $time_difference < 1 ) { return ' 1 giây trước'; }
-    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
+    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'năm',
                 30 * 24 * 60 * 60       =>  'tháng',
                 24 * 60 * 60            =>  'ngày',
                 60 * 60                 =>  'giờ',
