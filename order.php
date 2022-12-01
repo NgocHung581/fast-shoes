@@ -303,12 +303,11 @@ if (isset($_POST['submit'])) {
                 $body .= "<p style='color: #000;'>Chúng tôi sẽ liên lạc cho bạn qua số điện thoại " . $customer_phone . " trước khi đến nơi. Hàng sẽ được giao lại hoàn toàn miễn phí nếu bạn vắng nhà.</p>";
                 $body .= "<p style='color: #000;'>Cảm ơn bạn đã đồng hành cùng Fast Shoes.</p>";
                 $body .= "<a href='http://localhost/Shoes-Store/' style='display:inline-block; color: #fff; background-color: #000080; padding: 16px; text-decoration: none; border-radius: 4px;'>Đến cửa hàng</a>";
-
                 $body .= "<h3 style='color: #000;'>Thông tin đơn hàng!</h3>";
-                $body .= "<table>
+                $body .= "<table style='width: 100%;'>
                             <tbody>";
                 
-                $sql_order_mail = "SELECT * FROM tbl_order WHERE customer_id = $user_id" . $where;
+                $sql_order_mail = "SELECT * FROM tbl_order WHERE order_id = $order_id";
                 $res_order_mail = mysqli_query($conn, $sql_order_mail);
                 if ($res_order_mail == true) {
                     $count_order_mail = mysqli_num_rows($res_order_mail);
@@ -321,24 +320,51 @@ if (isset($_POST['submit'])) {
                             $product_price_mail = explode(',', $row_order_mail['product_price']);
                             $product_quantity_mail = explode(',', $row_order_mail['product_quantity']);
 
-                            for ($i = 0; $i < count($product_name_mail) - 1; $i++) {
+                            for ($i = 0; $i < count($product_name_mail); $i++) {
+                                
+                                $img_path = "./assests/images/product/$product_image_mail[$i]";
+                                $cid = md5($img_path);
+                                $mail->AddEmbeddedImage($img_path, $cid);
 
-                                $mail->AddEmbeddedImage("assets/images/product/$product_image_mail[$i]", 'image');
-
-                                $body .= "<tr>
-                                            <td><img src='cid:image'></td>
+                                $body .= "<tr style='border-bottom: 1px solid #ccc; padding: 20px 10px;'>
+                                            <td style='width: 100px'>
+                                                <img src='cid:" . $cid . "' style='width: 100%;
+                                                                            object-fit: cover;
+                                                                            border: 1px solid #ccc;
+                                                                            border-radius: 12px;'>
+                                            </td>
+                                            <td style=''>
+                                                <div>
+                                                    <strong>$product_name_mail[$i]</strong>
+                                                    <strong> x $product_quantity_mail[$i]</strong>
+                                                </div>
+                                                <div>
+                                                    Size: $product_size_mail[$i]
+                                                </div>
+                                            </td>
+                                            <td style=''>
+                                                <div>
+                                                    <strong>" . currency_format($product_price_mail[$i]) . "</strong>
+                                                </div>
+                                            </td>
                                         </tr>";
-
                                
                             }
                         }
                     }
                 }
                 $body .= "  </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan='2'>Tổng tiền:</td>
+                                    <td style=''><strong>" . currency_format($total_price_mail) . "</strong></td>
+                                </tr>
+                            </tfoot>
                         </table>";
                 
                 $mail->Body = $body;
                 $result = $mail->send();
+
                 if (!$result) {
                     $error = "Có lỗi xảy ra trong quá trình gửi mail";
                 }

@@ -10,6 +10,6 @@ define('SMTP_PORT', '465');
 define('SMTP_UNAME', 'fastshoes.hpdn@gmail.com');
 define('SMTP_PWORD', 'oamfrxplecehvvwb');
 
-define('SITEURL', 'http://localhost:8080/fast-shoes/');
+define('SITEURL', 'http://localhost/Shoes-Store/fast-shoes/');
 
 $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
