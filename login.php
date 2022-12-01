@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
     $password = md5($_POST['password']);
 
     $sql = "SELECT * FROM tbl_user 
-    WHERE username = '$username' AND password = '$password'";
+    WHERE username = '$username' AND password = '$password' AND verified_email= 'True'";
 
     $res = mysqli_query($conn, $sql);
 
@@ -122,7 +122,7 @@ if (isset($_POST['submit'])) {
                 header("location:" . SITEURL . "admin/manage-home/index.php");
             }
         } else {
-            $_SESSION['login-incorrect'] = '<div class="text-danger">Tài khoản hoặc mật khẩu không đúng.</div>';
+            $_SESSION['login-incorrect'] = '<div class="text-danger">Sai thông tin hoặc chưa xác thực Email.</div>';
             header("location:" . SITEURL . "login.php");
         }
     }

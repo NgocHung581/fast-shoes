@@ -87,7 +87,11 @@ include('./config/constants.php');
 </html>
 
 <?php
+$user_id = null;
+$fullname = "";
+$username = "";
 if (isset($_POST['register'])) {
+    
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $password = md5($_POST['password']);
@@ -95,6 +99,7 @@ if (isset($_POST['register'])) {
 
     $sql2 = "SELECT * FROM tbl_user WHERE type = 'user'";
     $res2 = mysqli_query($conn, $sql2);
+    
     $userExists = false;
     if ($res2 == true) {
         $count2 = mysqli_num_rows($res2);
@@ -119,9 +124,10 @@ if (isset($_POST['register'])) {
           password = '$password'
         ";
             $res = mysqli_query($conn, $sql);
+            echo $user_id = mysqli_insert_id($conn);
 
             if ($res == true) {
-                $_SESSION['register'] = '<div class="text-primary">Đăng ký thành công.</div>';
+                $_SESSION['register'] = '<div class="text-primary">Đăng ký thành công. Vui lòng kiểm tra Email để xác thực.</div>';
                 header('location:' . SITEURL . 'login.php');
             } else {
                 $_SESSION['register'] = '<div class="text-danger">Đăng ký thất bại.</div>';
@@ -136,4 +142,58 @@ if (isset($_POST['register'])) {
         header('location:' . SITEURL . 'register.php');
     }
 }
+?>
+
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+            // Gửi email khi đặt hàng thành công    
+           
+            require "vendor/phpmailer/phpmailer/src/phpmailer.php";
+            require "vendor/phpmailer/phpmailer/src/exception.php";
+            require "vendor/phpmailer/phpmailer/src/smtp.php";
+            require "vendor/autoload.php";
+            
+            $mail = new PHPMailer;
+
+            try {
+                $mail->CharSet = "UTF-8";
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = SMTP_HOST;
+                $mail->SMTPAuth = true;
+                $mail->Username = SMTP_UNAME;
+                $mail->Password = SMTP_PWORD;
+                $mail->SMTPSecure = "ssl";
+                $mail->Port = SMTP_PORT;
+
+                $mail->setFrom(SMTP_UNAME, "Fast Shoes");
+                $mail->addAddress($username, $fullname);
+                $mail->addReplyTo(SMTP_UNAME);
+                $mail->isHTML(true);
+
+                $subject = "Xác nhận tài khoản";
+                $mail->Subject = $subject;
+
+                $body = "<h3 style='color: #000;'>Welcome to Fast Shoes!</h3>";
+                $body .= "<p style='color: #000;'>Xin chào " . $fullname . "</p>";
+                $body .= "<p style='color: #000;'>Tài khoản Fast Shoes của bạn vừa được tạo bởi email này </p>";
+                $body .= "<p style='color: #000;'>Nếu đây là bạn hãy nhấn vào đường link để xác nhận: </p>";
+            
+                $body .= "<form action='http://localhost/fast-shoes-master/verified-email.php' method = 'POST'>
+                            <input type='hidden' name='user_id' value='".$user_id."'/>
+                            <button type='submit' name='verified'  style='display:inline-block; color: #fff; background-color: #000080; padding: 16px; text-decoration: none; border-radius: 4px;'>Link xác nhận</button>
+                        </form>";
+                
+                $mail->Body = $body;
+                $result = $mail->send();
+                if (!$result) {
+                    $error = "Có lỗi xảy ra trong quá trình gửi mail";
+                }
+            }
+            catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: ", $mail->ErrorInfo;
+            }
+
 ?>
