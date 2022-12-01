@@ -102,7 +102,7 @@ Array.prototype.forEach.call(sizeElements, size => {
 
 
 <div class="container">
-    <div class="comment">
+    <div class="comment py-5">
 
         <?php
                     $sql3 = "SELECT * FROM tbl_comment INNER JOIN tbl_product INNER JOIN tbl_user ON tbl_comment.product_id = tbl_product.product_id AND tbl_comment.username = tbl_user.username WHERE product_name LIKE '%$product_name%' ORDER BY comment_id DESC LIMIT 0,5";
@@ -124,7 +124,7 @@ Array.prototype.forEach.call(sizeElements, size => {
         <div class="content__comment">
 
             <div class="header__content-comment d-flex align-items-center ">
-                <img width="50" height="50" src="<?php if ($avatar) {
+                <img style="border-radius:50%" width="50" height="50" src="<?php if ($avatar) {
                                                                             echo "./assests/images/user/$avatar";
                                                                         } else {
                                                                             echo './assests/images/user.png';
@@ -134,7 +134,7 @@ Array.prototype.forEach.call(sizeElements, size => {
                                     if ($name == $username) {
                                         echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
                                     } else {
-                                        echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger'>$fullname</h3>";
+                                        echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
                                     }
 
                                     ?>
@@ -183,11 +183,11 @@ Array.prototype.forEach.call(sizeElements, size => {
 
 
 
-        <hr style="width: 50%; text-align: center;transform: translateX(50%)">
 
 
 
     </div>
+    <hr style="width: 50%; text-align: center;transform: translateX(50%)">
     <div class="orther__product">
         <h1 class="text-center">Vì bạn đã xem <?php echo $category_name; ?></h1>
         <div class="row gy-4">
