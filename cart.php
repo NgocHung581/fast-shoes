@@ -138,7 +138,7 @@ if (isset($_POST['cart-submit'])) {
                         </tbody>
                     </table>
                 </div>
-                <a href="product.php" class="d-none d-lg-block mt-4">
+                <a href="product.php" class="d-none d-lg-inline-block mt-4">
                     <button class="btn btn-primary comeback">
                         <i class="fa fa-long-arrow-alt-left"></i>
                         Tiếp tục xem sản phẩm

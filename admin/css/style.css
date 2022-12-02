@@ -4,6 +4,7 @@
   --line-color: #dfe4ea;
   --background-color: #2f3542;
   --height-header: 80px;
+  --tran-05: all 0.5s ease-in-out;
 }
 
 * {
@@ -209,6 +210,7 @@ nav .logo-image img {
 }
 
 nav .logo-name .logo_name {
+  white-space: nowrap;
   font-size: 22px;
   font-weight: 600;
   color: var(--primary-color);
@@ -258,6 +260,7 @@ body.dark li a:hover:before {
   transform: scale(1.2);
 }
 .menu-items li a .link-name {
+  white-space: nowrap;
   font-size: 18px;
   font-weight: 400;
   color: #fff;

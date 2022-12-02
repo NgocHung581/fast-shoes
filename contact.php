@@ -56,7 +56,7 @@ include_once('./partials-frontend/header.php');
                                 <div class="col-12 col-xl-6">
                                     <div class="form__field" id="form__contact-field">
                                         <div class="form-group" id="form__contact-group">
-                                            <input required="required" type="text" name="email" rules="required|email"
+                                            <input required="required" type="email" name="email" rules="required|email"
                                                 id="form-tel" class="form-tel" />
                                             <span class="form-label" id="form__contact-label">Email của bạn</span>
                                         </div>

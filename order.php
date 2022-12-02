@@ -299,13 +299,13 @@ if (isset($_POST['submit'])) {
                 $subject = "Thông báo xác nhận đơn hàng #DH" . $order_id;
                 $mail->Subject = $subject;
 
-                $body = "<h3 style='color: #000;'>Welcome to Fast Shoes!</h3>";
-                $body .= "<p style='color: #000;'>Xin chào " . $customer_fullname . ", chúng tôi đang chuẩn bị sản phẩm để gửi đi cho bạn.</p>";
-                $body .= "<p style='color: #000;'>Chúng tôi sẽ liên lạc cho bạn qua số điện thoại " . $customer_phone . " trước khi đến nơi. Hàng sẽ được giao lại hoàn toàn miễn phí nếu bạn vắng nhà.</p>";
-                $body .= "<p style='color: #000;'>Cảm ơn bạn đã đồng hành cùng Fast Shoes.</p>";
+                $body = "<h3 style='color: #000; font-size: 20px;'>Welcome to Fast Shoes!</h3>";
+                $body .= "<p style='color: #000; font-size: 16px;'>Xin chào " . $customer_fullname . ", chúng tôi đang chuẩn bị sản phẩm để gửi đi cho bạn.</p>";
+                $body .= "<p style='color: #000; font-size: 16px;'>Chúng tôi sẽ liên lạc cho bạn qua số điện thoại " . $customer_phone . " trước khi đến nơi. Hàng sẽ được giao lại hoàn toàn miễn phí nếu bạn vắng nhà.</p>";
+                $body .= "<p style='color: #000; font-size: 16px;'>Cảm ơn bạn đã đồng hành cùng Fast Shoes.</p>";
                 $body .= "<a href='http://localhost/Shoes-Store/' style='display:inline-block; color: #fff; background-color: #000080; padding: 16px; text-decoration: none; border-radius: 4px;'>Đến cửa hàng</a>";
-                $body .= "<h3 style='color: #000;'>Thông tin đơn hàng!</h3>";
-                $body .= "<table style='width: 50%;'>
+                $body .= "<h3 style='color: #000; font-size: 16px'>Thông tin đơn hàng!</h3>";
+                $body .= "<table style='width: 50%; font-size: 16px'>
                             <tbody>";
 
                 $sql_order_mail = "SELECT * FROM tbl_order WHERE order_id = $order_id";

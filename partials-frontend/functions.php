@@ -356,7 +356,7 @@ function renderProduct($conn, $id, $name, $image_name, $price)
 function get_time_ago($time)
 {
     $time_difference = time() - $time;
- 
+
 
     if ($time_difference < 1) {
         return ' 1 giây trước';
@@ -380,11 +380,11 @@ function get_time_ago($time)
     }
 }
 
-function renderToastMessage($message = "")
+function renderToastMessage($message = "", $delay = 3000, $bg = "success")
 {
 ?>
 <div class="position-fixed top-0 end-0 p-3 h-25 mt-5" style="z-index: 1000">
-    <div class="toast bg-success h-50 align-bottom" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast bg-<?php echo $bg; ?> h-50 align-bottom" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex align-items-center h-100" style="font-size: 16px;">
             <div class="toast-body text-white">
                 <?php echo $message; ?>
@@ -398,7 +398,7 @@ function renderToastMessage($message = "")
 var toastElList = [].slice.call(document.querySelectorAll('.toast'))
 var toastList = toastElList.map(function(toastEl) {
     return new bootstrap.Toast(toastEl, {
-        delay: 3000
+        delay: <?php echo $delay; ?>
     })
 });
 toastList.forEach(toast => toast.show());

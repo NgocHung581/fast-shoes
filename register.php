@@ -1,5 +1,6 @@
 <?php
-include('./config/constants.php');
+include_once('./config/constants.php');
+include_once('./partials-frontend/functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +14,13 @@ include('./config/constants.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="./assests/css/style.css" />
     <link rel="stylesheet" href="./assests/css/login-register.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <title>Fast Shoes</title>
 </head>
 
@@ -26,19 +32,19 @@ include('./config/constants.php');
 
                 <?php
                 if (isset($_SESSION['pwd-not-match'])) {
-                    echo $_SESSION['pwd-not-match'];
+                    renderToastMessage($_SESSION['pwd-not-match'], 3000, "danger");
                     unset($_SESSION['pwd-not-match']);
                 }
 
                 if (isset($_SESSION['exists-user'])) {
-                    echo $_SESSION['exists-user'];
+                    renderToastMessage($_SESSION['exists-user'], 3000, "danger");
                     unset($_SESSION['exists-user']);
                 }
                 ?>
 
                 <div class="form__field">
                     <div class="form-group">
-                        <input required="required" type="text" name="fullname" rules="required"
+                        <input type="text" required="required" name="fullname" rules="required"
                             class="form__register-fullname" />
                         <span class="form-label">Họ tên</span>
                     </div>
@@ -46,7 +52,7 @@ include('./config/constants.php');
                 </div>
                 <div class="form__field">
                     <div class="form-group">
-                        <input required="required" type="text" name="username" rules="required|email"
+                        <input type="email" required="required" name="username" rules="required|email"
                             class="form__register-email" />
                         <span class="form-label">Email</span>
                     </div>
@@ -54,7 +60,7 @@ include('./config/constants.php');
                 </div>
                 <div class="form__field">
                     <div class="form-group">
-                        <input required="required" type="password" name="password" rules="required|min:6"
+                        <input type="password" required="required" name="password" rules="required|min:6"
                             class="form__register-password" />
                         <span class="form-label">Mật khẩu</span>
                     </div>
@@ -62,7 +68,7 @@ include('./config/constants.php');
                 </div>
                 <div class="form__field">
                     <div class="form-group">
-                        <input required="required" type="password" name="passwordConfirm" rules="required|matchPassword"
+                        <input type="password" required="required" name="passwordConfirm" rules="required|matchPassword"
                             class="form__register-passwordConfirm" />
                         <span class="form-label">Nhập lại mật khẩu</span>
                     </div>
@@ -90,16 +96,15 @@ include('./config/constants.php');
 $user_id = null;
 $fullname = "";
 $username = "";
+$isValid = false;
 if (isset($_POST['register'])) {
-
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $password = md5($_POST['password']);
     $passwordConfirm = md5($_POST['passwordConfirm']);
 
-    $sql2 = "SELECT * FROM tbl_user WHERE type = 'user'";
+    $sql2 = "SELECT * FROM tbl_user";
     $res2 = mysqli_query($conn, $sql2);
-
     $userExists = false;
     if ($res2 == true) {
         $count2 = mysqli_num_rows($res2);
@@ -108,6 +113,7 @@ if (isset($_POST['register'])) {
                 $usernameBD = $row2['username'];
                 if ($username == $usernameBD) {
                     $userExists = true;
+                    $isValid = false;
                     break;
                 }
             }
@@ -127,18 +133,20 @@ if (isset($_POST['register'])) {
             echo $user_id = mysqli_insert_id($conn);
 
             if ($res == true) {
-                $_SESSION['register'] = '<div class="text-primary">Đăng ký thành công.<br>Vui lòng kiểm tra Email để xác thực.</div>';
+                $_SESSION['register'] = 'Đăng ký thành công.<br>Vui lòng kiểm tra Email để xác thực.';
+                $isValid = true;
                 header('location:' . SITEURL . 'login.php');
             } else {
                 $_SESSION['register'] = '<div class="text-danger">Đăng ký thất bại.</div>';
                 header('location:' . SITEURL . 'login.php');
             }
         } else {
-            $_SESSION['pwd-not-match'] = '<div class="text-danger mb-10">Mật khẩu nhập lại không trùng khớp.</div>';
+            $_SESSION['pwd-not-match'] = 'Mật khẩu nhập lại không trùng khớp.';
+            $isValid = false;
             header('location:' . SITEURL . 'register.php');
         }
     } else {
-        $_SESSION['exists-user'] = '<div class="text-danger mb-10">Tài khoản đã tồn tại.</div>';
+        $_SESSION['exists-user'] = 'Tài khoản đã tồn tại.';
         header('location:' . SITEURL . 'register.php');
     }
 }
@@ -148,8 +156,6 @@ if (isset($_POST['register'])) {
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-// Gửi email khi đặt hàng thành công    
 
 require "vendor/phpmailer/phpmailer/src/phpmailer.php";
 require "vendor/phpmailer/phpmailer/src/exception.php";
@@ -177,23 +183,24 @@ try {
     $subject = "Xác nhận tài khoản";
     $mail->Subject = $subject;
 
-    $body = "<h3 style='color: #000;'>Welcome to Fast Shoes!</h3>";
-    $body .= "<p style='color: #000;'>Xin chào " . $fullname . "</p>";
-    $body .= "<p style='color: #000;'>Tài khoản Fast Shoes của bạn vừa được tạo bởi email này </p>";
-    $body .= "<p style='color: #000;'>Nếu đây là bạn hãy nhấn vào đường link để xác nhận: </p>";
+    $body = "<h3 style='color: #000; font-size: 20px;'>Welcome to Fast Shoes!</h3>";
+    $body .= "<p style='color: #000; font-size: 16px;'>Xin chào " . $fullname . "</p>";
+    $body .= "<p style='color: #000; font-size: 16px;'>Tài khoản Fast Shoes của bạn vừa được tạo bởi email này </p>";
+    $body .= "<p style='color: #000; font-size: 16px;'>Nếu đây là bạn hãy nhấn vào đường link để xác nhận: </p>";
 
     $body .= "<form action='" . SITEURL . "verified-email.php' method = 'POST'>
                             <input type='hidden' name='user_id' value='" . $user_id . "'/>
-                            <button type='submit' name='verified'  style='display:inline-block; color: #fff; background-color: #e62b4a; padding: 16px; text-decoration: none; border-radius: 4px; cursor: pointer;'>Link xác nhận</button>
+                            <button type='submit' name='verified'  style='display:inline-block; color: #fff; background-color: #000080; padding: 16px; text-decoration: none; border-radius: 4px; cursor: pointer;'>Link xác nhận</button>
                         </form>";
 
     $mail->Body = $body;
-    $result = $mail->send();
-    if (!$result) {
-        $error = "Có lỗi xảy ra trong quá trình gửi mail";
+    if ($isValid) {
+        $result = $mail->send();
+        if (!$result) {
+            $error = "Có lỗi xảy ra trong quá trình gửi mail";
+        }
     }
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: ", $mail->ErrorInfo;
 }
-
 ?>

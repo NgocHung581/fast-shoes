@@ -9,6 +9,10 @@ window.onscroll = function () {
   }
 };
 
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.href);
+}
+
 // Validation form
 function Validate(formSelector) {
   function getParent(element, selector) {
@@ -103,7 +107,7 @@ function Validate(formSelector) {
         }
       }
 
-      return errorMessage;
+      return !errorMessage;
     }
 
     function handleClearError(e) {
@@ -123,3 +127,4 @@ Validate("#form-register");
 Validate("#form-contact");
 Validate("#form-order");
 Validate("#form-forgetPassword");
+Validate("#form-changePassword");

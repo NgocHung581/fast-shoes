@@ -1,5 +1,6 @@
 <?php
-include('./config/constants.php');
+include_once('./config/constants.php');
+include_once('./partials-frontend/functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,38 +14,48 @@ include('./config/constants.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="./assests/css/style.css" />
     <link rel="stylesheet" href="./assests/css/login-register.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <title>Fast Shoes</title>
 </head>
+
+<?php
+if (isset($_SESSION['register'])) {
+    renderToastMessage($_SESSION['register'], 5000);
+    unset($_SESSION['register']);
+}
+
+if (isset($_SESSION['login-require'])) {
+    renderToastMessage($_SESSION['login-require'], 3000, "danger");
+    unset($_SESSION['login-require']);
+}
+
+if (isset($_SESSION['login-incorrect'])) {
+    renderToastMessage($_SESSION['login-incorrect'], 3000, "danger");
+    unset($_SESSION['login-incorrect']);
+}
+
+if (isset($_SESSION['change-password'])) {
+    renderToastMessage($_SESSION['change-password'], 3000);
+    unset($_SESSION['change-password']);
+}
+
+if (isset($_SESSION['failure-change-password'])) {
+    renderToastMessage($_SESSION['failure-change-password'], 3000, "danger");
+    unset($_SESSION['failure-change-password']);
+}
+?>
 
 <body>
     <div class="login">
         <div class="container login__content">
             <form action="" method="POST" class="form">
                 <h1 class="form-title text-center">Đăng nhập</h1>
-
-                <?php
-                if (isset($_SESSION['register'])) {
-                    echo $_SESSION['register'];
-                    unset($_SESSION['register']);
-                }
-
-                if (isset($_SESSION['login-require'])) {
-                    echo $_SESSION['login-require'];
-                    unset($_SESSION['login-require']);
-                }
-
-                if (isset($_SESSION['login-incorrect'])) {
-                    echo $_SESSION['login-incorrect'];
-                    unset($_SESSION['login-incorrect']);
-                }
-
-                if (isset($_SESSION['change-password'])) {
-                    echo $_SESSION['change-password'];
-                    unset($_SESSION['change-password']);
-                }
-                ?>
 
                 <div class="form__field">
                     <div class="form-group">
@@ -124,7 +135,7 @@ if (isset($_POST['submit'])) {
                 header("location:" . SITEURL . "admin/manage-home/index.php");
             }
         } else {
-            $_SESSION['login-incorrect'] = '<div class="text-danger">Sai thông tin hoặc chưa xác thực Email.</div>';
+            $_SESSION['login-incorrect'] = 'Sai thông tin hoặc chưa xác thực Email.';
             header("location:" . SITEURL . "login.php");
         }
     }
