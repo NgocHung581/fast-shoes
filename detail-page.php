@@ -113,7 +113,7 @@ Array.prototype.forEach.call(sizeElements, size => {
                     if ($count > 0) {
 
                         while ($row = mysqli_fetch_array($res3)) {
-                            $created_at = $row['created_at'];
+                            $created_at = $row[4];
                             $fullname = $row['fullname'];
                             $content = $row['content'];
                             $avatar = $row['avatar'];
@@ -129,20 +129,20 @@ Array.prototype.forEach.call(sizeElements, size => {
                                                                                                     echo './assests/images/user.png';
                                                                                                 } ?>" alt="">
                 <?php
-                                    if(isset($_SESSION['username'])){
+                                    if (isset($_SESSION['username'])) {
                                         $name = $_SESSION['username'];
-                                    if ($name == $username) {
-                                        echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
+                                        if ($name == $username) {
+                                            echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
+                                        } else {
+                                            echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
+                                        }
                                     } else {
-                                        echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
-                                    }
-                                    }else {
                                         echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
                                     }
 
                                     ?>
             </div>
-            <i style="font-size:0.875rem"><?php echo getDateTimeDiff($created_at) ?></i>
+            <i style="font-size:0.875rem"><?php echo get_time_ago($created_at); ?></i>
             <p><?php echo $content; ?></p>
         </div>
 
@@ -161,8 +161,8 @@ Array.prototype.forEach.call(sizeElements, size => {
 
         <?php
 
-if (isset($_POST['submit-comment'])) {
-                            if (isset($_SESSION['username'])) {
+                    if (isset($_POST['submit-comment'])) {
+                        if (isset($_SESSION['username'])) {
                             $comment = $_POST['comment'];
                             $name = $_SESSION['username'];
                             date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -170,22 +170,15 @@ if (isset($_POST['submit-comment'])) {
 
                             $sql = "INSERT INTO tbl_comment(content,product_id,username,created_at) VALUES ('$comment',$product_id,'$name','$date')";
                             mysqli_query($conn, $sql);
-
                     ?>
         <script>
         <?php echo ("location.href = '" . SITEURL . "detail-page.php?id=$product_id'"); ?>
         </script>
         <?php
+                        } else {
+                            include_once('./partials-frontend/check-login-user.php');
                         }
-                        else {
-                            
-                            ?>
-        <script>
-        <?php echo ("location.href = '" . SITEURL . "login.php'"); ?>
-        </script>
-        <?php
-                        }
-                    } 
+                    }
                     ?>
     </div>
     <hr style="width: 50%; text-align: center;transform: translateX(50%)">

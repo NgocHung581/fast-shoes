@@ -294,6 +294,10 @@ include_once('convert-money.php');
                     if (isset($_SESSION["user_id"])) {
                     ?>
                     <li class="header__mobile-navigation-item">
+                        <i class="fa-solid fa-user"></i>
+                        <a href="account.php" class="header__mobile-navigation-link">Tài khoản</a>
+                    </li>
+                    <li class="header__mobile-navigation-item">
                         <i class="fa fa-book-open"></i>
                         <a href="order-customer.php" class="header__mobile-navigation-link">Xem đơn hàng</a>
                     </li>
