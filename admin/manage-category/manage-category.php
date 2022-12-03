@@ -49,7 +49,6 @@ include('../partials/header.php');
                     <th>STT</th>
                     <th>Tên danh mục</th>
                     <th>Hình ảnh danh mục</th>
-                    <th>Featured</th>
                     <th>Active</th>
                     <th>Hành động</th>
                 </tr>
@@ -70,7 +69,6 @@ include('../partials/header.php');
                         $id = $row['category_id'];
                         $name = $row['category_name'];
                         $img_name = $row['category_img'];
-                        $featured = $row['category_featured'];
                         $active = $row['category_active'];
             ?>
             <tr>
@@ -87,7 +85,6 @@ include('../partials/header.php');
                                 }
                                 ?>
                 </td>
-                <td><?php echo $featured; ?></td>
                 <td><?php echo $active; ?></td>
                 <td>
                     <a href="../manage-category/update-category.php?id=<?php echo $id; ?>" class="btn btn-primary">Cập

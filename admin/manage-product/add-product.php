@@ -51,13 +51,6 @@ include('../partials/header.php');
                 </select>
             </div>
             <div class="form-group row mb-10">
-                <label class="col-4">Featured:</label>
-                <div class="col-8">
-                    <input type="radio" name="featured" value="Yes">Yes
-                    <input type="radio" name="featured" value="No">No
-                </div>
-            </div>
-            <div class="form-group row mb-10">
                 <label class="col-4">Active:</label>
                 <div class="col-8">
                     <input type="radio" name="active" value="Yes">Yes
@@ -110,12 +103,6 @@ include('../partials/header.php');
                 $img_name = "";
             }
 
-            if (isset($_POST["featured"])) {
-                $featured = $_POST["featured"];
-            } else {
-                $featured = "No";
-            }
-
             if (isset($_POST["active"])) {
                 $active = $_POST["active"];
             } else {
@@ -131,7 +118,6 @@ include('../partials/header.php');
             $sql2 = "INSERT INTO tbl_product SET
                     product_name='$name',
                     product_img='$img_name',
-                    product_featured='$featured',
                     product_price='$price',
                     product_active='$active',
                     slider='$slider',

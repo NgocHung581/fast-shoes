@@ -51,7 +51,6 @@ include('../partials/header.php');
                     <th>Danh mục</th>
                     <th>Hình ảnh sản phẩm</th>
                     <th>Giá tiền</th>
-                    <th>Featured</th>
                     <th>Active</th>
                     <th>Slider</th>
                     <th>Hành động</th>
@@ -74,7 +73,6 @@ include('../partials/header.php');
                         $name = $row['product_name'];
                         $img_name = $row['product_img'];
                         $price = $row['product_price'];
-                        $featured = $row['product_featured'];
                         $active = $row['product_active'];
                         $slider = $row['slider'];
                         $category_id = $row['category_id'];
@@ -84,8 +82,8 @@ include('../partials/header.php');
                         $res2 = mysqli_query($conn, $sql2);
                         $row2 = mysqli_fetch_assoc($res2);
                         $category_name = $row2['category_name'];
-                        
-                        
+
+
             ?>
             <tr>
                 <td><?php echo $sn++; ?></td>
@@ -115,7 +113,6 @@ include('../partials/header.php');
                                 echo currency_format($price, " VND");
                                 ?>
                 </td>
-                <td><?php echo $featured; ?></td>
                 <td><?php echo $active; ?></td>
                 <td><?php echo $slider; ?></td>
                 <td>

@@ -20,11 +20,9 @@ include('../partials/header.php');
                     $name = $row['product_name'];
                     $current_image = $row['product_img'];
                     $price = $row['product_price'];
-                    $featured = $row['product_featured'];
                     $active = $row['product_active'];
                     $slider = $row['slider'];
                     $category_id = $row['category_id'];
-
                 } else {
                     $_SESSION["no-product-found"] = "<div class='text-danger'>Không thể tìm thấy sản phẩm</div>";
                     header("location:" . SITEURL . "admin/manage-product/manage-product.php");
@@ -44,30 +42,29 @@ include('../partials/header.php');
                 <select name="category" class="col-8">
                     <!-- Create PHP code to display categories from db -->
                     <?php
-                        // 1. Create  SQL to get all active categories from db            
-                        $sql2 = "SELECT * FROM tbl_category WHERE category_active='Yes'";
-                        // Executing query
-                        $res2 = mysqli_query($conn, $sql2);
-                        // Counts rows to check categories
-                        $count2 = mysqli_num_rows($res2);
-                        // If count > 0, have category or not have
-                        if ($count2 > 0){
-                            while($row2 = mysqli_fetch_assoc($res2)){
-                                $id_ = $row2['category_id'];
-                                $name = $row2['category_name'];
-                                if ($id_ == $category_id){
-                                    ?>
-                                    <option selected="selected" value=<?php echo $id_;?>><?php echo $name;?></option>
-                                    <?php
-                                }
-                                else{
-                                    ?>
-                                    <option value=<?php echo $id_;?>><?php echo $name;?></option>
-                                    <?php
-                                }
+                    // 1. Create  SQL to get all active categories from db            
+                    $sql2 = "SELECT * FROM tbl_category WHERE category_active='Yes'";
+                    // Executing query
+                    $res2 = mysqli_query($conn, $sql2);
+                    // Counts rows to check categories
+                    $count2 = mysqli_num_rows($res2);
+                    // If count > 0, have category or not have
+                    if ($count2 > 0) {
+                        while ($row2 = mysqli_fetch_assoc($res2)) {
+                            $id_ = $row2['category_id'];
+                            $name = $row2['category_name'];
+                            if ($id_ == $category_id) {
+                    ?>
+                    <option selected="selected" value=<?php echo $id_; ?>><?php echo $name; ?></option>
+                    <?php
+                            } else {
+                            ?>
+                    <option value=<?php echo $id_; ?>><?php echo $name; ?></option>
+                    <?php
                             }
                         }
-                        ?>
+                    }
+                    ?>
                 </select>
             </div>
             <div class="form-group row mb-10">
@@ -93,17 +90,6 @@ include('../partials/header.php');
             <div class="form-group row mb-10">
                 <label for="price" class="col-4">Giá tiền:</label>
                 <input type="number" name="price" value="<?php echo $price; ?>" id="price" class="col-8">
-            </div>
-            <div class="form-group row mb-10">
-                <label for="" class="col-4">Featured:</label>
-                <div class="col-8">
-                    <input <?php if ($featured == "Yes") {
-                                echo "checked";
-                            } ?> type="radio" name="featured" value="Yes">Yes
-                    <input <?php if ($featured == "No") {
-                                echo "checked";
-                            } ?> type="radio" name="featured" value="No">No
-                </div>
             </div>
             <div class="form-group row mb-10">
                 <label for="" class="col-4">Active:</label>
@@ -137,7 +123,6 @@ include('../partials/header.php');
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
             $price = $_POST['price'];
-            $featured = $_POST['featured'];
             $active = $_POST['active'];
             $slider = $_POST['slider'];
             $category = $_POST['category'];
@@ -182,7 +167,6 @@ include('../partials/header.php');
                             category_id = '$category',
                             product_img = '$img_name',
                             product_price = '$price',
-                            product_featured = '$featured',
                             product_active = '$active',
                             slider = '$slider'
                             WHERE product_id = '$id'

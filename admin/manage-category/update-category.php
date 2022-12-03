@@ -19,7 +19,6 @@ include('../partials/header.php');
                     $row = mysqli_fetch_assoc($res);
                     $name = $row['category_name'];
                     $current_image = $row['category_img'];
-                    $featured = $row['category_featured'];
                     $active = $row['category_active'];
                 } else {
                     $_SESSION["no-category-found"] = "<div class='text-danger'>Không thể tìm thấy danh mục</div>";
@@ -56,17 +55,6 @@ include('../partials/header.php');
                 </div>
             </div>
             <div class="form-group row mb-10">
-                <label for="" class="col-4">Featured:</label>
-                <div class="col-8">
-                    <input <?php if ($featured == "Yes") {
-                                echo "checked";
-                            } ?> type="radio" name="featured" value="Yes">Yes
-                    <input <?php if ($featured == "No") {
-                                echo "checked";
-                            } ?> type="radio" name="featured" value="No">No
-                </div>
-            </div>
-            <div class="form-group row mb-10">
                 <label for="" class="col-4">Active:</label>
                 <div class="col-8">
                     <input <?php if ($active == "Yes") {
@@ -86,7 +74,6 @@ include('../partials/header.php');
         <?php
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
-            $featured = $_POST['featured'];
             $active = $_POST['active'];
 
             if (isset($_FILES['image']['name'])) {
@@ -128,7 +115,6 @@ include('../partials/header.php');
             $new_sql = "UPDATE tbl_category SET
                             category_name = '$name',
                             category_img = '$img_name',
-                            category_featured = '$featured',
                             category_active = '$active'
                             WHERE category_id = '$id'
                 ";
