@@ -301,10 +301,10 @@ if (isset($_POST['submit'])) {
 
                 $body = "<h3 style='color: #000; font-size: 20px;'>Welcome to Fast Shoes!</h3>";
                 $body .= "<p style='color: #000; font-size: 16px;'>Xin chào " . $customer_fullname . ", chúng tôi đang chuẩn bị sản phẩm để gửi đi cho bạn.</p>";
-                $body .= "<p style='color: #000; font-size: 16px;'>Chúng tôi sẽ liên lạc cho bạn qua số điện thoại " . $customer_phone . " trước khi đến nơi. Hàng sẽ được giao lại hoàn toàn miễn phí nếu bạn vắng nhà.</p>";
+                $body .= "<p style='color: #000; font-size: 16px;'>Chúng tôi sẽ liên lạc cho bạn qua số điện thoại <a href='tel:" . $customer_phone . "'>" . $customer_phone . "</a> trước khi đến nơi. Hàng sẽ được giao lại hoàn toàn miễn phí nếu bạn vắng nhà.</p>";
                 $body .= "<p style='color: #000; font-size: 16px;'>Cảm ơn bạn đã đồng hành cùng Fast Shoes.</p>";
                 $body .= "<a href='http://localhost/Shoes-Store/' style='display:inline-block; color: #fff; background-color: #000080; padding: 16px; text-decoration: none; border-radius: 4px;'>Đến cửa hàng</a>";
-                $body .= "<h3 style='color: #000; font-size: 16px'>Thông tin đơn hàng!</h3>";
+                $body .= "<h3 style='color: #000; font-size: 20px'>Thông tin đơn hàng</h3>";
                 $body .= "<table style='width: 50%; font-size: 16px'>
                             <tbody>";
 
@@ -366,6 +366,29 @@ if (isset($_POST['submit'])) {
                             </tfoot>
                         </table>";
 
+                $body .= "<h3 style='color: #000; font-size: 20px'>Thông tin khách hàng</h3>";
+                $body .= "<table style='color: #000; font-size: 16px; width: 700px; text-align: left;'>
+                            <tr>
+                            <th>Địa chỉ nhận hàng</th>
+                            <th>Thời gian vận chuyển</th>
+                            </tr>
+
+                            <tr>
+                            <td>$customer_fullname</td>
+                            <td>Vận chuyển trong 1-2 ngày (trừ CN)</td>
+                            </tr>
+
+                            <tr>
+                            <td>$customer_address</td>
+                            <th>Phương thức thanh toán</th>
+                            </tr>
+
+                            <tr>
+                            <td></td>
+                            <td>Thanh toán tiền mặt khi nhận hàng (COD)</td>
+                            </tr>
+                        </table>";
+                        
                 $mail->Body = $body;
                 $result = $mail->send();
 

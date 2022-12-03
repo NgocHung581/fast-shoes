@@ -165,19 +165,6 @@ table tr td {
 /* sidebar */
 body {
   min-height: 100vh;
-  background-color: var(--primary-color);
-}
-body.dark {
-  --primary-color: #3a3b3c;
-  --background-color: #242526;
-  --text-color: #ccc;
-  --black-light-color: #ccc;
-  --border-color: #4d4c4c;
-  --toggle-color: #fff;
-  --box1-color: #3a3b3c;
-  --box2-color: #3a3b3c;
-  --box3-color: #3a3b3c;
-  --title-icon-color: #ccc;
 }
 
 nav {
@@ -204,7 +191,7 @@ nav .logo-image {
   min-width: 45px;
 }
 nav .logo-image img {
-  width: 70px;
+  width: 100px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -221,7 +208,7 @@ nav.close .logo_name {
   pointer-events: none;
 }
 nav .menu-items {
-  margin-top: 40px;
+  margin-top: 20px;
   height: calc(100% - 90px);
   display: flex;
   flex-direction: column;
@@ -242,9 +229,6 @@ nav .menu-items {
   margin-top: 10px;
 }
 
-body.dark li a:hover:before {
-  background-color: var(--text-color);
-}
 .menu-items li a i {
   font-size: 24px;
   min-width: 45px;
@@ -274,10 +258,7 @@ nav.close li a .link-name {
 .nav-links li a:hover .link-name {
   color: var(--primary-color);
 }
-body.dark .nav-links li a:hover i,
-body.dark .nav-links li a:hover .link-name {
-  color: var(--text-color);
-}
+
 .menu-items .logout-mode {
   padding-top: 10px;
   border-top: 1px solid var(--border-color);
@@ -316,9 +297,6 @@ body.dark .nav-links li a:hover .link-name {
   background-color: var(--background-color);
   border-radius: 50%;
   transition: var(--tran-03);
-}
-body.dark .switch:before {
-  left: 20px;
 }
 
 .dashboard {
