@@ -129,17 +129,20 @@ Array.prototype.forEach.call(sizeElements, size => {
                                                                                                     echo './assests/images/user.png';
                                                                                                 } ?>" alt="">
                 <?php
-                                    $name = $_SESSION['username'];
+                                    if(isset($_SESSION['username'])){
+                                        $name = $_SESSION['username'];
                                     if ($name == $username) {
                                         echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
                                     } else {
                                         echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
                                     }
+                                    }else {
+                                        echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
+                                    }
 
                                     ?>
             </div>
-            <i style="font-size:0.875rem"><?php
-                                                                echo get_time_ago(strtotime($created_at)) ?></i>
+            <i style="font-size:0.875rem"><?php echo getDateTimeDiff($created_at) ?></i>
             <p><?php echo $content; ?></p>
         </div>
 
@@ -158,12 +161,12 @@ Array.prototype.forEach.call(sizeElements, size => {
 
         <?php
 
-                    if (isset($_SESSION['username'])) {
-                        if (isset($_POST['submit-comment'])) {
+if (isset($_POST['submit-comment'])) {
+                            if (isset($_SESSION['username'])) {
                             $comment = $_POST['comment'];
                             $name = $_SESSION['username'];
                             date_default_timezone_set('Asia/Ho_Chi_Minh');
-                            $date = date('Y-m-d');
+                            $date = date('Y-m-d H:i:s');
 
                             $sql = "INSERT INTO tbl_comment(content,product_id,username,created_at) VALUES ('$comment',$product_id,'$name','$date')";
                             mysqli_query($conn, $sql);
@@ -174,14 +177,21 @@ Array.prototype.forEach.call(sizeElements, size => {
         </script>
         <?php
                         }
-                    } else {
-                        echo '<a style="font-size:2rem" href="login.php" class="header__mobile-navigation-link">Đăng nhập</a>';
-                    }
+                        else {
+                            
+                            ?>
+        <script>
+        <?php echo ("location.href = '" . SITEURL . "login.php'"); ?>
+        </script>
+        <?php
+                        }
+                    } 
                     ?>
     </div>
     <hr style="width: 50%; text-align: center;transform: translateX(50%)">
     <div class="orther__product">
         <h1 class="text-center">Vì bạn đã xem <?php echo $category_name; ?></h1>
+
         <div class="row gy-4">
             <?php
                         $sql2 = "SELECT * FROM tbl_product WHERE category_id = $category_id AND product_id != $product_id LIMIT 4";

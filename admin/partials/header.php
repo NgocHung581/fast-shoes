@@ -99,7 +99,7 @@ if (!isset($_SESSION['admin'])) {
                     <a href="../manage-home/index.php" class="">
                         <i class="fa fa-th-large"></i>
 
-                        <span class="link-name">Dahsboard</span>
+                        <span class="link-name">Trang chủ</span>
                     </a>
                 </li>
                 <!-- <li><a href="#">
@@ -122,7 +122,7 @@ if (!isset($_SESSION['admin'])) {
                     <a href="../manage-admin/manage-admin.php" class="">
                         <i class="fa fa-user-tie"></i>
 
-                        <span class="link-name">Admin</span>
+                        <span class="link-name">Quản trị</span>
                     </a>
                 </li>
                 <li class="header__navigation-item">
