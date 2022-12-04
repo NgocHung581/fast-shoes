@@ -123,31 +123,32 @@ Array.prototype.forEach.call(sizeElements, size => {
         <div class="content__comment">
 
             <div class="header__content-comment d-flex align-items-center ">
-                <img style="border-radius:50%;object-fit: cover;" width="50" height="50" src="<?php if ($avatar) {
-                                                                                                    echo "./assests/images/user/$avatar";
-                                                                                                } else {
-                                                                                                    echo './assests/images/user.png';
-                                                                                               } ?>" alt="">
+                <img style="border-radius:50%;object-fit: cover;" width="50" height="50"
+                    src="<?php if ($avatar) {
+                                                                                                                        echo "./assests/images/user/$avatar";
+                                                                                                                    } else {
+                                                                                                                        echo './assests/images/user.png';
+                                                                                                                    } ?>" alt="">
                 <div class="head_content">
                     <?php
-                                    if (isset($_SESSION['username'])) {
-                                        $name = $_SESSION['username'];
-                                        if ($name == $username) {
-                                            echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
+                                        if (isset($_SESSION['username'])) {
+                                            $name = $_SESSION['username'];
+                                            if ($name == $username) {
+                                                echo "<h3 style='margin-left: 10px;' class='mb-0 text-danger '>Bạn</h3>";
+                                            } else {
+                                                echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
+                                            }
                                         } else {
                                             echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
                                         }
-                                    } else {
-                                        echo "<h3 style='margin-left: 10px;' class='mb-0'>$fullname</h3>";
-                                    }
 
-                                    ?>
+                                        ?>
                     <i style="font-size:0.875rem;margin-left: 10px;"><?php echo get_time_ago($created_at); ?></i>
 
                 </div>
 
             </div>
-            <p><?php echo $content; ?></p>
+            <p class="mt-2"><?php echo $content; ?></p>
         </div>
 
         <?php
