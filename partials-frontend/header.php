@@ -197,7 +197,7 @@ include_once('convert-money.php');
 
 
                     <?php
-                    if (isset($_SESSION["user"])) {
+                    if (isset($_SESSION["user_id"])) {
                     ?>
                     <div class="header__cart-box">
                         <h3 class="header-cart-title">Sản phảm đã thêm vào giỏ</h3>

@@ -19,7 +19,7 @@ function addToCart($conn, $size = 35)
             if ($res_second == true) {
                 $count_second = mysqli_num_rows($res_second);
                 if ($count_second > 0) {
-                    $sql_third = "UPDATE tbl_cart SET product_quantity = product_quantity + 1 WHERE user_id = $user_id AND product_id = $product_id AND product_size = $size";
+                    $sql_third = "UPDATE tbl_cart SET product_quantity = product_quantity + 1, total_price = product_price * product_quantity WHERE user_id = $user_id AND product_id = $product_id AND product_size = $size";
                 } else {
                     $sql_third = "INSERT INTO tbl_cart SET
                                 product_id = '$product_id',
@@ -27,6 +27,7 @@ function addToCart($conn, $size = 35)
                                 product_size = $size,
                                 product_image = '$product_image',
                                 product_price = '$product_price',
+                                total_price = $product_price,
                                 user_id = '$user_id'
                                 ";
                 }
