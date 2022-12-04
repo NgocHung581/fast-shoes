@@ -123,12 +123,13 @@ Array.prototype.forEach.call(sizeElements, size => {
         <div class="content__comment">
 
             <div class="header__content-comment d-flex align-items-center ">
-                <img style="border-radius:50%" width="50" height="50" src="<?php if ($avatar) {
+                <img style="border-radius:50%;object-fit: cover;" width="50" height="50" src="<?php if ($avatar) {
                                                                                                     echo "./assests/images/user/$avatar";
                                                                                                 } else {
                                                                                                     echo './assests/images/user.png';
-                                                                                                } ?>" alt="">
-                <?php
+                                                                                               } ?>" alt="">
+                <div class="head_content">
+                    <?php
                                     if (isset($_SESSION['username'])) {
                                         $name = $_SESSION['username'];
                                         if ($name == $username) {
@@ -141,8 +142,11 @@ Array.prototype.forEach.call(sizeElements, size => {
                                     }
 
                                     ?>
+                    <i style="font-size:0.875rem;margin-left: 10px;"><?php echo get_time_ago($created_at); ?></i>
+
+                </div>
+
             </div>
-            <i style="font-size:0.875rem"><?php echo get_time_ago($created_at); ?></i>
             <p><?php echo $content; ?></p>
         </div>
 
